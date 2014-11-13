@@ -23,37 +23,6 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "onMenuArrivalsButtonTap",
                 "implHandler": [
-                    "/*",
-                    "var soapMessage ='<?xml version=\"1.0\" encoding=\"utf-8\"?>\\n<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns=\"http://tempuri.org/GetArrivals\"><soap:Header/><soap:Body><GetArrivalsResult><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo></GetArrivalsResult></soap:Body></soap:Envelope>';",
-                    "",
-                    "",
-                    "",
-                    "        Ext.Ajax.request({",
-                    "           url: 'http://10.0.1.182/AICMobileService/MobileWS.asmx',",
-                    "           callbackKey: 'callback',",
-                    "           scope: 'this',",
-                    "           method: 'POST',",
-                    "            params : {filter:'\"\"'},",
-                    "           headers: {'Content-Type': 'application/soap+xml; charset=utf-8; action=\"http://tempuri.org/GetArrivals\"'},",
-                    "           success: function(response) {",
-                    "              // OK",
-                    "               alert(\"ok\");",
-                    "               alert(response.responseText);",
-                    "               alert(response.responseXML);",
-                    "               var jsonData = Ext.util.XML.decode(response.responseText);",
-                    "               alert(jsonData);",
-                    "               console.out(\"prueba\");",
-                    "               console.out (jsonData);",
-                    "           },",
-                    "            failure: function(response) {",
-                    "              // KO",
-                    "                alert(\"errpr\");",
-                    "                alert(response.resposeText);",
-                    "           },",
-                    "           xmlData: soapMessage",
-                    "        });",
-                    "*/",
-                    "",
                     "",
                     "var c = Ext.getCmp('menu');",
                     "if(c === undefined){",
@@ -109,9 +78,8 @@
                     "var a = Ext.getCmp('lstArribos');",
                     "a.show();",
                     "c.setTitle('Arribos');",
-                    "var me = this;",
-                    "me.getArrivals();",
-                    ""
+                    "",
+                    "Aeropuerto.app.getController('Global').getArrivals();"
                 ],
                 "name": "tap"
             },
@@ -149,8 +117,8 @@
                     "p.show();",
                     "var a = Ext.getCmp('lstArribos');",
                     "a.hide();",
-                    "var me = this;",
-                    "me.getDepartures();"
+                    "",
+                    "Aeropuerto.app.getController('Global').getDepartures();"
                 ],
                 "name": "tap"
             },
@@ -167,95 +135,51 @@
             "userConfig": {
                 "fn": "launch",
                 "implHandler": [
-                    "var me = this;",
-                    "//\tAeropuerto.Controller.getVuelos",
-                    "      me.getArrivals();",
-                    "       // AIC.Global.getDepartures();",
-                    "",
-                    "       // Ext.Viewport.add(Ext.create('Aeropuerto.view.Main'));"
+                    "        Aeropuerto.app.getController('Global').getArrivals();",
+                    ""
                 ]
             },
             "name": "launch",
             "designerId": "e466adbb-e66b-431f-b9d3-d3c6b45fd3dc"
         },
         {
-            "type": "basicfunction",
+            "type": "controlleraction",
             "reference": {
-                "name": "items",
+                "name": "listeners",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getArrivals",
+                "designer|controlQuery": "#lstArribos",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onArrivalsListTap",
                 "implHandler": [
-                    "var me = this;",
-                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';",
-                    "            \t me.getVuelos('GetArrivals', 'Arribos', xmlParams);"
-                ]
-            },
-            "name": "getArrivals",
-            "designerId": "55c9b2fc-ceb7-4db1-8db5-7a630ac092d6"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "tipo, laTienda, parametros"
+                    "this.goToDetails(dataview, index, target, record, e, eOpts);"
                 ],
-                "fn": "getVuelos",
-                "implHandler": [
-                    "Ext.Ajax.request({",
-                    "            url: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',",
-                    "            useDefaultXhrHeader: false,",
-                    "            headers: {",
-                    "                'Content-Type': 'text/xml; charset=utf-8',",
-                    "                'SOAPAction': 'http://tempuri.org/' + tipo",
-                    "            },",
-                    "            method: 'POST',",
-                    "            params: parametros,",
-                    "            success: function(response) {",
-                    "                var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
-                    "                var tienda = Ext.getStore(laTienda);",
-                    "                tienda.getProxy().clear();",
-                    "                tienda.data.clear();",
-                    "                tienda.sync();",
-                    "                Ext.each(vuelos, function(vuelo) {",
-                    "                    tienda.addData(vuelo);",
-                    "                }, this);",
-                    "                tienda.sync();",
-                    "                tienda.load();",
-                    "            },",
-                    "            failure: function(response) {",
-                    "                alert(response.responseText);",
-                    "                console.log(response.responseText);",
-                    "            }",
-                    "        });"
-                ]
+                "name": "itemtap"
             },
-            "name": "getVuelos",
-            "designerId": "fe3f0190-2e07-4d62-8139-a5fbd7e1e48f"
+            "name": "onArrivalsListTap",
+            "designerId": "4b467826-584c-40b1-b653-d414bfb7bfbc"
         },
         {
-            "type": "basicfunction",
+            "type": "controlleraction",
             "reference": {
-                "name": "items",
+                "name": "listeners",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getDepartures",
+                "designer|controlQuery": "#btnBackDetals",
+                "designer|targetType": "Ext.Button",
+                "fn": "onBackDetailsButtonTap",
                 "implHandler": [
-                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetDepartures xmlns=\"http://tempuri.org/\"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';",
-                    "    \tthis.getVuelos('GetDepartures', 'Partidas', xmlParams);"
-                ]
+                    "var c = Ext.getCmp('details');",
+                    "c.hide({type: 'slideOut', direction: 'right', duration: 120});"
+                ],
+                "name": "tap"
             },
-            "name": "getDepartures",
-            "designerId": "1af1e0a6-38e2-4ed1-b358-eb807ead1c04"
+            "name": "onBackDetailsButtonTap",
+            "designerId": "5aeefc68-584c-4c94-8d51-537b04a67258"
         },
         {
             "type": "basicfunction",
@@ -273,47 +197,7 @@
                     "e",
                     "eOpts"
                 ],
-                "fn": "onListItemTap",
-                "implHandler": [
-                    "/*",
-                    "var info;",
-                    "",
-                    "if (record) {",
-                    "    var c = Ext.getCmp('details');",
-                    "    if(c === undefined){",
-                    "        alert(\"MUERTEEE\");",
-                    "    }",
-                    "    //     c.setTitle(\"Vuelo\");",
-                    "",
-                    "",
-                    "    // set the info",
-                    "    info = c.child('#info');",
-                    "    info.child('#photo').setData(record.data);",
-                    "    // info.child('#data').setData(record.data);",
-                    "",
-                    "    c.show();",
-                    "    var p = Ext.getCmp('lstPartidas');",
-                    "    p.hide();",
-                    "    var a = Ext.getCmp('lstArribos');",
-                    "    a.hide();",
-                    "",
-                    "}*/"
-                ]
-            },
-            "name": "onListItemTap",
-            "designerId": "ccae7936-a611-4551-88ed-eb74b39ffd5d"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#lstArribos",
-                "designer|targetType": "Ext.dataview.List",
-                "fn": "onListItemTap1",
+                "fn": "goToDetails",
                 "implHandler": [
                     "        var info;",
                     "",
@@ -330,20 +214,19 @@
                     "                    info.child('#photo').setData(record.data);",
                     "                   // info.child('#data').setData(record.data);",
                     "",
-                    "var se = Ext.Viewport.getActiveItem();",
-                    "                    alert(se);",
+                    "//var se = Ext.Viewport.getActiveItem();",
+                    "  //                  alert(se.id);",
                     "                    var p = Ext.getCmp('lstPartidas');",
-                    "        p.hide();",
+                    "      //  p.hide();",
                     "        var a = Ext.getCmp('lstArribos');",
-                    "        a.hide();",
+                    "      //  a.hide();",
                     "       //container.push(c);",
-                    "                    c.show();",
+                    "                    c.show({type: 'slideIn', direction: 'left', duration: 120});",
                     "                }"
-                ],
-                "name": "itemtap"
+                ]
             },
-            "name": "onListItemTap1",
-            "designerId": "4b467826-584c-40b1-b653-d414bfb7bfbc"
+            "name": "goToDetails",
+            "designerId": "e15c6253-8a73-4188-a92e-12042d53e59b"
         },
         {
             "type": "controlleraction",
@@ -353,21 +236,16 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#btnBackDetals",
-                "designer|targetType": "Ext.Button",
-                "fn": "onBackDetailsButtonTap",
+                "designer|controlQuery": "#lstPartidas",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onDeparturesListTap",
                 "implHandler": [
-                    "var origen =  Ext.getCmp('details');",
-                    "if(){",
-                    "    ",
-                    "}else{",
-                    "    ",
-                    "}"
+                    "this.goToDetails(dataview, index, target, record, e, eOpts);"
                 ],
-                "name": "tap"
+                "name": "itemtap"
             },
-            "name": "onBackDetailsButtonTap",
-            "designerId": "5aeefc68-584c-4c94-8d51-537b04a67258"
+            "name": "onDeparturesListTap",
+            "designerId": "cfc5f2b2-c308-40c2-908f-822d6da240da"
         }
     ]
 }

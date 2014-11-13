@@ -102,6 +102,7 @@
                         "designer|uiInterfaceName": "light",
                         "docked": "top",
                         "id": "main-toolbar",
+                        "style": null,
                         "title": "Main",
                         "ui": "light"
                     },
@@ -221,6 +222,7 @@
                         "hidden": true,
                         "id": "lstPartidas",
                         "store": "Partidas",
+                        "styleHtmlContent": true,
                         "width": "100%"
                     },
                     "name": "MyList1",
@@ -236,7 +238,7 @@
                             "userConfig": {
                                 "designer|displayName": "itemTpl",
                                 "implHandler": [
-                                    "                            '<div>{origen}<br>{fprogram} - {estadosp}</div>'",
+                                    "                          <div>{destino}<br>{fprogram} - {estadosp}</div>",
                                     ""
                                 ]
                             },
@@ -259,7 +261,8 @@
                 "height": "100%",
                 "hidden": true,
                 "id": "details",
-                "width": "100%"
+                "width": "100%",
+                "zIndex": 10
             },
             "name": "MyContainer1",
             "designerId": "f3f7f939-208f-457d-93eb-e5246a28fa08",
@@ -290,7 +293,7 @@
                                 "docked": "left",
                                 "iconCls": "arrow_left",
                                 "id": "btnBackDetals",
-                                "text": "Atras"
+                                "text": null
                             },
                             "name": "MyButton2",
                             "designerId": "e2785349-7653-48c5-a43f-e53b11925cad"

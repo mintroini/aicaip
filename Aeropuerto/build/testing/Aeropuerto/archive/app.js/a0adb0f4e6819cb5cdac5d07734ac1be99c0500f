@@ -1,4 +1,4 @@
-function _aedf98aa3c9af4c03568eccbd0d490beb8828d73(){};//@tag foundation,core
+function _a0adb0f4e6819cb5cdac5d07734ac1be99c0500f(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -34033,6 +34033,317 @@ Ext.define('Ext.util.Point', {
 });
 
 /**
+ * @class Ext.util.LineSegment
+ *
+ * Utility class that represents a line segment, constructed by two {@link Ext.util.Point}
+ */
+Ext.define('Ext.util.LineSegment', {
+                                 
+
+    /**
+     * Creates new LineSegment out of two points.
+     * @param {Ext.util.Point} point1
+     * @param {Ext.util.Point} point2
+     */
+    constructor: function(point1, point2) {
+        var Point = Ext.util.Point;
+
+        this.point1 = Point.from(point1);
+        this.point2 = Point.from(point2);
+    },
+
+    /**
+     * Returns the point where two lines intersect.
+     * @param {Ext.util.LineSegment} lineSegment The line to intersect with.
+     * @return {Ext.util.Point}
+     */
+    intersects: function(lineSegment) {
+        var point1 = this.point1,
+            point2 = this.point2,
+            point3 = lineSegment.point1,
+            point4 = lineSegment.point2,
+            x1 = point1.x,
+            x2 = point2.x,
+            x3 = point3.x,
+            x4 = point4.x,
+            y1 = point1.y,
+            y2 = point2.y,
+            y3 = point3.y,
+            y4 = point4.y,
+            d = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4),
+            xi, yi;
+
+        if (d == 0) {
+            return null;
+        }
+
+        xi = ((x3 - x4) * (x1 * y2 - y1 * x2) - (x1 - x2) * (x3 * y4 - y3 * x4)) / d;
+        yi = ((y3 - y4) * (x1 * y2 - y1 * x2) - (y1 - y2) * (x3 * y4 - y3 * x4)) / d;
+
+        if (xi < Math.min(x1, x2) || xi > Math.max(x1, x2)
+            || xi < Math.min(x3, x4) || xi > Math.max(x3, x4)
+            || yi < Math.min(y1, y2) || yi > Math.max(y1, y2)
+            || yi < Math.min(y3, y4) || yi > Math.max(y3, y4)) {
+            return null;
+        }
+
+        return new Ext.util.Point(xi, yi);
+    },
+
+    getLength: function() {
+        return Math.abs(this.point1.getDistanceTo(this.point2));
+    },
+
+    getAngleToX: function() {
+        var point1 = this.point1,
+            point2 = this.point2,
+            deltaY = point2.y - point1.y,
+            deltaX = point2.x - point1.x;
+
+        return Math.atan2(deltaY, deltaX);
+    },
+
+    getInBetweenPoint: function(distance) {
+        var point1 = this.point1,
+            angle = this.getAngleToX(),
+            x = point1.x + Math.cos(angle) * distance,
+            y = point1.y + Math.sin(angle) * distance;
+
+        return new Ext.util.Point(x, y);
+    },
+
+    /**
+     * Returns string representation of the line. Useful for debugging.
+     * @return {String} For example `Point[12,8] Point[0,0]`
+     */
+    toString: function() {
+        return this.point1.toString() + " " + this.point2.toString();
+    }
+});
+
+/**
+ * @aside guide floating_components
+ *
+ * Panels are most useful as Overlays - containers that float over your application. They contain extra styling such
+ * that when you {@link #showBy} another component, the container will appear in a rounded black box with a 'tip'
+ * pointing to a reference component.
+ *
+ * If you don't need this extra functionality, you should use {@link Ext.Container} instead. See the
+ * [Overlays example](#!/example/overlays) for more use cases.
+ *
+ *      @example miniphone preview
+ *
+ *      var button = Ext.create('Ext.Button', {
+ *           text: 'Button',
+ *           id: 'rightButton'
+ *      });
+ *
+ *      Ext.create('Ext.Container', {
+ *          fullscreen: true,
+ *          items: [
+ *              {
+ *                   docked: 'top',
+ *                   xtype: 'titlebar',
+ *                   items: [
+ *                       button
+ *                   ]
+ *               }
+ *          ]
+ *      });
+ *
+ *      Ext.create('Ext.Panel', {
+ *          html: 'Floating Panel',
+ *          left: 0,
+ *          padding: 10
+ *      }).showBy(button);
+ *
+ */
+Ext.define('Ext.Panel', {
+    extend: 'Ext.Container',
+                                       
+
+    alternateClassName: 'Ext.lib.Panel',
+
+    xtype: 'panel',
+
+    isPanel: true,
+
+    config: {
+        baseCls: Ext.baseCSSPrefix + 'panel',
+
+        /**
+         * @cfg {Number/Boolean/String} bodyPadding
+         * A shortcut for setting a padding style on the body element. The value can either be
+         * a number to be applied to all sides, or a normal CSS string describing padding.
+         * @deprecated 2.0.0
+         */
+        bodyPadding: null,
+
+        /**
+         * @cfg {Number/Boolean/String} bodyMargin
+         * A shortcut for setting a margin style on the body element. The value can either be
+         * a number to be applied to all sides, or a normal CSS string describing margins.
+         * @deprecated 2.0.0
+         */
+        bodyMargin: null,
+
+        /**
+         * @cfg {Number/Boolean/String} bodyBorder
+         * A shortcut for setting a border style on the body element. The value can either be
+         * a number to be applied to all sides, or a normal CSS string describing borders.
+         * @deprecated 2.0.0
+         */
+        bodyBorder: null
+    },
+
+    getElementConfig: function() {
+        return {
+            reference: 'element',
+            classList: ['x-container', 'x-unsized'],
+            children: [
+                {
+                    reference: 'innerElement',
+                    className: 'x-inner'
+                },
+                {
+                    reference: 'tipElement',
+                    className: 'x-anchor',
+                    hidden: true
+                }
+            ]
+        };
+    },
+
+    applyBodyPadding: function(bodyPadding) {
+        if (bodyPadding === true) {
+            bodyPadding = 5;
+        }
+
+        if (bodyPadding) {
+            bodyPadding = Ext.dom.Element.unitizeBox(bodyPadding);
+        }
+
+        return bodyPadding;
+    },
+
+    updateBodyPadding: function(newBodyPadding) {
+        this.element.setStyle('padding', newBodyPadding);
+    },
+
+    applyBodyMargin: function(bodyMargin) {
+        if (bodyMargin === true) {
+            bodyMargin = 5;
+        }
+
+        if (bodyMargin) {
+            bodyMargin = Ext.dom.Element.unitizeBox(bodyMargin);
+        }
+
+        return bodyMargin;
+    },
+
+    updateBodyMargin: function(newBodyMargin) {
+        this.element.setStyle('margin', newBodyMargin);
+    },
+
+    applyBodyBorder: function(bodyBorder) {
+        if (bodyBorder === true) {
+            bodyBorder = 1;
+        }
+
+        if (bodyBorder) {
+            bodyBorder = Ext.dom.Element.unitizeBox(bodyBorder);
+        }
+
+        return bodyBorder;
+    },
+
+    updateBodyBorder: function(newBodyBorder) {
+        this.element.setStyle('border-width', newBodyBorder);
+    },
+
+    alignTo: function(component, alignment) {
+        var alignmentInfo = this.getAlignmentInfo(component, alignment);
+        if(alignmentInfo.isAligned) return;
+        var tipElement = this.tipElement;
+
+        tipElement.hide();
+
+        if (this.currentTipPosition) {
+            tipElement.removeCls('x-anchor-' + this.currentTipPosition);
+        }
+
+        this.callParent(arguments);
+
+        var LineSegment = Ext.util.LineSegment,
+            alignToElement = component.isComponent ? component.renderElement : component,
+            element = this.renderElement,
+            alignToBox = alignToElement.getPageBox(),
+            box = element.getPageBox(),
+            left = box.left,
+            top = box.top,
+            right = box.right,
+            bottom = box.bottom,
+            centerX = left + (box.width / 2),
+            centerY = top + (box.height / 2),
+            leftTopPoint = { x: left, y: top },
+            rightTopPoint = { x: right, y: top },
+            leftBottomPoint = { x: left, y: bottom },
+            rightBottomPoint = { x: right, y: bottom },
+            boxCenterPoint = { x: centerX, y: centerY },
+            alignToCenterX = alignToBox.left + (alignToBox.width / 2),
+            alignToCenterY = alignToBox.top + (alignToBox.height / 2),
+            alignToBoxCenterPoint = { x: alignToCenterX, y: alignToCenterY },
+            centerLineSegment = new LineSegment(boxCenterPoint, alignToBoxCenterPoint),
+            offsetLeft = 0,
+            offsetTop = 0,
+            tipSize, tipWidth, tipHeight, tipPosition, tipX, tipY;
+
+        tipElement.setVisibility(false);
+        tipElement.show();
+        tipSize = tipElement.getSize();
+        tipWidth = tipSize.width;
+        tipHeight = tipSize.height;
+
+        if (centerLineSegment.intersects(new LineSegment(leftTopPoint, rightTopPoint))) {
+            tipX = Math.min(Math.max(alignToCenterX, left + tipWidth), right - (tipWidth));
+            tipY = top;
+            offsetTop = tipHeight + 10;
+            tipPosition = 'top';
+        }
+        else if (centerLineSegment.intersects(new LineSegment(leftTopPoint, leftBottomPoint))) {
+            tipX = left;
+            tipY = Math.min(Math.max(alignToCenterY + (tipWidth / 2), tipWidth * 1.6), bottom - (tipWidth / 2.2));
+            offsetLeft = tipHeight + 10;
+            tipPosition = 'left';
+        }
+        else if (centerLineSegment.intersects(new LineSegment(leftBottomPoint, rightBottomPoint))) {
+            tipX = Math.min(Math.max(alignToCenterX, left + tipWidth), right - tipWidth);
+            tipY = bottom;
+            offsetTop = -tipHeight - 10;
+            tipPosition = 'bottom';
+        }
+        else if (centerLineSegment.intersects(new LineSegment(rightTopPoint, rightBottomPoint))) {
+            tipX = right;
+            tipY = Math.max(Math.min(alignToCenterY - tipHeight, bottom - tipWidth * 1.3), tipWidth / 2);
+            offsetLeft = -tipHeight - 10;
+            tipPosition = 'right';
+        }
+
+        if (tipX || tipY) {
+            this.currentTipPosition = tipPosition;
+            tipElement.addCls('x-anchor-' + tipPosition);
+            tipElement.setLeft(tipX - left);
+            tipElement.setTop(tipY - top);
+            tipElement.setVisibility(true);
+
+            this.setLeft(this.getLeft() + offsetLeft);
+            this.setTop(this.getTop() + offsetTop);
+        }
+    }
+});
+
+/**
  * A simple class to display a button in Sencha Touch.
  *
  * There are various different styles of Button you can create by using the {@link #icon},
@@ -36319,6 +36630,29 @@ Ext.define('Ext.ComponentQuery', {
             });
         }
     });
+});
+
+/**
+ * A simple label component which allows you to insert content using {@link #html} configuration.
+ *
+ *     @example miniphone
+ *     Ext.Viewport.add({
+ *         xtype: 'label',
+ *         html: 'My label!'
+ *     });
+ */
+Ext.define('Ext.Label', {
+    extend: 'Ext.Component',
+    xtype: 'label',
+
+    config: {
+        baseCls: Ext.baseCSSPrefix + 'label'
+
+        /**
+         * @cfg {String} html
+         * The label of this component.
+         */
+    }
 });
 
 /**
@@ -65251,6 +65585,28 @@ Ext.define('Ext.viewport.Viewport', {
  */
 
 /*
+ * File: app/model/MyModel.js
+ *
+ * This file was generated by Sencha Architect version 3.1.0.
+ * http://www.sencha.com/products/architect/
+ *
+ * This file requires use of the Sencha Touch 2.4.x library, under independent license.
+ * License of Sencha Architect does not include license for Sencha Touch 2.4.x. For more
+ * details see http://www.sencha.com/license or contact license@sencha.com.
+ *
+ * This file will be auto-generated each and everytime you save your project.
+ *
+ * Do NOT hand edit this file.
+ */
+
+Ext.define('Aeropuerto.model.MyModel', {
+    extend: 'Ext.data.Model',
+
+    config: {
+    }
+});
+
+/*
  * File: app/model/Vuelo.js
  *
  * This file was generated by Sencha Architect version 3.1.0.
@@ -65528,10 +65884,9 @@ Ext.define('Aeropuerto.view.MyContainer', {
                         height: '100%',
                         hidden: true,
                         id: 'lstPartidas',
-                        styleHtmlContent: true,
                         width: '100%',
                         itemTpl: [
-                            '                          <div>{destino}<br>{fprogram} - {estadosp}</div>',
+                            '                            \'<div>{origen}<br>{fprogram} - {estadosp}</div>\'',
                             ''
                         ],
                         store: 'Partidas'
@@ -65544,7 +65899,6 @@ Ext.define('Aeropuerto.view.MyContainer', {
                 hidden: true,
                 id: 'details',
                 width: '100%',
-                zIndex: 10,
                 items: [
                     {
                         xtype: 'titlebar',
@@ -65556,7 +65910,8 @@ Ext.define('Aeropuerto.view.MyContainer', {
                                 xtype: 'button',
                                 docked: 'left',
                                 id: 'btnBackDetals',
-                                iconCls: 'arrow_left'
+                                iconCls: 'arrow_left',
+                                text: 'Atras'
                             }
                         ]
                     },
@@ -65653,18 +66008,46 @@ Ext.define('Aeropuerto.controller.Controller', {
                 tap: 'onSelectDeparturesButtonTap'
             },
             "#lstArribos": {
-                itemtap: 'onArrivalsListTap'
+                itemtap: 'onListItemTap1'
             },
             "#btnBackDetals": {
                 tap: 'onBackDetailsButtonTap'
-            },
-            "#lstPartidas": {
-                itemtap: 'onDeparturesListTap'
             }
         }
     },
 
     onMenuArrivalsButtonTap: function(button, e, eOpts) {
+        /*
+        var soapMessage ='<?xml version="1.0" encoding="utf-8"?>\n<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="http://tempuri.org/GetArrivals"><soap:Header/><soap:Body><GetArrivalsResult><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo></GetArrivalsResult></soap:Body></soap:Envelope>';
+
+
+
+                Ext.Ajax.request({
+                   url: 'http://10.0.1.182/AICMobileService/MobileWS.asmx',
+                   callbackKey: 'callback',
+                   scope: 'this',
+                   method: 'POST',
+                    params : {filter:'""'},
+                   headers: {'Content-Type': 'application/soap+xml; charset=utf-8; action="http://tempuri.org/GetArrivals"'},
+                   success: function(response) {
+                      // OK
+                       alert("ok");
+                       alert(response.responseText);
+                       alert(response.responseXML);
+                       var jsonData = Ext.util.XML.decode(response.responseText);
+                       alert(jsonData);
+                       console.out("prueba");
+                       console.out (jsonData);
+                   },
+                    failure: function(response) {
+                      // KO
+                        alert("errpr");
+                        alert(response.resposeText);
+                   },
+                   xmlData: soapMessage
+                });
+        */
+
 
         var c = Ext.getCmp('menu');
         if(c === undefined){
@@ -65705,8 +66088,9 @@ Ext.define('Aeropuerto.controller.Controller', {
         var a = Ext.getCmp('lstArribos');
         a.show();
         c.setTitle('Arribos');
+        var me = this;
+        me.getArrivals();
 
-        Aeropuerto.app.getController('Global').getArrivals();
     },
 
     onSelectDeparturesButtonTap: function(button, e, eOpts) {
@@ -65729,29 +66113,11 @@ Ext.define('Aeropuerto.controller.Controller', {
         p.show();
         var a = Ext.getCmp('lstArribos');
         a.hide();
-
-        Aeropuerto.app.getController('Global').getDepartures();
+        var me = this;
+        me.getDepartures();
     },
 
-    onArrivalsListTap: function(dataview, index, target, record, e, eOpts) {
-        this.goToDetails(dataview, index, target, record, e, eOpts);
-    },
-
-    onBackDetailsButtonTap: function(button, e, eOpts) {
-        var c = Ext.getCmp('details');
-        c.hide();
-    },
-
-    onDeparturesListTap: function(dataview, index, target, record, e, eOpts) {
-        this.goToDetails(dataview, index, target, record, e, eOpts);
-    },
-
-    launch: function() {
-                Aeropuerto.app.getController('Global').getArrivals();
-
-    },
-
-    goToDetails: function(dataview, index, target, record, e, eOpts) {
+    onListItemTap1: function(dataview, index, target, record, e, eOpts) {
                 var info;
 
                         if (record) {
@@ -65767,21 +66133,100 @@ Ext.define('Aeropuerto.controller.Controller', {
                             info.child('#photo').setData(record.data);
                            // info.child('#data').setData(record.data);
 
-        //var se = Ext.Viewport.getActiveItem();
-          //                  alert(se.id);
+        var se = Ext.Viewport.getActiveItem();
+                            alert(se);
                             var p = Ext.getCmp('lstPartidas');
-              //  p.hide();
+                p.hide();
                 var a = Ext.getCmp('lstArribos');
-              //  a.hide();
+                a.hide();
                //container.push(c);
                             c.show();
                         }
+    },
+
+    onBackDetailsButtonTap: function(button, e, eOpts) {
+
+    },
+
+    launch: function() {
+        var me = this;
+        //	Aeropuerto.Controller.getVuelos
+              me.getArrivals();
+               // AIC.Global.getDepartures();
+
+               // Ext.Viewport.add(Ext.create('Aeropuerto.view.Main'));
+    },
+
+    getArrivals: function() {
+        var me = this;
+        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetArrivals xmlns="http://tempuri.org/"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';
+                    	 me.getVuelos('GetArrivals', 'Arribos', xmlParams);
+    },
+
+    getVuelos: function(tipo, laTienda, parametros) {
+        Ext.Ajax.request({
+                    url: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',
+                    useDefaultXhrHeader: false,
+                    headers: {
+                        'Content-Type': 'text/xml; charset=utf-8',
+                        'SOAPAction': 'http://tempuri.org/' + tipo
+                    },
+                    method: 'POST',
+                    params: parametros,
+                    success: function(response) {
+                        var vuelos = response.responseXML.getElementsByTagName('Vuelo');
+                        var tienda = Ext.getStore(laTienda);
+                        tienda.getProxy().clear();
+                        tienda.data.clear();
+                        tienda.sync();
+                        Ext.each(vuelos, function(vuelo) {
+                            tienda.addData(vuelo);
+                        }, this);
+                        tienda.sync();
+                        tienda.load();
+                    },
+                    failure: function(response) {
+                        alert(response.responseText);
+                        console.log(response.responseText);
+                    }
+                });
+    },
+
+    getDepartures: function() {
+        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetDepartures xmlns="http://tempuri.org/"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';
+            	this.getVuelos('GetDepartures', 'Partidas', xmlParams);
+    },
+
+    onListItemTap: function(dataview, index, target, record, e, eOpts) {
+        /*
+        var info;
+
+        if (record) {
+            var c = Ext.getCmp('details');
+            if(c === undefined){
+                alert("MUERTEEE");
+            }
+            //     c.setTitle("Vuelo");
+
+
+            // set the info
+            info = c.child('#info');
+            info.child('#photo').setData(record.data);
+            // info.child('#data').setData(record.data);
+
+            c.show();
+            var p = Ext.getCmp('lstPartidas');
+            p.hide();
+            var a = Ext.getCmp('lstArribos');
+            a.hide();
+
+        }*/
     }
 
 });
 
 /*
- * File: app/controller/Global.js
+ * File: app/view/Menu.js
  *
  * This file was generated by Sencha Architect version 3.1.0.
  * http://www.sencha.com/products/architect/
@@ -65795,50 +66240,71 @@ Ext.define('Aeropuerto.controller.Controller', {
  * Do NOT hand edit this file.
  */
 
-Ext.define('Aeropuerto.controller.Global', {
-    extend: 'Ext.app.Controller',
+Ext.define('Aeropuerto.view.Menu', {
+    extend: 'Ext.Panel',
 
     config: {
-        urlServer: 'http://10.0.1.182/aicmobileservice/mobilews.asmx'
-    },
+        cls: 'menu',
+        hidden: false,
+        html: '',
+        id: 'menu',
+        itemId: 'menu',
+        style: 'background: black;',
+        width: '40%',
+        zIndex: 9999,
+        layout: 'fit'
+    }
 
-    getArrivals: function() {
-            var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetArrivals xmlns="http://tempuri.org/"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';
-            this.getVuelos('GetArrivals', 'Arribos', xmlParams);
-    },
+});
 
-    getDepartures: function() {
-            var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetDepartures xmlns="http://tempuri.org/"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';
-            this.getVuelos('GetDepartures', 'Partidas', xmlParams);
-    },
+/*
+ * File: app/view/Arrivals.js
+ *
+ * This file was generated by Sencha Architect version 3.1.0.
+ * http://www.sencha.com/products/architect/
+ *
+ * This file requires use of the Sencha Touch 2.4.x library, under independent license.
+ * License of Sencha Architect does not include license for Sencha Touch 2.4.x. For more
+ * details see http://www.sencha.com/license or contact license@sencha.com.
+ *
+ * This file will be auto-generated each and everytime you save your project.
+ *
+ * Do NOT hand edit this file.
+ */
 
-    getFlights: function(tipo, laTienda, parametros) {
-                Ext.Ajax.request({
-                            url: this.urlServer,
-                            useDefaultXhrHeader: false,
-                            headers: {
-                                'Content-Type': 'text/xml; charset=utf-8',
-                                'SOAPAction': 'http://tempuri.org/' + tipo
-                            },
-                            method: 'POST',
-                            params: parametros,
-                            success: function(response) {
-                                var vuelos = response.responseXML.getElementsByTagName('Vuelo');
-                                var tienda = Ext.getStore(laTienda);
-                                tienda.getProxy().clear();
-                                tienda.data.clear();
-                                tienda.sync();
-                                Ext.each(vuelos, function(vuelo) {
-                                    tienda.addData(vuelo);
-                                }, this);
-                                tienda.sync();
-                                tienda.load();
-                            },
-                            failure: function(response) {
-                                alert(response.responseText);
-                                console.log(response.responseText);
-                            }
-                        });
+Ext.define('Aeropuerto.view.Arrivals', {
+    extend: 'Ext.Panel',
+
+               
+                      
+                     
+                   
+      
+
+    config: {
+        id: 'arrivals',
+        itemId: 'arrivals',
+        style: '-webkit-transform: translate3d(0, 0, 0);   transform: translate3d(0, 0, 0);   transition: all 0.2s; ',
+        items: [
+            {
+                xtype: 'toolbar',
+                docked: 'top',
+                title: 'Arrivals',
+                items: [
+                    {
+                        xtype: 'button',
+                        itemId: 'btnMenuArrivals',
+                        iconCls: 'action',
+                        text: ''
+                    }
+                ]
+            },
+            {
+                xtype: 'label',
+                centered: true,
+                html: 'Arrivals'
+            }
+        ]
     }
 
 });
@@ -65866,7 +66332,7 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        null,
+        'MyModel',
         'Vuelo'
     ],
     stores: [
@@ -65874,13 +66340,12 @@ Ext.application({
         'Partidas'
     ],
     views: [
-        null,
-        null,
+        'Menu',
+        'Arrivals',
         'MyContainer'
     ],
     controllers: [
-        'Controller',
-        'Global'
+        'Controller'
     ],
     name: 'Aeropuerto',
 

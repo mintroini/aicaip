@@ -95,9 +95,10 @@ Ext.define('Aeropuerto.view.MyContainer', {
                         height: '100%',
                         hidden: true,
                         id: 'lstPartidas',
+                        styleHtmlContent: true,
                         width: '100%',
                         itemTpl: [
-                            '                            \'<div>{origen}<br>{fprogram} - {estadosp}</div>\'',
+                            '                          <div>{destino}<br>{fprogram} - {estadosp}</div>',
                             ''
                         ],
                         store: 'Partidas'
@@ -110,6 +111,7 @@ Ext.define('Aeropuerto.view.MyContainer', {
                 hidden: true,
                 id: 'details',
                 width: '100%',
+                zIndex: 10,
                 items: [
                     {
                         xtype: 'titlebar',
@@ -121,8 +123,7 @@ Ext.define('Aeropuerto.view.MyContainer', {
                                 xtype: 'button',
                                 docked: 'left',
                                 id: 'btnBackDetals',
-                                iconCls: 'arrow_left',
-                                text: 'Atras'
+                                iconCls: 'arrow_left'
                             }
                         ]
                     },

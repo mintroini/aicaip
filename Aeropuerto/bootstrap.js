@@ -37,16 +37,13 @@ Ext.Loader.addClassPathMappings({
 
 Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.controller.Controller": [],
-  "Aeropuerto.controller.Utils": [
-    "Aeropuerto.Utils"
-  ],
+  "Aeropuerto.controller.Global": [],
   "Aeropuerto.model.MyModel": [],
   "Aeropuerto.model.Vuelo": [],
   "Aeropuerto.store.Arribos": [],
   "Aeropuerto.store.Partidas": [],
   "Aeropuerto.view.Arrivals": [],
   "Aeropuerto.view.Departures": [],
-  "Aeropuerto.view.Menu": [],
   "Aeropuerto.view.MyContainer": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -683,16 +680,13 @@ Ext.ClassManager.addNameAlternateMappings({
 
 Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.controller.Controller": [],
-  "Aeropuerto.controller.Utils": [
-    "utils"
-  ],
+  "Aeropuerto.controller.Global": [],
   "Aeropuerto.model.MyModel": [],
   "Aeropuerto.model.Vuelo": [],
   "Aeropuerto.store.Arribos": [],
   "Aeropuerto.store.Partidas": [],
   "Aeropuerto.view.Arrivals": [],
   "Aeropuerto.view.Departures": [],
-  "Aeropuerto.view.Menu": [],
   "Aeropuerto.view.MyContainer": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],

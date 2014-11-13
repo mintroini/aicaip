@@ -1,0 +1,101 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Global",
+        "urlServer": "http://10.0.1.182/aicmobileservice/mobilews.asmx"
+    },
+    "name": "MyController",
+    "designerId": "906234dd-5c42-4666-8b0d-3f63189f6491",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "urlServer",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getArrivals",
+                "implHandler": [
+                    "    var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';",
+                    "    this.getFlights('GetArrivals', 'Arribos', xmlParams);"
+                ]
+            },
+            "name": "getArrivals",
+            "designerId": "be8a81e3-6943-401e-8420-b8753478adb5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getDepartures",
+                "implHandler": [
+                    "    var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetDepartures xmlns=\"http://tempuri.org/\"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';",
+                    "    this.getFlights('GetDepartures', 'Partidas', xmlParams);"
+                ]
+            },
+            "name": "getDepartures",
+            "designerId": "e9999c2a-5f4a-4cdb-a448-e51b164aa5d5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tipo, laTienda, parametros"
+                ],
+                "fn": "getFlights",
+                "implHandler": [
+                    "                Ext.Ajax.request({",
+                    "                    url: this.getUrlServer(),",
+                    "                    useDefaultXhrHeader: false,",
+                    "                    headers: {",
+                    "                        'Content-Type': 'text/xml; charset=utf-8',",
+                    "                        'SOAPAction': 'http://tempuri.org/' + tipo",
+                    "                    },",
+                    "                    method: 'POST',",
+                    "                    params: parametros,",
+                    "                    success: function(response) {",
+                    "                        var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
+                    "                        var tienda = Ext.getStore(laTienda);",
+                    "                        tienda.getProxy().clear();",
+                    "                        tienda.data.clear();",
+                    "                        tienda.sync();",
+                    "                        Ext.each(vuelos, function(vuelo) {",
+                    "                            tienda.addData(vuelo);",
+                    "                        }, this);",
+                    "                        tienda.sync();",
+                    "                        tienda.load();",
+                    "                    },",
+                    "                    failure: function(response) {",
+                    "                        alert(response.responseText);",
+                    "                        console.log(response.responseText);",
+                    "                    }",
+                    "                });"
+                ]
+            },
+            "name": "getFlights",
+            "designerId": "e3658468-8fb7-404b-9966-b52d59f1aa15"
+        }
+    ]
+}

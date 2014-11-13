@@ -28,46 +28,18 @@ Ext.define('Aeropuerto.controller.Controller', {
                 tap: 'onSelectDeparturesButtonTap'
             },
             "#lstArribos": {
-                itemtap: 'onListItemTap1'
+                itemtap: 'onArrivalsListTap'
             },
             "#btnBackDetals": {
                 tap: 'onBackDetailsButtonTap'
+            },
+            "#lstPartidas": {
+                itemtap: 'onDeparturesListTap'
             }
         }
     },
 
     onMenuArrivalsButtonTap: function(button, e, eOpts) {
-        /*
-        var soapMessage ='<?xml version="1.0" encoding="utf-8"?>\n<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns="http://tempuri.org/GetArrivals"><soap:Header/><soap:Body><GetArrivalsResult><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo></GetArrivalsResult></soap:Body></soap:Envelope>';
-
-
-
-                Ext.Ajax.request({
-                   url: 'http://10.0.1.182/AICMobileService/MobileWS.asmx',
-                   callbackKey: 'callback',
-                   scope: 'this',
-                   method: 'POST',
-                    params : {filter:'""'},
-                   headers: {'Content-Type': 'application/soap+xml; charset=utf-8; action="http://tempuri.org/GetArrivals"'},
-                   success: function(response) {
-                      // OK
-                       alert("ok");
-                       alert(response.responseText);
-                       alert(response.responseXML);
-                       var jsonData = Ext.util.XML.decode(response.responseText);
-                       alert(jsonData);
-                       console.out("prueba");
-                       console.out (jsonData);
-                   },
-                    failure: function(response) {
-                      // KO
-                        alert("errpr");
-                        alert(response.resposeText);
-                   },
-                   xmlData: soapMessage
-                });
-        */
-
 
         var c = Ext.getCmp('menu');
         if(c === undefined){
@@ -108,9 +80,8 @@ Ext.define('Aeropuerto.controller.Controller', {
         var a = Ext.getCmp('lstArribos');
         a.show();
         c.setTitle('Arribos');
-        var me = this;
-        me.getArrivals();
 
+        Aeropuerto.app.getController('Global').getArrivals();
     },
 
     onSelectDeparturesButtonTap: function(button, e, eOpts) {
@@ -133,11 +104,29 @@ Ext.define('Aeropuerto.controller.Controller', {
         p.show();
         var a = Ext.getCmp('lstArribos');
         a.hide();
-        var me = this;
-        me.getDepartures();
+
+        Aeropuerto.app.getController('Global').getDepartures();
     },
 
-    onListItemTap1: function(dataview, index, target, record, e, eOpts) {
+    onArrivalsListTap: function(dataview, index, target, record, e, eOpts) {
+        this.goToDetails(dataview, index, target, record, e, eOpts);
+    },
+
+    onBackDetailsButtonTap: function(button, e, eOpts) {
+        var c = Ext.getCmp('details');
+        c.hide({type: 'slideOut', direction: 'right', duration: 120});
+    },
+
+    onDeparturesListTap: function(dataview, index, target, record, e, eOpts) {
+        this.goToDetails(dataview, index, target, record, e, eOpts);
+    },
+
+    launch: function() {
+                Aeropuerto.app.getController('Global').getArrivals();
+
+    },
+
+    goToDetails: function(dataview, index, target, record, e, eOpts) {
                 var info;
 
                         if (record) {
@@ -153,99 +142,15 @@ Ext.define('Aeropuerto.controller.Controller', {
                             info.child('#photo').setData(record.data);
                            // info.child('#data').setData(record.data);
 
-        var se = Ext.Viewport.getActiveItem();
-                            alert(se);
+        //var se = Ext.Viewport.getActiveItem();
+          //                  alert(se.id);
                             var p = Ext.getCmp('lstPartidas');
-                p.hide();
+              //  p.hide();
                 var a = Ext.getCmp('lstArribos');
-                a.hide();
+              //  a.hide();
                //container.push(c);
-                            c.show();
+                            c.show({type: 'slideIn', direction: 'left', duration: 120});
                         }
-    },
-
-    onBackDetailsButtonTap: function(button, e, eOpts) {
-        var origen =  Ext.getCmp('details');
-        if(){
-
-        }else{
-
-        }
-    },
-
-    launch: function() {
-        var me = this;
-        //	Aeropuerto.Controller.getVuelos
-              me.getArrivals();
-               // AIC.Global.getDepartures();
-
-               // Ext.Viewport.add(Ext.create('Aeropuerto.view.Main'));
-    },
-
-    getArrivals: function() {
-        var me = this;
-        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetArrivals xmlns="http://tempuri.org/"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';
-                    	 me.getVuelos('GetArrivals', 'Arribos', xmlParams);
-    },
-
-    getVuelos: function(tipo, laTienda, parametros) {
-        Ext.Ajax.request({
-                    url: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',
-                    useDefaultXhrHeader: false,
-                    headers: {
-                        'Content-Type': 'text/xml; charset=utf-8',
-                        'SOAPAction': 'http://tempuri.org/' + tipo
-                    },
-                    method: 'POST',
-                    params: parametros,
-                    success: function(response) {
-                        var vuelos = response.responseXML.getElementsByTagName('Vuelo');
-                        var tienda = Ext.getStore(laTienda);
-                        tienda.getProxy().clear();
-                        tienda.data.clear();
-                        tienda.sync();
-                        Ext.each(vuelos, function(vuelo) {
-                            tienda.addData(vuelo);
-                        }, this);
-                        tienda.sync();
-                        tienda.load();
-                    },
-                    failure: function(response) {
-                        alert(response.responseText);
-                        console.log(response.responseText);
-                    }
-                });
-    },
-
-    getDepartures: function() {
-        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetDepartures xmlns="http://tempuri.org/"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';
-            	this.getVuelos('GetDepartures', 'Partidas', xmlParams);
-    },
-
-    onListItemTap: function(dataview, index, target, record, e, eOpts) {
-        /*
-        var info;
-
-        if (record) {
-            var c = Ext.getCmp('details');
-            if(c === undefined){
-                alert("MUERTEEE");
-            }
-            //     c.setTitle("Vuelo");
-
-
-            // set the info
-            info = c.child('#info');
-            info.child('#photo').setData(record.data);
-            // info.child('#data').setData(record.data);
-
-            c.show();
-            var p = Ext.getCmp('lstPartidas');
-            p.hide();
-            var a = Ext.getCmp('lstArribos');
-            a.hide();
-
-        }*/
     }
 
 });
