@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-function _66c7d6e823fa60bc5721c0b45cf41acbb13bdd10(){};//@tag foundation,core
-=======
 function _604de544c39ffbde63bcb0725592831ea729c56f(){};//@tag foundation,core
->>>>>>> FETCH_HEAD
 //@define Ext
 
 /**
