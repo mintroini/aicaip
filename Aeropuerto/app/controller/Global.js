@@ -17,7 +17,7 @@ Ext.define('Aeropuerto.controller.Global', {
     extend: 'Ext.app.Controller',
 
     config: {
-        urlServer: 'http://10.0.1.182/aicmobileservice/mobilews.asmx'
+        urlServer: 'http://audiodes.ddns.net/aicmobileservice/mobilews.asmx'
     },
 
     getArrivals: function() {
