@@ -1,0 +1,24 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "cls": [
+            "menu"
+        ],
+        "designer|userClassName": "Menu",
+        "hidden": false,
+        "html": "",
+        "id": "menu",
+        "itemId": "menu",
+        "layout": "fit",
+        "style": "background: black;",
+        "width": "40%",
+        "zIndex": 9999
+    },
+    "name": "MyPanel2",
+    "designerId": "dd95bf67-70d0-4bf0-80d8-c9681892d93c"
+}

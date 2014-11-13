@@ -1,0 +1,71 @@
+{
+   "builds": {
+      "web": {
+         "default": true
+      },
+      "native": {
+         "packager": "phonegap",
+         "phonegap": {
+            "config": {
+               "id": "com.domain.Aeropuerto",
+               "name": "Aeropuerto",
+               "platform": "ios"
+            }
+         }
+      }
+   },
+   "name": "Aeropuerto",
+   "indexHtmlPath": "index.html",
+   "url": null,
+   "js": [
+      {
+         "path": "touch/sencha-touch.js",
+         "x-bootstrap": true
+      },
+      {
+         "path": "bootstrap.js",
+         "x-bootstrap": true
+      },
+      {
+         "path": "app.js",
+         "bundle": true,
+         "update": "delta"
+      }
+   ],
+   "css": [
+      {
+         "path": "aeropuerto.css"
+      },
+      {
+         "update": "delta",
+         "platform": [
+            "phone",
+            "tablet",
+            "desktop"
+         ],
+         "theme": "Default",
+         "path": "resources/css/sencha-touch-45244aa9-18e0-4883-9866-6930354b7f46.css"
+      }
+   ],
+   "appCache": {
+      "cache": [
+         "index.html"
+      ],
+      "network": [
+         "*"
+      ],
+      "fallback": []
+   },
+   "resources": [
+      "resources/images",
+      "resources/icons",
+      "resources/startup",
+      "aeropuerto.css"
+   ],
+   "ignore": [
+      ".svn$"
+   ],
+   "archivePath": "archive",
+   "requires": [],
+   "id": "e7af2181-3bbc-43e0-b35f-8738e5e6fefe"
+}

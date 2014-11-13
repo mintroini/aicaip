@@ -1,0 +1,88 @@
+{
+    "type": "class",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "alternateClassName": [
+            "Aeropuerto.Utils"
+        ],
+        "baseUrl": "http://audiodes.ddns.net/aicmobileservice/mobilews.asmx",
+        "designer|userAlias": "utils",
+        "designer|userClassName": "Utils",
+        "singleton": true
+    },
+    "name": "MyClass",
+    "designerId": "a95b3b50-3669-411d-9c23-7036188fe177",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "baseUrl",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getArrivals",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';",
+                    "    \tAeropuerto.Utils.getVuelos('GetArrivals', 'Arribos', xmlParams);"
+                ]
+            },
+            "name": "getArrivals",
+            "designerId": "871dec29-d5b2-4863-8c91-11ffbef3ed4a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tipo, laTienda, parametros"
+                ],
+                "fn": "getVuelos",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "            url: Aeropuerto.Utils.getBaseUrl(),",
+                    "            useDefaultXhrHeader: false,",
+                    "            headers: {",
+                    "                'Content-Type': 'text/xml; charset=utf-8',",
+                    "                'SOAPAction': 'http://tempuri.org/' + tipo",
+                    "            },",
+                    "            method: 'POST',",
+                    "            params: parametros,",
+                    "            success: function(response) {",
+                    "                var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
+                    "                var tienda = Ext.getStore(laTienda);",
+                    "                tienda.getProxy().clear();",
+                    "                tienda.data.clear();",
+                    "                tienda.sync();",
+                    "                Ext.each(vuelos, function(vuelo) {",
+                    "                    tienda.addData(vuelo);",
+                    "                }, this);",
+                    "                tienda.sync();",
+                    "                tienda.load();",
+                    "            },",
+                    "            failure: function(response) {",
+                    "                console.log(response.responseText);",
+                    "            }",
+                    "        });"
+                ]
+            },
+            "name": "getVuelos",
+            "designerId": "83b9e0e9-25a9-4549-aea3-af6660db90ab"
+        }
+    ]
+}

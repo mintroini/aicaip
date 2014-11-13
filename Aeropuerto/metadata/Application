@@ -1,0 +1,29 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "Controller"
+        ],
+        "models": [
+            "MyModel",
+            "Vuelo"
+        ],
+        "name": "Aeropuerto",
+        "stores": [
+            "Arribos",
+            "Partidas"
+        ],
+        "views": [
+            "Menu",
+            "Arrivals",
+            "MyContainer"
+        ]
+    },
+    "name": "Application",
+    "designerId": "application"
+}

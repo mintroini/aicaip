@@ -1,0 +1,64 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Arrivals",
+        "id": "arrivals",
+        "itemId": "arrivals",
+        "style": "-webkit-transform: translate3d(0, 0, 0);   transform: translate3d(0, 0, 0);   transition: all 0.2s; "
+    },
+    "name": "MyPanel",
+    "designerId": "4df60dea-6fcc-4b63-8772-3f45993fa913",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "title": "Arrivals"
+            },
+            "name": "MyToolbar",
+            "designerId": "7c4d546a-217a-4008-9132-eeaeb1f2317b",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": null,
+                        "iconCls": "action",
+                        "itemId": "btnMenuArrivals",
+                        "text": ""
+                    },
+                    "name": "MyButton2",
+                    "designerId": "d89b36dd-33ae-4f3d-b31c-d672feb33b72"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Label",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "html": "Arrivals"
+            },
+            "name": "MyLabel",
+            "designerId": "f5f3bea0-be59-419b-b857-f8ccdbe93db3"
+        }
+    ]
+}

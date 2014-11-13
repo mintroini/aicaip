@@ -1,0 +1,66 @@
+{
+    "name": "Aeropuerto",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "5.0.2.270",
+            "frameworkVersion": "2.4.0.482"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "iPhone",
+                "builtIn": true,
+                "height": 480,
+                "width": 320
+            },
+            "viewportOrientation": "portrait"
+        },
+        "urlPrefix": "http://localhost:1841",
+        "exportPath": "",
+        "spacesToIndent": 4,
+        "sdkPath": "",
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "projectHasEnabledWebServer": true,
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app"
+        }
+    },
+    "xdsVersion": "3.1.0",
+    "xdsBuild": 1934,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000007,
+    "framework": "touch24",
+    "viewOrderMap": {
+        "view": [
+            "188582bc-58a1-45c7-a902-eeb7263f02be",
+            "dd95bf67-70d0-4bf0-80d8-c9681892d93c",
+            "4df60dea-6fcc-4b63-8772-3f45993fa913",
+            "00bda634-ded4-43fa-a688-4ed359546cf9"
+        ],
+        "store": [
+            "b7a83724-6db7-42a1-afd5-e11a5eba3fbc",
+            "af1b9733-80a1-49dd-8b53-f360c93946c4"
+        ],
+        "controller": [
+            "788c5995-486b-4554-8467-2e42046a4b98",
+            "a95b3b50-3669-411d-9c23-7036188fe177"
+        ],
+        "model": [
+            "878e8b23-e9da-4958-ba5e-9abdc1ada0e1",
+            "10211b96-6076-455e-8d2e-b2e6092a3830"
+        ],
+        "resource": [
+            "274a7343-f7f2-4821-aaca-82fdc37c1de1",
+            "45244aa9-18e0-4883-9866-6930354b7f46",
+            "629424b8-1566-4b58-808a-6537ab1de33c"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

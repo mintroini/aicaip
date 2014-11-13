@@ -1,0 +1,373 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Controller"
+    },
+    "name": "MyController",
+    "designerId": "788c5995-486b-4554-8467-2e42046a4b98",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button#btnMenuArrivals",
+                "designer|targetType": "Ext.Button",
+                "fn": "onMenuArrivalsButtonTap",
+                "implHandler": [
+                    "/*",
+                    "var soapMessage ='<?xml version=\"1.0\" encoding=\"utf-8\"?>\\n<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns=\"http://tempuri.org/GetArrivals\"><soap:Header/><soap:Body><GetArrivalsResult><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo><Vuelo><nVuelo>string</nVuelo><aerolinea>string</aerolinea><origen>string</origen><via>string</via><estadosp>string</estadosp><estadoin>string</estadoin><terminal>string</terminal><sector>string</sector><cinta>string</cinta><reclamo>string</reclamo><festima>dateTime</festima><fprogram>dateTime</fprogram><freal>dateTime</freal><destino>string</destino><checkin>string</checkin><puerta>string</puerta><esArribo>boolean</esArribo><aeropuerto>string</aeropuerto></Vuelo></GetArrivalsResult></soap:Body></soap:Envelope>';",
+                    "",
+                    "",
+                    "",
+                    "        Ext.Ajax.request({",
+                    "           url: 'http://10.0.1.182/AICMobileService/MobileWS.asmx',",
+                    "           callbackKey: 'callback',",
+                    "           scope: 'this',",
+                    "           method: 'POST',",
+                    "            params : {filter:'\"\"'},",
+                    "           headers: {'Content-Type': 'application/soap+xml; charset=utf-8; action=\"http://tempuri.org/GetArrivals\"'},",
+                    "           success: function(response) {",
+                    "              // OK",
+                    "               alert(\"ok\");",
+                    "               alert(response.responseText);",
+                    "               alert(response.responseXML);",
+                    "               var jsonData = Ext.util.XML.decode(response.responseText);",
+                    "               alert(jsonData);",
+                    "               console.out(\"prueba\");",
+                    "               console.out (jsonData);",
+                    "           },",
+                    "            failure: function(response) {",
+                    "              // KO",
+                    "                alert(\"errpr\");",
+                    "                alert(response.resposeText);",
+                    "           },",
+                    "           xmlData: soapMessage",
+                    "        });",
+                    "*/",
+                    "",
+                    "",
+                    "var c = Ext.getCmp('menu');",
+                    "if(c === undefined){",
+                    "    c = Ext.create('Aeropuerto.view.Menu');",
+                    "    Ext.Viewport.add(c);",
+                    "}",
+                    "c.show({type:'slideIn', direction:'right', duration:70});",
+                    "",
+                    "var f =Ext.Viewport.getActiveItem();",
+                    "",
+                    "//Ext.Viewport.toggleMenu('right');",
+                    "//Ext.Viewport.setActiveItem(c, {type:'slide'});",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onMenuArrivalsButtonTap",
+            "designerId": "e6271b19-a0d2-4a2f-b96c-59976b59bc9f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button#btnArrivals",
+                "designer|targetType": "Ext.Button",
+                "fn": "onSelectArrivalsButtonTap",
+                "implHandler": [
+                    "// Show or hide sliding menu:\t\t\t\tvar settingsPanel = Ext.getCmp('sliding_menu');",
+                    "/* var c = Ext.getCmp('menu');",
+                    "",
+                    "\t\t\t\t\t        //if (settingsPanel.isHidden()) {",
+                    "\t\t\t\t\t        //    settingsPanel.show({type:'slideIn', direction:'right', duration:70});",
+                    "\t\t\t\t\t      //  } else {",
+                    "\t\t\t\t\t           c.hide({type: 'slideOut', direction: 'left', duration: 70});",
+                    "var c = Ext.getCmp('arrivals');",
+                    "if(c === undefined) {",
+                    "    c = Ext.create('Aeropuerto.view.Arrivals');",
+                    "     Ext.Viewport.add(c);",
+                    "}",
+                    "",
+                    "        c.show({type:'slideIn', direction:'left', duration:70});",
+                    "Ext.Viewport.setActiveItem(c); */",
+                    "",
+                    "Ext.getCmp('navigation').hide({type: 'slideOut', direction: 'left', duration: 70});",
+                    "var c = Ext.getCmp('main-toolbar');",
+                    "var p = Ext.getCmp('lstPartidas');",
+                    "p.hide();",
+                    "var a = Ext.getCmp('lstArribos');",
+                    "a.show();",
+                    "c.setTitle('Arribos');",
+                    "var me = this;",
+                    "me.getArrivals();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onSelectArrivalsButtonTap",
+            "designerId": "9aa06b6f-3c1b-4b78-a4e2-82752b0729ea"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button#btnDepartures",
+                "designer|targetType": "Ext.Button",
+                "fn": "onSelectDeparturesButtonTap",
+                "implHandler": [
+                    "// Show or hide sliding menu:\t\t\t\tvar settingsPanel = Ext.getCmp('sliding_menu');",
+                    "/* var c = Ext.getCmp('menu');",
+                    " c.hide({type: 'slideOut', direction: 'left', duration: 70});",
+                    "var d = Ext.getCmp('departures');",
+                    "        if(d === undefined){",
+                    "             d = Ext.create('Aeropuerto.view.Departures');",
+                    "            Ext.Viewport.add(d);",
+                    "        }",
+                    "",
+                    "        d.show({type:'slideIn', direction:'left', duration:70});",
+                    "Ext.Viewport.setActiveItem(d);*/",
+                    "",
+                    "Ext.getCmp('navigation').hide({type: 'slideOut', direction: 'left', duration: 70});",
+                    "var c = Ext.getCmp('main-toolbar');",
+                    "c.setTitle('Partidas');",
+                    "var p = Ext.getCmp('lstPartidas');",
+                    "p.show();",
+                    "var a = Ext.getCmp('lstArribos');",
+                    "a.hide();",
+                    "var me = this;",
+                    "me.getDepartures();"
+                ],
+                "name": "tap"
+            },
+            "name": "onSelectDeparturesButtonTap",
+            "designerId": "6fb43ab6-2781-41f4-a91d-9fa97e12d490"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "var me = this;",
+                    "//\tAeropuerto.Controller.getVuelos",
+                    "      me.getArrivals();",
+                    "       // AIC.Global.getDepartures();",
+                    "",
+                    "       // Ext.Viewport.add(Ext.create('Aeropuerto.view.Main'));"
+                ]
+            },
+            "name": "launch",
+            "designerId": "e466adbb-e66b-431f-b9d3-d3c6b45fd3dc"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getArrivals",
+                "implHandler": [
+                    "var me = this;",
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';",
+                    "            \t me.getVuelos('GetArrivals', 'Arribos', xmlParams);"
+                ]
+            },
+            "name": "getArrivals",
+            "designerId": "55c9b2fc-ceb7-4db1-8db5-7a630ac092d6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tipo, laTienda, parametros"
+                ],
+                "fn": "getVuelos",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "            url: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',",
+                    "            useDefaultXhrHeader: false,",
+                    "            headers: {",
+                    "                'Content-Type': 'text/xml; charset=utf-8',",
+                    "                'SOAPAction': 'http://tempuri.org/' + tipo",
+                    "            },",
+                    "            method: 'POST',",
+                    "            params: parametros,",
+                    "            success: function(response) {",
+                    "                var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
+                    "                var tienda = Ext.getStore(laTienda);",
+                    "                tienda.getProxy().clear();",
+                    "                tienda.data.clear();",
+                    "                tienda.sync();",
+                    "                Ext.each(vuelos, function(vuelo) {",
+                    "                    tienda.addData(vuelo);",
+                    "                }, this);",
+                    "                tienda.sync();",
+                    "                tienda.load();",
+                    "            },",
+                    "            failure: function(response) {",
+                    "                alert(response.responseText);",
+                    "                console.log(response.responseText);",
+                    "            }",
+                    "        });"
+                ]
+            },
+            "name": "getVuelos",
+            "designerId": "fe3f0190-2e07-4d62-8139-a5fbd7e1e48f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getDepartures",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetDepartures xmlns=\"http://tempuri.org/\"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';",
+                    "    \tthis.getVuelos('GetDepartures', 'Partidas', xmlParams);"
+                ]
+            },
+            "name": "getDepartures",
+            "designerId": "1af1e0a6-38e2-4ed1-b358-eb807ead1c04"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dataview",
+                    "index",
+                    "target",
+                    "record",
+                    "e",
+                    "eOpts"
+                ],
+                "fn": "onListItemTap",
+                "implHandler": [
+                    "/*",
+                    "var info;",
+                    "",
+                    "if (record) {",
+                    "    var c = Ext.getCmp('details');",
+                    "    if(c === undefined){",
+                    "        alert(\"MUERTEEE\");",
+                    "    }",
+                    "    //     c.setTitle(\"Vuelo\");",
+                    "",
+                    "",
+                    "    // set the info",
+                    "    info = c.child('#info');",
+                    "    info.child('#photo').setData(record.data);",
+                    "    // info.child('#data').setData(record.data);",
+                    "",
+                    "    c.show();",
+                    "    var p = Ext.getCmp('lstPartidas');",
+                    "    p.hide();",
+                    "    var a = Ext.getCmp('lstArribos');",
+                    "    a.hide();",
+                    "",
+                    "}*/"
+                ]
+            },
+            "name": "onListItemTap",
+            "designerId": "ccae7936-a611-4551-88ed-eb74b39ffd5d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstArribos",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onListItemTap1",
+                "implHandler": [
+                    "        var info;",
+                    "",
+                    "                if (record) {",
+                    "                var c = Ext.getCmp('details');",
+                    "                if(c === undefined){",
+                    "                   alert(\"MUERTEEE\");",
+                    "                }",
+                    "                //    c.setTitle(\"Vuelo\");",
+                    "",
+                    "",
+                    "                    // set the info",
+                    "                    info = c.child('#info');",
+                    "                    info.child('#photo').setData(record.data);",
+                    "                   // info.child('#data').setData(record.data);",
+                    "",
+                    "var se = Ext.Viewport.getActiveItem();",
+                    "                    alert(se);",
+                    "                    var p = Ext.getCmp('lstPartidas');",
+                    "        p.hide();",
+                    "        var a = Ext.getCmp('lstArribos');",
+                    "        a.hide();",
+                    "       //container.push(c);",
+                    "                    c.show();",
+                    "                }"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onListItemTap1",
+            "designerId": "4b467826-584c-40b1-b653-d414bfb7bfbc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnBackDetals",
+                "designer|targetType": "Ext.Button",
+                "fn": "onBackDetailsButtonTap",
+                "implHandler": [
+                    "var origen =  Ext.getCmp('details');",
+                    "if(){",
+                    "    ",
+                    "}else{",
+                    "    ",
+                    "}"
+                ],
+                "name": "tap"
+            },
+            "name": "onBackDetailsButtonTap",
+            "designerId": "5aeefc68-584c-4c94-8d51-537b04a67258"
+        }
+    ]
+}

@@ -1,0 +1,62 @@
+{
+    "type": "Ext.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Departures",
+        "id": "departures",
+        "itemId": "departures"
+    },
+    "name": "MyPanel1",
+    "designerId": "188582bc-58a1-45c7-a902-eeb7263f02be",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "title": "Departures"
+            },
+            "name": "MyToolbar1",
+            "designerId": "2282cc1a-bf50-428d-81a3-79507a0da530",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "locate",
+                        "itemId": "btnMenuArrivals",
+                        "text": ""
+                    },
+                    "name": "MyButton3",
+                    "designerId": "31c5b3e8-a0b3-4188-a9d2-4b24165aa1c7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Label",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "html": "Departures"
+            },
+            "name": "MyLabel1",
+            "designerId": "066a6513-560f-4a74-85fc-4c5149223ad6"
+        }
+    ]
+}
