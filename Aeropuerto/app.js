@@ -21,7 +21,6 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        null,
         'Vuelo'
     ],
     stores: [
@@ -29,8 +28,6 @@ Ext.application({
         'Partidas'
     ],
     views: [
-        null,
-        null,
         'MyContainer'
     ],
     controllers: [
