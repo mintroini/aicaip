@@ -13,8 +13,8 @@
         ],
         "storeId": "Partidas"
     },
-    "name": "Arribos1",
-    "designerId": "af1b9733-80a1-49dd-8b53-f360c93946c4",
+    "name": "MyXmlStore",
+    "designerId": "27298e0d-e199-4588-b1ff-dee0421bd5db",
     "cn": [
         {
             "type": "Ext.data.proxy.Ajax",
@@ -26,8 +26,8 @@
             "userConfig": {
                 "type": "localstorage"
             },
-            "name": "MyAjaxProxy2",
-            "designerId": "7258fb55-2c90-46d1-8f05-01c639cdfe47",
+            "name": "MyAjaxProxy1",
+            "designerId": "204bf12d-2260-4064-a7f2-e49637f1dcae",
             "customConfigs": [
                 {
                     "group": "(Custom Properties)",
@@ -47,7 +47,7 @@
                         "record": "Vuelo"
                     },
                     "name": "MyXmlReader1",
-                    "designerId": "977dd49c-0372-4721-9ec2-ff3bcdb5ec91"
+                    "designerId": "d835cf56-4c81-4dac-80f1-728866ac946e"
                 }
             ]
         }

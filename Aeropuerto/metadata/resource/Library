@@ -8,8 +8,7 @@
     "userConfig": {
         "basePath": "touch/",
         "designer|userClassName": "Library",
-        "theme": "MyDefaultTheme"
+        "theme": "MyCupertinoTheme"
     },
-    "name": "Library",
-    "designerId": "274a7343-f7f2-4821-aaca-82fdc37c1de1"
+    "designerId": "25456b3e-1809-4cde-a04c-a7a57e28d2b9"
 }

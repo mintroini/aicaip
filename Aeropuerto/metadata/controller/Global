@@ -7,10 +7,10 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "Global",
-        "urlServer": "http://audiodes.ddns.net/aicmobileservice/mobilews.asmx"
+        "urlServer": "http://10.0.1.182/aicmobileservice/mobilews.asmx"
     },
     "name": "MyController",
-    "designerId": "906234dd-5c42-4666-8b0d-3f63189f6491",
+    "designerId": "0cd84b2f-99fc-40f5-bdef-de2f0fba53b3",
     "customConfigs": [
         {
             "group": "(Custom Properties)",
@@ -27,31 +27,56 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getArrivals",
+                "designer|params": [
+                    "tipo",
+                    "laTienda",
+                    "parametros"
+                ],
+                "fn": "getFlights",
                 "implHandler": [
-                    "    var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter></filter></GetArrivals></soap:Body></soap:Envelope>';",
-                    "    this.getFlights('GetArrivals', 'Arribos', xmlParams);"
+                    "//var mask = new Ext.LoadMask(Ext.getBody(), {message:\"\"});",
+                    "",
+                    "",
+                    "Ext.Ajax.on('beforerequest', function(){",
+                    "",
+                    "    Ext.Viewport.mask({ xtype: 'loadmask' });",
+                    "});",
+                    "",
+                    "Ext.Ajax.request({",
+                    "    url: this.getUrlServer(),",
+                    "    useDefaultXhrHeader: false,",
+                    "    headers: {",
+                    "        'Content-Type': 'text/xml; charset=utf-8',",
+                    "        'SOAPAction': 'http://tempuri.org/' + tipo",
+                    "    },",
+                    "    method: 'POST',",
+                    "    params: parametros,",
+                    "    success: function(response) {",
+                    "        var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
+                    "        var tienda = Ext.getStore(laTienda);",
+                    "        tienda.getProxy().clear();",
+                    "        tienda.data.clear();",
+                    "        tienda.sync();",
+                    "        Ext.each(vuelos, function(vuelo) {",
+                    "            tienda.addData(vuelo);",
+                    "        }, this);",
+                    "        tienda.sync();",
+                    "        tienda.load();",
+                    "    },",
+                    "    failure: function(response) {",
+                    "        alert('failure'+response.responseText);",
+                    "        console.log(response.responseText);",
+                    "    }",
+                    "});",
+                    "",
+                    "Ext.Ajax.on('requestcomplete', function(){",
+                    "",
+                    "    Ext.Viewport.unmask();",
+                    "});"
                 ]
             },
-            "name": "getArrivals",
-            "designerId": "be8a81e3-6943-401e-8420-b8753478adb5"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "getDepartures",
-                "implHandler": [
-                    "    var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetDepartures xmlns=\"http://tempuri.org/\"><filter></filter></GetDepartures></soap:Body></soap:Envelope>';",
-                    "    this.getFlights('GetDepartures', 'Partidas', xmlParams);"
-                ]
-            },
-            "name": "getDepartures",
-            "designerId": "e9999c2a-5f4a-4cdb-a448-e51b164aa5d5"
+            "name": "getFlights",
+            "designerId": "662083a5-9273-4476-8057-451b9b28a914"
         },
         {
             "type": "basicfunction",
@@ -62,40 +87,194 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "tipo, laTienda, parametros"
+                    "filtro"
                 ],
-                "fn": "getFlights",
+                "fn": "getDepartures",
                 "implHandler": [
-                    "                Ext.Ajax.request({",
-                    "                    url: this.getUrlServer(),",
-                    "                    useDefaultXhrHeader: false,",
-                    "                    headers: {",
-                    "                        'Content-Type': 'text/xml; charset=utf-8',",
-                    "                        'SOAPAction': 'http://tempuri.org/' + tipo",
-                    "                    },",
-                    "                    method: 'POST',",
-                    "                    params: parametros,",
-                    "                    success: function(response) {",
-                    "                        var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
-                    "                        var tienda = Ext.getStore(laTienda);",
-                    "                        tienda.getProxy().clear();",
-                    "                        tienda.data.clear();",
-                    "                        tienda.sync();",
-                    "                        Ext.each(vuelos, function(vuelo) {",
-                    "                            tienda.addData(vuelo);",
-                    "                        }, this);",
-                    "                        tienda.sync();",
-                    "                        tienda.load();",
-                    "                    },",
-                    "                    failure: function(response) {",
-                    "                        alert(response.responseText);",
-                    "                        console.log(response.responseText);",
-                    "                    }",
-                    "                });"
+                    "            var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetDepartures xmlns=\"http://tempuri.org/\"><filter>'+filtro+'</filter></GetDepartures></soap:Body></soap:Envelope>';",
+                    "            this.getFlights('GetDepartures', 'Partidas', xmlParams);"
                 ]
             },
-            "name": "getFlights",
-            "designerId": "e3658468-8fb7-404b-9966-b52d59f1aa15"
+            "name": "getDepartures",
+            "designerId": "213ee1e4-975b-4aea-8891-48e98ff9594f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filtro"
+                ],
+                "fn": "getArrivals",
+                "implHandler": [
+                    "",
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter>'+filtro+'</filter></GetArrivals></soap:Body></soap:Envelope>';",
+                    "this.getFlights('GetArrivals', 'Arribos', xmlParams);"
+                ]
+            },
+            "name": "getArrivals",
+            "designerId": "392f8952-4ac0-49da-8ff6-1a4d5943e8c1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "uuid",
+                    "flightNumber",
+                    "timeStamp"
+                ],
+                "fn": "subscribe",
+                "implHandler": [
+                    "    var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><Subscribe xmlns=\"http://tempuri.org/\"><id>'+uuid+'</id><flightNumber>'+flightNumber+'</flightNumber><datetime>'+timeStamp+'</datetime><plataforma>Sencha</plataforma></Subscribe></soap:Body></soap:Envelope>';",
+                    "",
+                    "Ext.Ajax.request({",
+                    "                                    url: this.getUrlServer(),",
+                    "                                    useDefaultXhrHeader: false,",
+                    "                                    headers: {",
+                    "                                        'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                        'SOAPAction': 'http://tempuri.org/Subscribe'",
+                    "                                    },",
+                    "                                    method: 'POST',",
+                    "                                    params: xmlParams,",
+                    "                                    success: function(response) {",
+                    "                                        //algo??",
+                    "                                    },",
+                    "                                    failure: function(response) {",
+                    "                                        alert('todo mal'+response.responseText);",
+                    "                                        console.log(response.responseText);",
+                    "                                    }",
+                    "                                });",
+                    "this.getApplication().getController('LogicController').changeSubscribeIcon();",
+                    ""
+                ]
+            },
+            "name": "subscribe",
+            "designerId": "4c90cad9-4dab-4e94-93e1-ca24a3e43113"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "uuid, flightNumber, timeStamp"
+                ],
+                "fn": "unSubscribe",
+                "implHandler": [
+                    "   var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><UnSubscribe xmlns=\"http://tempuri.org/\"><id>'+uuid+'</id><flightNumber>'+flightNumber+'</flightNumber><datetime>'+timeStamp+'</datetime></UnSubscribe></soap:Body></soap:Envelope>';",
+                    "",
+                    "Ext.Ajax.request({",
+                    "                                    url: this.getUrlServer(),",
+                    "                                    useDefaultXhrHeader: false,",
+                    "                                    headers: {",
+                    "                                        'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                        'SOAPAction': 'http://tempuri.org/UnSubscribe'",
+                    "                                    },",
+                    "                                    method: 'POST',",
+                    "                                    params: xmlParams,",
+                    "                                    success: function(response) {",
+                    "                                    },",
+                    "                                    failure: function(response) {",
+                    "                                        alert('todo mal'+response.responseText);",
+                    "                                        console.log(response.responseText);",
+                    "                                    }",
+                    "                                });",
+                    "  ",
+                    "                                         this.getApplication().getController('LogicController').changeSubscribeIcon(\"subscribe\");",
+                    "",
+                    "                                    "
+                ]
+            },
+            "name": "unSubscribe",
+            "designerId": "16539db1-b1b9-4c1c-a104-ab4eb9b4866f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "uuid"
+                ],
+                "fn": "getSubscriptions",
+                "implHandler": [
+                    "//Get and clear Susbscriptions",
+                    "",
+                    "var tienda = Ext.getStore('Suscripciones');",
+                    "tienda.getProxy().clear();",
+                    "tienda.data.clear();",
+                    "tienda.sync();",
+                    "var subs = Ext.getStore('MisVuelos');",
+                    "",
+                    "for (i = 0; i < subs.getCount(); i++) {",
+                    "    this.getFlight(subs.getAt(i).data.nVuelo,subs.getAt(i).data.fprogram);",
+                    "}",
+                    "",
+                    ""
+                ]
+            },
+            "name": "getSubscriptions",
+            "designerId": "ec78c6f0-2fc4-4e36-bfd6-f7a7ca64079c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "nVuelo",
+                    "fprogram"
+                ],
+                "fn": "getFlight",
+                "implHandler": [
+                    "",
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetFlight xmlns=\"http://tempuri.org/\"><flight>'+nVuelo+'</flight><datetime>'+fprogram+'</datetime></GetFlight></soap:Body></soap:Envelope>';",
+                    "",
+                    "        Ext.Ajax.request({",
+                    "                                            url: this.getUrlServer(),",
+                    "                                            useDefaultXhrHeader: false,",
+                    "                                            headers: {",
+                    "                                                'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                                'SOAPAction': 'http://tempuri.org/GetFlight'",
+                    "                                            },",
+                    "                                            method: 'POST',",
+                    "                                            params: xmlParams,",
+                    "                                            success: function(response) {",
+                    "                                            var vuelos = response.responseXML.getElementsByTagName('GetFlightResult');",
+                    "                                            var tienda = Ext.getStore('Suscripciones');",
+                    "                                            Ext.each(vuelos, function(vuelo) {",
+                    "                                                tienda.addData(vuelo);",
+                    "                                                }, this);",
+                    "                                            tienda.sync();",
+                    "                                            tienda.load();",
+                    "                                            },",
+                    "                                            failure: function(response) {",
+                    "                                                alert('todo mal'+response.responseText);",
+                    "                                                console.log(response.responseText);",
+                    "                                            }",
+                    "                                        });"
+                ]
+            },
+            "name": "getFlight",
+            "designerId": "84d6fc19-5377-4597-8927-6734370a17c1"
         }
     ]
 }

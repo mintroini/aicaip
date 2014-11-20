@@ -7,21 +7,54 @@
     "codeClass": null,
     "userConfig": {
         "controllers": [
-            "Controller",
-            "Global"
+            "Global",
+            "LogicController"
         ],
         "models": [
             "Vuelo"
         ],
         "name": "Aeropuerto",
+        "statusBarStyle": "black-translucent",
         "stores": [
             "Arribos",
-            "Partidas"
+            "Partidas",
+            "Uuid",
+            "Suscripciones",
+            "MisVuelos"
         ],
         "views": [
-            "MyContainer"
+            "MainContainer"
         ]
     },
     "name": "Application",
-    "designerId": "application"
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "   var store= Ext.getStore('Uuid');",
+                    "",
+                    "var suscripciones = Ext.getStore('ListaSuscripciones');",
+                    "",
+                    "        if(store.getCount() === 0){",
+                    "               var guid =  this.getApplication().getController('LogicController').createUuid();",
+                    "",
+                    "            var uuid = guid();",
+                    "            store.add({key : uuid});",
+                    "         }",
+                    "this.getApplication().getController('Global').getArrivals('');",
+                    ""
+                ]
+            },
+            "name": "launch",
+            "designerId": "b42eb33c-678d-475b-934a-fbd3899b39fa"
+        }
+    ]
 }

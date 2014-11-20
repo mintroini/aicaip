@@ -46,7 +46,7 @@ Ext.define('Aeropuerto.model.Vuelo', {
                 type: 'string'
             },
             {
-                name: 'estadoin',
+                name: 'estadosin',
                 type: 'string'
             },
             {

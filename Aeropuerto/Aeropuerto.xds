@@ -8,9 +8,9 @@
         },
         "canvasControls": {
             "viewportSize": {
-                "name": "iPhone",
+                "name": "iPhone 5",
                 "builtIn": true,
-                "height": 480,
+                "height": 568,
                 "width": 320
             },
             "viewportOrientation": "portrait"
@@ -31,29 +31,32 @@
         }
     },
     "xdsVersion": "3.1.0",
-    "xdsBuild": 1934,
+    "xdsBuild": 1943,
     "schemaVersion": 1,
     "upgradeVersion": 300000000007,
     "framework": "touch24",
     "viewOrderMap": {
         "view": [
-            "00bda634-ded4-43fa-a688-4ed359546cf9"
+            "d6960af2-e51e-4b00-9831-1a8c019bca68"
         ],
         "store": [
-            "b7a83724-6db7-42a1-afd5-e11a5eba3fbc",
-            "af1b9733-80a1-49dd-8b53-f360c93946c4"
+            "22c5973e-e137-424b-84bd-d968f624f1cb",
+            "27298e0d-e199-4588-b1ff-dee0421bd5db",
+            "c5baab0e-2ce1-4f7b-b790-b7facb8cc9f5",
+            "a4cc9bf5-dafd-441f-9225-51733a229d3a",
+            "d03d0089-4af3-4741-9304-665f5507a499"
         ],
         "controller": [
-            "788c5995-486b-4554-8467-2e42046a4b98",
-            "906234dd-5c42-4666-8b0d-3f63189f6491"
+            "0cd84b2f-99fc-40f5-bdef-de2f0fba53b3",
+            "60eee5ec-7468-40b0-9591-dd2da4cf8eff"
         ],
         "model": [
-            "10211b96-6076-455e-8d2e-b2e6092a3830"
+            "8c9361b0-d3a2-4b38-b9f3-22aa8b9c645b"
         ],
         "resource": [
-            "274a7343-f7f2-4821-aaca-82fdc37c1de1",
-            "45244aa9-18e0-4883-9866-6930354b7f46",
-            "629424b8-1566-4b58-808a-6537ab1de33c"
+            "25456b3e-1809-4cde-a04c-a7a57e28d2b9",
+            "880c51ba-b38f-421e-a171-cfbc76271875",
+            "e13e7b92-283f-4269-937c-707bd7f48de8"
         ],
         "app": [
             "application"

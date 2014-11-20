@@ -9,12 +9,11 @@
         "designer|userClassName": "MyDefaultTheme",
         "platform": [
             "phone",
-            "tablet",
-            "desktop"
+            "tablet"
         ]
     },
     "name": "MyDefaultTheme",
-    "designerId": "45244aa9-18e0-4883-9866-6930354b7f46",
+    "designerId": "880c51ba-b38f-421e-a171-cfbc76271875",
     "storage": {
         "needsCompile": false,
         "simple": {},

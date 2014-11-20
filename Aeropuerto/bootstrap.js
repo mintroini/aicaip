@@ -36,12 +36,15 @@ Ext.Loader.addClassPathMappings({
 });
 
 Ext.ClassManager.addNameAlternateMappings({
-  "Aeropuerto.controller.Controller": [],
   "Aeropuerto.controller.Global": [],
+  "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.model.Vuelo": [],
   "Aeropuerto.store.Arribos": [],
+  "Aeropuerto.store.MisVuelos": [],
   "Aeropuerto.store.Partidas": [],
-  "Aeropuerto.view.MyContainer": [],
+  "Aeropuerto.store.Suscripciones": [],
+  "Aeropuerto.store.Uuid": [],
+  "Aeropuerto.view.MainContainer": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -665,12 +668,17 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 
 Ext.ClassManager.addNameAliasMappings({
-  "Aeropuerto.controller.Controller": [],
   "Aeropuerto.controller.Global": [],
+  "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.model.Vuelo": [],
   "Aeropuerto.store.Arribos": [],
+  "Aeropuerto.store.MisVuelos": [],
   "Aeropuerto.store.Partidas": [],
-  "Aeropuerto.view.MyContainer": [],
+  "Aeropuerto.store.Suscripciones": [],
+  "Aeropuerto.store.Uuid": [],
+  "Aeropuerto.view.MainContainer": [
+    "widget.mainContainer"
+  ],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],

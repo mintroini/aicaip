@@ -34,17 +34,14 @@
    ],
    "css": [
       {
-         "path": "aeropuerto.css"
-      },
-      {
          "update": "delta",
          "platform": [
             "phone",
             "tablet",
             "desktop"
          ],
-         "theme": "Default",
-         "path": "resources/css/sencha-touch-45244aa9-18e0-4883-9866-6930354b7f46.css"
+         "theme": "Cupertino",
+         "path": "resources/css/cupertino-e13e7b92-283f-4269-937c-707bd7f48de8.css"
       }
    ],
    "appCache": {
@@ -59,13 +56,12 @@
    "resources": [
       "resources/images",
       "resources/icons",
-      "resources/startup",
-      "aeropuerto.css"
+      "resources/startup"
    ],
    "ignore": [
       ".svn$"
    ],
    "archivePath": "archive",
    "requires": [],
-   "id": "e7af2181-3bbc-43e0-b35f-8738e5e6fefe"
+   "id": "0c50acd0-8b6c-4947-9532-63dc025a700b"
 }

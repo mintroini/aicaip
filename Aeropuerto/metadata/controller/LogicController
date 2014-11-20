@@ -1,0 +1,438 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LogicController"
+    },
+    "name": "MyController1",
+    "designerId": "60eee5ec-7468-40b0-9591-dd2da4cf8eff",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnArribos",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnArribos",
+                "implHandler": [
+                    "Ext.Viewport.hideMenu('left');",
+                    "",
+                    "this.getApplication().getController('Global').getArrivals('');",
+                    "",
+                    "var topBar = Ext.getCmp('topBar');",
+                    "topBar.setTitle('Arribos');",
+                    "",
+                    "var lstDepartures = Ext.getCmp('lstPartidas');",
+                    "lstDepartures.hide();",
+                    "",
+                    "var lstArrivals = Ext.getCmp('lstArribos');",
+                    "lstArrivals.show();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnArribos",
+            "designerId": "178b9708-0bfe-4105-a4b0-c69a2fe2deed"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnPartidas",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnPartidas",
+                "implHandler": [
+                    "Ext.Viewport.hideMenu('left');",
+                    "",
+                    "var topBar = Ext.getCmp('topBar');",
+                    "topBar.setTitle('Partidas');",
+                    "",
+                    "var lstArrivals = Ext.getCmp('lstArribos');",
+                    "lstArrivals.hide();",
+                    "",
+                    "this.getApplication().getController('Global').getDepartures('');",
+                    "",
+                    "var lstDepartures = Ext.getCmp('lstPartidas');",
+                    "lstDepartures.show();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnPartidas",
+            "designerId": "1716ee5b-200d-4e14-b7c1-5a7b0d3d0744"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnSubscriptions",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnSubscriptionsTap",
+                "implHandler": [
+                    "Ext.Viewport.hideMenu('left');",
+                    "",
+                    "var topBar = Ext.getCmp('topBar');",
+                    "topBar.setTitle('Suscripciones');",
+                    "",
+                    "var lstArrivals = Ext.getCmp('lstArribos');",
+                    "lstArrivals.hide();",
+                    "",
+                    "var lstDepartures = Ext.getCmp('lstPartidas');",
+                    "lstDepartures.hide();",
+                    "",
+                    "this.getApplication().getController('Global').getSubscriptions();",
+                    "",
+                    "var lstSubscriptions = Ext.getCmp('lstSubscriptions');",
+                    "lstSubscriptions.show();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnSubscriptionsTap",
+            "designerId": "3c8c405f-5665-4202-890b-98db69c5ee54"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstArribos",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onArribosListTap",
+                "implHandler": [
+                    "",
+                    "this.goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onArribosListTap",
+            "designerId": "c37b1163-9208-4b67-8a60-ef39871f6f3d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsBack",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDetailsBackButtonTap",
+                "implHandler": [
+                    " var c = Ext.getCmp('details');",
+                    "var d = Ext.getCmp('mainView');",
+                    "        c.hide();",
+                    "        d.show();"
+                ],
+                "name": "tap"
+            },
+            "name": "onDetailsBackButtonTap",
+            "designerId": "a6344b87-b80f-4608-a1bb-2748f917bfd4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstPartidas",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onPartidasListItemTap",
+                "implHandler": [
+                    "  this.goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onPartidasListItemTap",
+            "designerId": "6ce05f01-4e96-4871-8f32-f7b3da2552b3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsSubscribe",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDetailsSubscribeButtonTap",
+                "implHandler": [
+                    "var icon = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
+                    "var store= Ext.getStore('Uuid');",
+                    "var uuid = store.getAt(0).get('key');",
+                    "var c = Ext.getCmp('details').child('#flightDetails').child('#companyName').getData();",
+                    "",
+                    "var vuelos = Ext.getStore('MisVuelos');",
+                    "var susc = Ext.getStore('VuelosSuscriptos');",
+                    "",
+                    "if (icon.getIconCls() === 'favorites') {",
+                    "   this.getApplication().getController('Global').subscribe(uuid,c.nVuelo,c.fprogram);",
+                    "    vuelos.add({'nVuelo' : c.nVuelo,'fprogram': c.fprogram});",
+                    "         vuelos.sync();",
+                    "}",
+                    "else",
+                    "{",
+                    "    this.getApplication().getController('Global').unSubscribe(uuid,c.nVuelo,c.fprogram);",
+                    "",
+                    "",
+                    "    for (i = 0; i < vuelos.getCount(); i++) {",
+                    "         if(vuelos.getAt(i).data.nVuelo == c.nVuelo && vuelos.getAt(i).data.fprogram == c.fprogram){",
+                    "                var index =  i;",
+                    "         }",
+                    "    }",
+                    "",
+                    "    vuelos.removeAt(index);",
+                    "    vuelos.sync();",
+                    "}",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onDetailsSubscribeButtonTap",
+            "designerId": "7c4f7dd6-13ec-4788-8961-9fcfb2976727"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstSubscriptions",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onSuscripcionesListItemTap",
+                "implHandler": [
+                    "  this.goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onSuscripcionesListItemTap",
+            "designerId": "60b0a761-5825-4892-9635-d9b97028fd16"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#txtFiltro",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "onTextfieldChange",
+                "implHandler": [
+                    "var lstArrivals = Ext.getCmp('lstArribos');",
+                    "if(lstArrivals.isHidden()){",
+                    "",
+                    "    this.getApplication().getController('Global').getDepartures(newValue);",
+                    "}",
+                    "else{",
+                    "    this.getApplication().getController('Global').getArrivals(newValue);",
+                    "}"
+                ],
+                "name": "change"
+            },
+            "name": "onTextfieldChange",
+            "designerId": "3be662fb-0d73-40e9-8feb-f4bd1c9321ad"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnMenu",
+                "designer|targetType": "Ext.Button",
+                "fn": "onMenuButtonTap",
+                "implHandler": [
+                    "this.showHideMenu(\"\");"
+                ],
+                "name": "tap"
+            },
+            "name": "onMenuButtonTap",
+            "designerId": "0348a191-c470-4928-8531-e559d689a8a8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createUuid",
+                "implHandler": [
+                    "         function s4() {",
+                    "            return Math.floor((1 + Math.random()) * 0x10000)",
+                    "                       .toString(16)",
+                    "                       .substring(1);",
+                    "          }",
+                    "          return function() {",
+                    "            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +",
+                    "                   s4() + '-' + s4() + s4() + s4();",
+                    "          };"
+                ]
+            },
+            "name": "createUuid",
+            "designerId": "977ed427-e7cf-46f2-a560-03811eda11e5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dataview, index, target, record, e, eOpts"
+                ],
+                "fn": "goToDetails",
+                "implHandler": [
+                    "var info;",
+                    "",
+                    "if (record) {",
+                    "    var c = Ext.getCmp('details');",
+                    "    if(c === undefined){",
+                    "        alert(\"MUERTEEE\");",
+                    "    }",
+                    "",
+                    "    // set the info",
+                    "    info = c.child('#flightDetails');",
+                    "    info.child('#companyName').setData(record.data);",
+                    "    // info.child('#data').setData(record.data);",
+                    "",
+                    "    var d = Ext.getCmp('mainView');",
+                    "",
+                    "    var b = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
+                    "",
+                    "    var esMyVuelo =  Ext.getStore('MisVuelos');",
+                    "",
+                    "    var index = esMyVuelo.find('nVuelo', record.data.nVuelo);",
+                    "",
+                    "    if(index < 0){",
+                    "        b.setIconCls('favorites');",
+                    "    }else{",
+                    "        b.setIconCls('trash');",
+                    "",
+                    "    }",
+                    "    d.hide();",
+                    "    c.show();",
+                    "}",
+                    ""
+                ]
+            },
+            "name": "goToDetails",
+            "designerId": "1647e30c-0b86-46c6-8479-f777e217e22a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getTimeStamp",
+                "implHandler": [
+                    "//Return a timestamp with the format \"yy-m-d h:MM:ss\" ex. 2014-11-17 14:47:1",
+                    "                                   ",
+                    "",
+                    "// Create a date object with the current time",
+                    "  var now = new Date();",
+                    "",
+                    "// Create an array with the current month, day and time",
+                    "  var date = [ now.getFullYear(), now.getMonth() + 1, now.getDate() ];",
+                    "",
+                    "// Create an array with the current hour, minute and second",
+                    "  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];",
+                    "",
+                    "",
+                    "// Return the formatted string",
+                    "  return date.join(\"-\") + \" \" + time.join(\":\") ;"
+                ]
+            },
+            "name": "getTimeStamp",
+            "designerId": "8dedbcf8-7941-442f-8e25-8b1c1994417f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "changeSubscribeIcon",
+                "implHandler": [
+                    "var c = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
+                    "",
+                    "if (c.getIconCls() === 'favorites') {",
+                    "c.setIconCls('trash');",
+                    "}",
+                    "else",
+                    "{",
+                    "c.setIconCls('favorites');",
+                    "}"
+                ]
+            },
+            "name": "changeSubscribeIcon",
+            "designerId": "bda0d7f5-ffa6-4b26-a9c3-8fb19c16bea7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "referrer"
+                ],
+                "fn": "showHideMenu",
+                "implHandler": [
+                    "if(Ext.Viewport.getMenus().left.isHidden()){",
+                    "    if(referrer === \"\" || referrer == \"right\")",
+                    "        Ext.Viewport.showMenu('left');",
+                    "}",
+                    "else",
+                    "{",
+                    "    if(referrer === \"\" || referrer == \"left\")",
+                    "        Ext.Viewport.hideMenu('left');",
+                    "}"
+                ]
+            },
+            "name": "showHideMenu",
+            "designerId": "ccc689b4-71bd-4b88-ae6a-923e3d353022"
+        }
+    ]
+}

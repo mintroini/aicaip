@@ -25,20 +25,35 @@ Ext.application({
     ],
     stores: [
         'Arribos',
-        'Partidas'
+        'Partidas',
+        'Uuid',
+        'Suscripciones',
+        'MisVuelos'
     ],
     views: [
-        'MyContainer'
+        'MainContainer'
     ],
     controllers: [
-        'Controller',
-        'Global'
+        'Global',
+        'LogicController'
     ],
     name: 'Aeropuerto',
+    statusBarStyle: 'black-translucent',
 
     launch: function() {
+           var store= Ext.getStore('Uuid');
 
-        Ext.create('Aeropuerto.view.MyContainer', {fullscreen: true});
+        var suscripciones = Ext.getStore('ListaSuscripciones');
+
+                if(store.getCount() === 0){
+                       var guid =  this.getApplication().getController('LogicController').createUuid();
+
+                    var uuid = guid();
+                    store.add({key : uuid});
+                 }
+        this.getApplication().getController('Global').getArrivals('');
+
+        Ext.create('Aeropuerto.view.MainContainer', {fullscreen: true});
     }
 
 });

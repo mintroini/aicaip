@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /Users/martin/Documents/Aeropuerto/app.js
+// @require /Users/martin/Desktop/AeroSencha/app.js

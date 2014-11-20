@@ -1,0 +1,56 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "autoSync": true,
+        "designer|userClassName": "MisVuelos",
+        "storeId": "MisVuelos"
+    },
+    "name": "MyArrayStore",
+    "designerId": "d03d0089-4af3-4741-9304-665f5507a499",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.LocalStorage",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyLocalStorageProxy1",
+            "designerId": "ca5c5c9b-d546-49a0-afa7-94bf5d293c78"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "nVuelo",
+                "type": "string"
+            },
+            "name": "field22",
+            "designerId": "cf834edc-4d84-4dc5-a13f-6f7269c83951"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "fprogram",
+                "type": "string"
+            },
+            "name": "field23",
+            "designerId": "c2424413-838f-4018-b7b0-b3e5fc299b4b"
+        }
+    ]
+}
