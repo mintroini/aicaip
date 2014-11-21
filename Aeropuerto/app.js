@@ -21,14 +21,16 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        'Vuelo'
+        'Vuelo',
+        'Weather'
     ],
     stores: [
         'Arribos',
         'Partidas',
         'Uuid',
         'Suscripciones',
-        'MisVuelos'
+        'MisVuelos',
+        'WeatherStore'
     ],
     views: [
         'MainContainer'
@@ -41,17 +43,17 @@ Ext.application({
     statusBarStyle: 'black-translucent',
 
     launch: function() {
-           var store= Ext.getStore('Uuid');
+        var store= Ext.getStore('Uuid');
 
         var suscripciones = Ext.getStore('ListaSuscripciones');
 
-                if(store.getCount() === 0){
-                       var guid =  this.getApplication().getController('LogicController').createUuid();
+        if(store.getCount() === 0){
+            var guid =  this.getApplication().getController('LogicController').createUuid();
 
-                    var uuid = guid();
-                    store.add({key : uuid});
-                 }
-        this.getApplication().getController('Global').getArrivals('');
+            var uuid = guid();
+            store.add({key : uuid});
+        }
+        this.getApplication().getController('Global').getArrivals('','0');
 
         Ext.create('Aeropuerto.view.MainContainer', {fullscreen: true});
     }

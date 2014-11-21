@@ -17,16 +17,16 @@ Ext.define('Aeropuerto.controller.Global', {
     extend: 'Ext.app.Controller',
 
     config: {
-        urlServer: 'http://10.0.1.182/aicmobileservice/mobilews.asmx'
+        urlServer: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',
+        urlWeather: 'http://api.worldweatheronline.com/free/v2/weather.ashx',
+        weatherKey: '453edf069e02397083c3dcc4fe281'
     },
 
-    getFlights: function(tipo, laTienda, parametros) {
-        //var mask = new Ext.LoadMask(Ext.getBody(), {message:""});
-
-
+    getFlights: function(tipo, laTienda, parametros, mascara) {
         Ext.Ajax.on('beforerequest', function(){
-
-            Ext.Viewport.mask({ xtype: 'loadmask' });
+        if(mascara == '0'){
+                    Ext.Viewport.mask({ xtype: 'loadmask' });
+        }
         });
 
         Ext.Ajax.request({
@@ -57,20 +57,21 @@ Ext.define('Aeropuerto.controller.Global', {
         });
 
         Ext.Ajax.on('requestcomplete', function(){
-
-            Ext.Viewport.unmask();
+            if(mascara == '0'){
+                Ext.Viewport.unmask();
+            }
         });
     },
 
-    getDepartures: function(filtro) {
+    getDepartures: function(filtro, mascara) {
                     var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetDepartures xmlns="http://tempuri.org/"><filter>'+filtro+'</filter></GetDepartures></soap:Body></soap:Envelope>';
-                    this.getFlights('GetDepartures', 'Partidas', xmlParams);
+                    this.getFlights('GetDepartures', 'Partidas', xmlParams,mascara);
     },
 
-    getArrivals: function(filtro) {
+    getArrivals: function(filtro, mascara) {
 
         var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetArrivals xmlns="http://tempuri.org/"><filter>'+filtro+'</filter></GetArrivals></soap:Body></soap:Envelope>';
-        this.getFlights('GetArrivals', 'Arribos', xmlParams);
+        this.getFlights('GetArrivals', 'Arribos', xmlParams,mascara);
     },
 
     subscribe: function(uuid, flightNumber, timeStamp) {
@@ -165,6 +166,36 @@ Ext.define('Aeropuerto.controller.Global', {
                                                         console.log(response.responseText);
                                                     }
                                                 });
+    },
+
+    getWeather: function(city) {
+
+            var urlWeather = this.getUrlWeather();
+            var weatherKey = this.getWeatherKey();
+            var city = 'q='+city;
+
+            var fill = '&format=xml&num_of_days=1&key=';
+
+            var fullUrl = urlWeather +'?'+city+fill+weatherKey;
+
+            var xmlHttp = null;
+            xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", fullUrl, false );
+            xmlHttp.send( null );
+            console.log(xmlHttp.responseText);
+
+        var vuelos = xmlHttp.responseXML.getElementsByTagName('current_condition');
+
+                        var tienda = Ext.getStore('WeatherStore');
+                       console.log(tienda.getCount());
+                        Ext.each(vuelos, function(vuelo) {
+                            console.log(vuelo);
+                            tienda.addData(vuelo);
+                        }, this);
+                        console.log(tienda.getCount());
+                        tienda.sync();
+                        tienda.load();
+
     }
 
 });

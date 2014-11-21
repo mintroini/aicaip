@@ -54,7 +54,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
     btnArribos: function(button, e, eOpts) {
         Ext.Viewport.hideMenu('left');
 
-        this.getApplication().getController('Global').getArrivals('');
+        this.getApplication().getController('Global').getArrivals('','0');
 
         var topBar = Ext.getCmp('topBar');
         topBar.setTitle('Arribos');
@@ -77,7 +77,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
         var lstArrivals = Ext.getCmp('lstArribos');
         lstArrivals.hide();
 
-        this.getApplication().getController('Global').getDepartures('');
+        this.getApplication().getController('Global').getDepartures('','0');
 
         var lstDepartures = Ext.getCmp('lstPartidas');
         lstDepartures.show();
@@ -212,6 +212,26 @@ Ext.define('Aeropuerto.controller.LogicController', {
             }
             d.hide();
             c.show();
+
+                        var tienda = Ext.getStore('WeatherStore');
+                        tienda.getProxy().clear();
+                        tienda.data.clear();
+                        tienda.sync();
+
+        //    if(record.data.esArribo == 'true'){
+                this.getApplication().getController('Global').getWeather(record.data.destino);
+                c.child('#weather').setData(tienda.getAt(0).data);
+           var temp = tienda.getAt(0).temp_C;
+
+
+
+            //console.log(temp);
+
+        //    }else{
+
+        //    }
+           //  this.getApplication().getController('Global').getWeather(record.data.origen);
+
         }
 
     },

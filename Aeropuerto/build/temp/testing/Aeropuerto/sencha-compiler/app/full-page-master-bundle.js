@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /Users/martin/aeropuertoGIT/AeroSencha/app.js
+// @require /Users/martin/Documents/GITHUB/aicaip/Aeropuerto/app.js

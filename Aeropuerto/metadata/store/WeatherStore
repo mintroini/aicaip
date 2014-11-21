@@ -1,0 +1,57 @@
+{
+    "type": "xmlstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "autoSync": true,
+        "designer|userClassName": "WeatherStore",
+        "model": "Weather",
+        "requires": [
+            "Ext.data.proxy.LocalStorage"
+        ],
+        "storeId": "WeatherStore"
+    },
+    "name": "Arribos1",
+    "designerId": "d68697d4-bec4-4e61-be6a-399c98520756",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "type": "localstorage"
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "ea5a1a1a-579b-4083-8630-e82edb3f3c4c",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "type",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Xml",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": "current_condition"
+                    },
+                    "name": "MyXmlReader",
+                    "designerId": "dc7c0e38-f839-4715-b190-05ae3dd257e4"
+                }
+            ]
+        }
+    ]
+}

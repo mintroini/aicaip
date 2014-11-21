@@ -26,8 +26,8 @@
         "generateArchitectVersion": true,
         "projectHasEnabledWebServer": true,
         "lastBuildSelection": {
-            "value": "emulate",
-            "display": "Native Build & Emulate"
+            "value": "webBuild",
+            "display": "Build web app"
         }
     },
     "xdsVersion": "3.1.0",
@@ -41,6 +41,7 @@
         ],
         "store": [
             "22c5973e-e137-424b-84bd-d968f624f1cb",
+            "d68697d4-bec4-4e61-be6a-399c98520756",
             "27298e0d-e199-4588-b1ff-dee0421bd5db",
             "c5baab0e-2ce1-4f7b-b790-b7facb8cc9f5",
             "a4cc9bf5-dafd-441f-9225-51733a229d3a",
@@ -51,7 +52,8 @@
             "60eee5ec-7468-40b0-9591-dd2da4cf8eff"
         ],
         "model": [
-            "8c9361b0-d3a2-4b38-b9f3-22aa8b9c645b"
+            "8c9361b0-d3a2-4b38-b9f3-22aa8b9c645b",
+            "8b6e05b7-2ead-4dc4-88d5-b844899c4121"
         ],
         "resource": [
             "25456b3e-1809-4cde-a04c-a7a57e28d2b9",

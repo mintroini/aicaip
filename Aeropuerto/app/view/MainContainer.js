@@ -24,6 +24,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
         'Ext.field.Text',
         'Ext.dataview.List',
         'Ext.XTemplate',
+        'Ext.plugin.PullRefresh',
         'Ext.Toolbar',
         'Ext.Spacer'
     ],
@@ -117,6 +118,19 @@ Ext.define('Aeropuerto.view.MainContainer', {
                     },
                     {
                         xtype: 'list',
+                        scrollable: {
+                            direction: 'vertical',
+                            scroller: {
+                                listeners: {
+                                    scrollend: function(scroller, x, y) {
+                                if(y < 0){
+                                // y < 0 eso significa que el scroll fue vertical, hacia abajo.
+                                Aeropuerto.app.getController('Global').getArrivals("",1);
+                                }  
+                                }
+                                }
+                            }
+                        },
                         docked: 'top',
                         height: '100%',
                         id: 'lstArribos',
@@ -124,10 +138,29 @@ Ext.define('Aeropuerto.view.MainContainer', {
                         itemTpl: [
                             '<div>{origen}<br>{fprogram} - {estadosp}</div>'
                         ],
-                        store: 'Arribos'
+                        scrollToTopOnRefresh: false,
+                        store: 'Arribos',
+                        plugins: [
+                            {
+                                type: 'pullrefresh'
+                            }
+                        ]
                     },
                     {
                         xtype: 'list',
+                        scrollable: {
+                            direction: 'vertical',
+                            scroller: {
+                                listeners: {
+                                    scrollend: function(scroller, x, y) {
+                                                        if(y < 0){
+                                                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.
+                                                        Aeropuerto.app.getController('Global').getDepartures("",1);
+                                                        }  
+                                            }
+                                }
+                            }
+                        },
                         docked: 'top',
                         height: '100%',
                         hidden: true,
@@ -136,7 +169,12 @@ Ext.define('Aeropuerto.view.MainContainer', {
                         itemTpl: [
                             '<div>{destino}<br>{fprogram} - {estadosp}</div>'
                         ],
-                        store: 'Partidas'
+                        store: 'Partidas',
+                        plugins: [
+                            {
+                                type: 'pullrefresh'
+                            }
+                        ]
                     },
                     {
                         xtype: 'list',
@@ -202,7 +240,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
                         centered: true,
                         height: '100%',
                         id: 'flightDetails',
-                        width: '100%',
+                        width: '50%',
                         items: [
                             {
                                 xtype: 'container',
@@ -217,6 +255,15 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 width: '100%'
                             }
                         ]
+                    },
+                    {
+                        xtype: 'container',
+                        height: '100%',
+                        id: 'weather',
+                        tpl: [
+                            '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
+                        ],
+                        width: '50%'
                     }
                 ]
             }

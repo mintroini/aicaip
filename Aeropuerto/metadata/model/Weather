@@ -1,0 +1,57 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Weather"
+    },
+    "name": "MyModel1",
+    "designerId": "8b6e05b7-2ead-4dc4-88d5-b844899c4121",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "temp_C",
+                "type": "string"
+            },
+            "name": "field19",
+            "designerId": "18ceb328-b2e8-4613-b1b7-83c075cbadbc"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "weatherIconUrl",
+                "type": "string"
+            },
+            "name": "field20",
+            "designerId": "ff89f2af-4bca-4b65-8081-0a62dd1ffc4b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "weatherDesc",
+                "type": "string"
+            },
+            "name": "field21",
+            "designerId": "385eb714-8b67-47f1-beec-f82ee59efb8d"
+        }
+    ]
+}

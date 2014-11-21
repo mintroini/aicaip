@@ -154,12 +154,37 @@
                         "height": "100%",
                         "hideAnimation": null,
                         "id": "lstArribos",
+                        "scrollToTopOnRefresh": false,
+                        "scrollable": [
+                            "{  direction: \"vertical\",",
+                            "scroller: {",
+                            "listeners: {",
+                            "scrollend: function(scroller, x, y) {",
+                            "if(y < 0){",
+                            "// y < 0 eso significa que el scroll fue vertical, hacia abajo.",
+                            "Aeropuerto.app.getController('Global').getArrivals(\"\",1);",
+                            "}  ",
+                            "}",
+                            "}",
+                            "}",
+                            "}"
+                        ],
                         "showAnimation": null,
                         "store": "Arribos",
                         "width": "100%"
                     },
                     "name": "MyList",
+                    "configAlternates": {
+                        "scrollable": "object"
+                    },
                     "designerId": "37ddee37-aa32-4adc-be30-572934d7e984",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "scrollable",
+                            "type": "string"
+                        }
+                    ],
                     "cn": [
                         {
                             "type": "Ext.XTemplate",
@@ -176,6 +201,22 @@
                             },
                             "name": "itemTpl",
                             "designerId": "dae44a0b-9604-45e6-8845-cae96430eb22"
+                        },
+                        {
+                            "type": "Ext.plugin.PullRefresh",
+                            "reference": {
+                                "name": "plugins",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "scrollerAutoRefresh": null
+                            },
+                            "name": "MyPullRefreshPlugin",
+                            "configAlternates": {
+                                "scrollable": "object"
+                            },
+                            "designerId": "9a03015e-15dc-4216-82bb-94e14d8009e6"
                         }
                     ]
                 },
@@ -192,12 +233,36 @@
                         "hidden": true,
                         "hideAnimation": null,
                         "id": "lstPartidas",
+                        "scrollable": [
+                            " {  direction: \"vertical\",",
+                            "    scroller: {",
+                            "        listeners: {",
+                            "            scrollend: function(scroller, x, y) {",
+                            "                        if(y < 0){",
+                            "                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.",
+                            "                        Aeropuerto.app.getController('Global').getDepartures(\"\",1);",
+                            "                        }  ",
+                            "            }",
+                            "        }",
+                            "    }",
+                            "}"
+                        ],
                         "showAnimation": null,
                         "store": "Partidas",
                         "width": "100%"
                     },
                     "name": "MyList1",
+                    "configAlternates": {
+                        "scrollable": "object"
+                    },
                     "designerId": "1d23cfdd-7c9e-4384-9ebe-f68d21166b19",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "scrollable",
+                            "type": "string"
+                        }
+                    ],
                     "cn": [
                         {
                             "type": "Ext.XTemplate",
@@ -214,6 +279,16 @@
                             },
                             "name": "itemTpl",
                             "designerId": "10d0a6dc-deb3-43ad-bb58-a9c505e1b88f"
+                        },
+                        {
+                            "type": "Ext.plugin.PullRefresh",
+                            "reference": {
+                                "name": "plugins",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "name": "MyPullRefreshPlugin1",
+                            "designerId": "154e4635-4ece-48e5-8ab9-22dff31dfbbf"
                         }
                     ]
                 },
@@ -368,7 +443,7 @@
                         "centered": true,
                         "height": "100%",
                         "id": "flightDetails",
-                        "width": "100%"
+                        "width": "50%"
                     },
                     "name": "MyContainer",
                     "designerId": "302a633c-5824-426d-a581-cbc32d4b33c5",
@@ -409,6 +484,39 @@
                                     "designerId": "d8a24dad-1c07-40fe-9e73-51653d897ece"
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "100%",
+                        "id": "weather",
+                        "width": "50%"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "747b459d-6e61-4bb0-a289-9d2141f3deb8",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "tpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "tpl",
+                                "implHandler": [
+                                    "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
+                                ]
+                            },
+                            "name": "tpl",
+                            "designerId": "67b38144-c17d-431b-a36a-106e93bf6524"
                         }
                     ]
                 }

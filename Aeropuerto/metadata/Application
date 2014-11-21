@@ -11,7 +11,8 @@
             "LogicController"
         ],
         "models": [
-            "Vuelo"
+            "Vuelo",
+            "Weather"
         ],
         "name": "Aeropuerto",
         "statusBarStyle": "black-translucent",
@@ -20,7 +21,8 @@
             "Partidas",
             "Uuid",
             "Suscripciones",
-            "MisVuelos"
+            "MisVuelos",
+            "WeatherStore"
         ],
         "views": [
             "MainContainer"
@@ -39,17 +41,17 @@
             "userConfig": {
                 "fn": "launch",
                 "implHandler": [
-                    "   var store= Ext.getStore('Uuid');",
+                    "var store= Ext.getStore('Uuid');",
                     "",
                     "var suscripciones = Ext.getStore('ListaSuscripciones');",
                     "",
-                    "        if(store.getCount() === 0){",
-                    "               var guid =  this.getApplication().getController('LogicController').createUuid();",
+                    "if(store.getCount() === 0){",
+                    "    var guid =  this.getApplication().getController('LogicController').createUuid();",
                     "",
-                    "            var uuid = guid();",
-                    "            store.add({key : uuid});",
-                    "         }",
-                    "this.getApplication().getController('Global').getArrivals('');",
+                    "    var uuid = guid();",
+                    "    store.add({key : uuid});",
+                    "}",
+                    "this.getApplication().getController('Global').getArrivals('','0');",
                     ""
                 ]
             },
