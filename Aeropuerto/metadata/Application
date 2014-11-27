@@ -8,11 +8,14 @@
     "userConfig": {
         "controllers": [
             "Global",
-            "LogicController"
+            "LogicController",
+            "Usuarios"
         ],
         "models": [
             "Vuelo",
-            "Weather"
+            "Weather",
+            "Strings",
+            "Usuario"
         ],
         "name": "Aeropuerto",
         "statusBarStyle": "black-translucent",
@@ -22,10 +25,13 @@
             "Uuid",
             "Suscripciones",
             "MisVuelos",
-            "WeatherStore"
+            "WeatherStore",
+            "StringsStore",
+            "UsuarioStore"
         ],
         "views": [
-            "MainContainer"
+            "MainContainer",
+            "UserContainer"
         ]
     },
     "name": "Application",
@@ -42,15 +48,23 @@
                 "fn": "launch",
                 "implHandler": [
                     "var store= Ext.getStore('Uuid');",
-                    "",
-                    "var suscripciones = Ext.getStore('ListaSuscripciones');",
-                    "",
+                    "var logeado= Ext.getStore('UsuarioStore');",
+                    "console.log(logeado.getCount());",
                     "if(store.getCount() === 0){",
                     "    var guid =  this.getApplication().getController('LogicController').createUuid();",
                     "",
                     "    var uuid = guid();",
                     "    store.add({key : uuid});",
                     "}",
+                    "",
+                    "store= Ext.getStore('StringsStore');",
+                    "store.getProxy().clear();",
+                    "store.data.clear();",
+                    "store.sync();",
+                    "if(store.getCount() === 0){",
+                    "    store.add({Partidas : 'Partidas', Arribos : 'Arribos', Suscripciones : 'Suscripciones', Detalles : 'Detalles', Login : 'Login'});",
+                    "}",
+                    "",
                     "this.getApplication().getController('Global').getArrivals('','0');",
                     ""
                 ]

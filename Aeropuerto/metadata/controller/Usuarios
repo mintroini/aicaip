@@ -1,0 +1,301 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Usuarios",
+        "urlServer": "http://audiodes.ddns.net/aicmobileservice/mobilews.asmx"
+    },
+    "name": "MyController",
+    "designerId": "76ee166e-4dbe-457d-ae40-2d8aa8468623",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "urlServer",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "nombre",
+                    "apellido",
+                    "fnacimiento",
+                    "contrasena",
+                    "email",
+                    "nacionalidad"
+                ],
+                "fn": "createUser",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><CreateUser xmlns=\"http://tempuri.org/\"><pEmail>'+email+'</pEmail><pNombre>'+nombre+'</pNombre><pApellido>'+apellido+'</pApellido><pPassword>'+contrasena+'</pPassword><pFNac>'+fnacimiento+'</pFNac><pNacionalidad>'+nacionalidad+'</pNacionalidad></CreateUser></soap:Body></soap:Envelope>';",
+                    "Ext.Ajax.request({",
+                    "                                    url: this.getUrlServer(),",
+                    "                                    useDefaultXhrHeader: false,",
+                    "                                    headers: {",
+                    "                                        'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                        'SOAPAction': 'http://tempuri.org/CreateUser'",
+                    "                                    },",
+                    "                                    method: 'POST',",
+                    "                                    params: xmlParams,",
+                    "                                    success: function(response) {",
+                    "                                        alert('Usuario creado');",
+                    "                                        var tienda = Ext.getStore('UsuarioStore');",
+                    "                                        console.log(tienda.getCount());",
+                    "                                        tienda.add({nombre : nombre,apellido:apellido,fnac : fnacimiento,email :email,password:contrasena,nacionalidad:nacionalidad});",
+                    "                                        tienda.sync();",
+                    "                                        tienda.load();",
+                    "                                        console.log(tienda.getCount());",
+                    "                                        console.log(tienda.getAt(0).data);",
+                    "                                        Aeropuerto.app.getController('Usuarios').goToLogin();",
+                    "                                    },",
+                    "                                    failure: function(response) {",
+                    "                                        alert('todo mal'+response.responseText);",
+                    "                                        console.log(response.responseText);",
+                    "                                    }",
+                    "                                });"
+                ]
+            },
+            "name": "createUser",
+            "designerId": "726e23b7-012c-4910-baa7-e4ef0e74cf47"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "email",
+                    "password"
+                ],
+                "fn": "userLogin",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><LogIn xmlns=\"http://tempuri.org/\"><email>'+email+'</email><password>'+password+'</password></LogIn></soap:Body></soap:Envelope>';",
+                    "",
+                    "Ext.Ajax.request({",
+                    "                                            url: this.getUrlServer(),",
+                    "                                            useDefaultXhrHeader: false,",
+                    "                                            headers: {",
+                    "                                                'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                                'SOAPAction': 'http://tempuri.org/LogIn'",
+                    "                                            },",
+                    "                                            method: 'POST',",
+                    "                                            params: xmlParams,",
+                    "                                            success: function(response) {",
+                    "",
+                    "                                                  var tienda = Ext.getStore('UsuarioStore');",
+                    "                                                   console.log(tienda.getCount());",
+                    "                                                  var usuarios = response.responseXML.getElementsByTagName('LogInResponse');",
+                    "                                                  Ext.each(usuarios, function(usuario) {",
+                    "                                                        tienda.addData(usuario);",
+                    "                                                        }, this);",
+                    "                                                    if(tienda.getCount() > 0){",
+                    "                                                        tienda.sync();",
+                    "                                                        tienda.load();",
+                    "                                                        alert('Login Correcto');",
+                    "                                                   console.log(tienda.getCount());",
+                    "                                                        console.log(tienda.getAt(0).data);",
+                    "                                                        Aeropuerto.app.getController('Usuarios').goToLogin();",
+                    "                                                    }else{",
+                    "                                                        alert('Login Incorrecto');",
+                    "                                                    }",
+                    "                                               console.log(response);",
+                    "",
+                    "                                            },",
+                    "                                            failure: function(response) {",
+                    "                                                alert(response.responseText);",
+                    "                                                console.log(response.responseText);",
+                    "                                            }",
+                    "                                        });"
+                ]
+            },
+            "name": "userLogin",
+            "designerId": "027cccb6-6c25-4af4-8989-b22ef0182b3b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "goToLogin",
+                "implHandler": [
+                    "    var userContainer = Ext.getCmp('userContainer');",
+                    "    userContainer.show();",
+                    "",
+                    "    var initial = Ext.getCmp('initial');",
+                    "    var logged = Ext.getCmp('Logged');",
+                    "",
+                    "    var tienda = Ext.getStore('UsuarioStore');",
+                    "    if(tienda.getCount() > 0){",
+                    "        logged.show();",
+                    "        initial.hide();",
+                    "        Ext.getCmp('loggedLabel').setHtml('Ya estas logeado como: '+tienda.getAt(0).data.nombre);",
+                    "    }else{",
+                    "        logged.hide();",
+                    "        initial.show();",
+                    "    }",
+                    ""
+                ]
+            },
+            "name": "goToLogin",
+            "designerId": "1fed536c-0d99-4171-9928-1141e17f9894"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnLoginInicial",
+                "designer|targetType": "Ext.Button",
+                "fn": "onloginInicialButtonTap",
+                "implHandler": [
+                    "    var a = Ext.getCmp('loginForm');",
+                    "    var b = Ext.getCmp('initial');",
+                    "",
+                    "Ext.getCmp('userContainerHome').setIconCls('arrow_left');",
+                    "",
+                    "    a.show();",
+                    "    b.hide();"
+                ],
+                "name": "tap"
+            },
+            "name": "onloginInicialButtonTap",
+            "designerId": "612cbe4a-756c-487d-b4d8-1710a88da3aa"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnRegisterInicial",
+                "designer|targetType": "Ext.Button",
+                "fn": "onRegisterInicialButtonTap",
+                "implHandler": [
+                    "                    var a = Ext.getCmp('registerForm');",
+                    "                    var b = Ext.getCmp('initial');",
+                    "",
+                    "Ext.getCmp('userContainerHome').setIconCls('arrow_left');",
+                    "",
+                    "                    a.show();",
+                    "                    b.hide();"
+                ],
+                "name": "tap"
+            },
+            "name": "onRegisterInicialButtonTap",
+            "designerId": "c0a5d9cf-2fa5-4ead-9d5f-8ef38e1eb560"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "    if(Ext.getCmp('initial').isHidden()){",
+                    "        var a = Ext.getCmp('loginForm');",
+                    "        var b = Ext.getCmp('registerForm');",
+                    "        var c = Ext.getCmp('initial');",
+                    "        Ext.getCmp('userContainerHome').setIconCls('list');",
+                    "        a.hide();",
+                    "        b.hide();",
+                    "        c.show();",
+                    "    }else{",
+                    "",
+                    "       this.getApplication().getController('LogicController').showHideMenu('');",
+                    "    }"
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "4cf93df9-fb91-472b-b731-7c6866ddca0c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnRegister",
+                "designer|targetType": "Ext.Button",
+                "fn": "onRegisterButtonTap",
+                "implHandler": [
+                    "this.createUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'),Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerEmail').getValue(),'');"
+                ],
+                "name": "tap"
+            },
+            "name": "onRegisterButtonTap",
+            "designerId": "5c0bb654-9f39-4fea-a87f-aa01be5e75a5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#trueLogin",
+                "designer|targetType": "Ext.Button",
+                "fn": "onTrueLoginTap",
+                "implHandler": [
+                    "this.userLogin(Ext.getCmp('loginUsername').getValue(),Ext.getCmp('loginPassword').getValue());"
+                ],
+                "name": "tap"
+            },
+            "name": "onTrueLoginTap",
+            "designerId": "d9f26b63-b0f9-4525-9575-91e454efbdf2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnLogOut",
+                "designer|targetType": "Ext.Button",
+                "fn": "onButtonLogOutTap",
+                "implHandler": [
+                    "var tienda = Ext.getStore('UsuarioStore');",
+                    "tienda.getProxy().clear();",
+                    "tienda.data.clear();",
+                    "tienda.sync();",
+                    "",
+                    "this.goToLogin();"
+                ],
+                "name": "tap"
+            },
+            "name": "onButtonLogOutTap",
+            "designerId": "4984a22b-5a99-4f93-8cbd-cce56f97cec0"
+        }
+    ]
+}

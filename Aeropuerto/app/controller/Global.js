@@ -17,7 +17,7 @@ Ext.define('Aeropuerto.controller.Global', {
     extend: 'Ext.app.Controller',
 
     config: {
-        urlServer: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',
+        urlServer: 'http://audiodes.ddns.net/aicmobileservice/mobilews.asmx',
         urlWeather: 'http://api.worldweatheronline.com/free/v2/weather.ashx',
         weatherKey: '453edf069e02397083c3dcc4fe281'
     },
@@ -135,15 +135,11 @@ Ext.define('Aeropuerto.controller.Global', {
         for (i = 0; i < subs.getCount(); i++) {
             this.getFlight(subs.getAt(i).data.nVuelo,subs.getAt(i).data.fprogram);
         }
-
-
     },
 
     getFlight: function(nVuelo, fprogram) {
-
         var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetFlight xmlns="http://tempuri.org/"><flight>'+nVuelo+'</flight><datetime>'+fprogram+'</datetime></GetFlight></soap:Body></soap:Envelope>';
-
-                Ext.Ajax.request({
+               Ext.Ajax.request({
                                                     url: this.getUrlServer(),
                                                     useDefaultXhrHeader: false,
                                                     headers: {
@@ -169,7 +165,6 @@ Ext.define('Aeropuerto.controller.Global', {
     },
 
     getWeather: function(city) {
-
             var urlWeather = this.getUrlWeather();
             var weatherKey = this.getWeatherKey();
             var city = 'q='+city;
@@ -182,17 +177,16 @@ Ext.define('Aeropuerto.controller.Global', {
             xmlHttp = new XMLHttpRequest();
             xmlHttp.open( "GET", fullUrl, false );
             xmlHttp.send( null );
-            console.log(xmlHttp.responseText);
 
         var vuelos = xmlHttp.responseXML.getElementsByTagName('current_condition');
 
                         var tienda = Ext.getStore('WeatherStore');
-                       console.log(tienda.getCount());
+                        tienda.getProxy().clear();
+                        tienda.data.clear();
+                        tienda.sync();
                         Ext.each(vuelos, function(vuelo) {
-                            console.log(vuelo);
                             tienda.addData(vuelo);
                         }, this);
-                        console.log(tienda.getCount());
                         tienda.sync();
                         tienda.load();
 

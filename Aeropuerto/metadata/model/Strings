@@ -1,0 +1,99 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Strings"
+    },
+    "name": "MyModel",
+    "designerId": "a77ba469-67b9-43da-949d-cbff37fb0543",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Partidas",
+                "type": "string"
+            },
+            "name": "field24",
+            "designerId": "7ae9f24e-7469-446a-82dd-884f9e72badf"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Arribos",
+                "type": "string"
+            },
+            "name": "field25",
+            "designerId": "4660aa04-3650-44de-97c9-b502c12a1f4c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Suscripciones",
+                "type": "string"
+            },
+            "name": "field26",
+            "designerId": "ac7058e8-d409-4647-b9f7-50419ac15661"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Cargando",
+                "type": "string"
+            },
+            "name": "field27",
+            "designerId": "5b90cf2f-13a7-4369-9ded-2d59f9c3b220"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Detalles",
+                "type": "string"
+            },
+            "name": "field28",
+            "designerId": "66bc465f-6320-4b1b-824e-dcee45c61d92"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Login",
+                "type": "string"
+            },
+            "name": "field18",
+            "designerId": "d2dd4d1f-75ad-4c24-9a1c-be501c4ddbb0"
+        }
+    ]
+}

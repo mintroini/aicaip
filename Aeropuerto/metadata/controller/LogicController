@@ -12,6 +12,225 @@
     "designerId": "60eee5ec-7468-40b0-9591-dd2da4cf8eff",
     "cn": [
         {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createUuid",
+                "implHandler": [
+                    "         function s4() {",
+                    "            return Math.floor((1 + Math.random()) * 0x10000)",
+                    "                       .toString(16)",
+                    "                       .substring(1);",
+                    "          }",
+                    "          return function() {",
+                    "            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +",
+                    "                   s4() + '-' + s4() + s4() + s4();",
+                    "          };"
+                ]
+            },
+            "name": "createUuid",
+            "designerId": "977ed427-e7cf-46f2-a560-03811eda11e5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dataview, index, target, record, e, eOpts"
+                ],
+                "fn": "goToDetails",
+                "implHandler": [
+                    "var info;",
+                    "",
+                    "var topBar = Ext.getCmp('tbDetails');",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Detalles);",
+                    "",
+                    "",
+                    "if (record) {",
+                    "    var c = Ext.getCmp('details');",
+                    "    if(c === undefined){",
+                    "        alert(\"MUERTEEE\");",
+                    "    }",
+                    "",
+                    "    // set the info",
+                    "    info = c.child('#flightDetails');",
+                    "    info.child('#companyName').setData(record.data);",
+                    "    // info.child('#data').setData(record.data);",
+                    "",
+                    "    var d = Ext.getCmp('mainView');",
+                    "",
+                    "    var b = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
+                    "",
+                    "    var esMyVuelo =  Ext.getStore('MisVuelos');",
+                    "",
+                    "    var index = esMyVuelo.find('nVuelo', record.data.nVuelo);",
+                    "",
+                    "    if(index < 0){",
+                    "        b.setIconCls('favorites');",
+                    "    }else{",
+                    "        b.setIconCls('trash');",
+                    "",
+                    "    }",
+                    "    d.hide();",
+                    "    c.show();",
+                    "",
+                    "    var tienda = Ext.getStore('WeatherStore');",
+                    "",
+                    "    if(record.data.esArribo)",
+                    "    {",
+                    "        //Tiempo en el lugar de origen",
+                    "        this.getApplication().getController('Global').getWeather(record.data.origen);",
+                    "        c.child('#weather').child('#origen').setData(tienda.getAt(0).data);",
+                    "        //Tiempo en el lugar de destino (Montevideo)",
+                    "        this.getApplication().getController('Global').getWeather('Montevideo');",
+                    "        c.child('#weather').child('#destino').setData(tienda.getAt(0).data);",
+                    "",
+                    "    }else",
+                    "    {",
+                    "        //Tiempo en el lugar de origen (Montevideo)",
+                    "        this.getApplication().getController('Global').getWeather('Montevideo');",
+                    "        c.child('#weather').child('#origen').setData(tienda.getAt(0).data);",
+                    "        //Tiempo en el lugar de destino",
+                    "        this.getApplication().getController('Global').getWeather(record.data.destino);",
+                    "        c.child('#weather').child('#destino').setData(tienda.getAt(0).data);",
+                    "    }",
+                    "    this.showHideMenu('left');",
+                    "}",
+                    ""
+                ]
+            },
+            "name": "goToDetails",
+            "designerId": "1647e30c-0b86-46c6-8479-f777e217e22a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getTimeStamp",
+                "implHandler": [
+                    "//Return a timestamp with the format \"yy-m-d h:MM:ss\" ex. 2014-11-17 14:47:1",
+                    "                                   ",
+                    "",
+                    "// Create a date object with the current time",
+                    "  var now = new Date();",
+                    "",
+                    "// Create an array with the current month, day and time",
+                    "  var date = [ now.getFullYear(), now.getMonth() + 1, now.getDate() ];",
+                    "",
+                    "// Create an array with the current hour, minute and second",
+                    "  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];",
+                    "",
+                    "",
+                    "// Return the formatted string",
+                    "  return date.join(\"-\") + \" \" + time.join(\":\") ;"
+                ]
+            },
+            "name": "getTimeStamp",
+            "designerId": "8dedbcf8-7941-442f-8e25-8b1c1994417f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "changeSubscribeIcon",
+                "implHandler": [
+                    "var c = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
+                    "",
+                    "if (c.getIconCls() === 'favorites') {",
+                    "c.setIconCls('trash');",
+                    "}",
+                    "else",
+                    "{",
+                    "c.setIconCls('favorites');",
+                    "}"
+                ]
+            },
+            "name": "changeSubscribeIcon",
+            "designerId": "bda0d7f5-ffa6-4b26-a9c3-8fb19c16bea7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "referrer"
+                ],
+                "fn": "showHideMenu",
+                "implHandler": [
+                    "if(Ext.Viewport.getMenus().left.isHidden()){",
+                    "    if(referrer === \"\" || referrer == \"right\")",
+                    "        Ext.Viewport.showMenu('left');",
+                    "}",
+                    "else",
+                    "{",
+                    "    if(referrer === \"\" || referrer == \"left\")",
+                    "        Ext.Viewport.hideMenu('left');",
+                    "}"
+                ]
+            },
+            "name": "showHideMenu",
+            "designerId": "ccc689b4-71bd-4b88-ae6a-923e3d353022"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "view"
+                ],
+                "fn": "showView",
+                "implHandler": [
+                    "this.hideViewAll();",
+                    "Ext.getCmp(view).show();"
+                ]
+            },
+            "name": "showView",
+            "designerId": "03ddfffd-04ff-485b-b97c-72c4284a5eaf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "hideViewAll",
+                "implHandler": [
+                    "Ext.getCmp('mainView').hide();",
+                    "",
+                    "Ext.getCmp('userContainer').hide();",
+                    ""
+                ]
+            },
+            "name": "hideViewAll",
+            "designerId": "55b8cf68-63ed-4043-be9d-300b88feba3e"
+        },
+        {
             "type": "controlleraction",
             "reference": {
                 "name": "listeners",
@@ -28,10 +247,10 @@
                     "this.getApplication().getController('Global').getArrivals('','0');",
                     "",
                     "var topBar = Ext.getCmp('topBar');",
-                    "topBar.setTitle('Arribos');",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Arribos);",
                     "",
-                    "var lstDepartures = Ext.getCmp('lstPartidas');",
-                    "lstDepartures.hide();",
+                    "this.hideViewAll();",
+                    "this.showView('mainView');",
                     "",
                     "var lstArrivals = Ext.getCmp('lstArribos');",
                     "lstArrivals.show();",
@@ -58,12 +277,12 @@
                     "Ext.Viewport.hideMenu('left');",
                     "",
                     "var topBar = Ext.getCmp('topBar');",
-                    "topBar.setTitle('Partidas');",
-                    "",
-                    "var lstArrivals = Ext.getCmp('lstArribos');",
-                    "lstArrivals.hide();",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Partidas);",
                     "",
                     "this.getApplication().getController('Global').getDepartures('','0');",
+                    "",
+                    "this.hideViewAll();",
+                    "this.showView('mainView');",
                     "",
                     "var lstDepartures = Ext.getCmp('lstPartidas');",
                     "lstDepartures.show();",
@@ -82,6 +301,29 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#btnLogin",
+                "designer|targetType": "Ext.Button",
+                "fn": "onLogin",
+                "implHandler": [
+                    "Ext.Viewport.hideMenu('left');",
+                    "",
+                    "this.hideViewAll();",
+                    "",
+                    "this.getApplication().getController('Usuarios').goToLogin();"
+                ],
+                "name": "tap"
+            },
+            "name": "onLogin",
+            "designerId": "5ccef469-9810-401d-a32b-4f5ade978a45"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "designer|controlQuery": "#btnSubscriptions",
                 "designer|targetType": "Ext.Button",
                 "fn": "btnSubscriptionsTap",
@@ -89,13 +331,10 @@
                     "Ext.Viewport.hideMenu('left');",
                     "",
                     "var topBar = Ext.getCmp('topBar');",
-                    "topBar.setTitle('Suscripciones');",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Suscripciones);",
                     "",
-                    "var lstArrivals = Ext.getCmp('lstArribos');",
-                    "lstArrivals.hide();",
-                    "",
-                    "var lstDepartures = Ext.getCmp('lstPartidas');",
-                    "lstDepartures.hide();",
+                    "this.hideViewAll();",
+                    "this.showView('mainView');",
                     "",
                     "this.getApplication().getController('Global').getSubscriptions();",
                     "",
@@ -187,8 +426,8 @@
                     "var c = Ext.getCmp('details').child('#flightDetails').child('#companyName').getData();",
                     "",
                     "var vuelos = Ext.getStore('MisVuelos');",
-                    "var susc = Ext.getStore('VuelosSuscriptos');",
-                    "",
+                    "var susc = Ext.getStore('Suscripciones');",
+                    "var list = Ext.getCmp('lstSubscriptions');",
                     "if (icon.getIconCls() === 'favorites') {",
                     "   this.getApplication().getController('Global').subscribe(uuid,c.nVuelo,c.fprogram);",
                     "    vuelos.add({'nVuelo' : c.nVuelo,'fprogram': c.fprogram});",
@@ -204,9 +443,18 @@
                     "                var index =  i;",
                     "         }",
                     "    }",
-                    "",
+                    "        for (i = 0; i < susc.getCount(); i++) {",
+                    "         if(susc.getAt(i).data.nVuelo == c.nVuelo && susc.getAt(i).data.fprogram == c.fprogram){",
+                    "                var index2 =  i;",
+                    "         }",
+                    "    }",
                     "    vuelos.removeAt(index);",
                     "    vuelos.sync();",
+                    "    susc.removeAt(index2);",
+                    "    susc.sync();",
+                    "",
+                    "    list.refresh();",
+                    " ",
                     "}",
                     "",
                     ""
@@ -279,180 +527,6 @@
             },
             "name": "onMenuButtonTap",
             "designerId": "0348a191-c470-4928-8531-e559d689a8a8"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "createUuid",
-                "implHandler": [
-                    "         function s4() {",
-                    "            return Math.floor((1 + Math.random()) * 0x10000)",
-                    "                       .toString(16)",
-                    "                       .substring(1);",
-                    "          }",
-                    "          return function() {",
-                    "            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +",
-                    "                   s4() + '-' + s4() + s4() + s4();",
-                    "          };"
-                ]
-            },
-            "name": "createUuid",
-            "designerId": "977ed427-e7cf-46f2-a560-03811eda11e5"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "dataview, index, target, record, e, eOpts"
-                ],
-                "fn": "goToDetails",
-                "implHandler": [
-                    "var info;",
-                    "",
-                    "if (record) {",
-                    "    var c = Ext.getCmp('details');",
-                    "    if(c === undefined){",
-                    "        alert(\"MUERTEEE\");",
-                    "    }",
-                    "",
-                    "    // set the info",
-                    "    info = c.child('#flightDetails');",
-                    "    info.child('#companyName').setData(record.data);",
-                    "    // info.child('#data').setData(record.data);",
-                    "",
-                    "    var d = Ext.getCmp('mainView');",
-                    "",
-                    "    var b = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
-                    "",
-                    "    var esMyVuelo =  Ext.getStore('MisVuelos');",
-                    "",
-                    "    var index = esMyVuelo.find('nVuelo', record.data.nVuelo);",
-                    "",
-                    "    if(index < 0){",
-                    "        b.setIconCls('favorites');",
-                    "    }else{",
-                    "        b.setIconCls('trash');",
-                    "",
-                    "    }",
-                    "    d.hide();",
-                    "    c.show();",
-                    "",
-                    "                var tienda = Ext.getStore('WeatherStore');",
-                    "                tienda.getProxy().clear();",
-                    "                tienda.data.clear();",
-                    "                tienda.sync();",
-                    "",
-                    "//    if(record.data.esArribo == 'true'){",
-                    "        this.getApplication().getController('Global').getWeather(record.data.destino);",
-                    "        c.child('#weather').setData(tienda.getAt(0).data);",
-                    "   var temp = tienda.getAt(0).temp_C;",
-                    "",
-                    "",
-                    "",
-                    "    //console.log(temp);",
-                    "",
-                    "//    }else{",
-                    "",
-                    "//    }",
-                    "   //  this.getApplication().getController('Global').getWeather(record.data.origen);",
-                    "",
-                    "}",
-                    ""
-                ]
-            },
-            "name": "goToDetails",
-            "designerId": "1647e30c-0b86-46c6-8479-f777e217e22a"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "getTimeStamp",
-                "implHandler": [
-                    "//Return a timestamp with the format \"yy-m-d h:MM:ss\" ex. 2014-11-17 14:47:1",
-                    "                                   ",
-                    "",
-                    "// Create a date object with the current time",
-                    "  var now = new Date();",
-                    "",
-                    "// Create an array with the current month, day and time",
-                    "  var date = [ now.getFullYear(), now.getMonth() + 1, now.getDate() ];",
-                    "",
-                    "// Create an array with the current hour, minute and second",
-                    "  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];",
-                    "",
-                    "",
-                    "// Return the formatted string",
-                    "  return date.join(\"-\") + \" \" + time.join(\":\") ;"
-                ]
-            },
-            "name": "getTimeStamp",
-            "designerId": "8dedbcf8-7941-442f-8e25-8b1c1994417f"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "changeSubscribeIcon",
-                "implHandler": [
-                    "var c = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
-                    "",
-                    "if (c.getIconCls() === 'favorites') {",
-                    "c.setIconCls('trash');",
-                    "}",
-                    "else",
-                    "{",
-                    "c.setIconCls('favorites');",
-                    "}"
-                ]
-            },
-            "name": "changeSubscribeIcon",
-            "designerId": "bda0d7f5-ffa6-4b26-a9c3-8fb19c16bea7"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "referrer"
-                ],
-                "fn": "showHideMenu",
-                "implHandler": [
-                    "if(Ext.Viewport.getMenus().left.isHidden()){",
-                    "    if(referrer === \"\" || referrer == \"right\")",
-                    "        Ext.Viewport.showMenu('left');",
-                    "}",
-                    "else",
-                    "{",
-                    "    if(referrer === \"\" || referrer == \"left\")",
-                    "        Ext.Viewport.hideMenu('left');",
-                    "}"
-                ]
-            },
-            "name": "showHideMenu",
-            "designerId": "ccc689b4-71bd-4b88-ae6a-923e3d353022"
         }
     ]
 }

@@ -45,15 +45,15 @@
                     "userConfig": {
                         "fn": "onMainViewInitialize",
                         "implHandler": [
-                            "",
                             "this.element.on({",
                             "    swipe: function(e, node, options) {",
+                            "       if(e.direction == \"right\") {",
+                            "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
+                            "        }",
                             "        if(e.direction == \"left\") {",
                             "            Aeropuerto.app.getController('LogicController').showHideMenu(\"left\");",
                             "        }",
-                            "        if(e.direction == \"right\") {",
-                            "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
-                            "        }",
+                            "        ",
                             "    }",
                             "});",
                             "",
@@ -62,21 +62,28 @@
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnArribos',",
-                            "        text: 'Arribos',",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.Arribos,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnPartidas',",
-                            "        text: 'Partidas',",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.Partidas,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnSubscriptions',",
-                            "        text: 'Suscripciones',",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.Suscripciones,",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
+                            "    },",
+                            "    {",
+                            "        xtype: 'button',",
+                            "        id: 'btnLogin',",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.Login,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    }",
@@ -385,7 +392,7 @@
                     "userConfig": {
                         "docked": "top",
                         "id": "tbDetails",
-                        "title": "Vuelo"
+                        "title": null
                     },
                     "name": "MyToolbar",
                     "designerId": "b9fc2f96-07fb-4e0d-9d53-0c2f761044c9",
@@ -503,24 +510,126 @@
                     "designerId": "747b459d-6e61-4bb0-a289-9d2141f3deb8",
                     "cn": [
                         {
-                            "type": "Ext.XTemplate",
+                            "type": "Ext.Container",
                             "reference": {
-                                "name": "tpl",
-                                "type": "object"
+                                "name": "items",
+                                "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|displayName": "tpl",
-                                "implHandler": [
-                                    "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
-                                ]
+                                "centered": false,
+                                "docked": "top",
+                                "height": "50%",
+                                "id": "origen"
                             },
-                            "name": "tpl",
-                            "designerId": "67b38144-c17d-431b-a36a-106e93bf6524"
+                            "name": "MyContainer3",
+                            "designerId": "22f8e781-aae1-4d2d-819e-bf9d722de83c",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Origen"
+                                    },
+                                    "name": "MyLabel",
+                                    "designerId": "54ae69c4-20e3-4d8c-a05d-1af7fa457964"
+                                },
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "tpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "tpl",
+                                        "implHandler": [
+                                            "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
+                                        ]
+                                    },
+                                    "name": "tpl",
+                                    "designerId": "67b38144-c17d-431b-a36a-106e93bf6524"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": "40%"
+                            },
+                            "name": "MySpacer",
+                            "designerId": "12a4e091-66ca-4666-8abb-77268bc8b761"
+                        },
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": false,
+                                "docked": null,
+                                "height": "50%",
+                                "id": "destino"
+                            },
+                            "name": "MyContainer4",
+                            "designerId": "112f3b63-db29-423f-a9e8-c673e0e63a98",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "Destino"
+                                    },
+                                    "name": "MyLabel2",
+                                    "designerId": "5f9f5e2f-b8ee-4742-8fd5-400bf7d4db3a"
+                                },
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "tpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "tpl",
+                                        "implHandler": [
+                                            "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
+                                        ]
+                                    },
+                                    "name": "tpl1",
+                                    "designerId": "24680f5c-a422-4914-badc-6d3be5cb03ed"
+                                }
+                            ]
                         }
                     ]
                 }
             ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "usercontainer",
+            "designerId": "58a7338a-c20b-43b9-99b2-1176bf66c172",
+            "masterInstanceId": "f6a9c87d-8f36-466a-b967-6b79d7f09dec"
         }
     ]
 }

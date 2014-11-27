@@ -18,6 +18,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
     alias: 'widget.mainContainer',
 
     requires: [
+        'Aeropuerto.view.UserContainer',
         'Ext.Panel',
         'Ext.TitleBar',
         'Ext.Button',
@@ -26,7 +27,8 @@ Ext.define('Aeropuerto.view.MainContainer', {
         'Ext.XTemplate',
         'Ext.plugin.PullRefresh',
         'Ext.Toolbar',
-        'Ext.Spacer'
+        'Ext.Spacer',
+        'Ext.Label'
     ],
 
     config: {
@@ -47,15 +49,15 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 listeners: [
                     {
                         fn: function(component, eOpts) {
-
                             this.element.on({
                                 swipe: function(e, node, options) {
-                                    if(e.direction == "left") {
-                                        Aeropuerto.app.getController('LogicController').showHideMenu("left");
-                                    }
                                     if(e.direction == "right") {
                                         Aeropuerto.app.getController('LogicController').showHideMenu("right");
                                     }
+                                    if(e.direction == "left") {
+                                        Aeropuerto.app.getController('LogicController').showHideMenu("left");
+                                    }
+
                                 }
                             });
 
@@ -64,21 +66,28 @@ Ext.define('Aeropuerto.view.MainContainer', {
                             {
                                 xtype: 'button',
                                 id: 'btnArribos',
-                                text: 'Arribos',
+                                text: Ext.getStore('StringsStore').getAt(0).data.Arribos,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
                             {
                                 xtype: 'button',
                                 id: 'btnPartidas',
-                                text: 'Partidas',
+                                text: Ext.getStore('StringsStore').getAt(0).data.Partidas,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
                             {
                                 xtype: 'button',
                                 id: 'btnSubscriptions',
-                                text: 'Suscripciones',
+                                text: Ext.getStore('StringsStore').getAt(0).data.Suscripciones,
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnLogin',
+                                text: Ext.getStore('StringsStore').getAt(0).data.Login,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             }
@@ -218,7 +227,6 @@ Ext.define('Aeropuerto.view.MainContainer', {
                         xtype: 'toolbar',
                         docked: 'top',
                         id: 'tbDetails',
-                        title: 'Vuelo',
                         items: [
                             {
                                 xtype: 'button',
@@ -260,12 +268,49 @@ Ext.define('Aeropuerto.view.MainContainer', {
                         xtype: 'container',
                         height: '100%',
                         id: 'weather',
-                        tpl: [
-                            '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
-                        ],
-                        width: '50%'
+                        width: '50%',
+                        items: [
+                            {
+                                xtype: 'container',
+                                centered: false,
+                                docked: 'top',
+                                height: '50%',
+                                id: 'origen',
+                                tpl: [
+                                    '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
+                                ],
+                                items: [
+                                    {
+                                        xtype: 'label',
+                                        html: 'Origen'
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'spacer',
+                                height: '40%'
+                            },
+                            {
+                                xtype: 'container',
+                                centered: false,
+                                height: '50%',
+                                id: 'destino',
+                                tpl: [
+                                    '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
+                                ],
+                                items: [
+                                    {
+                                        xtype: 'label',
+                                        html: 'Destino'
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
+            },
+            {
+                xtype: 'usercontainer'
             }
         ]
     }
