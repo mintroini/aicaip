@@ -11,6 +11,7 @@
         "designer|userClassName": "MainContainer",
         "id": "mainContainer",
         "itemId": "",
+        "style": null,
         "top": ""
     },
     "designerId": "d6960af2-e51e-4b00-9831-1a8c019bca68",
@@ -47,13 +48,13 @@
                         "implHandler": [
                             "this.element.on({",
                             "    swipe: function(e, node, options) {",
-                            "       if(e.direction == \"right\") {",
+                            "        if(e.direction == \"right\") {",
                             "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
                             "        }",
                             "        if(e.direction == \"left\") {",
                             "            Aeropuerto.app.getController('LogicController').showHideMenu(\"left\");",
                             "        }",
-                            "        ",
+                            "",
                             "    }",
                             "});",
                             "",
@@ -62,28 +63,35 @@
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnArribos',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.Arribos,",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.arribos,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnPartidas',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.Partidas,",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.partidas,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnSubscriptions',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.Suscripciones,",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.suscripciones,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnLogin',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.Login,",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
+                            "    },",
+                            "    {",
+                            "        xtype: 'button',",
+                            "        id: 'btnTaxi',",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.taxi,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    }",
@@ -356,7 +364,7 @@
                 "width": "100%"
             },
             "name": "MyPanel1",
-            "designerId": "eeca96db-3b56-47cc-a732-98a52bd19341",
+            "designerId": "9ae64524-9ebc-4253-83e4-660984ce4ce6",
             "cn": [
                 {
                     "type": "basiceventbinding",
@@ -436,6 +444,21 @@
                             },
                             "name": "MyButton1",
                             "designerId": "f35a6618-1fc5-47be-a3e1-50d2de4d7caf"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "refresh",
+                                "id": "btnDetailsRefresh",
+                                "text": null
+                            },
+                            "name": "MyButton8",
+                            "designerId": "13fb2ce0-7bb5-4797-8c0a-1a51a6aecee7"
                         }
                     ]
                 },
@@ -481,9 +504,9 @@
                                     "userConfig": {
                                         "designer|displayName": "tpl",
                                         "implHandler": [
-                                            "\"<h2>{nVuelo}</h2>\",",
-                                            "                                            \"<h2>{aerolinea}</h2>\",",
-                                            "                                            \"<h2>{origen}</h2>\"",
+                                            "<h2>{nVuelo}</h2>",
+                                            "                                            <h2>{aerolinea}</h2>",
+                                            "                                            <h2>{origen}</h2>",
                                             "<img style=\"height: 100px; width: 100px;\" src=\"Img/Aeromas.png\" />"
                                         ]
                                     },
@@ -520,7 +543,9 @@
                                 "centered": false,
                                 "docked": "top",
                                 "height": "50%",
-                                "id": "origen"
+                                "id": "origen",
+                                "margin": 20,
+                                "padding": 5
                             },
                             "name": "MyContainer3",
                             "designerId": "22f8e781-aae1-4d2d-819e-bf9d722de83c",
@@ -533,7 +558,8 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "html": "Origen"
+                                        "html": "",
+                                        "id": "detailsOrigen"
                                     },
                                     "name": "MyLabel",
                                     "designerId": "54ae69c4-20e3-4d8c-a05d-1af7fa457964"
@@ -580,7 +606,9 @@
                                 "centered": false,
                                 "docked": null,
                                 "height": "50%",
-                                "id": "destino"
+                                "id": "destino",
+                                "margin": 20,
+                                "padding": 5
                             },
                             "name": "MyContainer4",
                             "designerId": "112f3b63-db29-423f-a9e8-c673e0e63a98",
@@ -593,7 +621,8 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "html": "Destino"
+                                        "html": "",
+                                        "id": "detailsDestino"
                                     },
                                     "name": "MyLabel2",
                                     "designerId": "5f9f5e2f-b8ee-4742-8fd5-400bf7d4db3a"
@@ -630,6 +659,17 @@
             "name": "usercontainer",
             "designerId": "58a7338a-c20b-43b9-99b2-1176bf66c172",
             "masterInstanceId": "f6a9c87d-8f36-466a-b967-6b79d7f09dec"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "taxicontainer",
+            "designerId": "40a1c6d8-6b52-4e4e-bad1-cd766a05201e",
+            "masterInstanceId": "fd50dd76-3bcc-448d-beab-fce5b970a75c"
         }
     ]
 }

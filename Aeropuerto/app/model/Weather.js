@@ -33,6 +33,10 @@ Ext.define('Aeropuerto.model.Weather', {
             {
                 name: 'weatherDesc',
                 type: 'string'
+            },
+            {
+                name: 'city',
+                type: 'string'
             }
         ]
     }

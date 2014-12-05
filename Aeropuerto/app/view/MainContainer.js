@@ -19,6 +19,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
 
     requires: [
         'Aeropuerto.view.UserContainer',
+        'Aeropuerto.view.TaxiContainer',
         'Ext.Panel',
         'Ext.TitleBar',
         'Ext.Button',
@@ -66,28 +67,35 @@ Ext.define('Aeropuerto.view.MainContainer', {
                             {
                                 xtype: 'button',
                                 id: 'btnArribos',
-                                text: Ext.getStore('StringsStore').getAt(0).data.Arribos,
+                                text: Ext.getStore('StringsStore').getAt(0).data.arribos,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
                             {
                                 xtype: 'button',
                                 id: 'btnPartidas',
-                                text: Ext.getStore('StringsStore').getAt(0).data.Partidas,
+                                text: Ext.getStore('StringsStore').getAt(0).data.partidas,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
                             {
                                 xtype: 'button',
                                 id: 'btnSubscriptions',
-                                text: Ext.getStore('StringsStore').getAt(0).data.Suscripciones,
+                                text: Ext.getStore('StringsStore').getAt(0).data.suscripciones,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
                             {
                                 xtype: 'button',
                                 id: 'btnLogin',
-                                text: Ext.getStore('StringsStore').getAt(0).data.Login,
+                                text: Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnTaxi',
+                                text: Ext.getStore('StringsStore').getAt(0).data.taxi,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             }
@@ -240,6 +248,11 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 xtype: 'button',
                                 id: 'btnDetailsSubscribe',
                                 iconCls: 'favorites'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnDetailsRefresh',
+                                iconCls: 'refresh'
                             }
                         ]
                     },
@@ -255,9 +268,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 height: '100%',
                                 id: 'companyName',
                                 tpl: [
-                                    '"<h2>{nVuelo}</h2>",',
-                                    '                                            "<h2>{aerolinea}</h2>",',
-                                    '                                            "<h2>{origen}</h2>"',
+                                    '<h2>{nVuelo}</h2>',
+                                    '                                            <h2>{aerolinea}</h2>',
+                                    '                                            <h2>{origen}</h2>',
                                     '<img style="height: 100px; width: 100px;" src="Img/Aeromas.png" />'
                                 ],
                                 width: '100%'
@@ -276,13 +289,16 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 docked: 'top',
                                 height: '50%',
                                 id: 'origen',
+                                margin: 20,
+                                padding: 5,
                                 tpl: [
                                     '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
                                 ],
                                 items: [
                                     {
                                         xtype: 'label',
-                                        html: 'Origen'
+                                        html: '',
+                                        id: 'detailsOrigen'
                                     }
                                 ]
                             },
@@ -295,13 +311,16 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 centered: false,
                                 height: '50%',
                                 id: 'destino',
+                                margin: 20,
+                                padding: 5,
                                 tpl: [
                                     '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
                                 ],
                                 items: [
                                     {
                                         xtype: 'label',
-                                        html: 'Destino'
+                                        html: '',
+                                        id: 'detailsDestino'
                                     }
                                 ]
                             }
@@ -311,6 +330,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
             },
             {
                 xtype: 'usercontainer'
+            },
+            {
+                xtype: 'taxicontainer'
             }
         ]
     }

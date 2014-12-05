@@ -23,27 +23,59 @@ Ext.define('Aeropuerto.model.Strings', {
     config: {
         fields: [
             {
-                name: 'Partidas',
+                name: 'partidas',
                 type: 'string'
             },
             {
-                name: 'Arribos',
+                name: 'arribos',
                 type: 'string'
             },
             {
-                name: 'Suscripciones',
+                name: 'suscripciones',
                 type: 'string'
             },
             {
-                name: 'Cargando',
+                name: 'cargando',
                 type: 'string'
             },
             {
-                name: 'Detalles',
+                name: 'detalles',
                 type: 'string'
             },
             {
-                name: 'Login',
+                name: 'iniciar_sesion',
+                type: 'string'
+            },
+            {
+                name: 'nombre',
+                type: 'string'
+            },
+            {
+                name: 'apellido',
+                type: 'string'
+            },
+            {
+                name: 'email',
+                type: 'string'
+            },
+            {
+                name: 'password',
+                type: 'string'
+            },
+            {
+                name: 'fecha_nacimiento',
+                type: 'string'
+            },
+            {
+                name: 'taxi',
+                type: 'string'
+            },
+            {
+                name: 'version',
+                type: 'string'
+            },
+            {
+                name: 'cultura',
                 type: 'string'
             }
         ]

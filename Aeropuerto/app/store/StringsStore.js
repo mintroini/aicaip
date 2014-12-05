@@ -24,6 +24,8 @@ Ext.define('Aeropuerto.store.StringsStore', {
     ],
 
     config: {
+        autoLoad: true,
+        autoSync: true,
         model: 'Aeropuerto.model.Strings',
         storeId: 'StringsStore',
         proxy: {
@@ -31,7 +33,7 @@ Ext.define('Aeropuerto.store.StringsStore', {
             type: 'localstorage',
             reader: {
                 type: 'xml',
-                record: 'Strings'
+                record: 'GetTextsResult'
             }
         }
     }

@@ -37,6 +37,9 @@ Ext.define('Aeropuerto.controller.Usuarios', {
             },
             "#btnLogOut": {
                 tap: 'onButtonLogOutTap'
+            },
+            "#btnModificarDatos": {
+                tap: 'onModificarDatosTap'
             }
         }
     },
@@ -52,32 +55,54 @@ Ext.define('Aeropuerto.controller.Usuarios', {
     },
 
     onRegisterInicialButtonTap: function(button, e, eOpts) {
-                            var a = Ext.getCmp('registerForm');
-                            var b = Ext.getCmp('initial');
+        var a = Ext.getCmp('registerForm');
+        var b = Ext.getCmp('initial');
 
         Ext.getCmp('userContainerHome').setIconCls('arrow_left');
 
-                            a.show();
-                            b.hide();
+        a.show();
+        a.setTitle('Register');
+        b.hide();
     },
 
     onHomeButtonTap: function(button, e, eOpts) {
+            if(!Ext.getCmp('Logged').isHidden()){
+               this.getApplication().getController('LogicController').showHideMenu('');
+            }else{
+
             if(Ext.getCmp('initial').isHidden()){
-                var a = Ext.getCmp('loginForm');
-                var b = Ext.getCmp('registerForm');
-                var c = Ext.getCmp('initial');
-                Ext.getCmp('userContainerHome').setIconCls('list');
-                a.hide();
-                b.hide();
-                c.show();
+                if(Ext.getCmp('registerForm').getTitle() === 'Edit'){
+                      Ext.getCmp('registerForm').hide();
+                      Ext.getCmp('Logged').show();
+                      Ext.getCmp('userContainerHome').setIconCls('list');
+                }else{
+                    var a = Ext.getCmp('loginForm');
+                    var b = Ext.getCmp('registerForm');
+                    var c = Ext.getCmp('initial');
+                    Ext.getCmp('userContainerHome').setIconCls('list');
+                    a.hide();
+                    b.hide();
+                    c.show();
+                    }
             }else{
 
                this.getApplication().getController('LogicController').showHideMenu('');
             }
+                }
     },
 
     onRegisterButtonTap: function(button, e, eOpts) {
-        this.createUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'),Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerEmail').getValue(),'');
+
+        if(Ext.getCmp('registerForm').getTitle() === 'Edit'){
+
+            var user = Ext.getStore('UsuarioStore').getAt(0);
+
+            this.updateUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'), user.data.password,Ext.getCmp('registerEmail').getValue(),'',Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerPassword2').getValue());
+
+        }else{
+         this.createUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'),Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerEmail').getValue(),'');
+        }
+
     },
 
     onTrueLoginTap: function(button, e, eOpts) {
@@ -93,6 +118,33 @@ Ext.define('Aeropuerto.controller.Usuarios', {
         this.goToLogin();
     },
 
+    onModificarDatosTap: function(button, e, eOpts) {
+        var a = Ext.getCmp('registerForm');
+        Ext.getCmp('initial').hide();
+        Ext.getCmp('Logged').hide();
+        Ext.getCmp('loginForm').hide();
+
+        Ext.getCmp('userContainerHome').setIconCls('arrow_left');
+
+        a.show();
+        a.setTitle('Edit');
+
+        var user = Ext.getStore('UsuarioStore').getAt(0);
+        var separado = user.data.fnac.split("-");
+        var dia = separado[2].split("T");
+
+        Ext.getCmp('registerName').setValue(user.data.nombre);
+        Ext.getCmp('registerLastName').setValue(user.data.apellido);
+        Ext.getCmp('registerDate').setValue({day: dia[0], month: separado[1], year: separado[0]});
+        Ext.getCmp('registerPassword').setValue(user.data.password);
+        Ext.getCmp('registerPassword2').show();
+        Ext.getCmp('registerPassword2').setValue(user.data.password);
+        Ext.getCmp('registerEmail').setValue(user.data.email);
+
+        Ext.getCmp('registerEmail').disable();
+
+    },
+
     createUser: function(nombre, apellido, fnacimiento, contrasena, email, nacionalidad) {
         var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><CreateUser xmlns="http://tempuri.org/"><pEmail>'+email+'</pEmail><pNombre>'+nombre+'</pNombre><pApellido>'+apellido+'</pApellido><pPassword>'+contrasena+'</pPassword><pFNac>'+fnacimiento+'</pFNac><pNacionalidad>'+nacionalidad+'</pNacionalidad></CreateUser></soap:Body></soap:Envelope>';
         Ext.Ajax.request({
@@ -105,15 +157,22 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                             method: 'POST',
                                             params: xmlParams,
                                             success: function(response) {
-                                                alert('Usuario creado');
+
+                                                var mensaje = response.responseXML.getElementsByTagName('CreateUserResult')[0].firstChild.nodeValue;
+                                               if(mensaje == 'El Usuario se ha Creado Correctamente'){
+                                                    alert('Usuario creado');
                                                 var tienda = Ext.getStore('UsuarioStore');
-                                                console.log(tienda.getCount());
                                                 tienda.add({nombre : nombre,apellido:apellido,fnac : fnacimiento,email :email,password:contrasena,nacionalidad:nacionalidad});
                                                 tienda.sync();
                                                 tienda.load();
-                                                console.log(tienda.getCount());
-                                                console.log(tienda.getAt(0).data);
-                                                Aeropuerto.app.getController('Usuarios').goToLogin();
+                                                if(Aeropuerto.app.referrer !== ''){
+                                                    Aeropuerto.app.getController('LogicController').showView(Aeropuerto.app.referrer);
+                                                }else{
+                                                    Aeropuerto.app.getController('Usuarios').goToLogin();
+                                                }
+                                               }else{
+                                                   alert('No se creo');
+                                               }
                                             },
                                             failure: function(response) {
                                                 alert('todo mal'+response.responseText);
@@ -124,7 +183,6 @@ Ext.define('Aeropuerto.controller.Usuarios', {
 
     userLogin: function(email, password) {
         var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><LogIn xmlns="http://tempuri.org/"><email>'+email+'</email><password>'+password+'</password></LogIn></soap:Body></soap:Envelope>';
-
         Ext.Ajax.request({
                                                     url: this.getUrlServer(),
                                                     useDefaultXhrHeader: false,
@@ -137,7 +195,7 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                                     success: function(response) {
 
                                                           var tienda = Ext.getStore('UsuarioStore');
-                                                           console.log(tienda.getCount());
+                                                          tienda.getProxy().getReader().setRecord('LogInResult');
                                                           var usuarios = response.responseXML.getElementsByTagName('LogInResponse');
                                                           Ext.each(usuarios, function(usuario) {
                                                                 tienda.addData(usuario);
@@ -146,14 +204,14 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                                                 tienda.sync();
                                                                 tienda.load();
                                                                 alert('Login Correcto');
-                                                           console.log(tienda.getCount());
-                                                                console.log(tienda.getAt(0).data);
-                                                                Aeropuerto.app.getController('Usuarios').goToLogin();
+                                                                if(Aeropuerto.app.referrer !== ''){
+                                                                    Aeropuerto.app.getController('LogicController').showView(Aeropuerto.app.referrer);
+                                                                }else{
+                                                                   Aeropuerto.app.getController('Usuarios').goToLogin();
+                                                                }
                                                             }else{
                                                                 alert('Login Incorrecto');
                                                             }
-                                                       console.log(response);
-
                                                     },
                                                     failure: function(response) {
                                                         alert(response.responseText);
@@ -162,10 +220,47 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                                 });
     },
 
+    updateUser: function(nombreNuevo, apellidoNuevo, fnacNuevo, contrasena, email, nacionalidadNuevo, newPass1,newPass2) {
+        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><UpdateUser xmlns="http://tempuri.org/"><email>'+email+'</email><password>'+contrasena+'</password><newPassword1>'+newPass1+'</newPassword1><newPassword2>'+newPass2+'</newPassword2><newNombre>'+nombreNuevo+'</newNombre><newApellido>'+apellidoNuevo+'</newApellido><newFNac>'+fnacNuevo+'</newFNac><newNacionalidad>'+nacionalidadNuevo+'</newNacionalidad></UpdateUser></soap:Body></soap:Envelope>';
+
+        Ext.Ajax.request({
+                                            url: this.getUrlServer(),
+                                            useDefaultXhrHeader: false,
+                                            headers: {
+                                                'Content-Type': 'text/xml; charset=utf-8',
+                                                'SOAPAction': 'http://tempuri.org/UpdateUser'
+                                            },
+                                            method: 'POST',
+                                            params: xmlParams,
+                                            success: function(response) {
+
+                                                var tienda = Ext.getStore('UsuarioStore');
+                                                tienda.getProxy().getReader().setRecord('UpdateUserResult');
+                                                var usuarios = response.responseXML.getElementsByTagName('UpdateUserResponse');
+                                                Ext.each(usuarios, function(usuario) {
+                                                    tienda.addData(usuario);
+                                                    }, this);
+                                                        if(tienda.getCount() > 1){
+                                                            tienda.removeAt(0);
+                                                            tienda.sync();
+                                                            tienda.load();
+                                                                alert('Login Correcto');
+                                                                Aeropuerto.app.getController('Usuarios').goToLogin();
+                                                         }else{
+                                                             alert('Login Incorrecto');
+                                                         }
+                                            },
+                                            failure: function(response) {
+                                                alert('todo mal'+response.responseText);
+                                                console.log(response.responseText);
+                                            }
+                                        });
+    },
+
     goToLogin: function() {
             var userContainer = Ext.getCmp('userContainer');
             userContainer.show();
-
+            this.hideRegisterForms();
             var initial = Ext.getCmp('initial');
             var logged = Ext.getCmp('Logged');
 
@@ -174,11 +269,17 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                 logged.show();
                 initial.hide();
                 Ext.getCmp('loggedLabel').setHtml('Ya estas logeado como: '+tienda.getAt(0).data.nombre);
+                Ext.getCmp('userContainerHome').setIconCls('list');
             }else{
                 logged.hide();
                 initial.show();
             }
 
+    },
+
+    hideRegisterForms: function() {
+         Ext.getCmp('registerForm').hide();
+         Ext.getCmp('loginForm').hide();
     }
 
 });

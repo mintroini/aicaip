@@ -21,11 +21,12 @@ Ext.define('Aeropuerto.view.UserContainer', {
         'Ext.Toolbar',
         'Ext.Button',
         'Ext.form.FieldSet',
-        'Ext.field.Email',
         'Ext.field.Password',
+        'Ext.field.Email',
         'Ext.field.DatePicker',
         'Ext.picker.Date',
-        'Ext.Label'
+        'Ext.Label',
+        'Ext.Spacer'
     ],
 
     config: {
@@ -76,14 +77,13 @@ Ext.define('Aeropuerto.view.UserContainer', {
                     {
                         xtype: 'textfield',
                         id: 'loginUsername',
-                        label: 'Username',
+                        label: '',
                         labelWidth: '40%',
                         name: 'username'
                     },
                     {
-                        xtype: 'textfield',
+                        xtype: 'passwordfield',
                         id: 'loginPassword',
-                        label: 'Password',
                         labelWidth: '40%',
                         name: 'password'
                     },
@@ -100,42 +100,47 @@ Ext.define('Aeropuerto.view.UserContainer', {
                 xtype: 'fieldset',
                 hidden: true,
                 id: 'registerForm',
-                title: 'Register',
                 items: [
+                    {
+                        xtype: 'emailfield',
+                        id: 'registerEmail',
+                        labelWidth: '40%',
+                        name: 'email',
+                        placeHolder: 'email@example.com'
+                    },
                     {
                         xtype: 'textfield',
                         id: 'registerName',
-                        label: 'Nombre',
                         labelWidth: '40%',
                         name: 'nombre'
                     },
                     {
                         xtype: 'textfield',
                         id: 'registerLastName',
-                        label: 'Apellido',
                         labelWidth: '40%',
                         name: 'apellido'
-                    },
-                    {
-                        xtype: 'emailfield',
-                        id: 'registerEmail',
-                        label: 'Email',
-                        labelWidth: '40%',
-                        name: 'email',
-                        placeHolder: 'email@example.com'
                     },
                     {
                         xtype: 'passwordfield',
                         id: 'registerPassword',
                         width: '',
-                        label: 'Contresena',
+                        label: '',
+                        labelWidth: '40%',
+                        name: 'contrasena'
+                    },
+                    {
+                        xtype: 'passwordfield',
+                        hidden: true,
+                        id: 'registerPassword2',
+                        width: '',
+                        label: '',
                         labelWidth: '40%',
                         name: 'contrasena'
                     },
                     {
                         xtype: 'datepickerfield',
+                        html: '',
                         id: 'registerDate',
-                        label: 'Field',
                         labelWidth: '40%',
                         placeHolder: 'dd/mm/yyyy',
                         displayField: 'Fecha Nacimiento',
@@ -167,14 +172,53 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         id: 'loggedLabel'
                     },
                     {
+                        xtype: 'spacer',
+                        height: '10%',
+                        margin: 20,
+                        padding: 10
+                    },
+                    {
                         xtype: 'button',
-                        centered: true,
                         id: 'btnLogOut',
+                        margin: 20,
+                        padding: 8,
                         text: 'logout'
+                    },
+                    {
+                        xtype: 'button',
+                        id: 'btnModificarDatos',
+                        margin: 20,
+                        padding: 8,
+                        text: 'Modificar datos'
                     }
                 ]
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
+        this.element.on({
+            swipe: function(e, node, options) {
+                if(e.direction == "right") {
+                    Aeropuerto.app.getController('LogicController').showHideMenu("right");
+                }
+                if(e.direction == "left") {
+                    Aeropuerto.app.getController('LogicController').showHideMenu("left");
+                }
+            }
+        });
+
+        //Set labels with language
+        Ext.getCmp('registerName').setLabel(Ext.getStore('StringsStore').getAt(0).data.nombre);
+        Ext.getCmp('registerLastName').setLabel(Ext.getStore('StringsStore').getAt(0).data.apellido);
+        Ext.getCmp('registerEmail').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);
+        Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
+        Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
+        Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.fecha_nacimiento);
+
+        Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);
+        Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
     }
 
 });

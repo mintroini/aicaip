@@ -1,0 +1,94 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "taxicontainer",
+        "designer|userClassName": "TaxiContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "TaxiContainer",
+        "width": "100%"
+    },
+    "name": "MyContainer",
+    "designerId": "fd50dd76-3bcc-448d-beab-fce5b970a75c",
+    "cn": [
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": null,
+                "hidden": null,
+                "id": "taxiPanel",
+                "width": null
+            },
+            "name": "MyTabPanel",
+            "designerId": "f813d2fe-cd85-49ac-9be2-2f4c8f1ff8d3",
+            "cn": [
+                {
+                    "type": "Ext.Toolbar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "top"
+                    },
+                    "name": "MyToolbar2",
+                    "designerId": "e378200b-f4a5-4283-b81d-28352f5b2923",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "iconCls": "list",
+                                "id": "taxiContainerHome",
+                                "text": null
+                            },
+                            "name": "MyButton2",
+                            "designerId": "97413223-c378-4558-83ee-1b8710a6725e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Tab 1"
+                    },
+                    "name": "MyContainer5",
+                    "designerId": "fba52cb6-ae63-47b7-a7fb-8032a488b91a"
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Tab 2"
+                    },
+                    "name": "MyContainer6",
+                    "designerId": "e13ea0c8-f0c8-43a4-9988-ae1596e6644a"
+                }
+            ]
+        }
+    ]
+}

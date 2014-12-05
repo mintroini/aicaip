@@ -49,9 +49,10 @@
                 "fn": "goToDetails",
                 "implHandler": [
                     "var info;",
+                    "this.globalRecord = record;",
                     "",
                     "var topBar = Ext.getCmp('tbDetails');",
-                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Detalles);",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.detalles);",
                     "",
                     "",
                     "if (record) {",
@@ -81,34 +82,62 @@
                     "    }",
                     "    d.hide();",
                     "    c.show();",
-                    "",
+                    "    this.showHideMenu('left');",
                     "    var tienda = Ext.getStore('WeatherStore');",
                     "",
                     "    if(record.data.esArribo)",
                     "    {",
-                    "        //Tiempo en el lugar de origen",
+                    "        //Tiempo en el lugar de origen  Ext.Viewport.mask({ xtype: 'loadmask' });",
+                    "        Ext.getCmp('detailsOrigen').setHtml(record.data.origen);",
+                    "        c.child('#weather').child('#origen').mask({ xtype: 'loadmask' });",
+                    "        c.child('#weather').child('#destino').mask({ xtype: 'loadmask' });",
                     "        this.getApplication().getController('Global').getWeather(record.data.origen);",
                     "        c.child('#weather').child('#origen').setData(tienda.getAt(0).data);",
+                    "        c.child('#weather').child('#origen').unmask();",
                     "        //Tiempo en el lugar de destino (Montevideo)",
+                    "        Ext.getCmp('detailsDestino').setHtml(\"Montevideo\");",
                     "        this.getApplication().getController('Global').getWeather('Montevideo');",
                     "        c.child('#weather').child('#destino').setData(tienda.getAt(0).data);",
+                    "        c.child('#weather').child('#destino').unmask();",
                     "",
                     "    }else",
                     "    {",
                     "        //Tiempo en el lugar de origen (Montevideo)",
+                    "        Ext.getCmp('detailsOrigen').setHtml(\"Montevideo\");",
                     "        this.getApplication().getController('Global').getWeather('Montevideo');",
                     "        c.child('#weather').child('#origen').setData(tienda.getAt(0).data);",
                     "        //Tiempo en el lugar de destino",
+                    "        Ext.getCmp('detailsDestino').setHtml(record.data.destino);",
                     "        this.getApplication().getController('Global').getWeather(record.data.destino);",
                     "        c.child('#weather').child('#destino').setData(tienda.getAt(0).data);",
                     "    }",
-                    "    this.showHideMenu('left');",
+                    "",
                     "}",
                     ""
                 ]
             },
             "name": "goToDetails",
             "designerId": "1647e30c-0b86-46c6-8479-f777e217e22a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dataview, index, target, record, e, eOpts"
+                ],
+                "fn": "detailsRefresh",
+                "implHandler": [
+                    "console.log(this.globalRecord);",
+                    ""
+                ]
+            },
+            "name": "detailsRefresh",
+            "designerId": "47b4db6b-2c89-4712-89be-54c99accf104"
         },
         {
             "type": "basicfunction",
@@ -221,9 +250,12 @@
             "userConfig": {
                 "fn": "hideViewAll",
                 "implHandler": [
+                    "Ext.getCmp('lstArribos').hide();",
+                    "Ext.getCmp('lstPartidas').hide();",
+                    "Ext.getCmp('lstSubscriptions').hide();",
                     "Ext.getCmp('mainView').hide();",
-                    "",
                     "Ext.getCmp('userContainer').hide();",
+                    "Ext.getCmp('TaxiContainer').hide();",
                     ""
                 ]
             },
@@ -247,13 +279,12 @@
                     "this.getApplication().getController('Global').getArrivals('','0');",
                     "",
                     "var topBar = Ext.getCmp('topBar');",
-                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Arribos);",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.arribos);",
                     "",
                     "this.hideViewAll();",
                     "this.showView('mainView');",
                     "",
-                    "var lstArrivals = Ext.getCmp('lstArribos');",
-                    "lstArrivals.show();",
+                    "Ext.getCmp('lstArribos').show();",
                     "",
                     ""
                 ],
@@ -277,44 +308,20 @@
                     "Ext.Viewport.hideMenu('left');",
                     "",
                     "var topBar = Ext.getCmp('topBar');",
-                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Partidas);",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.partidas);",
                     "",
                     "this.getApplication().getController('Global').getDepartures('','0');",
                     "",
                     "this.hideViewAll();",
                     "this.showView('mainView');",
                     "",
-                    "var lstDepartures = Ext.getCmp('lstPartidas');",
-                    "lstDepartures.show();",
+                    "Ext.getCmp('lstPartidas').show();",
                     ""
                 ],
                 "name": "tap"
             },
             "name": "btnPartidas",
             "designerId": "1716ee5b-200d-4e14-b7c1-5a7b0d3d0744"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#btnLogin",
-                "designer|targetType": "Ext.Button",
-                "fn": "onLogin",
-                "implHandler": [
-                    "Ext.Viewport.hideMenu('left');",
-                    "",
-                    "this.hideViewAll();",
-                    "",
-                    "this.getApplication().getController('Usuarios').goToLogin();"
-                ],
-                "name": "tap"
-            },
-            "name": "onLogin",
-            "designerId": "5ccef469-9810-401d-a32b-4f5ade978a45"
         },
         {
             "type": "controlleraction",
@@ -331,21 +338,43 @@
                     "Ext.Viewport.hideMenu('left');",
                     "",
                     "var topBar = Ext.getCmp('topBar');",
-                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.Suscripciones);",
+                    "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.suscripciones);",
                     "",
                     "this.hideViewAll();",
                     "this.showView('mainView');",
                     "",
                     "this.getApplication().getController('Global').getSubscriptions();",
                     "",
-                    "var lstSubscriptions = Ext.getCmp('lstSubscriptions');",
-                    "lstSubscriptions.show();",
+                    "Ext.getCmp('lstSubscriptions').show();",
                     ""
                 ],
                 "name": "tap"
             },
             "name": "btnSubscriptionsTap",
             "designerId": "3c8c405f-5665-4202-890b-98db69c5ee54"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnLogin",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnLogin",
+                "implHandler": [
+                    "Ext.Viewport.hideMenu('left');",
+                    "",
+                    "this.hideViewAll();",
+                    "Aeropuerto.app.referrer = '';",
+                    "this.getApplication().getController('Usuarios').goToLogin();"
+                ],
+                "name": "tap"
+            },
+            "name": "btnLogin",
+            "designerId": "67aa0c89-2bb8-4d6a-934e-96a5ea931201"
         },
         {
             "type": "controlleraction",
@@ -454,7 +483,7 @@
                     "    susc.sync();",
                     "",
                     "    list.refresh();",
-                    " ",
+                    "",
                     "}",
                     "",
                     ""
@@ -527,6 +556,45 @@
             },
             "name": "onMenuButtonTap",
             "designerId": "0348a191-c470-4928-8531-e559d689a8a8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsRefresh",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDetailsRefresh",
+                "implHandler": [
+                    "",
+                    "    //se actualiza la lista de arribos o partidas dependiendo de lo que sea el vuelo seleccionado",
+                    "    if(this.globalRecord.data.esArribo){",
+                    "        this.getApplication().getController('Global').getArrivals('','0');",
+                    "        var tienda =  Ext.getStore('Arribos');",
+                    "        Ext.getCmp('lstArribos').refresh();",
+                    "    }else{",
+                    "        this.getApplication().getController('Global').getDepartures('','0');",
+                    "        var tienda =  Ext.getStore('Partidas');",
+                    "        Ext.getCmp('lstPartidas').refresh();",
+                    "",
+                    "    }",
+                    "    //se obtiene el vuelo de la lista actualizada",
+                    "    for (i = 0; i < tienda.getCount(); i++) {",
+                    "         if(tienda.getAt(i).data.nVuelo == this.globalRecord.data.nVuelo){",
+                    "             var index =  i;",
+                    "         }",
+                    "    }",
+                    "    //se actualizan los datos",
+                    "     Ext.getCmp('companyName').setData(tienda.getAt(index).data);",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onDetailsRefresh",
+            "designerId": "3c36d386-b724-45f2-b7e4-683ed2f6172c"
         }
     ]
 }

@@ -6,6 +6,8 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoLoad": true,
+        "autoSync": true,
         "designer|userClassName": "StringsStore",
         "model": "Strings",
         "requires": [
@@ -44,7 +46,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "record": "Strings"
+                        "record": "GetTextsResult"
                     },
                     "name": "MyXmlReader1",
                     "designerId": "b182b212-ced7-44e1-8770-01578da0f614"

@@ -38,12 +38,14 @@ Ext.application({
     ],
     views: [
         'MainContainer',
-        'UserContainer'
+        'UserContainer',
+        'TaxiContainer'
     ],
     controllers: [
         'Global',
         'LogicController',
-        'Usuarios'
+        'Usuarios',
+        'Taxi'
     ],
     name: 'Aeropuerto',
     statusBarStyle: 'black-translucent',
@@ -51,7 +53,6 @@ Ext.application({
     launch: function() {
         var store= Ext.getStore('Uuid');
         var logeado= Ext.getStore('UsuarioStore');
-        console.log(logeado.getCount());
         if(store.getCount() === 0){
             var guid =  this.getApplication().getController('LogicController').createUuid();
 
@@ -59,16 +60,11 @@ Ext.application({
             store.add({key : uuid});
         }
 
-        store= Ext.getStore('StringsStore');
-        store.getProxy().clear();
-        store.data.clear();
-        store.sync();
-        if(store.getCount() === 0){
-            store.add({Partidas : 'Partidas', Arribos : 'Arribos', Suscripciones : 'Suscripciones', Detalles : 'Detalles', Login : 'Login'});
-        }
-
+        this.getApplication().getController('Global').getVersion('esp');
         this.getApplication().getController('Global').getArrivals('','0');
 
+        //var DeviceLanguage = Locale.getDefault().getDisplayLanguage();
+        //alert(DeviceLanguage);
         Ext.create('Aeropuerto.view.MainContainer', {fullscreen: true});
     }
 

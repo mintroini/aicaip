@@ -38,6 +38,7 @@ Ext.Loader.addClassPathMappings({
 Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.LogicController": [],
+  "Aeropuerto.controller.Taxi": [],
   "Aeropuerto.controller.Usuarios": [],
   "Aeropuerto.model.Strings": [],
   "Aeropuerto.model.Usuario": [],
@@ -52,6 +53,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.store.Uuid": [],
   "Aeropuerto.store.WeatherStore": [],
   "Aeropuerto.view.MainContainer": [],
+  "Aeropuerto.view.TaxiContainer": [],
   "Aeropuerto.view.UserContainer": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -549,6 +551,17 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -678,6 +691,7 @@ Ext.ClassManager.addNameAlternateMappings({
 Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.LogicController": [],
+  "Aeropuerto.controller.Taxi": [],
   "Aeropuerto.controller.Usuarios": [],
   "Aeropuerto.model.Strings": [],
   "Aeropuerto.model.Usuario": [],
@@ -693,6 +707,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.store.WeatherStore": [],
   "Aeropuerto.view.MainContainer": [
     "widget.mainContainer"
+  ],
+  "Aeropuerto.view.TaxiContainer": [
+    "widget.taxicontainer"
   ],
   "Aeropuerto.view.UserContainer": [
     "widget.usercontainer"
@@ -1274,6 +1291,17 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],

@@ -52,6 +52,20 @@
             },
             "name": "field21",
             "designerId": "385eb714-8b67-47f1-beec-f82ee59efb8d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "city",
+                "type": "string"
+            },
+            "name": "field18",
+            "designerId": "0aa6ee23-33c3-4806-9a40-9715cb1b29aa"
         }
     ]
 }
