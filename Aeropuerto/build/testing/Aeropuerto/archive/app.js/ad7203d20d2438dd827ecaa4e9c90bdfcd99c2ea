@@ -1,4 +1,4 @@
-function _9b944eaca6fca8710ad06c1226edb8599ee84ff9(){};//@tag foundation,core
+function _ad7203d20d2438dd827ecaa4e9c90bdfcd99c2ea(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -72781,15 +72781,25 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
                     },
                     {
                         xtype: 'container',
-                        title: 'Tab 1'
+                        id: 'taxiTab1'
                     },
                     {
                         xtype: 'container',
-                        title: 'Tab 2'
+                        id: 'taxiTab2'
                     }
                 ]
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
+
+        //Ext.getCmp('taxiTab1').setTitle(Ext.getStore('StringsStore').getAt(0).data.solicitar_servicio);
+        //Ext.getCmp('taxiTab2').setTitle(Ext.getStore('StringsStore').getAt(0).data.informacion);
+
+        //Ext.getCmp('taxiTab1').setTitle('Solicitar servicio');
+        //Ext.getCmp('taxiTab2').setTitle('Informacion');
     }
 
 });
@@ -74165,6 +74175,8 @@ Ext.application({
         this.getApplication().getController('Global').getVersion('esp');
         this.getApplication().getController('Global').getArrivals('','0');
 
+        //var DeviceLanguage = Locale.getDefault().getDisplayLanguage();
+        //alert(DeviceLanguage);
         Ext.create('Aeropuerto.view.MainContainer', {fullscreen: true});
     }
 

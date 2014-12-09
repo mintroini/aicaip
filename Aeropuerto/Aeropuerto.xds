@@ -22,13 +22,15 @@
         "lineEnding": "LF",
         "genTimestamps": false,
         "cacheBust": false,
-        "buildShouldOverwriteIndex": true,
+        "buildShouldOverwriteIndex": false,
         "generateArchitectVersion": true,
         "projectHasEnabledWebServer": true,
         "lastBuildSelection": {
-            "value": "nativeBuild",
-            "display": "Native Build"
-        }
+            "value": "webBuild",
+            "display": "Build web app"
+        },
+        "lockUrlPrefix": true,
+        "installStatus": "Not Installed"
     },
     "xdsVersion": "3.1.0",
     "xdsBuild": 1943,
@@ -39,7 +41,8 @@
         "view": [
             "d6960af2-e51e-4b00-9831-1a8c019bca68",
             "f6a9c87d-8f36-466a-b967-6b79d7f09dec",
-            "fd50dd76-3bcc-448d-beab-fce5b970a75c"
+            "fd50dd76-3bcc-448d-beab-fce5b970a75c",
+            "5865d153-1fc5-419a-bc8b-3136b0a7baa7"
         ],
         "store": [
             "22c5973e-e137-424b-84bd-d968f624f1cb",
@@ -55,7 +58,8 @@
             "0cd84b2f-99fc-40f5-bdef-de2f0fba53b3",
             "60eee5ec-7468-40b0-9591-dd2da4cf8eff",
             "76ee166e-4dbe-457d-ae40-2d8aa8468623",
-            "228818ad-41f4-4b5d-8c84-99c7d5a889f0"
+            "228818ad-41f4-4b5d-8c84-99c7d5a889f0",
+            "6fb94fa9-0bf2-4b17-8e67-01fe14f27e66"
         ],
         "model": [
             "8c9361b0-d3a2-4b38-b9f3-22aa8b9c645b",

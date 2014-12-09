@@ -10,9 +10,13 @@
             "Global",
             "LogicController",
             "Usuarios",
-            "Taxi"
+            "Taxi",
+            "Contacto"
         ],
         "icon": null,
+        "js": [
+            "{\"path\": \"app/utils/GALocalStorage.js\"}"
+        ],
         "models": [
             "Vuelo",
             "Weather",
@@ -35,14 +39,23 @@
         "views": [
             "MainContainer",
             "UserContainer",
-            "TaxiContainer"
+            "TaxiContainer",
+            "ContactoContainer"
         ]
     },
     "name": "Application",
     "configAlternates": {
-        "icon": "string"
+        "icon": "string",
+        "js": "object"
     },
     "designerId": "application",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "js",
+            "type": "string"
+        }
+    ],
     "cn": [
         {
             "type": "fixedfunction",
@@ -65,6 +78,7 @@
                     "",
                     "this.getApplication().getController('Global').getVersion('esp');",
                     "this.getApplication().getController('Global').getArrivals('','0');",
+                    "//console.log(navigator.language);",
                     "",
                     "//var DeviceLanguage = Locale.getDefault().getDisplayLanguage();",
                     "//alert(DeviceLanguage);"

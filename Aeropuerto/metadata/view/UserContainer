@@ -189,6 +189,8 @@
                         "labelWidth": "40%",
                         "name": "email",
                         "placeHolder": "email@example.com",
+                        "required": true,
+                        "requiredCls": "x-form-required-field",
                         "width": null
                     },
                     "name": "MyEmailField",
@@ -205,7 +207,8 @@
                         "id": "registerName",
                         "label": null,
                         "labelWidth": "40%",
-                        "name": "nombre"
+                        "name": "nombre",
+                        "required": true
                     },
                     "name": "MyTextField",
                     "designerId": "dc6dcf61-5fcb-4d53-84cb-fa997d1925ab"
@@ -238,6 +241,8 @@
                         "label": "",
                         "labelWidth": "40%",
                         "name": "contrasena",
+                        "required": true,
+                        "requiredCls": "x-field-required-field",
                         "width": ""
                     },
                     "name": "MyPasswordField",
@@ -451,9 +456,16 @@
                     "Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);",
                     "Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);",
                     "Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.fecha_nacimiento);",
+                    "Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);",
+                    "Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);",
                     "",
                     "Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);",
-                    "Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);"
+                    "Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);",
+                    "",
+                    "Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.cerrarSesion);",
+                    "Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);",
+                    "Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);",
+                    ""
                 ]
             },
             "name": "initialize",

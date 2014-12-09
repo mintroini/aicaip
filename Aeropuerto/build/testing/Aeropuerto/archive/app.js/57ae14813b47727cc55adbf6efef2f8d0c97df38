@@ -1,4 +1,4 @@
-function _f313893b994c08ed85283a16f7c9d019088f1a8c(){};//@tag foundation,core
+function _57ae14813b47727cc55adbf6efef2f8d0c97df38(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -67532,178 +67532,6 @@ Ext.define('Ext.field.Email', {
 /**
  * @aside guide forms
  *
- * The Number field creates an HTML5 number input and is usually created inside a form. Because it creates an HTML
- * number input field, most browsers will show a specialized virtual keyboard for entering numbers. The Number field
- * only accepts numerical input and also provides additional spinner UI that increases or decreases the current value
- * by a configured {@link #stepValue step value}. Here's how we might use one in a form:
- *
- *     @example
- *     Ext.create('Ext.form.Panel', {
- *         fullscreen: true,
- *         items: [
- *             {
- *                 xtype: 'fieldset',
- *                 title: 'How old are you?',
- *                 items: [
- *                     {
- *                         xtype: 'numberfield',
- *                         label: 'Age',
- *                         minValue: 18,
- *                         maxValue: 150,
- *                         name: 'age'
- *                     }
- *                 ]
- *             }
- *         ]
- *     });
- *
- * Or on its own, outside of a form:
- *
- *     Ext.create('Ext.field.Number', {
- *         label: 'Age',
- *         value: '26'
- *     });
- *
- * ## minValue, maxValue and stepValue
- *
- * The {@link #minValue} and {@link #maxValue} configurations are self-explanatory and simply constrain the value
- * entered to the range specified by the configured min and max values. The other option exposed by this component
- * is {@link #stepValue}, which enables you to set how much the value changes every time the up and down spinners
- * are tapped on. For example, to create a salary field that ticks up and down by $1,000 each tap we can do this:
- *
- *     @example
- *     Ext.create('Ext.form.Panel', {
- *         fullscreen: true,
- *         items: [
- *             {
- *                 xtype: 'fieldset',
- *                 title: 'Are you rich yet?',
- *                 items: [
- *                     {
- *                         xtype: 'numberfield',
- *                         label: 'Salary',
- *                         value: 30000,
- *                         minValue: 25000,
- *                         maxValue: 50000,
- *                         stepValue: 1000
- *                     }
- *                 ]
- *             }
- *         ]
- *     });
- *
- * This creates a field that starts with a value of $30,000, steps up and down in $1,000 increments and will not go
- * beneath $25,000 or above $50,000.
- *
- * Because number field inherits from {@link Ext.field.Text textfield} it gains all of the functionality that text
- * fields provide, including getting and setting the value at runtime, validations and various events that are fired as
- * the user interacts with the component. Check out the {@link Ext.field.Text} docs to see the additional functionality
- * available.
- */
-Ext.define('Ext.field.Number', {
-    extend: 'Ext.field.Text',
-    xtype: 'numberfield',
-    alternateClassName: 'Ext.form.Number',
-
-    config: {
-        /**
-         * @cfg
-         * @inheritdoc
-         */
-        component: {
-            type: 'number'
-        },
-
-        /**
-         * @cfg
-         * @inheritdoc
-         */
-        ui: 'number'
-    },
-
-    proxyConfig: {
-        /**
-         * @cfg {Number} minValue The minimum value that this Number field can accept
-         * @accessor
-         */
-        minValue: null,
-
-        /**
-         * @cfg {Number} maxValue The maximum value that this Number field can accept
-         * @accessor
-         */
-        maxValue: null,
-
-        /**
-         * @cfg {Number} stepValue The amount by which the field is incremented or decremented each time the spinner is tapped.
-         * Defaults to undefined, which means that the field goes up or down by 1 each time the spinner is tapped
-         * @accessor
-         */
-        stepValue: null
-    },
-
-    applyPlaceHolder: function(value) {
-        // Android 4.1 & lower require a hack for placeholder text in number fields when using the Stock Browser
-        // details here https://code.google.com/p/android/issues/detail?id=24626
-        this._enableNumericPlaceHolderHack = ((!Ext.feature.has.NumericInputPlaceHolder) && (!Ext.isEmpty(value)));
-        return value;
-    },
-
-    onFocus: function(e) {
-        if (this._enableNumericPlaceHolderHack) {
-            this.getComponent().input.dom.setAttribute("type", "number");
-        }
-        this.callParent(arguments);
-    },
-
-    onBlur: function(e) {
-        if (this._enableNumericPlaceHolderHack) {
-            this.getComponent().input.dom.setAttribute("type", "text");
-        }
-        this.callParent(arguments);
-    },
-
-    doInitValue : function() {
-        var value = this.getInitialConfig().value;
-
-        if (value) {
-            value = this.applyValue(value);
-        }
-
-        this.originalValue = value;
-    },
-
-    applyValue: function(value) {
-        var minValue = this.getMinValue(),
-            maxValue = this.getMaxValue();
-
-        if (Ext.isNumber(minValue) && Ext.isNumber(value)) {
-            value = Math.max(value, minValue);
-        }
-
-        if (Ext.isNumber(maxValue) && Ext.isNumber(value)) {
-            value = Math.min(value, maxValue);
-        }
-
-        value = parseFloat(value);
-        return (isNaN(value)) ? '' : value;
-    },
-
-    getValue: function() {
-        var value = parseFloat(this.callParent(), 10);
-        return (isNaN(value)) ? null : value;
-    },
-
-    doClearIconTap: function(me, e) {
-        me.getComponent().setValue('');
-        me.getValue();
-        me.hideClearIcon();
-    }
-});
-
-/**
- * @aside guide forms
- *
  * The Password field creates a password input and is usually created inside a form. Because it creates a password
  * field, when the user enters text it will show up as stars. Aside from that, the password field is just a normal text
  * field. Here's an example of how to use it in a form:
@@ -72301,42 +72129,6 @@ Ext.define('Aeropuerto.model.Strings', {
             {
                 name: 'cultura',
                 type: 'string'
-            },
-            {
-                name: 'taxi_info',
-                type: 'string'
-            },
-            {
-                name: 'registrarse',
-                type: 'string'
-            },
-            {
-                name: 'cerrarSesion',
-                type: 'string'
-            },
-            {
-                name: 'taxi_cantidadPersonas',
-                type: 'string'
-            },
-            {
-                name: 'taxi_Origen',
-                type: 'string'
-            },
-            {
-                name: 'taxi_Destino',
-                type: 'string'
-            },
-            {
-                name: 'taxi_Desde',
-                type: 'string'
-            },
-            {
-                name: 'taxi_Solicitar',
-                type: 'string'
-            },
-            {
-                name: 'informacion',
-                type: 'string'
             }
         ]
     }
@@ -72934,16 +72726,9 @@ Ext.define('Aeropuerto.view.UserContainer', {
         Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
         Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
         Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.fecha_nacimiento);
-        Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);
-        Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);
 
         Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);
         Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
-
-        Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.cerrarSesion);
-        Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);
-        Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);
-
     }
 
 });
@@ -72968,12 +72753,9 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
     alias: 'widget.taxicontainer',
 
                
+                        
                       
                      
-                        
-                            
-                           
-                           
                    
       
 
@@ -72982,78 +72764,34 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
         hidden: true,
         id: 'TaxiContainer',
         width: '100%',
-        layout: 'fit',
         items: [
             {
-                xtype: 'toolbar',
-                docked: 'top',
-                items: [
-                    {
-                        xtype: 'button',
-                        id: 'taxiContainerHome',
-                        iconCls: 'list'
-                    }
-                ]
-            },
-            {
                 xtype: 'tabpanel',
-                id: 'taxiTabPanel',
+                id: 'taxiPanel',
                 items: [
                     {
-                        xtype: 'container',
-                        title: 'Solicitar Taxi',
-                        id: 'tabTaxiSolicitar',
+                        xtype: 'toolbar',
+                        docked: 'top',
                         items: [
                             {
-                                xtype: 'fieldset',
-                                id: 'taxiForm',
-                                items: [
-                                    {
-                                        xtype: 'numberfield',
-                                        id: 'taxiCantPersonas',
-                                        margin: 20,
-                                        padding: 8,
-                                        label: 'Cantidad de personas',
-                                        labelWidth: '40%'
-                                    },
-                                    {
-                                        xtype: 'selectfield',
-                                        id: 'taxiEsOrigen',
-                                        margin: 20,
-                                        padding: 8,
-                                        label: 'El aeropuerto es ',
-                                        labelWidth: '40%'
-                                    },
-                                    {
-                                        xtype: 'textfield',
-                                        id: 'taxiLocation',
-                                        margin: 20,
-                                        padding: 8,
-                                        label: 'Destino',
-                                        labelWidth: '40%'
-                                    },
-                                    {
-                                        xtype: 'button',
-                                        id: 'btnSolicitarTaxi',
-                                        margin: 20,
-                                        padding: 8,
-                                        text: 'Solicitar Taxi'
-                                    }
-                                ]
+                                xtype: 'button',
+                                id: 'taxiContainerHome',
+                                iconCls: 'list'
                             }
                         ]
                     },
                     {
                         xtype: 'container',
-                        title: 'Informacion',
-                        id: 'tabTaxiInformacion',
+                        id: 'taxiTab1'
+                    },
+                    {
+                        xtype: 'container',
+                        id: 'taxiTab2',
                         items: [
                             {
                                 xtype: 'label',
-                                html: 'orem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta gravida nunc, a auctor nibh congue ut. Sed vel nulla in sem iaculis lacinia eget in ipsum. Ut hendrerit sollicitudin mollis. Integer egestas, eros at cursus tincidunt, ex felis auctor risus, eu malesuada elit elit eget turpis. Ut dictum hendrerit interdum. Ut urna nulla, placerat pellentesque nibh eget, dignissim condimentum ex. Suspendisse at gravida nibh. Morbi tempor urna non rhoncus feugiat. Quisque a lorem lorem. Vivamus pellentesque metus et dui aliquet eleifend. Phasellus blandit mauris non interdum commodo.  Etiam condimentum pharetra mi, in aliquet neque placerat laoreet. Duis condimentum vehicula mauris et vestibulum. Nam lobortis est vitae sem accumsan, nec maximus velit malesuada. Integer luctus in quam vitae porta. Cras mattis, eros ut porta interdum, arcu quam sagittis odio, non pharetra sapien justo at nibh. Aenean ornare sem augue, quis varius magna aliquet in. Aliquam ac ex pulvinar, aliquam nulla quis, elementum sem. Fusce ac mi arcu. Nullam erat nulla, consequat at lorem et, hendrerit posuere nulla. Sed at ligula id nibh consectetur eleifend. Donec ultrices, dui eget elementum posuere, neque enim sagittis ante, a bibendum risus ex quis lectus. Donec cursus faucibus dui, sed finibus tellus sollicitudin in.  Suspendisse potenti. Nulla sed laoreet quam. Maecenas felis felis, semper a felis eu, ornare convallis quam. Aliquam vitae finibus felis. Nulla ut ipsum tincidunt, bibendum eros elementum, aliquet nisi. Aliquam eu odio a elit fringilla sagittis. Vestibulum porttitor, mi sit amet laoreet tristique, arcu elit dictum ante, quis facilisis dolor massa ut libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis in nunc nisi. In tristique mi et turpis luctus malesuada.  Maecenas maximus mattis risus, et blandit libero consequat et. Proin ornare sapien eget ligula luctus, at consequat ex pharetra. Donec porta, ex ac cursus facilisis, nibh metus imperdiet enim, ac dignissim arcu nunc quis dolor. Fusce nec lorem ex. Praesent metus dui, vestibulum vel erat et, egestas consequat ante. Quisque sit amet blandit nisl. Vestibulum sagittis leo sed dignissim tincidunt. Nulla facilisi. Curabitur ut purus id sem commodo tincidunt. Aenean non elit et nunc egestas laoreet nec ut erat.  Phasellus in nulla egestas, malesuada magna et, scelerisque est. Mauris elementum euismod lacus in mollis. Etiam vel semper quam. Vestibulum ut odio finibus ante interdum aliquet. Nulla a neque laoreet, commodo lacus nec, pharetra massa. Praesent molestie tincidunt nunc, in interdum quam eleifend et. Pellentesque scelerisque sed odio a lobortis. In vitae dictum lorem. Nullam aliquam vitae libero quis rhoncus. Nam nec mauris vel nunc fringilla placerat vitae quis quam.',
-                                id: 'lblInfoTaxi',
-                                margin: 20,
-                                padding: 8
+                                centered: true,
+                                html: ' Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).'
                             }
                         ]
                     }
@@ -73064,31 +72802,12 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
 
     initialize: function() {
         this.callParent();
-        var strings = Ext.getStore('StringsStore');
 
-          // Ext.getCmp('taxiCantPersonas').add();
-        var origen = [{
-                    text: strings.getAt(0).data.taxi_Origen,
-                    value: 1
-                }, {
-                    text: strings.getAt(0).data.taxi_Destino,
-                    value: 6
-                }];
+        //Ext.getCmp('taxiTab1').setTitle(Ext.getStore('StringsStore').getAt(0).data.solicitar_servicio);
+        //Ext.getCmp('taxiTab2').setTitle(Ext.getStore('StringsStore').getAt(0).data.informacion);
 
-        Ext.getCmp('taxiEsOrigen').setOptions(origen);
-
-        Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);
-        Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);
-        Ext.getCmp('btnSolicitarTaxi').setText(strings.getAt(0).data.taxi_Solicitar);
-        Ext.getCmp('lblInfoTaxi').setHtml(strings.getAt(0).data.taxi_info);
-
-        console.log(strings.getAt(0).data.taxi_Solicitar);
-        console.log(Ext.getCmp('tabTaxiSolicitar').title);
-
-
-        //Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);
-        //Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);
-
+        Ext.getCmp('taxiTab1').setTitle('Solicitar servicio');
+        Ext.getCmp('taxiTab2').setTitle('Informacion');
     }
 
 });
@@ -74376,9 +74095,6 @@ Ext.define('Aeropuerto.controller.Taxi', {
             },
             "#taxiContainerHome": {
                 tap: 'homeButtonTap'
-            },
-            "#taxiEsOrigen": {
-                change: 'onTaxiOrigenChange'
             }
         }
     },
@@ -74398,14 +74114,6 @@ Ext.define('Aeropuerto.controller.Taxi', {
 
     homeButtonTap: function(button, e, eOpts) {
            this.getApplication().getController('LogicController').showHideMenu('');
-    },
-
-    onTaxiOrigenChange: function(selectfield, newValue, oldValue, eOpts) {
-        if(Ext.getCmp('taxiEsOrigen').getValue() == '1'){
-            Ext.getCmp('taxiLocation').setLabel('Destino');
-        }else{
-            Ext.getCmp('taxiLocation').setLabel('Origen');
-        }
     }
 
 });
@@ -74432,9 +74140,6 @@ Ext.Loader.setConfig({
 
 
 Ext.application({
-    js: {
-        path: 'app/utils/GALocalStorage.js'
-    },
     models: [
         'Vuelo',
         'Weather',
@@ -74477,7 +74182,6 @@ Ext.application({
 
         this.getApplication().getController('Global').getVersion('esp');
         this.getApplication().getController('Global').getArrivals('','0');
-        //console.log(navigator.language);
 
         //var DeviceLanguage = Locale.getDefault().getDisplayLanguage();
         //alert(DeviceLanguage);

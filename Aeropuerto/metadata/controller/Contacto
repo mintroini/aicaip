@@ -6,10 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Taxi"
+        "designer|userClassName": "Contacto"
     },
     "name": "MyController",
-    "designerId": "228818ad-41f4-4b5d-8c84-99c7d5a889f0",
+    "designerId": "6fb94fa9-0bf2-4b17-8e67-01fe14f27e66",
     "cn": [
         {
             "type": "controlleraction",
@@ -19,25 +19,25 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#btnTaxi",
+                "designer|controlQuery": "#btnContacto",
                 "designer|targetType": "Ext.Button",
-                "fn": "btnTaxi",
+                "fn": "onContactoTap",
                 "implHandler": [
                     "    Ext.Viewport.hideMenu('left');",
                     "    var tienda = Ext.getStore('UsuarioStore');",
                     "    this.getApplication().getController('LogicController').hideViewAll();",
                     "    if(tienda.getCount() > 0){",
-                    "        Ext.getCmp('TaxiContainer').show();",
+                    "        Ext.getCmp('ContactoContainer').show();",
                     "    }else{",
                     "        alert('Iniciar secion ya');",
-                    "        Aeropuerto.app.referrer = 'TaxiContainer';",
+                    "        Aeropuerto.app.referrer = 'ContactoContainer';",
                     "        this.getApplication().getController('Usuarios').goToLogin();",
                     "    }"
                 ],
                 "name": "tap"
             },
-            "name": "btnTaxi",
-            "designerId": "a012b7d5-0463-471b-93c8-33310802da5e"
+            "name": "onContactoTap",
+            "designerId": "20a3c34f-cfdb-4ba1-89d5-752f1d1e87d1"
         },
         {
             "type": "controlleraction",
@@ -47,39 +47,16 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#taxiContainerHome",
+                "designer|controlQuery": "#containerContainerHome",
                 "designer|targetType": "Ext.Button",
-                "fn": "homeButtonTap",
+                "fn": "contactioHomeButtonTap",
                 "implHandler": [
                     "   this.getApplication().getController('LogicController').showHideMenu('');"
                 ],
                 "name": "tap"
             },
-            "name": "homeButtonTap",
-            "designerId": "7f5542d6-5412-4392-97a2-c5757cc1e94c"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#taxiEsOrigen",
-                "designer|targetType": "Ext.field.Select",
-                "fn": "onTaxiOrigenChange",
-                "implHandler": [
-                    "if(Ext.getCmp('taxiEsOrigen').getValue() == '1'){",
-                    "    Ext.getCmp('taxiLocation').setLabel('Destino');",
-                    "}else{",
-                    "    Ext.getCmp('taxiLocation').setLabel('Origen');",
-                    "}"
-                ],
-                "name": "change"
-            },
-            "name": "onTaxiOrigenChange",
-            "designerId": "dd439620-360a-4dd6-a9a3-9876d3b2acd4"
+            "name": "contactioHomeButtonTap",
+            "designerId": "93caec7c-e9a5-4e9a-97c0-d24b5d1eb252"
         }
     ]
 }

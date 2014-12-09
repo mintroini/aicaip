@@ -77,6 +77,42 @@ Ext.define('Aeropuerto.model.Strings', {
             {
                 name: 'cultura',
                 type: 'string'
+            },
+            {
+                name: 'taxi_info',
+                type: 'string'
+            },
+            {
+                name: 'registrarse',
+                type: 'string'
+            },
+            {
+                name: 'cerrarSesion',
+                type: 'string'
+            },
+            {
+                name: 'taxi_cantidadPersonas',
+                type: 'string'
+            },
+            {
+                name: 'taxi_Origen',
+                type: 'string'
+            },
+            {
+                name: 'taxi_Destino',
+                type: 'string'
+            },
+            {
+                name: 'taxi_Desde',
+                type: 'string'
+            },
+            {
+                name: 'taxi_Solicitar',
+                type: 'string'
+            },
+            {
+                name: 'informacion',
+                type: 'string'
             }
         ]
     }

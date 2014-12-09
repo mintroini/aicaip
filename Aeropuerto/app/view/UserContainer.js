@@ -106,13 +106,16 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         id: 'registerEmail',
                         labelWidth: '40%',
                         name: 'email',
+                        required: true,
+                        requiredCls: 'x-form-required-field',
                         placeHolder: 'email@example.com'
                     },
                     {
                         xtype: 'textfield',
                         id: 'registerName',
                         labelWidth: '40%',
-                        name: 'nombre'
+                        name: 'nombre',
+                        required: true
                     },
                     {
                         xtype: 'textfield',
@@ -126,7 +129,9 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         width: '',
                         label: '',
                         labelWidth: '40%',
-                        name: 'contrasena'
+                        name: 'contrasena',
+                        required: true,
+                        requiredCls: 'x-field-required-field'
                     },
                     {
                         xtype: 'passwordfield',
@@ -216,9 +221,16 @@ Ext.define('Aeropuerto.view.UserContainer', {
         Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
         Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
         Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.fecha_nacimiento);
+        Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);
+        Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);
 
         Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);
         Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
+
+        Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.cerrarSesion);
+        Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);
+        Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);
+
     }
 
 });

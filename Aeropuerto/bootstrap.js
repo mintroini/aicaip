@@ -36,6 +36,7 @@ Ext.Loader.addClassPathMappings({
 });
 
 Ext.ClassManager.addNameAlternateMappings({
+  "Aeropuerto.controller.Contacto": [],
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.controller.Taxi": [],
@@ -52,6 +53,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.store.UsuarioStore": [],
   "Aeropuerto.store.Uuid": [],
   "Aeropuerto.store.WeatherStore": [],
+  "Aeropuerto.view.ContactoContainer": [],
   "Aeropuerto.view.MainContainer": [],
   "Aeropuerto.view.TaxiContainer": [],
   "Aeropuerto.view.UserContainer": [],
@@ -689,6 +691,7 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 
 Ext.ClassManager.addNameAliasMappings({
+  "Aeropuerto.controller.Contacto": [],
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.controller.Taxi": [],
@@ -705,6 +708,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.store.UsuarioStore": [],
   "Aeropuerto.store.Uuid": [],
   "Aeropuerto.store.WeatherStore": [],
+  "Aeropuerto.view.ContactoContainer": [
+    "widget.contactoContainer"
+  ],
   "Aeropuerto.view.MainContainer": [
     "widget.mainContainer"
   ],

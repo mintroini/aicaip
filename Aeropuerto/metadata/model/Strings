@@ -206,6 +206,132 @@
             },
             "name": "field31",
             "designerId": "10e4c20e-bee5-4b0f-b5de-1a2025c0df92"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_info",
+                "type": "string"
+            },
+            "name": "field32",
+            "designerId": "25b410d3-6af3-40be-b4a6-5e410e1d7fa3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "registrarse",
+                "type": "string"
+            },
+            "name": "field33",
+            "designerId": "47460930-9f7a-45bf-97f7-9e1b498aec7e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "cerrarSesion",
+                "type": "string"
+            },
+            "name": "field34",
+            "designerId": "4d55ef2f-f228-435a-9f97-b96dd0c2e35a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_cantidadPersonas",
+                "type": "string"
+            },
+            "name": "field35",
+            "designerId": "acb19fd9-d1a8-4b19-adc8-de28b2752c5d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Origen",
+                "type": "string"
+            },
+            "name": "field36",
+            "designerId": "3be127b8-d619-43bb-a34f-85d245bd28fa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Destino",
+                "type": "string"
+            },
+            "name": "field37",
+            "designerId": "e5625398-7865-42f1-b300-b299258ba7a9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Desde",
+                "type": "string"
+            },
+            "name": "field38",
+            "designerId": "aafb09f0-b6f1-4a66-95d4-a6f7338eb4f6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Solicitar",
+                "type": "string"
+            },
+            "name": "field39",
+            "designerId": "ae93443f-5d62-4234-888a-28a12f4363cb"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "informacion",
+                "type": "string"
+            },
+            "name": "field40",
+            "designerId": "c52525f0-0c0a-4fda-9bc2-588dfd74696c"
         }
     ]
 }

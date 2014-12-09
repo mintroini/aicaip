@@ -11,11 +11,42 @@
         "height": "100%",
         "hidden": true,
         "id": "TaxiContainer",
+        "layout": "fit",
         "width": "100%"
     },
     "name": "MyContainer",
     "designerId": "fd50dd76-3bcc-448d-beab-fce5b970a75c",
     "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar1",
+            "designerId": "9da558a3-0afa-4600-8d9c-187d84a1aff1",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "taxiContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "93256fe4-75d5-44d2-99d2-786166c12de0"
+                }
+            ]
+        },
         {
             "type": "Ext.tab.Panel",
             "reference": {
@@ -24,41 +55,111 @@
             },
             "codeClass": null,
             "userConfig": {
-                "height": null,
-                "hidden": null,
-                "id": "taxiPanel",
-                "width": null
+                "id": "taxiTabPanel"
             },
             "name": "MyTabPanel",
-            "designerId": "f813d2fe-cd85-49ac-9be2-2f4c8f1ff8d3",
+            "designerId": "5732dfe8-8672-4857-ba79-bc3188a8a5e6",
             "cn": [
                 {
-                    "type": "Ext.Toolbar",
+                    "type": "Ext.Container",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "docked": "top"
+                        "height": null,
+                        "id": "tabTaxiSolicitar",
+                        "layout": null,
+                        "title": "Solicitar Taxi",
+                        "width": null
                     },
-                    "name": "MyToolbar2",
-                    "designerId": "e378200b-f4a5-4283-b81d-28352f5b2923",
+                    "name": "MyContainer5",
+                    "designerId": "b352aa0d-ec3b-4f09-a937-1adb82874712",
                     "cn": [
                         {
-                            "type": "Ext.Button",
+                            "type": "Ext.form.FieldSet",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "iconCls": "list",
-                                "id": "taxiContainerHome",
-                                "text": null
+                                "hidden": null,
+                                "id": "taxiForm",
+                                "title": null
                             },
-                            "name": "MyButton2",
-                            "designerId": "97413223-c378-4558-83ee-1b8710a6725e"
+                            "name": "MyFieldSet3",
+                            "designerId": "b6d23ab0-8acf-4b2e-a11c-496639e7b5b9",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Number",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "taxiCantPersonas",
+                                        "label": "Cantidad de personas",
+                                        "labelWidth": "40%",
+                                        "margin": 20,
+                                        "padding": 8
+                                    },
+                                    "name": "MyNumberField",
+                                    "designerId": "8e762ccb-f2ca-4229-952d-be52a082dc02"
+                                },
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "taxiEsOrigen",
+                                        "label": "El aeropuerto es ",
+                                        "labelWidth": "40%",
+                                        "margin": 20,
+                                        "padding": 8
+                                    },
+                                    "name": "MySelectField",
+                                    "designerId": "98e76d5c-dbe7-43f8-85e6-9aa713a42402"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "taxiLocation",
+                                        "label": "Destino",
+                                        "labelWidth": "40%",
+                                        "margin": 20,
+                                        "padding": 8
+                                    },
+                                    "name": "MyTextField1",
+                                    "designerId": "96433cee-deb5-4e05-8568-f961aaca5e68"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "btnSolicitarTaxi",
+                                        "margin": 20,
+                                        "padding": 8,
+                                        "text": "Solicitar Taxi"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "9530c6cc-1c21-40f4-9fb4-2cb4b4ba4b94"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -70,25 +171,69 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "title": "Tab 1"
-                    },
-                    "name": "MyContainer5",
-                    "designerId": "fba52cb6-ae63-47b7-a7fb-8032a488b91a"
-                },
-                {
-                    "type": "Ext.Container",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "title": "Tab 2"
+                        "id": "tabTaxiInformacion",
+                        "title": "Informacion"
                     },
                     "name": "MyContainer6",
-                    "designerId": "e13ea0c8-f0c8-43a4-9988-ae1596e6644a"
+                    "designerId": "e3485784-eee3-42b4-b6e1-0579361a9aed",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "html": "orem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta gravida nunc, a auctor nibh congue ut. Sed vel nulla in sem iaculis lacinia eget in ipsum. Ut hendrerit sollicitudin mollis. Integer egestas, eros at cursus tincidunt, ex felis auctor risus, eu malesuada elit elit eget turpis. Ut dictum hendrerit interdum. Ut urna nulla, placerat pellentesque nibh eget, dignissim condimentum ex. Suspendisse at gravida nibh. Morbi tempor urna non rhoncus feugiat. Quisque a lorem lorem. Vivamus pellentesque metus et dui aliquet eleifend. Phasellus blandit mauris non interdum commodo.  Etiam condimentum pharetra mi, in aliquet neque placerat laoreet. Duis condimentum vehicula mauris et vestibulum. Nam lobortis est vitae sem accumsan, nec maximus velit malesuada. Integer luctus in quam vitae porta. Cras mattis, eros ut porta interdum, arcu quam sagittis odio, non pharetra sapien justo at nibh. Aenean ornare sem augue, quis varius magna aliquet in. Aliquam ac ex pulvinar, aliquam nulla quis, elementum sem. Fusce ac mi arcu. Nullam erat nulla, consequat at lorem et, hendrerit posuere nulla. Sed at ligula id nibh consectetur eleifend. Donec ultrices, dui eget elementum posuere, neque enim sagittis ante, a bibendum risus ex quis lectus. Donec cursus faucibus dui, sed finibus tellus sollicitudin in.  Suspendisse potenti. Nulla sed laoreet quam. Maecenas felis felis, semper a felis eu, ornare convallis quam. Aliquam vitae finibus felis. Nulla ut ipsum tincidunt, bibendum eros elementum, aliquet nisi. Aliquam eu odio a elit fringilla sagittis. Vestibulum porttitor, mi sit amet laoreet tristique, arcu elit dictum ante, quis facilisis dolor massa ut libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis in nunc nisi. In tristique mi et turpis luctus malesuada.  Maecenas maximus mattis risus, et blandit libero consequat et. Proin ornare sapien eget ligula luctus, at consequat ex pharetra. Donec porta, ex ac cursus facilisis, nibh metus imperdiet enim, ac dignissim arcu nunc quis dolor. Fusce nec lorem ex. Praesent metus dui, vestibulum vel erat et, egestas consequat ante. Quisque sit amet blandit nisl. Vestibulum sagittis leo sed dignissim tincidunt. Nulla facilisi. Curabitur ut purus id sem commodo tincidunt. Aenean non elit et nunc egestas laoreet nec ut erat.  Phasellus in nulla egestas, malesuada magna et, scelerisque est. Mauris elementum euismod lacus in mollis. Etiam vel semper quam. Vestibulum ut odio finibus ante interdum aliquet. Nulla a neque laoreet, commodo lacus nec, pharetra massa. Praesent molestie tincidunt nunc, in interdum quam eleifend et. Pellentesque scelerisque sed odio a lobortis. In vitae dictum lorem. Nullam aliquam vitae libero quis rhoncus. Nam nec mauris vel nunc fringilla placerat vitae quis quam.",
+                                "id": "lblInfoTaxi",
+                                "margin": 20,
+                                "padding": 8
+                            },
+                            "name": "MyLabel1",
+                            "designerId": "6f0a4d5d-8996-46aa-9abc-55156eb3514a"
+                        }
+                    ]
                 }
             ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "var strings = Ext.getStore('StringsStore');",
+                    "",
+                    "  // Ext.getCmp('taxiCantPersonas').add();",
+                    "var origen = [{",
+                    "            text: strings.getAt(0).data.taxi_Origen,",
+                    "            value: 1",
+                    "        }, {",
+                    "            text: strings.getAt(0).data.taxi_Destino,",
+                    "            value: 6",
+                    "        }];",
+                    "",
+                    "Ext.getCmp('taxiEsOrigen').setOptions(origen);",
+                    "",
+                    "Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);",
+                    "Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);",
+                    "Ext.getCmp('btnSolicitarTaxi').setText(strings.getAt(0).data.taxi_Solicitar);",
+                    "Ext.getCmp('lblInfoTaxi').setHtml(strings.getAt(0).data.taxi_info);",
+                    "",
+                    "//Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);",
+                    "//Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);",
+                    ""
+                ]
+            },
+            "name": "initialize",
+            "designerId": "3becf5d9-caf3-4a45-9a31-29dbf6eb6e6f"
         }
     ]
 }

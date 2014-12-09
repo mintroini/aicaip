@@ -94,6 +94,13 @@
                             "        text: Ext.getStore('StringsStore').getAt(0).data.taxi,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
+                            "    },",
+                            "    {",
+                            "        xtype: 'button',",
+                            "        id: 'btnContacto',",
+                            "        text: Ext.getStore('StringsStore').getAt(0).data.contacto,",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
                             "    }",
                             "",
                             "];",
@@ -670,6 +677,17 @@
             "name": "taxicontainer",
             "designerId": "40a1c6d8-6b52-4e4e-bad1-cd766a05201e",
             "masterInstanceId": "fd50dd76-3bcc-448d-beab-fce5b970a75c"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "contactocontainer",
+            "designerId": "b6653edf-9bd6-47cd-9e90-679e813b5d73",
+            "masterInstanceId": "5865d153-1fc5-419a-bc8b-3136b0a7baa7"
         }
     ]
 }

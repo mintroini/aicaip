@@ -20,6 +20,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
     requires: [
         'Aeropuerto.view.UserContainer',
         'Aeropuerto.view.TaxiContainer',
+        'Aeropuerto.view.ContactoContainer',
         'Ext.Panel',
         'Ext.TitleBar',
         'Ext.Button',
@@ -96,6 +97,13 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 xtype: 'button',
                                 id: 'btnTaxi',
                                 text: Ext.getStore('StringsStore').getAt(0).data.taxi,
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnContacto',
+                                text: Ext.getStore('StringsStore').getAt(0).data.contacto,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             }
@@ -333,6 +341,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
             },
             {
                 xtype: 'taxicontainer'
+            },
+            {
+                xtype: 'contactoContainer'
             }
         ]
     }

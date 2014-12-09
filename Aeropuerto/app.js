@@ -20,6 +20,9 @@ Ext.Loader.setConfig({
 
 
 Ext.application({
+    js: {
+        path: 'app/utils/GALocalStorage.js'
+    },
     models: [
         'Vuelo',
         'Weather',
@@ -39,13 +42,15 @@ Ext.application({
     views: [
         'MainContainer',
         'UserContainer',
-        'TaxiContainer'
+        'TaxiContainer',
+        'ContactoContainer'
     ],
     controllers: [
         'Global',
         'LogicController',
         'Usuarios',
-        'Taxi'
+        'Taxi',
+        'Contacto'
     ],
     name: 'Aeropuerto',
     statusBarStyle: 'black-translucent',
@@ -62,6 +67,7 @@ Ext.application({
 
         this.getApplication().getController('Global').getVersion('esp');
         this.getApplication().getController('Global').getArrivals('','0');
+        //console.log(navigator.language);
 
         //var DeviceLanguage = Locale.getDefault().getDisplayLanguage();
         //alert(DeviceLanguage);

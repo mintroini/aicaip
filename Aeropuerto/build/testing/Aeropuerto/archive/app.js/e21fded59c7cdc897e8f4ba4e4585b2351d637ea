@@ -1,4 +1,4 @@
-function _e46725a95a6554dac3e2034e25564e32eef4c234(){};//@tag foundation,core
+function _e21fded59c7cdc897e8f4ba4e4585b2351d637ea(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -72781,15 +72781,25 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
                     },
                     {
                         xtype: 'container',
-                        title: 'Tab 1'
+                        id: 'taxiTab1'
                     },
                     {
                         xtype: 'container',
-                        title: 'Tab 2'
+                        id: 'taxiTab2'
                     }
                 ]
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
+
+        //Ext.getCmp('taxiTab1').setTitle(Ext.getStore('StringsStore').getAt(0).data.solicitar_servicio);
+        //Ext.getCmp('taxiTab2').setTitle(Ext.getStore('StringsStore').getAt(0).data.informacion);
+
+        Ext.getCmp('taxiTab1').setTitle('Solicitar servicio');
+        Ext.getCmp('taxiTab2').setTitle('Informacion');
     }
 
 });
@@ -73154,7 +73164,7 @@ Ext.define('Aeropuerto.controller.Global', {
     extend: 'Ext.app.Controller',
 
     config: {
-        urlServer: 'http://10.0.1.182/aicmobileservice/mobilews.asmx',
+        urlServer: 'http://audiodes.ddns.net/aicmobileservice/mobilews.asmx',
         urlWeather: 'http://api.worldweatheronline.com/free/v2/weather.ashx',
         weatherKey: '453edf069e02397083c3dcc4fe281'
     },
@@ -74165,6 +74175,8 @@ Ext.application({
         this.getApplication().getController('Global').getVersion('esp');
         this.getApplication().getController('Global').getArrivals('','0');
 
+        //var DeviceLanguage = Locale.getDefault().getDisplayLanguage();
+        //alert(DeviceLanguage);
         Ext.create('Aeropuerto.view.MainContainer', {fullscreen: true});
     }
 
