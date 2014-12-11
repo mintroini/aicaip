@@ -93,7 +93,7 @@
                             "designerId": "b6d23ab0-8acf-4b2e-a11c-496639e7b5b9",
                             "cn": [
                                 {
-                                    "type": "Ext.field.Number",
+                                    "type": "Ext.field.Spinner",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
@@ -101,13 +101,16 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "id": "taxiCantPersonas",
-                                        "label": "Cantidad de personas",
+                                        "label": "Cantidad",
                                         "labelWidth": "40%",
                                         "margin": 20,
-                                        "padding": 8
+                                        "maxValue": 99,
+                                        "minValue": 0,
+                                        "padding": 8,
+                                        "stepValue": 1
                                     },
-                                    "name": "MyNumberField",
-                                    "designerId": "8e762ccb-f2ca-4229-952d-be52a082dc02"
+                                    "name": "MySpinnerField",
+                                    "designerId": "494cbf7c-1cf0-4370-b008-4c3d0aae7826"
                                 },
                                 {
                                     "type": "Ext.field.Select",

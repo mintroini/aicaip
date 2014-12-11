@@ -138,22 +138,20 @@
                     "designerId": "0095d142-62f1-472a-8ac1-f9c9123ef502"
                 },
                 {
-                    "type": "Ext.field.Text",
+                    "type": "Ext.field.TextArea",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "height": "30%",
-                        "id": "contactoContenido",
-                        "label": null,
-                        "labelWidth": null,
+                        "id": "ContactoContenido",
+                        "label": "Field",
                         "margin": 20,
                         "padding": 8
                     },
-                    "name": "MyTextField1",
-                    "designerId": "88633bcc-746c-4b59-a81a-b5c05991b103"
+                    "name": "MyTextArea",
+                    "designerId": "03cabde0-e060-4974-b2c6-b17446b18aa9"
                 },
                 {
                     "type": "Ext.Button",
@@ -185,7 +183,7 @@
                 "implHandler": [
                     "this.callParent();",
                     "",
-                    "Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);"
+                    "//Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);"
                 ]
             },
             "name": "initialize",

@@ -1,4 +1,4 @@
-function _fc66dac094966cda3eec6fd37df2ed469ac8a4b3(){};//@tag foundation,core
+function _3e1c150dc3ffc46b126aac51971baa7975aeefbf(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -73868,9 +73868,9 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                             
                     
                             
-                           
+                          
                             
-                         
+                          
       
 
     config: {
@@ -73922,6 +73922,39 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                                 margin: 20,
                                                 padding: 8,
                                                 text: 'seleccionar hora'
+                                            },
+                                            {
+                                                xtype: 'picker',
+                                                hidden: true,
+                                                id: 'EstacionamientoHoraPicker',
+                                                slots: [
+                                                    {
+                                                        xtype: 'pickerslot',
+                                                        id: 'EstacionamientoHoras',
+                                                        name: 'MyPickerSlot',
+                                                        title: 'MyPickerSlot'
+                                                    },
+                                                    {
+                                                        xtype: 'pickerslot',
+                                                        id: 'EstacionamientoMinutos',
+                                                        name: 'MyPickerSlot1',
+                                                        title: 'MyPickerSlot1'
+                                                    },
+                                                    {
+                                                        xtype: 'pickerslot',
+                                                        data: [
+                                                            {
+                                                                text: 'AM',
+                                                                value: 'AM'
+                                                            },
+                                                            {
+                                                                text: 'PM',
+                                                                value: 'PM'
+                                                            }
+                                                        ],
+                                                        id: 'EstacionamientoAPM'
+                                                    }
+                                                ]
                                             }
                                         ]
                                     },
@@ -73971,39 +74004,6 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                         text: 'Solicitar Taxi'
                                     }
                                 ]
-                            },
-                            {
-                                xtype: 'picker',
-                                hidden: true,
-                                id: 'EstacionamientoHoraPicker',
-                                slots: [
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'EstacionamientoHoras',
-                                        name: 'MyPickerSlot',
-                                        title: 'MyPickerSlot'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'EstacionamientoMinutos',
-                                        name: 'MyPickerSlot1',
-                                        title: 'MyPickerSlot1'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        data: [
-                                            {
-                                                text: 'AM',
-                                                value: 'AM'
-                                            },
-                                            {
-                                                text: 'PM',
-                                                value: 'PM'
-                                            }
-                                        ],
-                                        id: 'EstacionamientoAPM'
-                                    }
-                                ]
                             }
                         ]
                     },
@@ -74031,25 +74031,28 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
         var strings = Ext.getStore('StringsStore');
 
           // Ext.getCmp('taxiCantPersonas').add();
-        var horas = new Array(12);
-        var minutos = new Array(60);
+        var horas;
+        var minutos;
 
 
          for (i = 0; i < 12; i++) {
-                horas[i] = [{ text: i+1,value: i+1}];
+                horas[i] =    {
+                    text: i+1,
+                    value: i+1
+                };
 
                     }
         for (i = 0; i < 60; i++) {
-                minutos[i] =    [{
+                minutos[i] =    {
                     text: i+1,
                     value: i+1
-                }];
+                };
 
                     }
 
 
-        Ext.getCmp('EstacionamientoHoras').setData(horas);
-        Ext.getCmp('EstacionamientoMinutos').setData(minutos);
+        Ext.getCmp('EstacionamientoHoras').setOptions(horas);
+        Ext.getCmp('EstacionamientoHoras').setOptions(minutos);
         /*
         Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);
         Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);
@@ -75217,11 +75220,9 @@ Ext.define('Aeropuerto.controller.Global', {
                                                                     tienda.sync();
                                                                     Ext.each(vuelos, function(vuelo) {
                                                                         tienda.addData(vuelo);
-                                                                        console.log(vuelo);
-                                                                        console.log(tienda.getCount());
-
                                                                     }, this);
-                                                                        console.log(tienda.getCount());
+                                                                    tienda.sync();
+                                                                    tienda.load();
                                                                     },
                                                                     failure: function(response) {
                                                                         alert('todo mal'+response.responseText);
@@ -76189,7 +76190,7 @@ Ext.application({
         }
 
         if(window.navigator.onLine){
-            var cultura = navigator.language;
+            var cultura = "es";//navigator.language;
             this.getApplication().getController('Global').getVersion(cultura);
             this.getApplication().getController('Global').getArrivals('','0');
         }else{

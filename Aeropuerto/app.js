@@ -43,14 +43,16 @@ Ext.application({
         'MainContainer',
         'UserContainer',
         'TaxiContainer',
-        'ContactoContainer'
+        'ContactoContainer',
+        'EstacionamientoContainer'
     ],
     controllers: [
         'Global',
         'LogicController',
         'Usuarios',
         'Taxi',
-        'Contacto'
+        'Contacto',
+        'Estacionamiento'
     ],
     name: 'Aeropuerto',
     statusBarStyle: 'black-translucent',
@@ -65,12 +67,18 @@ Ext.application({
             store.add({key : uuid});
         }
 
-        this.getApplication().getController('Global').getVersion('esp');
-        this.getApplication().getController('Global').getArrivals('','0');
-        //console.log(navigator.language);
+        if(window.navigator.onLine){
+            var cultura = navigator.language;
+            this.getApplication().getController('Global').getVersion(cultura);
+            this.getApplication().getController('Global').getArrivals('','0');
+        }else{
+            // this.getApplication().getController('LogicController').hideViewAll();
+            // this.getApplication().getController('LogicController').showOffLine();
+        }
 
-        //var DeviceLanguage = Locale.getDefault().getDisplayLanguage();
-        //alert(DeviceLanguage);
+
+        //alert('You are using ' + Ext.os.name);
+
         Ext.create('Aeropuerto.view.MainContainer', {fullscreen: true});
     }
 

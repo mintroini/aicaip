@@ -17,6 +17,17 @@
     "designerId": "d6960af2-e51e-4b00-9831-1a8c019bca68",
     "cn": [
         {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "estacionamientocontainer",
+            "designerId": "3ea9a24a-2526-4b2e-8b57-95fbe5b133da",
+            "masterInstanceId": "2dccae08-8a48-4f88-976e-3265e4464517"
+        },
+        {
             "type": "Ext.Panel",
             "reference": {
                 "name": "items",
@@ -25,6 +36,7 @@
             "codeClass": null,
             "userConfig": {
                 "height": "100%",
+                "hidden": false,
                 "hideAnimation": "",
                 "id": "mainView",
                 "itemId": "",
@@ -97,8 +109,15 @@
                             "    },",
                             "    {",
                             "        xtype: 'button',",
+                            "        id: 'btnEstacionamiento',",
+                            "        text: \"Estacionamiento\",//Ext.getStore('StringsStore').getAt(0).data.estacionamiento,",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
+                            "    },",
+                            "    {",
+                            "        xtype: 'button',",
                             "        id: 'btnContacto',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.contacto,",
+                            "        text: \"contacto\",//Ext.getStore('StringsStore').getAt(0).data.contacto,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    }",
@@ -110,7 +129,8 @@
                             "    id: 'menu',",
                             "    width: '60%',",
                             "    items: items",
-                            "}),{side: 'left',reveal: true});"
+                            "}),{side: 'left',reveal: true});",
+                            "console.log('main');"
                         ],
                         "name": "initialize"
                     },
@@ -512,9 +532,8 @@
                                         "designer|displayName": "tpl",
                                         "implHandler": [
                                             "<h2>{nVuelo}</h2>",
-                                            "                                            <h2>{aerolinea}</h2>",
-                                            "                                            <h2>{origen}</h2>",
-                                            "<img style=\"height: 100px; width: 100px;\" src=\"Img/Aeromas.png\" />"
+                                            "<h2>{aerolinea}</h2>",
+                                            "<h2>{origen}</h2>"
                                         ]
                                     },
                                     "name": "tpl",
@@ -688,6 +707,17 @@
             "name": "contactocontainer",
             "designerId": "b6653edf-9bd6-47cd-9e90-679e813b5d73",
             "masterInstanceId": "5865d153-1fc5-419a-bc8b-3136b0a7baa7"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "offlinecontainer",
+            "designerId": "e28e0163-8b46-4d6e-bcb9-2d0929f35054",
+            "masterInstanceId": "aec2ea28-d9a4-4d63-962f-db95f0c2bb24"
         }
     ]
 }

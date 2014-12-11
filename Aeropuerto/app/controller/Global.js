@@ -23,6 +23,7 @@ Ext.define('Aeropuerto.controller.Global', {
     },
 
     getFlights: function(tipo, laTienda, parametros, mascara) {
+
         Ext.Ajax.on('beforerequest', function(){
         if(mascara == '0'){
                     Ext.Viewport.mask({ xtype: 'loadmask' });
@@ -75,25 +76,26 @@ Ext.define('Aeropuerto.controller.Global', {
     },
 
     subscribe: function(uuid, flightNumber, timeStamp) {
-            var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><Subscribe xmlns="http://tempuri.org/"><id>'+uuid+'</id><flightNumber>'+flightNumber+'</flightNumber><datetime>'+timeStamp+'</datetime><plataforma>Sencha</plataforma></Subscribe></soap:Body></soap:Envelope>';
+        var plataforma = Ext.os.name;
+        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><Subscribe xmlns="http://tempuri.org/"><id>'+uuid+'</id><flightNumber>'+flightNumber+'</flightNumber><datetime>'+timeStamp+'</datetime><plataforma>'+plataforma+'</plataforma></Subscribe></soap:Body></soap:Envelope>';
 
         Ext.Ajax.request({
-                                            url: this.getUrlServer(),
-                                            useDefaultXhrHeader: false,
-                                            headers: {
-                                                'Content-Type': 'text/xml; charset=utf-8',
-                                                'SOAPAction': 'http://tempuri.org/Subscribe'
-                                            },
-                                            method: 'POST',
-                                            params: xmlParams,
-                                            success: function(response) {
-                                                //algo??
-                                            },
-                                            failure: function(response) {
-                                                alert('todo mal'+response.responseText);
-                                                console.log(response.responseText);
-                                            }
-                                        });
+            url: this.getUrlServer(),
+            useDefaultXhrHeader: false,
+            headers: {
+                'Content-Type': 'text/xml; charset=utf-8',
+                'SOAPAction': 'http://tempuri.org/Subscribe'
+            },
+            method: 'POST',
+            params: xmlParams,
+            success: function(response) {
+                //algo??
+            },
+            failure: function(response) {
+                alert('todo mal'+response.responseText);
+                console.log(response.responseText);
+            }
+        });
         this.getApplication().getController('LogicController').changeSubscribeIcon();
 
     },
@@ -165,45 +167,45 @@ Ext.define('Aeropuerto.controller.Global', {
     },
 
     getVersion: function(cultura) {
-                var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetCultureVersion xmlns="http://tempuri.org/"><pCultura>'+cultura+'</pCultura></GetCultureVersion></soap:Body></soap:Envelope>';
+        var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetCultureVersion xmlns="http://tempuri.org/"><pCultura>'+cultura+'</pCultura></GetCultureVersion></soap:Body></soap:Envelope>';
 
-                       Ext.Ajax.request({
-                                                            url: this.getUrlServer(),
-                                                            useDefaultXhrHeader: false,
-                                                            headers: {
-                                                                'Content-Type': 'text/xml; charset=utf-8',
-                                                                'SOAPAction': 'http://tempuri.org/GetCultureVersion'
-                                                            },
-                                                            method: 'POST',
-                                                            params: xmlParams,
-                           async : false,
-                                                            success: function(response) {
-                                                            var respuesta = response.responseXML.getElementsByTagName('GetCultureVersionResponse');
+        Ext.Ajax.request({
+            url: this.getUrlServer(),
+            useDefaultXhrHeader: false,
+            headers: {
+                'Content-Type': 'text/xml; charset=utf-8',
+                'SOAPAction': 'http://tempuri.org/GetCultureVersion'
+            },
+            method: 'POST',
+            params: xmlParams,
+            async : false,
+            success: function(response) {
+                var respuesta = response.responseXML.getElementsByTagName('GetCultureVersionResponse');
 
-                                                                        Ext.each(respuesta, function(vuelo) {
-                                                                            version = vuelo.getElementsByTagName('GetCultureVersionResult')[0].firstChild.nodeValue;
+                Ext.each(respuesta, function(vuelo) {
+                    version = vuelo.getElementsByTagName('GetCultureVersionResult')[0].firstChild.nodeValue;
 
-                                                                    }, this);
+                }, this);
 
-                                                            var tienda = Ext.getStore('StringsStore');
-                                                            if(tienda.getCount() > 0){
-                                                                if(tienda.getAt(0).data.version !== version){
-                                                                    console.log('cambio version');
-                                                                    Aeropuerto.app.getController('Global').getTexts(cultura);
-                                                                }else{
-                                                                    console.log('misma version');
-                                                                }
-                                                            }else{
-                                                                console.log('no tengo nadaaaa');
-                                                                Aeropuerto.app.getController('Global').getTexts(cultura);
-                                                            }
+                var tienda = Ext.getStore('StringsStore');
+                if(tienda.getCount() > 0){
+                    if(tienda.getAt(0).data.version !== version){
+                        console.log('cambio version');
+                        Aeropuerto.app.getController('Global').getTexts(cultura);
+                    }else{
+                        console.log('misma version');
+                    }
+                }else{
+                    console.log('no tengo nadaaaa');
+                    Aeropuerto.app.getController('Global').getTexts(cultura);
+                }
 
-                                                            },
-                                                            failure: function(response) {
-                                                                alert('todo mal'+response.responseText);
-                                                                console.log(response.responseText);
-                                                            }
-                                                        });
+            },
+            failure: function(response) {
+                alert('todo mal en get version'+response.responseText);
+                console.log(response.responseText);
+            }
+        });
     },
 
     getTexts: function(cultura) {
@@ -228,9 +230,11 @@ Ext.define('Aeropuerto.controller.Global', {
                                                                     tienda.sync();
                                                                     Ext.each(vuelos, function(vuelo) {
                                                                         tienda.addData(vuelo);
+                                                                        console.log(vuelo);
+                                                                        console.log(tienda.getCount());
+
                                                                     }, this);
-                                                                    tienda.sync();
-                                                                    tienda.load();
+                                                                        console.log(tienda.getCount());
                                                                     },
                                                                     failure: function(response) {
                                                                         alert('todo mal'+response.responseText);
@@ -267,6 +271,16 @@ Ext.define('Aeropuerto.controller.Global', {
         tienda.sync();
         tienda.load();
 
+    },
+
+    checkConnection: function() {
+
+        if(!window.navigator.onLine){
+            this.getApplication().getController('LogicController').hideViewAll();
+            this.getApplication().getController('LogicController').showOffLine();
+            throw new Error('No internet connection');
+
+        }
     }
 
 });

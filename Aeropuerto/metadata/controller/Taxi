@@ -23,16 +23,17 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "btnTaxi",
                 "implHandler": [
-                    "    Ext.Viewport.hideMenu('left');",
-                    "    var tienda = Ext.getStore('UsuarioStore');",
-                    "    this.getApplication().getController('LogicController').hideViewAll();",
-                    "    if(tienda.getCount() > 0){",
-                    "        Ext.getCmp('TaxiContainer').show();",
-                    "    }else{",
-                    "        alert('Iniciar secion ya');",
-                    "        Aeropuerto.app.referrer = 'TaxiContainer';",
-                    "        this.getApplication().getController('Usuarios').goToLogin();",
-                    "    }"
+                    "Ext.Viewport.hideMenu('left');",
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "var tienda = Ext.getStore('UsuarioStore');",
+                    "this.getApplication().getController('LogicController').hideViewAll();",
+                    "if(tienda.getCount() > 0){",
+                    "    Ext.getCmp('TaxiContainer').show();",
+                    "}else{",
+                    "    alert('Iniciar secion ya');",
+                    "    Aeropuerto.app.referrer = 'TaxiContainer';",
+                    "    this.getApplication().getController('Usuarios').goToLogin();",
+                    "}"
                 ],
                 "name": "tap"
             },

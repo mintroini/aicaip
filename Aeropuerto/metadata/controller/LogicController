@@ -256,11 +256,37 @@
                     "Ext.getCmp('mainView').hide();",
                     "Ext.getCmp('userContainer').hide();",
                     "Ext.getCmp('TaxiContainer').hide();",
+                    "   Ext.getCmp('EstacionamientoContainer').hide();",
                     ""
                 ]
             },
             "name": "hideViewAll",
             "designerId": "55b8cf68-63ed-4043-be9d-300b88feba3e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "showOffLine",
+                "implHandler": [
+                    " /*",
+                    "",
+                    "var panel = Ext.create('Aeropuerto.view.offLineContainer');",
+                    "Ext.Viewport.add(panel);",
+                    "panel.show();",
+                    "*/",
+                    "",
+                    "///Ext.create('offLineContainer');",
+                    "this.hideViewAll();",
+                    "Ext.getCmp('offLineContainer').show();"
+                ]
+            },
+            "name": "showOffLine",
+            "designerId": "45d86242-01df-42ae-9bae-fc1b2d88fb83"
         },
         {
             "type": "controlleraction",
@@ -275,6 +301,13 @@
                 "fn": "btnArribos",
                 "implHandler": [
                     "Ext.Viewport.hideMenu('left');",
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "",
+                    "//if(!window.navigator.onLine){",
+                    "//this.getApplication().getController('LogicController').hideViewAll();",
+                    "//this.getApplication().getController('LogicController').showOffLine();",
+                    "//    console.log(\"entro\");",
+                    "//}else{",
                     "",
                     "this.getApplication().getController('Global').getArrivals('','0');",
                     "",
@@ -285,7 +318,7 @@
                     "this.showView('mainView');",
                     "",
                     "Ext.getCmp('lstArribos').show();",
-                    "",
+                    "//}",
                     ""
                 ],
                 "name": "tap"
@@ -306,7 +339,7 @@
                 "fn": "btnPartidas",
                 "implHandler": [
                     "Ext.Viewport.hideMenu('left');",
-                    "",
+                    "this.getApplication().getController('Global').checkConnection();",
                     "var topBar = Ext.getCmp('topBar');",
                     "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.partidas);",
                     "",
@@ -336,7 +369,7 @@
                 "fn": "btnSubscriptionsTap",
                 "implHandler": [
                     "Ext.Viewport.hideMenu('left');",
-                    "",
+                    "this.getApplication().getController('Global').checkConnection();",
                     "var topBar = Ext.getCmp('topBar');",
                     "topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.suscripciones);",
                     "",
@@ -366,7 +399,7 @@
                 "fn": "btnLogin",
                 "implHandler": [
                     "Ext.Viewport.hideMenu('left');",
-                    "",
+                    "this.getApplication().getController('Global').checkConnection();",
                     "this.hideViewAll();",
                     "Aeropuerto.app.referrer = '';",
                     "this.getApplication().getController('Usuarios').goToLogin();"
@@ -449,6 +482,7 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "onDetailsSubscribeButtonTap",
                 "implHandler": [
+                    "this.getApplication().getController('Global').checkConnection();",
                     "var icon = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');",
                     "var store= Ext.getStore('Uuid');",
                     "var uuid = store.getAt(0).get('key');",
@@ -569,7 +603,7 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "onDetailsRefresh",
                 "implHandler": [
-                    "",
+                    "this.getApplication().getController('Global').checkConnection();",
                     "    //se actualiza la lista de arribos o partidas dependiendo de lo que sea el vuelo seleccionado",
                     "    if(this.globalRecord.data.esArribo){",
                     "        this.getApplication().getController('Global').getArrivals('','0');",
@@ -595,6 +629,32 @@
             },
             "name": "onDetailsRefresh",
             "designerId": "3c36d386-b724-45f2-b7e4-683ed2f6172c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnOffLine",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnOffLine",
+                "implHandler": [
+                    "if(window.navigator.onLine){",
+                    "    Ext.getCmp('offLineContainer').hide();",
+                    "    this.showView('mainView');",
+                    "    this.btnArribos();",
+                    "    var cultura = navigator.language;",
+                    "    this.getApplication().getController('Global').getVersion(cultura);",
+                    "    this.getApplication().getController('Global').getArrivals('','0');",
+                    "}"
+                ],
+                "name": "tap"
+            },
+            "name": "btnOffLine",
+            "designerId": "8bed2050-99dd-407b-a6f3-81812716784f"
         }
     ]
 }

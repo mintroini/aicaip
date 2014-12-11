@@ -92,11 +92,10 @@ Ext.define('Aeropuerto.controller.Usuarios', {
     },
 
     onRegisterButtonTap: function(button, e, eOpts) {
-
+        this.getApplication().getController('Global').checkConnection();
         if(Ext.getCmp('registerForm').getTitle() === 'Edit'){
 
             var user = Ext.getStore('UsuarioStore').getAt(0);
-
             this.updateUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'), user.data.password,Ext.getCmp('registerEmail').getValue(),'',Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerPassword2').getValue());
 
         }else{
@@ -106,6 +105,7 @@ Ext.define('Aeropuerto.controller.Usuarios', {
     },
 
     onTrueLoginTap: function(button, e, eOpts) {
+        this.getApplication().getController('Global').checkConnection();
         this.userLogin(Ext.getCmp('loginUsername').getValue(),Ext.getCmp('loginPassword').getValue());
     },
 

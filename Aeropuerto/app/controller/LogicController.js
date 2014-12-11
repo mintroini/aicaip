@@ -53,12 +53,22 @@ Ext.define('Aeropuerto.controller.LogicController', {
             },
             "#btnDetailsRefresh": {
                 tap: 'onDetailsRefresh'
+            },
+            "#btnOffLine": {
+                tap: 'btnOffLine'
             }
         }
     },
 
     btnArribos: function(button, e, eOpts) {
         Ext.Viewport.hideMenu('left');
+        this.getApplication().getController('Global').checkConnection();
+
+        //if(!window.navigator.onLine){
+        //this.getApplication().getController('LogicController').hideViewAll();
+        //this.getApplication().getController('LogicController').showOffLine();
+        //    console.log("entro");
+        //}else{
 
         this.getApplication().getController('Global').getArrivals('','0');
 
@@ -69,13 +79,13 @@ Ext.define('Aeropuerto.controller.LogicController', {
         this.showView('mainView');
 
         Ext.getCmp('lstArribos').show();
-
+        //}
 
     },
 
     btnPartidas: function(button, e, eOpts) {
         Ext.Viewport.hideMenu('left');
-
+        this.getApplication().getController('Global').checkConnection();
         var topBar = Ext.getCmp('topBar');
         topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.partidas);
 
@@ -90,7 +100,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
 
     btnSubscriptionsTap: function(button, e, eOpts) {
         Ext.Viewport.hideMenu('left');
-
+        this.getApplication().getController('Global').checkConnection();
         var topBar = Ext.getCmp('topBar');
         topBar.setTitle(Ext.getStore('StringsStore').getAt(0).data.suscripciones);
 
@@ -105,7 +115,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
 
     btnLogin: function(button, e, eOpts) {
         Ext.Viewport.hideMenu('left');
-
+        this.getApplication().getController('Global').checkConnection();
         this.hideViewAll();
         Aeropuerto.app.referrer = '';
         this.getApplication().getController('Usuarios').goToLogin();
@@ -128,6 +138,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
     },
 
     onDetailsSubscribeButtonTap: function(button, e, eOpts) {
+        this.getApplication().getController('Global').checkConnection();
         var icon = Ext.getCmp('details').child('#tbDetails').child('#btnDetailsSubscribe');
         var store= Ext.getStore('Uuid');
         var uuid = store.getAt(0).get('key');
@@ -188,7 +199,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
     },
 
     onDetailsRefresh: function(button, e, eOpts) {
-
+        this.getApplication().getController('Global').checkConnection();
             //se actualiza la lista de arribos o partidas dependiendo de lo que sea el vuelo seleccionado
             if(this.globalRecord.data.esArribo){
                 this.getApplication().getController('Global').getArrivals('','0');
@@ -209,6 +220,17 @@ Ext.define('Aeropuerto.controller.LogicController', {
             //se actualizan los datos
              Ext.getCmp('companyName').setData(tienda.getAt(index).data);
 
+    },
+
+    btnOffLine: function(button, e, eOpts) {
+        if(window.navigator.onLine){
+            Ext.getCmp('offLineContainer').hide();
+            this.showView('mainView');
+            this.btnArribos();
+            var cultura = navigator.language;
+            this.getApplication().getController('Global').getVersion(cultura);
+            this.getApplication().getController('Global').getArrivals('','0');
+        }
     },
 
     createUuid: function() {
@@ -351,7 +373,21 @@ Ext.define('Aeropuerto.controller.LogicController', {
         Ext.getCmp('mainView').hide();
         Ext.getCmp('userContainer').hide();
         Ext.getCmp('TaxiContainer').hide();
+           Ext.getCmp('EstacionamientoContainer').hide();
 
+    },
+
+    showOffLine: function() {
+         /*
+
+        var panel = Ext.create('Aeropuerto.view.offLineContainer');
+        Ext.Viewport.add(panel);
+        panel.show();
+        */
+
+        ///Ext.create('offLineContainer');
+        this.hideViewAll();
+        Ext.getCmp('offLineContainer').show();
     }
 
 });

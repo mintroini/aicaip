@@ -37,6 +37,7 @@ Ext.Loader.addClassPathMappings({
 
 Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.controller.Contacto": [],
+  "Aeropuerto.controller.Estacionamiento": [],
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.controller.Taxi": [],
@@ -54,9 +55,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.store.Uuid": [],
   "Aeropuerto.store.WeatherStore": [],
   "Aeropuerto.view.ContactoContainer": [],
+  "Aeropuerto.view.EstacionamientoContainer": [],
   "Aeropuerto.view.MainContainer": [],
   "Aeropuerto.view.TaxiContainer": [],
+  "Aeropuerto.view.TimePickerField": [],
   "Aeropuerto.view.UserContainer": [],
+  "Aeropuerto.view.offLineContainer": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -692,6 +696,7 @@ Ext.ClassManager.addNameAlternateMappings({
 
 Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.controller.Contacto": [],
+  "Aeropuerto.controller.Estacionamiento": [],
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.controller.Taxi": [],
@@ -711,14 +716,23 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.view.ContactoContainer": [
     "widget.contactoContainer"
   ],
+  "Aeropuerto.view.EstacionamientoContainer": [
+    "widget.estacionamientocontainer"
+  ],
   "Aeropuerto.view.MainContainer": [
     "widget.mainContainer"
   ],
   "Aeropuerto.view.TaxiContainer": [
     "widget.taxicontainer"
   ],
+  "Aeropuerto.view.TimePickerField": [
+    "widget.timepickerfield"
+  ],
   "Aeropuerto.view.UserContainer": [
     "widget.usercontainer"
+  ],
+  "Aeropuerto.view.offLineContainer": [
+    "widget.offLineContainer"
   ],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],

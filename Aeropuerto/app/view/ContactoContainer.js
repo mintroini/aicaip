@@ -22,7 +22,8 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
         'Ext.Button',
         'Ext.form.FieldSet',
         'Ext.field.Email',
-        'Ext.field.Radio'
+        'Ext.field.Radio',
+        'Ext.field.TextArea'
     ],
 
     config: {
@@ -85,11 +86,11 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
                         name: 'field'
                     },
                     {
-                        xtype: 'textfield',
-                        height: '30%',
-                        id: 'contactoContenido',
+                        xtype: 'textareafield',
+                        id: 'ContactoContenido',
                         margin: 20,
-                        padding: 8
+                        padding: 8,
+                        label: 'Field'
                     },
                     {
                         xtype: 'button',
@@ -106,7 +107,7 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
     initialize: function() {
         this.callParent();
 
-        Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);
+        //Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);
     }
 
 });

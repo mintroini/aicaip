@@ -18,9 +18,11 @@ Ext.define('Aeropuerto.view.MainContainer', {
     alias: 'widget.mainContainer',
 
     requires: [
+        'Aeropuerto.view.EstacionamientoContainer',
         'Aeropuerto.view.UserContainer',
         'Aeropuerto.view.TaxiContainer',
         'Aeropuerto.view.ContactoContainer',
+        'Aeropuerto.view.offLineContainer',
         'Ext.Panel',
         'Ext.TitleBar',
         'Ext.Button',
@@ -39,8 +41,12 @@ Ext.define('Aeropuerto.view.MainContainer', {
         top: '',
         items: [
             {
+                xtype: 'estacionamientocontainer'
+            },
+            {
                 xtype: 'panel',
                 height: '100%',
+                hidden: false,
                 hideAnimation: '',
                 id: 'mainView',
                 itemId: '',
@@ -102,8 +108,15 @@ Ext.define('Aeropuerto.view.MainContainer', {
                             },
                             {
                                 xtype: 'button',
+                                id: 'btnEstacionamiento',
+                                text: "Estacionamiento",//Ext.getStore('StringsStore').getAt(0).data.estacionamiento,
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+                            {
+                                xtype: 'button',
                                 id: 'btnContacto',
-                                text: Ext.getStore('StringsStore').getAt(0).data.contacto,
+                                text: "contacto",//Ext.getStore('StringsStore').getAt(0).data.contacto,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             }
@@ -116,6 +129,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 width: '60%',
                                 items: items
                             }),{side: 'left',reveal: true});
+                                console.log('main');
                             },
                         event: 'initialize'
                     }
@@ -277,9 +291,8 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 id: 'companyName',
                                 tpl: [
                                     '<h2>{nVuelo}</h2>',
-                                    '                                            <h2>{aerolinea}</h2>',
-                                    '                                            <h2>{origen}</h2>',
-                                    '<img style="height: 100px; width: 100px;" src="Img/Aeromas.png" />'
+                                    '<h2>{aerolinea}</h2>',
+                                    '<h2>{origen}</h2>'
                                 ],
                                 width: '100%'
                             }
@@ -344,6 +357,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
             },
             {
                 xtype: 'contactoContainer'
+            },
+            {
+                xtype: 'offLineContainer'
             }
         ]
     }

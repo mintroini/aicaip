@@ -11,7 +11,8 @@
             "LogicController",
             "Usuarios",
             "Taxi",
-            "Contacto"
+            "Contacto",
+            "Estacionamiento"
         ],
         "icon": null,
         "js": [
@@ -40,7 +41,8 @@
             "MainContainer",
             "UserContainer",
             "TaxiContainer",
-            "ContactoContainer"
+            "ContactoContainer",
+            "EstacionamientoContainer"
         ]
     },
     "name": "Application",
@@ -76,12 +78,18 @@
                     "    store.add({key : uuid});",
                     "}",
                     "",
-                    "this.getApplication().getController('Global').getVersion('esp');",
-                    "this.getApplication().getController('Global').getArrivals('','0');",
-                    "//console.log(navigator.language);",
+                    "if(window.navigator.onLine){",
+                    "    var cultura = navigator.language;",
+                    "    this.getApplication().getController('Global').getVersion(cultura);",
+                    "    this.getApplication().getController('Global').getArrivals('','0');",
+                    "}else{",
+                    "    // this.getApplication().getController('LogicController').hideViewAll();",
+                    "    // this.getApplication().getController('LogicController').showOffLine();",
+                    "}",
                     "",
-                    "//var DeviceLanguage = Locale.getDefault().getDisplayLanguage();",
-                    "//alert(DeviceLanguage);"
+                    "",
+                    "//alert('You are using ' + Ext.os.name);",
+                    ""
                 ]
             },
             "name": "launch",
