@@ -53,8 +53,9 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                 items: [
                     {
                         xtype: 'container',
-                        title: 'Solicitar Taxi',
+                        title: 'Solicitar Estacionamiento',
                         id: 'tabEstacionamientoSolicitar',
+                        scrollable: 'vertical',
                         items: [
                             {
                                 xtype: 'fieldset',
@@ -283,22 +284,22 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
         this.callParent();
         var strings = Ext.getStore('StringsStore');
 
-          // Ext.getCmp('taxiCantPersonas').add();
+        // Ext.getCmp('taxiCantPersonas').add();
         var horas = new Array(13);
         var minutos = new Array(60);
 
 
-         for (i = 0; i < 13; i++) {
-             horas[i] = { text: i,value: i};
+        for (i = 0; i < 13; i++) {
+            horas[i] = { text: i,value: i};
 
-                    }
+        }
         for (i = 0; i < 60; i++) {
-                minutos[i] =    {
-                    text: i,
-                    value: i
-                };
+            minutos[i] =    {
+                text: i,
+                value: i
+            };
 
-                    }
+        }
 
         Ext.getCmp('EstacionamientoHoras').setData(horas);
         Ext.getCmp('EstacionamientoMinutos').setData(minutos);

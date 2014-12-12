@@ -17,17 +17,6 @@
     "designerId": "d6960af2-e51e-4b00-9831-1a8c019bca68",
     "cn": [
         {
-            "type": "linkedinstance",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "name": "estacionamientocontainer",
-            "designerId": "3ea9a24a-2526-4b2e-8b57-95fbe5b133da",
-            "masterInstanceId": "2dccae08-8a48-4f88-976e-3265e4464517"
-        },
-        {
             "type": "Ext.Panel",
             "reference": {
                 "name": "items",
@@ -41,6 +30,7 @@
                 "id": "mainView",
                 "itemId": "",
                 "margin": "",
+                "scrollable": null,
                 "showAnimation": "",
                 "style": "margin-top:2%;",
                 "width": "100%"
@@ -95,8 +85,8 @@
                             "    },",
                             "    {",
                             "        xtype: 'button',",
-                            "        id: 'btnLogin',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,",
+                            "        id: 'btnServicios',",
+                            "        text: \"Servicios\",",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
@@ -110,14 +100,36 @@
                             "    {",
                             "        xtype: 'button',",
                             "        id: 'btnEstacionamiento',",
-                            "        text: \"Estacionamiento\",//Ext.getStore('StringsStore').getAt(0).data.estacionamiento,",
+                            "        text: \"Estacionamiento\",",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    },",
                             "    {",
                             "        xtype: 'button',",
+                            "        id: 'btnLavado',",
+                            "        text: \"Lavado\",",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
+                            "    },",
+                            "    {",
+                            "        xtype: 'button',",
+                            "        id: 'btnNormativas',",
+                            "        text: \"Normativas de seguridad\",",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
+                            "    },",
+                            "    {",
+                            "        xtype: 'button',",
+                            "        id: 'btnLogin',",
+                            "        text: 'Mi usuario',//Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,",
+                            "        iconCls: 'user',",
+                            "        cls: 'menu-button'",
+                            "    },",
+                            "",
+                            "    {",
+                            "        xtype: 'button',",
                             "        id: 'btnContacto',",
-                            "        text: \"contacto\",//Ext.getStore('StringsStore').getAt(0).data.contacto,",
+                            "        text: \"Contacto\",//Ext.getStore('StringsStore').getAt(0).data.contacto,",
                             "        iconCls: 'user',",
                             "        cls: 'menu-button'",
                             "    }",
@@ -128,9 +140,9 @@
                             "    style: 'padding: 15px;margin-top:2%;',",
                             "    id: 'menu',",
                             "    width: '60%',",
+                            "      scrollable: 'vertical',",
                             "    items: items",
-                            "}),{side: 'left',reveal: true});",
-                            "console.log('main');"
+                            "}),{side: 'left',reveal: true});"
                         ],
                         "name": "initialize"
                     },
@@ -192,6 +204,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "centered": null,
                         "docked": "top",
                         "height": "100%",
                         "hideAnimation": null,
@@ -238,7 +251,7 @@
                             "userConfig": {
                                 "designer|displayName": "itemTpl",
                                 "implHandler": [
-                                    "<div>{origen}<br>{fprogram} - {estadosp}</div>"
+                                    "<div style='text-align: center;'>{origen}<br>{fprogram} - {estadosp}</div>"
                                 ]
                             },
                             "name": "itemTpl",
@@ -682,7 +695,18 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "usercontainer",
+            "name": "estacionamientocontainer1",
+            "designerId": "3ea9a24a-2526-4b2e-8b57-95fbe5b133da",
+            "masterInstanceId": "2dccae08-8a48-4f88-976e-3265e4464517"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "usercontainer1",
             "designerId": "58a7338a-c20b-43b9-99b2-1176bf66c172",
             "masterInstanceId": "f6a9c87d-8f36-466a-b967-6b79d7f09dec"
         },
@@ -693,7 +717,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "taxicontainer",
+            "name": "taxicontainer1",
             "designerId": "40a1c6d8-6b52-4e4e-bad1-cd766a05201e",
             "masterInstanceId": "fd50dd76-3bcc-448d-beab-fce5b970a75c"
         },
@@ -704,7 +728,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "contactocontainer",
+            "name": "contactocontainer1",
             "designerId": "b6653edf-9bd6-47cd-9e90-679e813b5d73",
             "masterInstanceId": "5865d153-1fc5-419a-bc8b-3136b0a7baa7"
         },
@@ -715,9 +739,20 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "offlinecontainer",
+            "name": "offlinecontainer1",
             "designerId": "e28e0163-8b46-4d6e-bcb9-2d0929f35054",
             "masterInstanceId": "aec2ea28-d9a4-4d63-962f-db95f0c2bb24"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "lavadocontainer1",
+            "designerId": "c6e1c74c-95d1-4b08-a868-0446220dbd8b",
+            "masterInstanceId": "8d9c7e91-e951-417c-a309-eff260eb36c1"
         }
     ]
 }

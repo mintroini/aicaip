@@ -47,17 +47,8 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
     },
 
     btnEstacionamiento: function(button, e, eOpts) {
-        this.getApplication().getController('LogicController').showHideMenu('');Ext.Viewport.hideMenu('left');
-        this.getApplication().getController('Global').checkConnection();
-        var tienda = Ext.getStore('UsuarioStore');
-        this.getApplication().getController('LogicController').hideViewAll();
-        if(tienda.getCount() > 0){
-            Ext.getCmp('EstacionamientoContainer').show();
-        }else{
-            alert('Iniciar secion ya');
-            Aeropuerto.app.referrer = 'EstacionamientoContainer';
-            this.getApplication().getController('Usuarios').goToLogin();
-        }
+        this.getApplication().getController('Global').checkLogged('EstacionamientoContainer');
+
     },
 
     selectHoraTap: function(button, e, eOpts) {
@@ -80,15 +71,18 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
     },
 
     onEstacionamientoConfirmar: function(button, e, eOpts) {
-        alert('Todo OK');
-        //Ext.getCmp('estacionamientoForm').
+           Ext.Msg.alert( '', 'Se esta procesando su solicitud ');//Ext.getCmp('estacionamientoForm').
         Ext.getCmp('estacionamientoForm').show();
                  Ext.getCmp('confirmarEstacionamientoForm').hide();
     },
 
     onEstacionamientoCancelar: function(button, e, eOpts) {
+        Ext.Msg.confirm("Cancelar", "Are you sure u want to cancel :( ?", function(btn){
+            if (btn == 'yes'){
                 Ext.getCmp('estacionamientoForm').show();
-                         Ext.getCmp('confirmarEstacionamientoForm').hide();
+                Ext.getCmp('confirmarEstacionamientoForm').hide();
+            }
+        });
     }
 
 });

@@ -53,6 +53,7 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
                         xtype: 'container',
                         title: 'Solicitar Taxi',
                         id: 'tabTaxiSolicitar',
+                        scrollable: 'vertical',
                         items: [
                             {
                                 xtype: 'fieldset',

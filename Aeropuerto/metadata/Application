@@ -12,7 +12,8 @@
             "Usuarios",
             "Taxi",
             "Contacto",
-            "Estacionamiento"
+            "Estacionamiento",
+            "Lavado"
         ],
         "icon": null,
         "js": [

@@ -1,0 +1,146 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Lavado",
+        "requires": [
+            "Ext.MessageBox"
+        ]
+    },
+    "name": "MyController",
+    "designerId": "3a59fa9b-6666-4344-bf2c-328575eee2d0",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lavadoContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "1870f36c-dc04-441a-9a93-f6608505e31e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnLavado",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnLavadoTap",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkLogged('LavadoContainer');",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnLavadoTap",
+            "designerId": "67c801fe-0dad-4d70-82ae-e837c2884986"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#selecLavadoHoraComienzo",
+                "designer|targetType": "Ext.Button",
+                "fn": "selectHoraTap",
+                "implHandler": [
+                    "Ext.getCmp('LavadoHoraPicker').show();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "selectHoraTap",
+            "designerId": "fa014dd3-1b4a-419c-8f21-91bd3ed82d10"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnLavadoContinuar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onLavadoContinuar",
+                "implHandler": [
+                    " Ext.getCmp('lavadoForm').hide();",
+                    " Ext.getCmp('confirmarLavadoForm').show();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onLavadoContinuar",
+            "designerId": "5d84f8b5-fd51-4a8f-9fbd-2d3c812914ae"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lavadoConfirmar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onLavadoConfirmar",
+                "implHandler": [
+                    "Ext.Msg.alert( '', 'Se esta procesando su solicitud ');",
+                    "Ext.getCmp('lavadoForm').show();",
+                    "Ext.getCmp('confirmarLavadoForm').hide();"
+                ],
+                "name": "tap"
+            },
+            "name": "onLavadoConfirmar",
+            "designerId": "3fedb0d1-b1a3-4c69-9a12-6da8fada301c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lavadoCancelar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onLavadoCancelar",
+                "implHandler": [
+                    "Ext.Msg.confirm(\"Cancelar\", \"Are you sure u want to cancel :( ?\", function(btn){",
+                    "  if (btn == 'yes'){",
+                    "      Ext.getCmp('lavadoForm').show();",
+                    "      Ext.getCmp('confirmarLavadoForm').hide();",
+                    "  }",
+                    "});",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onLavadoCancelar",
+            "designerId": "1cf7ab70-8b2f-4044-9b07-e359d91b5fa4"
+        }
+    ]
+}

@@ -52,7 +52,8 @@ Ext.application({
         'Usuarios',
         'Taxi',
         'Contacto',
-        'Estacionamiento'
+        'Estacionamiento',
+        'Lavado'
     ],
     name: 'Aeropuerto',
     statusBarStyle: 'black-translucent',

@@ -28,18 +28,9 @@ Ext.define('Aeropuerto.controller.Contacto', {
     },
 
     onContactoTap: function(button, e, eOpts) {
-        Ext.Viewport.hideMenu('left');
-        this.getApplication().getController('Global').checkConnection();
+        this.getApplication().getController('Global').checkLogged('ContactoContainer');
 
-        var tienda = Ext.getStore('UsuarioStore');
-        this.getApplication().getController('LogicController').hideViewAll();
-        if(tienda.getCount() > 0){
-            Ext.getCmp('ContactoContainer').show();
-        }else{
-            alert('Iniciar secion ya');
-            Aeropuerto.app.referrer = 'ContactoContainer';
-            this.getApplication().getController('Usuarios').goToLogin();
-        }
+
     },
 
     contactioHomeButtonTap: function(button, e, eOpts) {

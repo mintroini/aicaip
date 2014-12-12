@@ -39,6 +39,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.controller.Contacto": [],
   "Aeropuerto.controller.Estacionamiento": [],
   "Aeropuerto.controller.Global": [],
+  "Aeropuerto.controller.Lavado": [],
   "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.controller.Taxi": [],
   "Aeropuerto.controller.Usuarios": [],
@@ -56,9 +57,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.store.WeatherStore": [],
   "Aeropuerto.view.ContactoContainer": [],
   "Aeropuerto.view.EstacionamientoContainer": [],
+  "Aeropuerto.view.LavadoContainer": [],
   "Aeropuerto.view.MainContainer": [],
   "Aeropuerto.view.TaxiContainer": [],
-  "Aeropuerto.view.TimePickerField": [],
   "Aeropuerto.view.UserContainer": [],
   "Aeropuerto.view.offLineContainer": [],
   "Ext.AbstractComponent": [],
@@ -557,17 +558,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -698,6 +688,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.controller.Contacto": [],
   "Aeropuerto.controller.Estacionamiento": [],
   "Aeropuerto.controller.Global": [],
+  "Aeropuerto.controller.Lavado": [],
   "Aeropuerto.controller.LogicController": [],
   "Aeropuerto.controller.Taxi": [],
   "Aeropuerto.controller.Usuarios": [],
@@ -719,14 +710,14 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.view.EstacionamientoContainer": [
     "widget.estacionamientocontainer"
   ],
+  "Aeropuerto.view.LavadoContainer": [
+    "widget.lavadocontainer"
+  ],
   "Aeropuerto.view.MainContainer": [
     "widget.mainContainer"
   ],
   "Aeropuerto.view.TaxiContainer": [
     "widget.taxicontainer"
-  ],
-  "Aeropuerto.view.TimePickerField": [
-    "widget.timepickerfield"
   ],
   "Aeropuerto.view.UserContainer": [
     "widget.usercontainer"
@@ -1311,17 +1302,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],

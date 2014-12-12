@@ -31,17 +31,9 @@ Ext.define('Aeropuerto.controller.Taxi', {
     },
 
     btnTaxi: function(button, e, eOpts) {
-        Ext.Viewport.hideMenu('left');
-        this.getApplication().getController('Global').checkConnection();
-        var tienda = Ext.getStore('UsuarioStore');
-        this.getApplication().getController('LogicController').hideViewAll();
-        if(tienda.getCount() > 0){
-            Ext.getCmp('TaxiContainer').show();
-        }else{
-            alert('Iniciar secion ya');
-            Aeropuerto.app.referrer = 'TaxiContainer';
-            this.getApplication().getController('Usuarios').goToLogin();
-        }
+        this.getApplication().getController('Global').checkLogged('TaxiContainer');
+
+
     },
 
     homeButtonTap: function(button, e, eOpts) {

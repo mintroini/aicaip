@@ -373,7 +373,11 @@ Ext.define('Aeropuerto.controller.LogicController', {
         Ext.getCmp('mainView').hide();
         Ext.getCmp('userContainer').hide();
         Ext.getCmp('TaxiContainer').hide();
-           Ext.getCmp('EstacionamientoContainer').hide();
+        Ext.getCmp('EstacionamientoContainer').hide();
+        Ext.getCmp('LavadoContainer').hide();
+        Ext.getCmp('ContactoContainer').hide();
+        Ext.getCmp('details').hide();
+
 
     },
 

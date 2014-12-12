@@ -71,6 +71,7 @@
                         "height": null,
                         "id": "tabTaxiSolicitar",
                         "layout": null,
+                        "scrollable": "vertical",
                         "title": "Solicitar Taxi",
                         "width": null
                     },

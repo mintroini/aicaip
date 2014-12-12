@@ -1,0 +1,538 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "lavadocontainer",
+        "designer|userClassName": "LavadoContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "LavadoContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "EstacionamientoContainer1",
+    "designerId": "8d9c7e91-e951-417c-a309-eff260eb36c1",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar1",
+            "designerId": "3603d17b-a392-410a-a1d7-5109ff3c31e5",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "lavadoContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "c0c3d6c0-050f-4f3c-a385-862aaa1440a5"
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "lavadoTabPanel"
+            },
+            "name": "MyTabPanel",
+            "designerId": "d3f8d7e1-6ebf-4d15-8642-b874f2d627d7",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "id": "tabLavadoSolicitar",
+                        "layout": null,
+                        "title": "Solicitar Lavado",
+                        "width": null
+                    },
+                    "name": "MyContainer5",
+                    "designerId": "ca5a9927-ad2d-458a-860a-e52a93d940f4",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "id": "lavadoForm",
+                                "title": null
+                            },
+                            "name": "MyFieldSet3",
+                            "designerId": "b98de9a8-716c-43cd-9059-fede5129b6a9",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.DatePicker",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "Fecha",
+                                        "id": "lavadoFechaInicio",
+                                        "label": "Fecha",
+                                        "margin": 20,
+                                        "padding": 8,
+                                        "placeHolder": "mm/dd/yyyy"
+                                    },
+                                    "name": "MyDatePicker2",
+                                    "designerId": "f0672b39-c1be-4dbc-a2a5-fb4e71e8e88f",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.picker.Date",
+                                            "reference": {
+                                                "name": "picker",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "name": "MyDatePicker3",
+                                            "designerId": "240fdffa-b07a-405e-85bb-1eeb1173cd15",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "doneButton",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "text": "Done"
+                                                    },
+                                                    "name": "MyButton13",
+                                                    "designerId": "f6942b05-637b-4fe2-8db5-0214ed698b1e"
+                                                },
+                                                {
+                                                    "type": "Ext.Button",
+                                                    "reference": {
+                                                        "name": "cancelButton",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "text": "Cancel"
+                                                    },
+                                                    "name": "MyButton14",
+                                                    "designerId": "76c2b01a-2dd7-4b8f-9a19-4b6d8da1c231"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "lavadoHoraComienzo",
+                                        "margin": null,
+                                        "padding": 8
+                                    },
+                                    "name": "MyContainer7",
+                                    "designerId": "5c8945b2-06e9-4adc-808a-f1e616d39fbf",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.Label",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "Hora comienzo 00:00 AM",
+                                                "id": "lblLavadoHoraComienzo",
+                                                "margin": 10,
+                                                "padding": 5,
+                                                "width": "100%"
+                                            },
+                                            "name": "MyLabel5",
+                                            "designerId": "0ee9da1f-6ba6-4789-bc83-aca4ae388c3a"
+                                        },
+                                        {
+                                            "type": "Ext.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "id": "selecLavadoHoraComienzo",
+                                                "margin": 20,
+                                                "padding": 8,
+                                                "text": "seleccionar hora"
+                                            },
+                                            "name": "MyButton10",
+                                            "designerId": "282d987a-d2c0-4911-995c-d3334a0fefca"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "lavadoMatricula",
+                                        "label": "Matricula",
+                                        "margin": 20
+                                    },
+                                    "name": "MyTextField3",
+                                    "designerId": "21697e5b-b2cd-4e71-895f-b8e25bc976c9"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "lavadoMarca",
+                                        "label": "Marca",
+                                        "margin": 20
+                                    },
+                                    "name": "MyTextField4",
+                                    "designerId": "7f6f41f6-1e04-40d5-8ff0-9238f93ca9a9"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "lavadoModelo",
+                                        "label": "Modelo",
+                                        "margin": 20
+                                    },
+                                    "name": "MyTextField5",
+                                    "designerId": "ef2ef008-bc3a-4ac3-8b0c-0dfaa9fa66f6"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "btnLavadoContinuar",
+                                        "margin": 20,
+                                        "padding": 8,
+                                        "text": "Continuar"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "1a9c3f2e-2dc9-4469-8bcf-1eb6666c0a35"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "id": "confirmarLavadoForm",
+                                "title": "MyFieldSet4"
+                            },
+                            "name": "MyFieldSet4",
+                            "designerId": "67c05fae-de97-4770-9410-ba92edc43431",
+                            "cn": [
+                                {
+                                    "type": "Ext.Label",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "html": "El precio del servicio es : ",
+                                        "margin": 20
+                                    },
+                                    "name": "MyLabel4",
+                                    "designerId": "952cd646-4e08-4046-85d0-285b8db8faf4"
+                                },
+                                {
+                                    "type": "Ext.field.Checkbox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "label": "Aceptar terminos y condiciones",
+                                        "margin": 20
+                                    },
+                                    "name": "MyCheckbox",
+                                    "designerId": "9206af19-bde0-4f44-85ac-cefc12779c9c"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "lavadoConfirmar",
+                                        "margin": 20,
+                                        "text": "Aceptar"
+                                    },
+                                    "name": "MyButton15",
+                                    "designerId": "b02b502f-98a9-460f-a83b-9ce1893d0492"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "lavadoCancelar",
+                                        "text": "Cancelar"
+                                    },
+                                    "name": "MyButton16",
+                                    "designerId": "0d06f61f-c198-4d30-bf05-a868f6463fc5"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.picker.Picker",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": true,
+                                "id": "LavadoHoraPicker",
+                                "itemId": "mypicker"
+                            },
+                            "name": "MyPicker",
+                            "designerId": "20f6ca05-ba55-473b-bb72-ee5df691e7d6",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "doneButton",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Done"
+                                    },
+                                    "name": "MyButton11",
+                                    "designerId": "61923777-a5c3-49e6-bfa8-5278d4efe6f2"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "cancelButton",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Cancel"
+                                    },
+                                    "name": "MyButton12",
+                                    "designerId": "46330051-7102-47e5-a89f-cab489af17b0"
+                                },
+                                {
+                                    "type": "Ext.picker.Slot",
+                                    "reference": {
+                                        "name": "slots",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "LavadoHoras",
+                                        "name": "horas",
+                                        "title": "horas"
+                                    },
+                                    "name": "MyPickerSlot",
+                                    "designerId": "908ebb06-59f6-46dc-9fbc-5e3ee03dba63"
+                                },
+                                {
+                                    "type": "Ext.picker.Slot",
+                                    "reference": {
+                                        "name": "slots",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "LavadoMinutos",
+                                        "name": "minutos",
+                                        "title": "minutos"
+                                    },
+                                    "name": "MyPickerSlot1",
+                                    "designerId": "452dbc70-32f2-41f5-bbaf-2a10c898f07a"
+                                },
+                                {
+                                    "type": "Ext.picker.Slot",
+                                    "reference": {
+                                        "name": "slots",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "data": [
+                                            "[{\"text\":\"AM\",\"value\":\"AM\"},{\"text\":\"PM\",\"value\":\"PM\"}]"
+                                        ],
+                                        "id": "LavadoAPM",
+                                        "name": "am",
+                                        "title": "am"
+                                    },
+                                    "name": "MyPickerSlot2",
+                                    "designerId": "9cc03106-5e9d-4aea-80f8-88b156b4cf14"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onEstacionamientoHoraPickerChange",
+                                        "implHandler": [
+                                            "var minutos = value.minutos;",
+                                            "if(minutos < 10){",
+                                            "    minutos = \"0\"+minutos;",
+                                            "}",
+                                            "",
+                                            "Ext.getCmp('lblLavadoHoraComienzo').setHtml(\"Hora comienzo: \"+value.horas+\":\"+minutos+\"     \" +value.am);"
+                                        ],
+                                        "name": "change"
+                                    },
+                                    "name": "onEstacionamientoHoraPickerChange",
+                                    "designerId": "cec02081-14ba-46fc-860c-8d1900a8a4ab"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "tabLavadoInformacion",
+                        "title": "Informacion"
+                    },
+                    "name": "MyContainer6",
+                    "designerId": "d3dc63c6-f607-4d8d-897d-8bd1e7bebb0e",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "html": "orem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta gravida nunc, a auctor nibh congue ut. Sed vel nulla in sem iaculis lacinia eget in ipsum. Ut hendrerit sollicitudin mollis. Integer egestas, eros at cursus tincidunt, ex felis auctor risus, eu malesuada elit elit eget turpis. Ut dictum hendrerit interdum. Ut urna nulla, placerat pellentesque nibh eget, dignissim condimentum ex. Suspendisse at gravida nibh. Morbi tempor urna non rhoncus feugiat. Quisque a lorem lorem. Vivamus pellentesque metus et dui aliquet eleifend. Phasellus blandit mauris non interdum commodo.  Etiam condimentum pharetra mi, in aliquet neque placerat laoreet. Duis condimentum vehicula mauris et vestibulum. Nam lobortis est vitae sem accumsan, nec maximus velit malesuada. Integer luctus in quam vitae porta. Cras mattis, eros ut porta interdum, arcu quam sagittis odio, non pharetra sapien justo at nibh. Aenean ornare sem augue, quis varius magna aliquet in. Aliquam ac ex pulvinar, aliquam nulla quis, elementum sem. Fusce ac mi arcu. Nullam erat nulla, consequat at lorem et, hendrerit posuere nulla. Sed at ligula id nibh consectetur eleifend. Donec ultrices, dui eget elementum posuere, neque enim sagittis ante, a bibendum risus ex quis lectus. Donec cursus faucibus dui, sed finibus tellus sollicitudin in.  Suspendisse potenti. Nulla sed laoreet quam. Maecenas felis felis, semper a felis eu, ornare convallis quam. Aliquam vitae finibus felis. Nulla ut ipsum tincidunt, bibendum eros elementum, aliquet nisi. Aliquam eu odio a elit fringilla sagittis. Vestibulum porttitor, mi sit amet laoreet tristique, arcu elit dictum ante, quis facilisis dolor massa ut libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis in nunc nisi. In tristique mi et turpis luctus malesuada.  Maecenas maximus mattis risus, et blandit libero consequat et. Proin ornare sapien eget ligula luctus, at consequat ex pharetra. Donec porta, ex ac cursus facilisis, nibh metus imperdiet enim, ac dignissim arcu nunc quis dolor. Fusce nec lorem ex. Praesent metus dui, vestibulum vel erat et, egestas consequat ante. Quisque sit amet blandit nisl. Vestibulum sagittis leo sed dignissim tincidunt. Nulla facilisi. Curabitur ut purus id sem commodo tincidunt. Aenean non elit et nunc egestas laoreet nec ut erat.  Phasellus in nulla egestas, malesuada magna et, scelerisque est. Mauris elementum euismod lacus in mollis. Etiam vel semper quam. Vestibulum ut odio finibus ante interdum aliquet. Nulla a neque laoreet, commodo lacus nec, pharetra massa. Praesent molestie tincidunt nunc, in interdum quam eleifend et. Pellentesque scelerisque sed odio a lobortis. In vitae dictum lorem. Nullam aliquam vitae libero quis rhoncus. Nam nec mauris vel nunc fringilla placerat vitae quis quam.",
+                                "id": "lblInfoLavado",
+                                "margin": 20,
+                                "padding": 8
+                            },
+                            "name": "MyLabel1",
+                            "designerId": "a4ced090-1281-47ba-88aa-58900a7adff7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "var strings = Ext.getStore('StringsStore');",
+                    "",
+                    "var horas = new Array(13);",
+                    "var minutos = new Array(60);",
+                    "",
+                    "",
+                    "for (i = 0; i < 13; i++) {",
+                    "    horas[i] = { text: i,value: i};",
+                    "",
+                    "}",
+                    "for (i = 0; i < 60; i++) {",
+                    "    minutos[i] =    {",
+                    "        text: i,",
+                    "        value: i",
+                    "    };",
+                    "",
+                    "}",
+                    "",
+                    "Ext.getCmp('LavadoHoras').setData(horas);",
+                    "Ext.getCmp('LavadoMinutos').setData(minutos);",
+                    "/*",
+                    "Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);",
+                    "Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);",
+                    "Ext.getCmp('btnSolicitarTaxi').setText(strings.getAt(0).data.taxi_Solicitar);",
+                    "Ext.getCmp('lblInfoTaxi').setHtml(strings.getAt(0).data.taxi_info);",
+                    "",
+                    "//Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);",
+                    "//Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);",
+                    "",
+                    "*/",
+                    ""
+                ]
+            },
+            "name": "initialize",
+            "designerId": "c8c35fba-0cf3-4d81-9683-7a6c7a79029b"
+        }
+    ]
+}

@@ -281,6 +281,25 @@ Ext.define('Aeropuerto.controller.Global', {
             throw new Error('No internet connection');
 
         }
+    },
+
+    checkLogged: function(referrer) {
+        this.getApplication().getController('Global').checkConnection();
+
+                    Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
+                    Ext.Viewport.hideMenu('left');
+        if(Ext.getStore('UsuarioStore').getCount() > 0){
+            this.getApplication().getController('LogicController').hideViewAll();
+            Ext.getCmp(referrer).show();
+        }else{
+            Ext.Msg.confirm("Iniciar sesion", "Necesita iniciar sesion", function(btn){
+                if (btn == 'yes'){
+                    Aeropuerto.app.getApplication().getController('LogicController').hideViewAll();
+                    Aeropuerto.app.referrer = referrer;
+                    Aeropuerto.app.getController('Usuarios').goToLogin();
+                }
+            });
+        }
     }
 
 });

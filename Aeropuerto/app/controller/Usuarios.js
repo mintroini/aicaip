@@ -160,8 +160,7 @@ Ext.define('Aeropuerto.controller.Usuarios', {
 
                                                 var mensaje = response.responseXML.getElementsByTagName('CreateUserResult')[0].firstChild.nodeValue;
                                                if(mensaje == 'El Usuario se ha Creado Correctamente'){
-                                                    alert('Usuario creado');
-                                                var tienda = Ext.getStore('UsuarioStore');
+        Ext.Msg.alert( '', 'Usuario creado con exito ');                                        var tienda = Ext.getStore('UsuarioStore');
                                                 tienda.add({nombre : nombre,apellido:apellido,fnac : fnacimiento,email :email,password:contrasena,nacionalidad:nacionalidad});
                                                 tienda.sync();
                                                 tienda.load();
@@ -171,11 +170,11 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                                     Aeropuerto.app.getController('Usuarios').goToLogin();
                                                 }
                                                }else{
-                                                   alert('No se creo');
+                                                   Ext.Msg.alert( '', 'No se pudo crear el contacto ');
                                                }
                                             },
                                             failure: function(response) {
-                                                alert('todo mal'+response.responseText);
+
                                                 console.log(response.responseText);
                                             }
                                         });
@@ -203,18 +202,17 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                                             if(tienda.getCount() > 0){
                                                                 tienda.sync();
                                                                 tienda.load();
-                                                                alert('Login Correcto');
+                                                                Ext.Msg.alert( '', 'Login realizado con exito ');
                                                                 if(Aeropuerto.app.referrer !== ''){
                                                                     Aeropuerto.app.getController('LogicController').showView(Aeropuerto.app.referrer);
                                                                 }else{
                                                                    Aeropuerto.app.getController('Usuarios').goToLogin();
                                                                 }
                                                             }else{
-                                                                alert('Login Incorrecto');
+                                                                Ext.Msg.alert( '', 'Login incorrecto ');
                                                             }
                                                     },
                                                     failure: function(response) {
-                                                        alert(response.responseText);
                                                         console.log(response.responseText);
                                                     }
                                                 });
@@ -244,14 +242,13 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                                                             tienda.removeAt(0);
                                                             tienda.sync();
                                                             tienda.load();
-                                                                alert('Login Correcto');
+                                                                Ext.Msg.alert( '', 'Usuario actualizado con exito ');
                                                                 Aeropuerto.app.getController('Usuarios').goToLogin();
                                                          }else{
-                                                             alert('Login Incorrecto');
+                                                             Ext.Msg.alert( '', 'No se ha podido actualizar el usuario ');
                                                          }
                                             },
                                             failure: function(response) {
-                                                alert('todo mal'+response.responseText);
                                                 console.log(response.responseText);
                                             }
                                         });

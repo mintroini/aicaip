@@ -461,6 +461,40 @@
             },
             "name": "checkConnection",
             "designerId": "7fded480-44fc-4934-9854-7c988565ed68"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "referrer"
+                ],
+                "fn": "checkLogged",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "",
+                    "            Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "            Ext.Viewport.hideMenu('left');",
+                    "if(Ext.getStore('UsuarioStore').getCount() > 0){",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp(referrer).show();",
+                    "}else{",
+                    "    Ext.Msg.confirm(\"Iniciar sesion\", \"Necesita iniciar sesion\", function(btn){",
+                    "        if (btn == 'yes'){",
+                    "            Aeropuerto.app.getApplication().getController('LogicController').hideViewAll();",
+                    "            Aeropuerto.app.referrer = referrer;",
+                    "            Aeropuerto.app.getController('Usuarios').goToLogin();",
+                    "        }",
+                    "    });",
+                    "}"
+                ]
+            },
+            "name": "checkLogged",
+            "designerId": "dfc1ffb8-b3d6-43f8-9beb-836734fef4f1"
         }
     ]
 }

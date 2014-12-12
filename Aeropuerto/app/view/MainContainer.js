@@ -23,6 +23,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
         'Aeropuerto.view.TaxiContainer',
         'Aeropuerto.view.ContactoContainer',
         'Aeropuerto.view.offLineContainer',
+        'Aeropuerto.view.LavadoContainer',
         'Ext.Panel',
         'Ext.TitleBar',
         'Ext.Button',
@@ -40,9 +41,6 @@ Ext.define('Aeropuerto.view.MainContainer', {
         itemId: '',
         top: '',
         items: [
-            {
-                xtype: 'estacionamientocontainer'
-            },
             {
                 xtype: 'panel',
                 height: '100%',
@@ -94,8 +92,8 @@ Ext.define('Aeropuerto.view.MainContainer', {
                             },
                             {
                                 xtype: 'button',
-                                id: 'btnLogin',
-                                text: Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,
+                                id: 'btnServicios',
+                                text: "Servicios",
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
@@ -109,14 +107,36 @@ Ext.define('Aeropuerto.view.MainContainer', {
                             {
                                 xtype: 'button',
                                 id: 'btnEstacionamiento',
-                                text: "Estacionamiento",//Ext.getStore('StringsStore').getAt(0).data.estacionamiento,
+                                text: "Estacionamiento",
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             },
                             {
                                 xtype: 'button',
+                                id: 'btnLavado',
+                                text: "Lavado",
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnNormativas',
+                                text: "Normativas de seguridad",
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+                            {
+                                xtype: 'button',
+                                id: 'btnLogin',
+                                text: 'Mi usuario',//Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,
+                                iconCls: 'user',
+                                cls: 'menu-button'
+                            },
+
+                            {
+                                xtype: 'button',
                                 id: 'btnContacto',
-                                text: "contacto",//Ext.getStore('StringsStore').getAt(0).data.contacto,
+                                text: "Contacto",//Ext.getStore('StringsStore').getAt(0).data.contacto,
                                 iconCls: 'user',
                                 cls: 'menu-button'
                             }
@@ -127,9 +147,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
                                 style: 'padding: 15px;margin-top:2%;',
                                 id: 'menu',
                                 width: '60%',
+                                scrollable: 'vertical',
                                 items: items
                             }),{side: 'left',reveal: true});
-                                console.log('main');
                             },
                         event: 'initialize'
                     }
@@ -175,7 +195,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
                         id: 'lstArribos',
                         width: '100%',
                         itemTpl: [
-                            '<div>{origen}<br>{fprogram} - {estadosp}</div>'
+                            '<div style=\'text-align: center;\'>{origen}<br>{fprogram} - {estadosp}</div>'
                         ],
                         scrollToTopOnRefresh: false,
                         store: 'Arribos',
@@ -350,6 +370,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 ]
             },
             {
+                xtype: 'estacionamientocontainer'
+            },
+            {
                 xtype: 'usercontainer'
             },
             {
@@ -360,6 +383,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
             },
             {
                 xtype: 'offLineContainer'
+            },
+            {
+                xtype: 'lavadocontainer'
             }
         ]
     }
