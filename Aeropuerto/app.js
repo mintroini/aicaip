@@ -27,7 +27,8 @@ Ext.application({
         'Vuelo',
         'Weather',
         'Strings',
-        'Usuario'
+        'Usuario',
+        'Servicios'
     ],
     stores: [
         'Arribos',
@@ -37,14 +38,21 @@ Ext.application({
         'MisVuelos',
         'WeatherStore',
         'StringsStore',
-        'UsuarioStore'
+        'UsuarioStore',
+        'ServiciosStore'
     ],
     views: [
         'MainContainer',
         'UserContainer',
         'TaxiContainer',
         'ContactoContainer',
-        'EstacionamientoContainer'
+        'EstacionamientoContainer',
+        'ServiciosContainer',
+        'NormasContainer',
+        'HomeContainer',
+        'VuelosContainer',
+        'SuscripcionesContainer',
+        'FlightDetailsContainer'
     ],
     controllers: [
         'Global',
@@ -53,7 +61,9 @@ Ext.application({
         'Taxi',
         'Contacto',
         'Estacionamiento',
-        'Lavado'
+        'Lavado',
+        'Servicios',
+        'Normas'
     ],
     name: 'Aeropuerto',
     statusBarStyle: 'black-translucent',
@@ -66,6 +76,10 @@ Ext.application({
 
             var uuid = guid();
             store.add({key : uuid});
+            var servicios = Ext.getStore('ServiciosStore');
+
+            servicios.add({categoria : 'GASTRONOMÍA',nombre:'Mc. Café ',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Mc. Donald ́s',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Restaurant Patria',ubicacion:'(www.restaurantpatria.com.uy)'},{categoria : 'TRANSPORTE',nombre:'COT',ubicacion:'(www.cot.com.uy)'},{categoria : 'TRANSPORTE',nombre:'Taxis Aeropuerto',ubicacion:'(www.taxisaeropuerto.com)'},{categoria : 'COMUNICACIÓN',nombre:'ANTEL',ubicacion:'(www.antel.com.uy)'});
+
         }
 
         if(window.navigator.onLine){

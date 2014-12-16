@@ -41,8 +41,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.Lavado": [],
   "Aeropuerto.controller.LogicController": [],
+  "Aeropuerto.controller.Normas": [],
+  "Aeropuerto.controller.Servicios": [],
   "Aeropuerto.controller.Taxi": [],
   "Aeropuerto.controller.Usuarios": [],
+  "Aeropuerto.model.Servicios": [],
   "Aeropuerto.model.Strings": [],
   "Aeropuerto.model.Usuario": [],
   "Aeropuerto.model.Vuelo": [],
@@ -50,6 +53,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.store.Arribos": [],
   "Aeropuerto.store.MisVuelos": [],
   "Aeropuerto.store.Partidas": [],
+  "Aeropuerto.store.ServiciosStore": [],
   "Aeropuerto.store.StringsStore": [],
   "Aeropuerto.store.Suscripciones": [],
   "Aeropuerto.store.UsuarioStore": [],
@@ -57,10 +61,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "Aeropuerto.store.WeatherStore": [],
   "Aeropuerto.view.ContactoContainer": [],
   "Aeropuerto.view.EstacionamientoContainer": [],
+  "Aeropuerto.view.FlightDetailsContainer": [],
+  "Aeropuerto.view.HomeContainer": [],
   "Aeropuerto.view.LavadoContainer": [],
   "Aeropuerto.view.MainContainer": [],
+  "Aeropuerto.view.NormasContainer": [],
+  "Aeropuerto.view.ServiciosContainer": [],
+  "Aeropuerto.view.SuscripcionesContainer": [],
   "Aeropuerto.view.TaxiContainer": [],
   "Aeropuerto.view.UserContainer": [],
+  "Aeropuerto.view.VuelosContainer": [],
   "Aeropuerto.view.offLineContainer": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -690,8 +700,11 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.controller.Global": [],
   "Aeropuerto.controller.Lavado": [],
   "Aeropuerto.controller.LogicController": [],
+  "Aeropuerto.controller.Normas": [],
+  "Aeropuerto.controller.Servicios": [],
   "Aeropuerto.controller.Taxi": [],
   "Aeropuerto.controller.Usuarios": [],
+  "Aeropuerto.model.Servicios": [],
   "Aeropuerto.model.Strings": [],
   "Aeropuerto.model.Usuario": [],
   "Aeropuerto.model.Vuelo": [],
@@ -699,6 +712,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.store.Arribos": [],
   "Aeropuerto.store.MisVuelos": [],
   "Aeropuerto.store.Partidas": [],
+  "Aeropuerto.store.ServiciosStore": [],
   "Aeropuerto.store.StringsStore": [],
   "Aeropuerto.store.Suscripciones": [],
   "Aeropuerto.store.UsuarioStore": [],
@@ -710,17 +724,35 @@ Ext.ClassManager.addNameAliasMappings({
   "Aeropuerto.view.EstacionamientoContainer": [
     "widget.estacionamientocontainer"
   ],
+  "Aeropuerto.view.FlightDetailsContainer": [
+    "widget.FlightDetailsContainer"
+  ],
+  "Aeropuerto.view.HomeContainer": [
+    "widget.HomeContainer"
+  ],
   "Aeropuerto.view.LavadoContainer": [
     "widget.lavadocontainer"
   ],
   "Aeropuerto.view.MainContainer": [
-    "widget.mainContainer"
+    "widget.MainContainer"
+  ],
+  "Aeropuerto.view.NormasContainer": [
+    "widget.normascontainer"
+  ],
+  "Aeropuerto.view.ServiciosContainer": [
+    "widget.servicioscontainer"
+  ],
+  "Aeropuerto.view.SuscripcionesContainer": [
+    "widget.suscripcionescontainer"
   ],
   "Aeropuerto.view.TaxiContainer": [
     "widget.taxicontainer"
   ],
   "Aeropuerto.view.UserContainer": [
     "widget.usercontainer"
+  ],
+  "Aeropuerto.view.VuelosContainer": [
+    "widget.VuelosContainer"
   ],
   "Aeropuerto.view.offLineContainer": [
     "widget.offLineContainer"

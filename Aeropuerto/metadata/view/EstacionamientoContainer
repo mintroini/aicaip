@@ -12,6 +12,7 @@
         "hidden": true,
         "id": "EstacionamientoContainer",
         "layout": "fit",
+        "scrollable": null,
         "width": "100%"
     },
     "name": "TaxiContainer1",
@@ -103,8 +104,10 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "displayField": "Fecha",
+                                        "id": "estacionamientoDatePicker",
                                         "label": "Fecha",
                                         "margin": 20,
+                                        "name": "estacionamientoDatePicker",
                                         "padding": 8,
                                         "placeHolder": "mm/dd/yyyy"
                                     },
@@ -259,9 +262,12 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "border": null,
                                         "id": "estacionamientoMatricula",
                                         "label": "Matricula",
-                                        "margin": 20
+                                        "margin": 20,
+                                        "name": "estacionamientoMatricula",
+                                        "style": null
                                     },
                                     "name": "MyTextField3",
                                     "designerId": "fba1565d-55c2-4c73-99d7-90e09e5cbfc2"
@@ -276,7 +282,8 @@
                                     "userConfig": {
                                         "id": "estacionamientoMarca",
                                         "label": "Marca",
-                                        "margin": 20
+                                        "margin": 20,
+                                        "name": "estacionamientoMarca"
                                     },
                                     "name": "MyTextField4",
                                     "designerId": "c5451317-d100-44ef-afb4-b083f37ca313"
@@ -291,7 +298,8 @@
                                     "userConfig": {
                                         "id": "estacionamientoModelo",
                                         "label": "Modelo",
-                                        "margin": 20
+                                        "margin": 20,
+                                        "name": "estacionamientoModelo"
                                     },
                                     "name": "MyTextField5",
                                     "designerId": "9cea5c9b-344a-4e66-aadf-f17602fd51a6"
@@ -324,6 +332,7 @@
                             "userConfig": {
                                 "hidden": true,
                                 "id": "confirmarEstacionamientoForm",
+                                "scrollable": null,
                                 "title": "MyFieldSet4"
                             },
                             "name": "MyFieldSet4",
@@ -338,6 +347,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "html": "El precio del servicio es : ",
+                                        "id": "estacionamientoPrecioServicio",
                                         "margin": 20
                                     },
                                     "name": "MyLabel4",
@@ -351,6 +361,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "id": "estacionamientoTerminos",
                                         "label": "Aceptar terminos y condiciones",
                                         "margin": 20
                                     },
@@ -387,218 +398,6 @@
                                     "designerId": "3c36f66d-f57b-43b8-8453-d657ecbd44e6"
                                 }
                             ]
-                        },
-                        {
-                            "type": "Ext.picker.Picker",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "hidden": true,
-                                "id": "EstacionamientoHoraPicker",
-                                "itemId": "mypicker"
-                            },
-                            "name": "MyPicker",
-                            "designerId": "a0c64a72-8a43-466e-ae25-4513186d5852",
-                            "cn": [
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "doneButton",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "text": "Done"
-                                    },
-                                    "name": "MyButton11",
-                                    "designerId": "96e23766-8977-4443-bab6-8a3d781e71db"
-                                },
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "cancelButton",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "text": "Cancel"
-                                    },
-                                    "name": "MyButton12",
-                                    "designerId": "0fc8fd4d-3235-4973-8cbd-8834ce07fb91"
-                                },
-                                {
-                                    "type": "Ext.picker.Slot",
-                                    "reference": {
-                                        "name": "slots",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "EstacionamientoHoras",
-                                        "name": "horas",
-                                        "title": "horas"
-                                    },
-                                    "name": "MyPickerSlot",
-                                    "designerId": "6bc82e2f-dabf-4aa4-be48-aed3eeb12d2a"
-                                },
-                                {
-                                    "type": "Ext.picker.Slot",
-                                    "reference": {
-                                        "name": "slots",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "EstacionamientoMinutos",
-                                        "name": "minutos",
-                                        "title": "minutos"
-                                    },
-                                    "name": "MyPickerSlot1",
-                                    "designerId": "78feda41-1913-4d5e-ab91-42a24166f5eb"
-                                },
-                                {
-                                    "type": "Ext.picker.Slot",
-                                    "reference": {
-                                        "name": "slots",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "data": [
-                                            "[{\"text\":\"AM\",\"value\":\"AM\"},{\"text\":\"PM\",\"value\":\"PM\"}]"
-                                        ],
-                                        "id": "EstacionamientoAPM",
-                                        "name": "am",
-                                        "title": "am"
-                                    },
-                                    "name": "MyPickerSlot2",
-                                    "designerId": "b1644cef-d1ee-4bf8-9505-c8969a302aed"
-                                },
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onEstacionamientoHoraPickerChange",
-                                        "implHandler": [
-                                            "var minutos = value.minutos;",
-                                            "if(minutos < 10){",
-                                            "    minutos = \"0\"+minutos;",
-                                            "}",
-                                            "",
-                                            "Ext.getCmp('lblHoraComienzo').setHtml(\"Hora comienzo: \"+value.horas+\":\"+minutos+\"     \" +value.am);"
-                                        ],
-                                        "name": "change"
-                                    },
-                                    "name": "onEstacionamientoHoraPickerChange",
-                                    "designerId": "031871ca-f38f-4a23-9969-7e43640cd548"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.picker.Picker",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "hidden": true,
-                                "id": "EstacionamientoHoraPicker1",
-                                "itemId": "mypicker1"
-                            },
-                            "name": "MyPicker1",
-                            "designerId": "c9c60cf1-03d0-414d-a637-bd348140318b",
-                            "cn": [
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "doneButton",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "text": "Done"
-                                    },
-                                    "name": "MyButton11",
-                                    "designerId": "7f79578a-c46a-43f7-ba68-6c14108ee122"
-                                },
-                                {
-                                    "type": "Ext.Button",
-                                    "reference": {
-                                        "name": "cancelButton",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "text": "Cancel"
-                                    },
-                                    "name": "MyButton12",
-                                    "designerId": "ce1a1887-99af-4213-998a-192c752bb8f0"
-                                },
-                                {
-                                    "type": "Ext.picker.Slot",
-                                    "reference": {
-                                        "name": "slots",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "ReservaHoras",
-                                        "name": "horas",
-                                        "title": "horas"
-                                    },
-                                    "name": "MyPickerSlot",
-                                    "designerId": "ebaef352-fc96-4c63-9748-3a3d048f9512"
-                                },
-                                {
-                                    "type": "Ext.picker.Slot",
-                                    "reference": {
-                                        "name": "slots",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "ReservaMinutos",
-                                        "name": "minutos",
-                                        "title": "minutos"
-                                    },
-                                    "name": "MyPickerSlot1",
-                                    "designerId": "84c6e57d-65e6-4031-ad95-d30015abbd26"
-                                },
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onEstacionamientoHoraPicker1Change",
-                                        "implHandler": [
-                                            "var minutos = value.minutos;",
-                                            "if(minutos < 10){",
-                                            "    minutos = \"0\"+minutos;",
-                                            "}",
-                                            "var horas = value.horas;",
-                                            "if(minutos < 10){",
-                                            "    horas = \"0\"+horas;",
-                                            "}",
-                                            "",
-                                            "Ext.getCmp('lblTiempoReserva').setHtml(\"Tiempo de reserva: \"+horas+\":\"+minutos+\" Horas\");"
-                                        ],
-                                        "name": "change"
-                                    },
-                                    "name": "onEstacionamientoHoraPicker1Change",
-                                    "designerId": "f577290e-528d-4722-a0e8-a2cbda1606dd"
-                                }
-                            ]
                         }
                     ]
                 },
@@ -611,6 +410,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "id": "tabEstacionamientoInformacion",
+                        "scrollable": "vertical",
                         "title": "Informacion"
                     },
                     "name": "MyContainer6",
@@ -632,6 +432,218 @@
                             },
                             "name": "MyLabel1",
                             "designerId": "a9b09921-9c19-41f5-9f8e-bfceefb4240c"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.picker.Picker",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "id": "EstacionamientoHoraPicker",
+                        "itemId": "mypicker"
+                    },
+                    "name": "MyPicker",
+                    "designerId": "a0c64a72-8a43-466e-ae25-4513186d5852",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "doneButton",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Done"
+                            },
+                            "name": "MyButton11",
+                            "designerId": "96e23766-8977-4443-bab6-8a3d781e71db"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "cancelButton",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Cancel"
+                            },
+                            "name": "MyButton12",
+                            "designerId": "0fc8fd4d-3235-4973-8cbd-8834ce07fb91"
+                        },
+                        {
+                            "type": "Ext.picker.Slot",
+                            "reference": {
+                                "name": "slots",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "EstacionamientoHoras",
+                                "name": "horas",
+                                "title": "horas"
+                            },
+                            "name": "MyPickerSlot",
+                            "designerId": "6bc82e2f-dabf-4aa4-be48-aed3eeb12d2a"
+                        },
+                        {
+                            "type": "Ext.picker.Slot",
+                            "reference": {
+                                "name": "slots",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "EstacionamientoMinutos",
+                                "name": "minutos",
+                                "title": "minutos"
+                            },
+                            "name": "MyPickerSlot1",
+                            "designerId": "78feda41-1913-4d5e-ab91-42a24166f5eb"
+                        },
+                        {
+                            "type": "Ext.picker.Slot",
+                            "reference": {
+                                "name": "slots",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "data": [
+                                    "[{\"text\":\"AM\",\"value\":\"AM\"},{\"text\":\"PM\",\"value\":\"PM\"}]"
+                                ],
+                                "id": "EstacionamientoAPM",
+                                "name": "am",
+                                "title": "am"
+                            },
+                            "name": "MyPickerSlot2",
+                            "designerId": "b1644cef-d1ee-4bf8-9505-c8969a302aed"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onEstacionamientoHoraPickerChange",
+                                "implHandler": [
+                                    "var minutos = value.minutos;",
+                                    "if(minutos < 10){",
+                                    "    minutos = \"0\"+minutos;",
+                                    "}",
+                                    "",
+                                    "Ext.getCmp('lblHoraComienzo').setHtml(\"Hora comienzo: \"+value.horas+\":\"+minutos+\"     \" +value.am);"
+                                ],
+                                "name": "change"
+                            },
+                            "name": "onEstacionamientoHoraPickerChange",
+                            "designerId": "031871ca-f38f-4a23-9969-7e43640cd548"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.picker.Picker",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "id": "EstacionamientoHoraPicker1",
+                        "itemId": "mypicker1"
+                    },
+                    "name": "MyPicker1",
+                    "designerId": "c9c60cf1-03d0-414d-a637-bd348140318b",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "doneButton",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Done"
+                            },
+                            "name": "MyButton11",
+                            "designerId": "7f79578a-c46a-43f7-ba68-6c14108ee122"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "cancelButton",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "text": "Cancel"
+                            },
+                            "name": "MyButton12",
+                            "designerId": "ce1a1887-99af-4213-998a-192c752bb8f0"
+                        },
+                        {
+                            "type": "Ext.picker.Slot",
+                            "reference": {
+                                "name": "slots",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "ReservaHoras",
+                                "name": "horas",
+                                "title": "horas"
+                            },
+                            "name": "MyPickerSlot",
+                            "designerId": "ebaef352-fc96-4c63-9748-3a3d048f9512"
+                        },
+                        {
+                            "type": "Ext.picker.Slot",
+                            "reference": {
+                                "name": "slots",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "ReservaMinutos",
+                                "name": "minutos",
+                                "title": "minutos"
+                            },
+                            "name": "MyPickerSlot1",
+                            "designerId": "84c6e57d-65e6-4031-ad95-d30015abbd26"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onEstacionamientoHoraPicker1Change",
+                                "implHandler": [
+                                    "var minutos = value.minutos;",
+                                    "if(minutos < 10){",
+                                    "    minutos = \"0\"+minutos;",
+                                    "}",
+                                    "var horas = value.horas;",
+                                    "if(minutos < 10){",
+                                    "    horas = \"0\"+horas;",
+                                    "}",
+                                    "",
+                                    "Ext.getCmp('lblTiempoReserva').setHtml(\"Tiempo de reserva: \"+horas+\":\"+minutos+\" Horas\");"
+                                ],
+                                "name": "change"
+                            },
+                            "name": "onEstacionamientoHoraPicker1Change",
+                            "designerId": "f577290e-528d-4722-a0e8-a2cbda1606dd"
                         }
                     ]
                 }

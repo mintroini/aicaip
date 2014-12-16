@@ -49,7 +49,7 @@ Ext.define('Aeropuerto.controller.Lavado', {
 
     btnLavadoTap: function(button, e, eOpts) {
         this.getApplication().getController('Global').checkLogged('LavadoContainer');
-
+        this.resetForm();
     },
 
     selectHoraTap: function(button, e, eOpts) {
@@ -69,6 +69,7 @@ Ext.define('Aeropuerto.controller.Lavado', {
         Ext.Msg.alert( '', 'Se esta procesando su solicitud ');
         Ext.getCmp('lavadoForm').show();
         Ext.getCmp('confirmarLavadoForm').hide();
+        this.resetForm();
     },
 
     onLavadoCancelar: function(button, e, eOpts) {
@@ -76,9 +77,23 @@ Ext.define('Aeropuerto.controller.Lavado', {
           if (btn == 'yes'){
               Ext.getCmp('lavadoForm').show();
               Ext.getCmp('confirmarLavadoForm').hide();
+              Aeropuerto.app.getApplication().getController('Lavado').resetForm();
+
           }
         });
 
+    },
+
+    resetForm: function() {
+                Ext.getCmp('lavadoMatricula').setValue('');
+                Ext.getCmp('lavadoFechaInicio').setValue('');
+                Ext.getCmp('lavadoMarca').setValue('');
+                Ext.getCmp('lavadoModelo').setValue('');
+
+                Ext.getCmp('lblLavadoHoraComienzo').setHtml('Hora comienzo 00:00 AM');
+
+                Ext.getCmp('estacionamientoTerminos').setValue(0);
+                Ext.getCmp('lavadoPrecioServicio').setHtml('El costo del servicio es ');
     }
 
 });

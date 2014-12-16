@@ -15,25 +15,22 @@
 
 Ext.define('Aeropuerto.view.MainContainer', {
     extend: 'Ext.Container',
-    alias: 'widget.mainContainer',
+    alias: 'widget.MainContainer',
 
     requires: [
+        'Aeropuerto.view.NormasContainer',
         'Aeropuerto.view.EstacionamientoContainer',
         'Aeropuerto.view.UserContainer',
         'Aeropuerto.view.TaxiContainer',
         'Aeropuerto.view.ContactoContainer',
         'Aeropuerto.view.offLineContainer',
         'Aeropuerto.view.LavadoContainer',
-        'Ext.Panel',
-        'Ext.TitleBar',
-        'Ext.Button',
-        'Ext.field.Text',
-        'Ext.dataview.List',
-        'Ext.XTemplate',
-        'Ext.plugin.PullRefresh',
-        'Ext.Toolbar',
-        'Ext.Spacer',
-        'Ext.Label'
+        'Aeropuerto.view.ServiciosContainer',
+        'Aeropuerto.view.HomeContainer',
+        'Aeropuerto.view.VuelosContainer',
+        'Aeropuerto.view.SuscripcionesContainer',
+        'Aeropuerto.view.FlightDetailsContainer',
+        'Ext.Container'
     ],
 
     config: {
@@ -42,332 +39,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
         top: '',
         items: [
             {
-                xtype: 'panel',
-                height: '100%',
-                hidden: false,
-                hideAnimation: '',
-                id: 'mainView',
-                itemId: '',
-                margin: '',
-                showAnimation: '',
-                style: 'margin-top:2%;',
-                width: '100%',
-                listeners: [
-                    {
-                        fn: function(component, eOpts) {
-                            this.element.on({
-                                swipe: function(e, node, options) {
-                                    if(e.direction == "right") {
-                                        Aeropuerto.app.getController('LogicController').showHideMenu("right");
-                                    }
-                                    if(e.direction == "left") {
-                                        Aeropuerto.app.getController('LogicController').showHideMenu("left");
-                                    }
-
-                                }
-                            });
-
-                            var items = [
-
-                            {
-                                xtype: 'button',
-                                id: 'btnArribos',
-                                text: Ext.getStore('StringsStore').getAt(0).data.arribos,
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnPartidas',
-                                text: Ext.getStore('StringsStore').getAt(0).data.partidas,
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnSubscriptions',
-                                text: Ext.getStore('StringsStore').getAt(0).data.suscripciones,
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnServicios',
-                                text: "Servicios",
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnTaxi',
-                                text: Ext.getStore('StringsStore').getAt(0).data.taxi,
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnEstacionamiento',
-                                text: "Estacionamiento",
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnLavado',
-                                text: "Lavado",
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnNormativas',
-                                text: "Normativas de seguridad",
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnLogin',
-                                text: 'Mi usuario',//Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            },
-
-                            {
-                                xtype: 'button',
-                                id: 'btnContacto',
-                                text: "Contacto",//Ext.getStore('StringsStore').getAt(0).data.contacto,
-                                iconCls: 'user',
-                                cls: 'menu-button'
-                            }
-
-                            ];
-
-                            Ext.Viewport.setMenu(Ext.create('Ext.Menu', {
-                                style: 'padding: 15px;margin-top:2%;',
-                                id: 'menu',
-                                width: '60%',
-                                scrollable: 'vertical',
-                                items: items
-                            }),{side: 'left',reveal: true});
-                            },
-                        event: 'initialize'
-                    }
-                ],
-                items: [
-                    {
-                        xtype: 'titlebar',
-                        docked: 'top',
-                        id: 'topBar',
-                        itemId: 'topBar',
-                        items: [
-                            {
-                                xtype: 'button',
-                                id: 'btnMenu',
-                                iconCls: 'list',
-                                text: ''
-                            },
-                            {
-                                xtype: 'textfield',
-                                docked: 'right',
-                                id: 'txtFiltro',
-                                label: ''
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'list',
-                        scrollable: {
-                            direction: 'vertical',
-                            scroller: {
-                                listeners: {
-                                    scrollend: function(scroller, x, y) {
-                                if(y < 0){
-                                // y < 0 eso significa que el scroll fue vertical, hacia abajo.
-                                Aeropuerto.app.getController('Global').getArrivals("",1);
-                                }  
-                                }
-                                }
-                            }
-                        },
-                        docked: 'top',
-                        height: '100%',
-                        id: 'lstArribos',
-                        width: '100%',
-                        itemTpl: [
-                            '<div style=\'text-align: center;\'>{origen}<br>{fprogram} - {estadosp}</div>'
-                        ],
-                        scrollToTopOnRefresh: false,
-                        store: 'Arribos',
-                        plugins: [
-                            {
-                                type: 'pullrefresh'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'list',
-                        scrollable: {
-                            direction: 'vertical',
-                            scroller: {
-                                listeners: {
-                                    scrollend: function(scroller, x, y) {
-                                                        if(y < 0){
-                                                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.
-                                                        Aeropuerto.app.getController('Global').getDepartures("",1);
-                                                        }  
-                                            }
-                                }
-                            }
-                        },
-                        docked: 'top',
-                        height: '100%',
-                        hidden: true,
-                        id: 'lstPartidas',
-                        width: '100%',
-                        itemTpl: [
-                            '<div>{destino}<br>{fprogram} - {estadosp}</div>'
-                        ],
-                        store: 'Partidas',
-                        plugins: [
-                            {
-                                type: 'pullrefresh'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'list',
-                        height: '100%',
-                        hidden: true,
-                        id: 'lstSubscriptions',
-                        width: '100%',
-                        itemTpl: [
-                            '<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>'
-                        ],
-                        store: 'Suscripciones'
-                    }
-                ]
-            },
-            {
-                xtype: 'panel',
-                height: '100%',
-                hidden: true,
-                hideAnimation: '',
-                id: 'details',
-                itemId: 'mypanel1',
-                showAnimation: '',
-                width: '100%',
-                listeners: [
-                    {
-                        fn: function(component, eOpts) {
-                            this.element.on({
-                                swipe: function(e, node, options) {
-                                    if(e.direction == "right") {
-                                        Aeropuerto.app.getController('LogicController').onDetailsBackButtonTap();
-                                    }
-                                }
-                            });
-
-                        },
-                        event: 'initialize'
-                    }
-                ],
-                items: [
-                    {
-                        xtype: 'toolbar',
-                        docked: 'top',
-                        id: 'tbDetails',
-                        items: [
-                            {
-                                xtype: 'button',
-                                id: 'btnDetailsBack',
-                                iconCls: 'arrow_left'
-                            },
-                            {
-                                xtype: 'spacer'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnDetailsSubscribe',
-                                iconCls: 'favorites'
-                            },
-                            {
-                                xtype: 'button',
-                                id: 'btnDetailsRefresh',
-                                iconCls: 'refresh'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'container',
-                        centered: true,
-                        height: '100%',
-                        id: 'flightDetails',
-                        width: '50%',
-                        items: [
-                            {
-                                xtype: 'container',
-                                height: '100%',
-                                id: 'companyName',
-                                tpl: [
-                                    '<h2>{nVuelo}</h2>',
-                                    '<h2>{aerolinea}</h2>',
-                                    '<h2>{origen}</h2>'
-                                ],
-                                width: '100%'
-                            }
-                        ]
-                    },
-                    {
-                        xtype: 'container',
-                        height: '100%',
-                        id: 'weather',
-                        width: '50%',
-                        items: [
-                            {
-                                xtype: 'container',
-                                centered: false,
-                                docked: 'top',
-                                height: '50%',
-                                id: 'origen',
-                                margin: 20,
-                                padding: 5,
-                                tpl: [
-                                    '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
-                                ],
-                                items: [
-                                    {
-                                        xtype: 'label',
-                                        html: '',
-                                        id: 'detailsOrigen'
-                                    }
-                                ]
-                            },
-                            {
-                                xtype: 'spacer',
-                                height: '40%'
-                            },
-                            {
-                                xtype: 'container',
-                                centered: false,
-                                height: '50%',
-                                id: 'destino',
-                                margin: 20,
-                                padding: 5,
-                                tpl: [
-                                    '<h2>{temp_C}</h2>       <img style="height: 100px; width: 100px;" src={weatherIconUrl} />'
-                                ],
-                                items: [
-                                    {
-                                        xtype: 'label',
-                                        html: '',
-                                        id: 'detailsDestino'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                xtype: 'normascontainer'
             },
             {
                 xtype: 'estacionamientocontainer'
@@ -386,8 +58,146 @@ Ext.define('Aeropuerto.view.MainContainer', {
             },
             {
                 xtype: 'lavadocontainer'
+            },
+            {
+                xtype: 'servicioscontainer'
+            },
+            {
+                xtype: 'HomeContainer'
+            },
+            {
+                xtype: 'VuelosContainer'
+            },
+            {
+                xtype: 'suscripcionescontainer'
+            },
+            {
+                xtype: 'FlightDetailsContainer'
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
+
+        this.element.on({
+            swipe: function(e, node, options) {
+                if(e.direction == "right") {
+                    Aeropuerto.app.getController('LogicController').showHideMenu("right");
+                }
+                if(e.direction == "left") {
+                    Aeropuerto.app.getController('LogicController').showHideMenu("left");
+                }
+
+            }
+        });
+
+        var items = [
+
+            {
+                xtype: 'button',
+                id: 'btnHome',
+                text: 'Inicio',
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnSubscriptions',
+                text: Ext.getStore('StringsStore').getAt(0).data.suscripciones,
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnVuelos',
+                text: "Todos los vuelos",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnServicios',
+                text: "Servicios",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnNormas',
+                text: "Normativas de seguridad",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnMapa',
+                text: "Mapa",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnTaxi',
+                text: Ext.getStore('StringsStore').getAt(0).data.taxi,
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnEstacionamiento',
+                text: "Estacionamiento",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnLavado',
+                text: "Lavado",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+            {
+                xtype: 'button',
+                id: 'btnLogin',
+                text: 'Mi usuario',//Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
+
+            {
+                xtype: 'button',
+                id: 'btnContacto',
+                text: "Contacto",//Ext.getStore('StringsStore').getAt(0).data.contacto,
+                iconCls: 'user',
+                cls: 'menu-button'
+            }
+
+        ];
+
+        Ext.Viewport.setMenu(Ext.create('Ext.Menu', {
+            style: 'padding: 15px;margin-top:2%;',
+            id: 'menu',
+            width: '60%',
+            scrollable: 'vertical',
+            items: items
+        }),{side: 'left',reveal: true});
+
+        Ext.Viewport.setMenu(Ext.create('Ext.Menu', {
+            style: 'padding: 15px;margin-top:2%;',
+            id: 'suscripcionesMenu',
+            width: '60%',
+            items:      [ {
+                xtype: 'list',
+                height: '100%',
+                id: 'lstSubscriptions2',
+                width: '100%',
+                itemTpl: [
+                    '<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>'
+                ],
+                store: 'Suscripciones'
+            }]
+        }),{side: 'right',reveal: true});
     }
 
 });

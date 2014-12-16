@@ -1,0 +1,84 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "servicioscontainer",
+        "designer|userClassName": "ServiciosContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "ServiciosContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "MyContainer9",
+    "designerId": "8fd85947-3517-423d-be4b-5174a9981b78",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar3",
+            "designerId": "26a661fa-c287-4f33-aea3-3d1b039563dc",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "serviciosContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "dfea22df-9e90-4fa2-98fe-1cd7eb479856"
+                }
+            ]
+        },
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "grouped": true,
+                "id": "serviciosLista",
+                "store": "ServiciosStore"
+            },
+            "name": "MyList3",
+            "designerId": "e6b458e3-0e15-4734-9365-ed8bb0a157cf",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div>{nombre}{ubicacion}</div>"
+                        ]
+                    },
+                    "name": "itemTpl",
+                    "designerId": "d45ac8be-51a3-447e-bbaf-3c582e44df22"
+                }
+            ]
+        }
+    ]
+}

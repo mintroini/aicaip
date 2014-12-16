@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
-        "designer|userAlias": "mainContainer",
+        "designer|userAlias": "MainContainer",
         "designer|userClassName": "MainContainer",
         "id": "mainContainer",
         "itemId": "",
@@ -17,676 +17,15 @@
     "designerId": "d6960af2-e51e-4b00-9831-1a8c019bca68",
     "cn": [
         {
-            "type": "Ext.Panel",
+            "type": "linkedinstance",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "height": "100%",
-                "hidden": false,
-                "hideAnimation": "",
-                "id": "mainView",
-                "itemId": "",
-                "margin": "",
-                "scrollable": null,
-                "showAnimation": "",
-                "style": "margin-top:2%;",
-                "width": "100%"
-            },
-            "name": "MyPanel",
-            "designerId": "720af727-96ec-4ac3-b561-5e920cbc1f70",
-            "cn": [
-                {
-                    "type": "basiceventbinding",
-                    "reference": {
-                        "name": "listeners",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fn": "onMainViewInitialize",
-                        "implHandler": [
-                            "this.element.on({",
-                            "    swipe: function(e, node, options) {",
-                            "        if(e.direction == \"right\") {",
-                            "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
-                            "        }",
-                            "        if(e.direction == \"left\") {",
-                            "            Aeropuerto.app.getController('LogicController').showHideMenu(\"left\");",
-                            "        }",
-                            "",
-                            "    }",
-                            "});",
-                            "",
-                            "var items = [",
-                            "",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnArribos',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.arribos,",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnPartidas',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.partidas,",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnSubscriptions',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.suscripciones,",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnServicios',",
-                            "        text: \"Servicios\",",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnTaxi',",
-                            "        text: Ext.getStore('StringsStore').getAt(0).data.taxi,",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnEstacionamiento',",
-                            "        text: \"Estacionamiento\",",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnLavado',",
-                            "        text: \"Lavado\",",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnNormativas',",
-                            "        text: \"Normativas de seguridad\",",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnLogin',",
-                            "        text: 'Mi usuario',//Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    },",
-                            "",
-                            "    {",
-                            "        xtype: 'button',",
-                            "        id: 'btnContacto',",
-                            "        text: \"Contacto\",//Ext.getStore('StringsStore').getAt(0).data.contacto,",
-                            "        iconCls: 'user',",
-                            "        cls: 'menu-button'",
-                            "    }",
-                            "",
-                            "];",
-                            "",
-                            "Ext.Viewport.setMenu(Ext.create('Ext.Menu', {",
-                            "    style: 'padding: 15px;margin-top:2%;',",
-                            "    id: 'menu',",
-                            "    width: '60%',",
-                            "      scrollable: 'vertical',",
-                            "    items: items",
-                            "}),{side: 'left',reveal: true});"
-                        ],
-                        "name": "initialize"
-                    },
-                    "name": "onMainViewInitialize",
-                    "designerId": "decf97e7-9075-466d-8620-54dbb4dd974b"
-                },
-                {
-                    "type": "Ext.TitleBar",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "docked": "top",
-                        "id": "topBar",
-                        "itemId": "topBar"
-                    },
-                    "name": "MyTitleBar",
-                    "designerId": "4989521c-4156-470f-af2d-7ef64191e2d0",
-                    "cn": [
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "list",
-                                "id": "btnMenu",
-                                "text": ""
-                            },
-                            "name": "MyButton",
-                            "designerId": "4f0e84bf-efac-4224-8286-7d7a9ddc666c"
-                        },
-                        {
-                            "type": "Ext.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "docked": "right",
-                                "id": "txtFiltro",
-                                "label": ""
-                            },
-                            "name": "MyTextField",
-                            "designerId": "628076d9-b4a3-47f1-88b6-e49bdbd0d4ab"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.dataview.List",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "centered": null,
-                        "docked": "top",
-                        "height": "100%",
-                        "hideAnimation": null,
-                        "id": "lstArribos",
-                        "scrollToTopOnRefresh": false,
-                        "scrollable": [
-                            "{  direction: \"vertical\",",
-                            "scroller: {",
-                            "listeners: {",
-                            "scrollend: function(scroller, x, y) {",
-                            "if(y < 0){",
-                            "// y < 0 eso significa que el scroll fue vertical, hacia abajo.",
-                            "Aeropuerto.app.getController('Global').getArrivals(\"\",1);",
-                            "}  ",
-                            "}",
-                            "}",
-                            "}",
-                            "}"
-                        ],
-                        "showAnimation": null,
-                        "store": "Arribos",
-                        "width": "100%"
-                    },
-                    "name": "MyList",
-                    "configAlternates": {
-                        "scrollable": "object"
-                    },
-                    "designerId": "37ddee37-aa32-4adc-be30-572934d7e984",
-                    "customConfigs": [
-                        {
-                            "group": "(Custom Properties)",
-                            "name": "scrollable",
-                            "type": "string"
-                        }
-                    ],
-                    "cn": [
-                        {
-                            "type": "Ext.XTemplate",
-                            "reference": {
-                                "name": "itemTpl",
-                                "type": "object"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|displayName": "itemTpl",
-                                "implHandler": [
-                                    "<div style='text-align: center;'>{origen}<br>{fprogram} - {estadosp}</div>"
-                                ]
-                            },
-                            "name": "itemTpl",
-                            "designerId": "dae44a0b-9604-45e6-8845-cae96430eb22"
-                        },
-                        {
-                            "type": "Ext.plugin.PullRefresh",
-                            "reference": {
-                                "name": "plugins",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "scrollerAutoRefresh": null
-                            },
-                            "name": "MyPullRefreshPlugin",
-                            "configAlternates": {
-                                "scrollable": "object"
-                            },
-                            "designerId": "9a03015e-15dc-4216-82bb-94e14d8009e6"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.dataview.List",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "docked": "top",
-                        "height": "100%",
-                        "hidden": true,
-                        "hideAnimation": null,
-                        "id": "lstPartidas",
-                        "scrollable": [
-                            " {  direction: \"vertical\",",
-                            "    scroller: {",
-                            "        listeners: {",
-                            "            scrollend: function(scroller, x, y) {",
-                            "                        if(y < 0){",
-                            "                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.",
-                            "                        Aeropuerto.app.getController('Global').getDepartures(\"\",1);",
-                            "                        }  ",
-                            "            }",
-                            "        }",
-                            "    }",
-                            "}"
-                        ],
-                        "showAnimation": null,
-                        "store": "Partidas",
-                        "width": "100%"
-                    },
-                    "name": "MyList1",
-                    "configAlternates": {
-                        "scrollable": "object"
-                    },
-                    "designerId": "1d23cfdd-7c9e-4384-9ebe-f68d21166b19",
-                    "customConfigs": [
-                        {
-                            "group": "(Custom Properties)",
-                            "name": "scrollable",
-                            "type": "string"
-                        }
-                    ],
-                    "cn": [
-                        {
-                            "type": "Ext.XTemplate",
-                            "reference": {
-                                "name": "itemTpl",
-                                "type": "object"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|displayName": "itemTpl",
-                                "implHandler": [
-                                    "<div>{destino}<br>{fprogram} - {estadosp}</div>"
-                                ]
-                            },
-                            "name": "itemTpl",
-                            "designerId": "10d0a6dc-deb3-43ad-bb58-a9c505e1b88f"
-                        },
-                        {
-                            "type": "Ext.plugin.PullRefresh",
-                            "reference": {
-                                "name": "plugins",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "name": "MyPullRefreshPlugin1",
-                            "designerId": "154e4635-4ece-48e5-8ab9-22dff31dfbbf"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.dataview.List",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": "100%",
-                        "hidden": true,
-                        "hideAnimation": null,
-                        "id": "lstSubscriptions",
-                        "showAnimation": null,
-                        "store": "Suscripciones",
-                        "width": "100%"
-                    },
-                    "name": "MyList2",
-                    "designerId": "61e6095d-c606-4d5a-bd88-cab80e8f2f56",
-                    "cn": [
-                        {
-                            "type": "Ext.XTemplate",
-                            "reference": {
-                                "name": "itemTpl",
-                                "type": "object"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|displayName": "itemTpl",
-                                "implHandler": [
-                                    "<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>"
-                                ]
-                            },
-                            "name": "itemTpl",
-                            "designerId": "eb5ad6b1-095c-44bb-b8ec-ebdb5e68d0c4"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "Ext.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|displayName": "Details",
-                "height": "100%",
-                "hidden": true,
-                "hideAnimation": "",
-                "id": "details",
-                "itemId": "mypanel1",
-                "showAnimation": "",
-                "width": "100%"
-            },
-            "name": "MyPanel1",
-            "designerId": "9ae64524-9ebc-4253-83e4-660984ce4ce6",
-            "cn": [
-                {
-                    "type": "basiceventbinding",
-                    "reference": {
-                        "name": "listeners",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fn": "onDetailsInitialize",
-                        "implHandler": [
-                            "        this.element.on({",
-                            "            swipe: function(e, node, options) {",
-                            "                if(e.direction == \"right\") {",
-                            "                    Aeropuerto.app.getController('LogicController').onDetailsBackButtonTap();",
-                            "                }",
-                            "            }",
-                            "        });",
-                            ""
-                        ],
-                        "name": "initialize"
-                    },
-                    "name": "onDetailsInitialize",
-                    "designerId": "2413013c-69e4-4bc4-be20-6bd977df6f04"
-                },
-                {
-                    "type": "Ext.Toolbar",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "docked": "top",
-                        "id": "tbDetails",
-                        "title": null
-                    },
-                    "name": "MyToolbar",
-                    "designerId": "b9fc2f96-07fb-4e0d-9d53-0c2f761044c9",
-                    "cn": [
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "arrow_left",
-                                "id": "btnDetailsBack",
-                                "text": null
-                            },
-                            "name": "MyButton2",
-                            "designerId": "b44eecbf-a0a7-495e-aa31-29dc65cf039d"
-                        },
-                        {
-                            "type": "Ext.Spacer",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "name": "MySpacer1",
-                            "designerId": "58ce3f20-bf61-4bc7-ab74-13e026433e52"
-                        },
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "favorites",
-                                "id": "btnDetailsSubscribe",
-                                "text": null
-                            },
-                            "name": "MyButton1",
-                            "designerId": "f35a6618-1fc5-47be-a3e1-50d2de4d7caf"
-                        },
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "iconCls": "refresh",
-                                "id": "btnDetailsRefresh",
-                                "text": null
-                            },
-                            "name": "MyButton8",
-                            "designerId": "13fb2ce0-7bb5-4797-8c0a-1a51a6aecee7"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.Container",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "centered": true,
-                        "height": "100%",
-                        "id": "flightDetails",
-                        "width": "50%"
-                    },
-                    "name": "MyContainer",
-                    "designerId": "302a633c-5824-426d-a581-cbc32d4b33c5",
-                    "cn": [
-                        {
-                            "type": "Ext.Container",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "height": "100%",
-                                "id": "companyName",
-                                "width": "100%",
-                                "zIndex": null
-                            },
-                            "name": "MyContainer1",
-                            "designerId": "1fc1b4e5-bbb8-4840-8101-7023aee2be15",
-                            "cn": [
-                                {
-                                    "type": "Ext.XTemplate",
-                                    "reference": {
-                                        "name": "tpl",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|displayName": "tpl",
-                                        "implHandler": [
-                                            "<h2>{nVuelo}</h2>",
-                                            "<h2>{aerolinea}</h2>",
-                                            "<h2>{origen}</h2>"
-                                        ]
-                                    },
-                                    "name": "tpl",
-                                    "designerId": "d8a24dad-1c07-40fe-9e73-51653d897ece"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.Container",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": "100%",
-                        "id": "weather",
-                        "width": "50%"
-                    },
-                    "name": "MyContainer2",
-                    "designerId": "747b459d-6e61-4bb0-a289-9d2141f3deb8",
-                    "cn": [
-                        {
-                            "type": "Ext.Container",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "centered": false,
-                                "docked": "top",
-                                "height": "50%",
-                                "id": "origen",
-                                "margin": 20,
-                                "padding": 5
-                            },
-                            "name": "MyContainer3",
-                            "designerId": "22f8e781-aae1-4d2d-819e-bf9d722de83c",
-                            "cn": [
-                                {
-                                    "type": "Ext.Label",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "html": "",
-                                        "id": "detailsOrigen"
-                                    },
-                                    "name": "MyLabel",
-                                    "designerId": "54ae69c4-20e3-4d8c-a05d-1af7fa457964"
-                                },
-                                {
-                                    "type": "Ext.XTemplate",
-                                    "reference": {
-                                        "name": "tpl",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|displayName": "tpl",
-                                        "implHandler": [
-                                            "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
-                                        ]
-                                    },
-                                    "name": "tpl",
-                                    "designerId": "67b38144-c17d-431b-a36a-106e93bf6524"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.Spacer",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "height": "40%"
-                            },
-                            "name": "MySpacer",
-                            "designerId": "12a4e091-66ca-4666-8abb-77268bc8b761"
-                        },
-                        {
-                            "type": "Ext.Container",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "centered": false,
-                                "docked": null,
-                                "height": "50%",
-                                "id": "destino",
-                                "margin": 20,
-                                "padding": 5
-                            },
-                            "name": "MyContainer4",
-                            "designerId": "112f3b63-db29-423f-a9e8-c673e0e63a98",
-                            "cn": [
-                                {
-                                    "type": "Ext.Label",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "html": "",
-                                        "id": "detailsDestino"
-                                    },
-                                    "name": "MyLabel2",
-                                    "designerId": "5f9f5e2f-b8ee-4742-8fd5-400bf7d4db3a"
-                                },
-                                {
-                                    "type": "Ext.XTemplate",
-                                    "reference": {
-                                        "name": "tpl",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|displayName": "tpl",
-                                        "implHandler": [
-                                            "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
-                                        ]
-                                    },
-                                    "name": "tpl1",
-                                    "designerId": "24680f5c-a422-4914-badc-6d3be5cb03ed"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            "name": "normascontainer",
+            "designerId": "98f26906-6cc2-4493-a08c-818497335557",
+            "masterInstanceId": "68b76737-587c-4705-9aeb-985076144b74"
         },
         {
             "type": "linkedinstance",
@@ -695,7 +34,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "estacionamientocontainer1",
+            "name": "estacionamientocontainer",
             "designerId": "3ea9a24a-2526-4b2e-8b57-95fbe5b133da",
             "masterInstanceId": "2dccae08-8a48-4f88-976e-3265e4464517"
         },
@@ -706,7 +45,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "usercontainer1",
+            "name": "usercontainer",
             "designerId": "58a7338a-c20b-43b9-99b2-1176bf66c172",
             "masterInstanceId": "f6a9c87d-8f36-466a-b967-6b79d7f09dec"
         },
@@ -717,7 +56,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "taxicontainer1",
+            "name": "taxicontainer",
             "designerId": "40a1c6d8-6b52-4e4e-bad1-cd766a05201e",
             "masterInstanceId": "fd50dd76-3bcc-448d-beab-fce5b970a75c"
         },
@@ -728,7 +67,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "contactocontainer1",
+            "name": "contactocontainer",
             "designerId": "b6653edf-9bd6-47cd-9e90-679e813b5d73",
             "masterInstanceId": "5865d153-1fc5-419a-bc8b-3136b0a7baa7"
         },
@@ -739,7 +78,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "offlinecontainer1",
+            "name": "offlinecontainer",
             "designerId": "e28e0163-8b46-4d6e-bcb9-2d0929f35054",
             "masterInstanceId": "aec2ea28-d9a4-4d63-962f-db95f0c2bb24"
         },
@@ -750,9 +89,199 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "lavadocontainer1",
+            "name": "lavadocontainer",
             "designerId": "c6e1c74c-95d1-4b08-a868-0446220dbd8b",
             "masterInstanceId": "8d9c7e91-e951-417c-a309-eff260eb36c1"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "servicioscontainer",
+            "designerId": "b1b5cf14-541d-4ee1-a2c9-798665a4f802",
+            "masterInstanceId": "8fd85947-3517-423d-be4b-5174a9981b78"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "homecontainer",
+            "designerId": "3e600f20-bfef-4c78-a5e7-2e422d948175",
+            "masterInstanceId": "3016e135-dfbf-4940-b5c5-465bed6c536f"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "vueloscontainer",
+            "designerId": "be481121-7460-4a9b-ac11-7465690e7fe9",
+            "masterInstanceId": "f48d7aca-3636-4d93-be91-37077a7a9271"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "suscripcionescontainer",
+            "designerId": "77930927-fc09-42f8-a49d-b8d28e42fa2c",
+            "masterInstanceId": "ee5e5975-c19c-428c-a297-86e539b9110c"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "flightdetailscontainer",
+            "designerId": "b0c1ae6e-8e23-4b2c-8d5c-d1991eb650b5",
+            "masterInstanceId": "dd4f618c-8a1f-4fa3-b66a-6e9febb5081a"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "",
+                    "this.element.on({",
+                    "    swipe: function(e, node, options) {",
+                    "        if(e.direction == \"right\") {",
+                    "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
+                    "        }",
+                    "        if(e.direction == \"left\") {",
+                    "            Aeropuerto.app.getController('LogicController').showHideMenu(\"left\");",
+                    "        }",
+                    "",
+                    "    }",
+                    "});",
+                    "",
+                    "var items = [",
+                    "",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnHome',",
+                    "        text: 'Inicio',",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnSubscriptions',",
+                    "        text: Ext.getStore('StringsStore').getAt(0).data.suscripciones,",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnVuelos',",
+                    "        text: \"Todos los vuelos\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnServicios',",
+                    "        text: \"Servicios\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnNormas',",
+                    "        text: \"Normativas de seguridad\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnMapa',",
+                    "        text: \"Mapa\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnTaxi',",
+                    "        text: Ext.getStore('StringsStore').getAt(0).data.taxi,",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnEstacionamiento',",
+                    "        text: \"Estacionamiento\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnLavado',",
+                    "        text: \"Lavado\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnLogin',",
+                    "        text: 'Mi usuario',//Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion,",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
+                    "",
+                    "    {",
+                    "        xtype: 'button',",
+                    "        id: 'btnContacto',",
+                    "        text: \"Contacto\",//Ext.getStore('StringsStore').getAt(0).data.contacto,",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    }",
+                    "",
+                    "];",
+                    "",
+                    "Ext.Viewport.setMenu(Ext.create('Ext.Menu', {",
+                    "    style: 'padding: 15px;margin-top:2%;',",
+                    "    id: 'menu',",
+                    "    width: '60%',",
+                    "    scrollable: 'vertical',",
+                    "    items: items",
+                    "}),{side: 'left',reveal: true});",
+                    "",
+                    "Ext.Viewport.setMenu(Ext.create('Ext.Menu', {",
+                    "    style: 'padding: 15px;margin-top:2%;',",
+                    "    id: 'suscripcionesMenu',",
+                    "    width: '60%',",
+                    "    items:      [ {",
+                    "        xtype: 'list',",
+                    "        height: '100%',",
+                    "        id: 'lstSubscriptions2',",
+                    "        width: '100%',",
+                    "        itemTpl: [",
+                    "            '<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>'",
+                    "        ],",
+                    "        store: 'Suscripciones'",
+                    "    }]",
+                    "}),{side: 'right',reveal: true});"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "b8b9a6cc-2eae-40ad-9cc0-1caae374054f"
         }
     ]
 }

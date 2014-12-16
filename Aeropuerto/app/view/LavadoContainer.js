@@ -55,6 +55,7 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                         xtype: 'container',
                         title: 'Solicitar Lavado',
                         id: 'tabLavadoSolicitar',
+                        scrollable: 'vertical',
                         items: [
                             {
                                 xtype: 'fieldset',
@@ -95,7 +96,9 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                         xtype: 'textfield',
                                         id: 'lavadoMatricula',
                                         margin: 20,
-                                        label: 'Matricula'
+                                        inputCls: 'red',
+                                        label: 'Matricula',
+                                        required: true
                                     },
                                     {
                                         xtype: 'textfield',
@@ -127,10 +130,12 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                     {
                                         xtype: 'label',
                                         html: 'El precio del servicio es : ',
+                                        id: 'lavadoPrecioServicio',
                                         margin: 20
                                     },
                                     {
                                         xtype: 'checkboxfield',
+                                        id: 'lavadoTerminos',
                                         margin: 20,
                                         label: 'Aceptar terminos y condiciones'
                                     },
@@ -146,42 +151,6 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                         text: 'Cancelar'
                                     }
                                 ]
-                            },
-                            {
-                                xtype: 'picker',
-                                hidden: true,
-                                id: 'LavadoHoraPicker',
-                                itemId: 'mypicker',
-                                slots: [
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'LavadoHoras',
-                                        name: 'horas',
-                                        title: 'horas'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'LavadoMinutos',
-                                        name: 'minutos',
-                                        title: 'minutos'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        data: [
-                                            {
-                                                text: 'AM',
-                                                value: 'AM'
-                                            },
-                                            {
-                                                text: 'PM',
-                                                value: 'PM'
-                                            }
-                                        ],
-                                        id: 'LavadoAPM',
-                                        name: 'am',
-                                        title: 'am'
-                                    }
-                                ]
                             }
                         ]
                     },
@@ -189,6 +158,7 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                         xtype: 'container',
                         title: 'Informacion',
                         id: 'tabLavadoInformacion',
+                        scrollable: 'vertical',
                         items: [
                             {
                                 xtype: 'label',
@@ -196,6 +166,42 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                 id: 'lblInfoLavado',
                                 margin: 20,
                                 padding: 8
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'picker',
+                        hidden: true,
+                        id: 'LavadoHoraPicker',
+                        itemId: 'mypicker',
+                        slots: [
+                            {
+                                xtype: 'pickerslot',
+                                id: 'LavadoHoras',
+                                name: 'horas',
+                                title: 'horas'
+                            },
+                            {
+                                xtype: 'pickerslot',
+                                id: 'LavadoMinutos',
+                                name: 'minutos',
+                                title: 'minutos'
+                            },
+                            {
+                                xtype: 'pickerslot',
+                                data: [
+                                    {
+                                        text: 'AM',
+                                        value: 'AM'
+                                    },
+                                    {
+                                        text: 'PM',
+                                        value: 'PM'
+                                    }
+                                ],
+                                id: 'LavadoAPM',
+                                name: 'am',
+                                title: 'am'
                             }
                         ]
                     }

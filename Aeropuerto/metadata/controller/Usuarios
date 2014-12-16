@@ -242,6 +242,29 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#btnLogin",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnLogin",
+                "implHandler": [
+                    "Ext.Viewport.hideMenu('left');",
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "this.getApplication().getController('LogicController').hideViewAll();",
+                    "Aeropuerto.app.referrer = '';",
+                    "this.getApplication().getController('Usuarios').goToLogin();"
+                ],
+                "name": "tap"
+            },
+            "name": "btnLogin",
+            "designerId": "6728123f-fdfe-41bc-a004-c0cdc7c4d5b1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "designer|controlQuery": "#btnLoginInicial",
                 "designer|targetType": "Ext.Button",
                 "fn": "onloginInicialButtonTap",

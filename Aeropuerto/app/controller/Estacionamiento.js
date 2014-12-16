@@ -48,7 +48,7 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
 
     btnEstacionamiento: function(button, e, eOpts) {
         this.getApplication().getController('Global').checkLogged('EstacionamientoContainer');
-
+        this.resetForm();
     },
 
     selectHoraTap: function(button, e, eOpts) {
@@ -64,8 +64,9 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
     },
 
     onEstacionamientoContinuar: function(button, e, eOpts) {
-         Ext.getCmp('estacionamientoForm').hide();
-         Ext.getCmp('confirmarEstacionamientoForm').show();
+        Ext.getCmp('estacionamientoForm').hide();
+        Ext.getCmp('confirmarEstacionamientoForm').show();
+
 
 
     },
@@ -74,15 +75,31 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
            Ext.Msg.alert( '', 'Se esta procesando su solicitud ');//Ext.getCmp('estacionamientoForm').
         Ext.getCmp('estacionamientoForm').show();
                  Ext.getCmp('confirmarEstacionamientoForm').hide();
+        this.resetForm();
     },
 
     onEstacionamientoCancelar: function(button, e, eOpts) {
-        Ext.Msg.confirm("Cancelar", "Are you sure u want to cancel :( ?", function(btn){
+        Ext.Msg.confirm("Cancelar", "Are you sure u want to cancel ?", function(btn){
             if (btn == 'yes'){
                 Ext.getCmp('estacionamientoForm').show();
                 Ext.getCmp('confirmarEstacionamientoForm').hide();
+                        Aeropuerto.app.getApplication().getController('Estacionamiento').resetForm();
             }
         });
+    },
+
+    resetForm: function() {
+        Ext.getCmp('estacionamientoMatricula').setValue('');
+        Ext.getCmp('estacionamientoDatePicker').setValue('');
+        Ext.getCmp('estacionamientoMarca').setValue('');
+        Ext.getCmp('estacionamientoModelo').setValue('');
+
+        Ext.getCmp('lblTiempoReserva').setHtml('Hora comienzo 00:00 AM');
+        Ext.getCmp('lblHoraComienzo').setHtml('Hora comienzo 00:00 AM');
+
+        Ext.getCmp('estacionamientoTerminos').setValue(0);
+        Ext.getCmp('estacionamientoPrecioServicio').setHtml('El costo del servicio es ');
+
     }
 
 });

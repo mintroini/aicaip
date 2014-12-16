@@ -20,6 +20,9 @@ Ext.define('Aeropuerto.controller.Usuarios', {
         urlServer: 'http://audiodes.ddns.net/aicmobileservice/mobilews.asmx',
 
         control: {
+            "#btnLogin": {
+                tap: 'btnLogin'
+            },
             "#btnLoginInicial": {
                 tap: 'onloginInicialButtonTap'
             },
@@ -42,6 +45,14 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                 tap: 'onModificarDatosTap'
             }
         }
+    },
+
+    btnLogin: function(button, e, eOpts) {
+        Ext.Viewport.hideMenu('left');
+        this.getApplication().getController('Global').checkConnection();
+        this.getApplication().getController('LogicController').hideViewAll();
+        Aeropuerto.app.referrer = '';
+        this.getApplication().getController('Usuarios').goToLogin();
     },
 
     onloginInicialButtonTap: function(button, e, eOpts) {

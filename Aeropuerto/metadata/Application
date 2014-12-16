@@ -13,7 +13,9 @@
             "Taxi",
             "Contacto",
             "Estacionamiento",
-            "Lavado"
+            "Lavado",
+            "Servicios",
+            "Normas"
         ],
         "icon": null,
         "js": [
@@ -23,7 +25,8 @@
             "Vuelo",
             "Weather",
             "Strings",
-            "Usuario"
+            "Usuario",
+            "Servicios"
         ],
         "name": "Aeropuerto",
         "startupImage": null,
@@ -36,14 +39,21 @@
             "MisVuelos",
             "WeatherStore",
             "StringsStore",
-            "UsuarioStore"
+            "UsuarioStore",
+            "ServiciosStore"
         ],
         "views": [
             "MainContainer",
             "UserContainer",
             "TaxiContainer",
             "ContactoContainer",
-            "EstacionamientoContainer"
+            "EstacionamientoContainer",
+            "ServiciosContainer",
+            "NormasContainer",
+            "HomeContainer",
+            "VuelosContainer",
+            "SuscripcionesContainer",
+            "FlightDetailsContainer"
         ]
     },
     "name": "Application",
@@ -77,6 +87,10 @@
                     "",
                     "    var uuid = guid();",
                     "    store.add({key : uuid});",
+                    "    var servicios = Ext.getStore('ServiciosStore');",
+                    "",
+                    "    servicios.add({categoria : 'GASTRONOMÍA',nombre:'Mc. Café ',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Mc. Donald ́s',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Restaurant Patria',ubicacion:'(www.restaurantpatria.com.uy)'},{categoria : 'TRANSPORTE',nombre:'COT',ubicacion:'(www.cot.com.uy)'},{categoria : 'TRANSPORTE',nombre:'Taxis Aeropuerto',ubicacion:'(www.taxisaeropuerto.com)'},{categoria : 'COMUNICACIÓN',nombre:'ANTEL',ubicacion:'(www.antel.com.uy)'});",
+                    "",
                     "}",
                     "",
                     "if(window.navigator.onLine){",

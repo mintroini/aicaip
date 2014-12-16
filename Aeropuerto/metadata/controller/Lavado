@@ -46,7 +46,7 @@
                 "fn": "btnLavadoTap",
                 "implHandler": [
                     "this.getApplication().getController('Global').checkLogged('LavadoContainer');",
-                    ""
+                    "this.resetForm();"
                 ],
                 "name": "tap"
             },
@@ -110,7 +110,8 @@
                 "implHandler": [
                     "Ext.Msg.alert( '', 'Se esta procesando su solicitud ');",
                     "Ext.getCmp('lavadoForm').show();",
-                    "Ext.getCmp('confirmarLavadoForm').hide();"
+                    "Ext.getCmp('confirmarLavadoForm').hide();",
+                    "this.resetForm();"
                 ],
                 "name": "tap"
             },
@@ -133,6 +134,8 @@
                     "  if (btn == 'yes'){",
                     "      Ext.getCmp('lavadoForm').show();",
                     "      Ext.getCmp('confirmarLavadoForm').hide();",
+                    "      Aeropuerto.app.getApplication().getController('Lavado').resetForm();",
+                    "",
                     "  }",
                     "});",
                     ""
@@ -141,6 +144,30 @@
             },
             "name": "onLavadoCancelar",
             "designerId": "1cf7ab70-8b2f-4044-9b07-e359d91b5fa4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetForm",
+                "implHandler": [
+                    "        Ext.getCmp('lavadoMatricula').setValue('');",
+                    "        Ext.getCmp('lavadoFechaInicio').setValue('');",
+                    "        Ext.getCmp('lavadoMarca').setValue('');",
+                    "        Ext.getCmp('lavadoModelo').setValue('');",
+                    "",
+                    "        Ext.getCmp('lblLavadoHoraComienzo').setHtml('Hora comienzo 00:00 AM');",
+                    "",
+                    "        Ext.getCmp('estacionamientoTerminos').setValue(0);",
+                    "        Ext.getCmp('lavadoPrecioServicio').setHtml('El costo del servicio es ');"
+                ]
+            },
+            "name": "resetForm",
+            "designerId": "fed21412-d0d6-4848-b6e3-c042be0138e9"
         }
     ]
 }

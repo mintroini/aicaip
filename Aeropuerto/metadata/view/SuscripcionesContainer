@@ -1,0 +1,90 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "suscripcionescontainer",
+        "designer|userClassName": "SuscripcionesContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "SuscripcionesContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "MyContainer11",
+    "designerId": "ee5e5975-c19c-428c-a297-86e539b9110c",
+    "cn": [
+        {
+            "type": "Ext.TitleBar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "topBar1",
+                "itemId": "topBar1"
+            },
+            "name": "MyTitleBar1",
+            "designerId": "06617c28-5776-48da-b897-823647f4b8a8",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "suscripcionesContainerHome",
+                        "text": ""
+                    },
+                    "name": "MyButton",
+                    "designerId": "8db365b0-11e2-47b9-b6fc-f6cb0b5d31a3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": "100%",
+                "hidden": null,
+                "hideAnimation": null,
+                "id": "lstSubscriptions",
+                "showAnimation": null,
+                "store": "Suscripciones",
+                "width": "100%"
+            },
+            "name": "MyList2",
+            "designerId": "714f0c8d-6716-4f47-8304-30783413f642",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>"
+                        ]
+                    },
+                    "name": "itemTpl",
+                    "designerId": "eb5ad6b1-095c-44bb-b8ec-ebdb5e68d0c4"
+                }
+            ]
+        }
+    ]
+}

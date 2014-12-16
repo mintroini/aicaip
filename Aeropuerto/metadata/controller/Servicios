@@ -1,0 +1,56 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Servicios"
+    },
+    "name": "MyController",
+    "designerId": "37f1e326-3940-4b0e-a8bb-961ee6176635",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#serviciosContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "a80a243f-4f84-4975-9fce-ad5e7790383b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnServicios",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnServiciosTap",
+                "implHandler": [
+                    "    Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "    Ext.Viewport.hideMenu('left');",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp('ServiciosContainer').show();"
+                ],
+                "name": "tap"
+            },
+            "name": "btnServiciosTap",
+            "designerId": "57834530-79b8-47ef-a40d-cbf712ae5fd5"
+        }
+    ]
+}

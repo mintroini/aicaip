@@ -31,6 +31,7 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
         hidden: true,
         id: 'ContactoContainer',
         width: '100%',
+        scrollable: 'vertical',
         items: [
             {
                 xtype: 'toolbar',

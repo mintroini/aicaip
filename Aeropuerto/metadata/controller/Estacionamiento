@@ -43,7 +43,7 @@
                 "fn": "btnEstacionamiento",
                 "implHandler": [
                     "this.getApplication().getController('Global').checkLogged('EstacionamientoContainer');",
-                    ""
+                    "this.resetForm();"
                 ],
                 "name": "tap"
             },
@@ -104,8 +104,9 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "onEstacionamientoContinuar",
                 "implHandler": [
-                    " Ext.getCmp('estacionamientoForm').hide();",
-                    " Ext.getCmp('confirmarEstacionamientoForm').show();",
+                    "Ext.getCmp('estacionamientoForm').hide();",
+                    "Ext.getCmp('confirmarEstacionamientoForm').show();",
+                    "",
                     "",
                     ""
                 ],
@@ -128,7 +129,8 @@
                 "implHandler": [
                     "   Ext.Msg.alert( '', 'Se esta procesando su solicitud ');//Ext.getCmp('estacionamientoForm').",
                     "Ext.getCmp('estacionamientoForm').show();",
-                    "         Ext.getCmp('confirmarEstacionamientoForm').hide();"
+                    "         Ext.getCmp('confirmarEstacionamientoForm').hide();",
+                    "this.resetForm();"
                 ],
                 "name": "tap"
             },
@@ -147,10 +149,11 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "onEstacionamientoCancelar",
                 "implHandler": [
-                    "Ext.Msg.confirm(\"Cancelar\", \"Are you sure u want to cancel :( ?\", function(btn){",
+                    "Ext.Msg.confirm(\"Cancelar\", \"Are you sure u want to cancel ?\", function(btn){",
                     "    if (btn == 'yes'){",
                     "        Ext.getCmp('estacionamientoForm').show();",
                     "        Ext.getCmp('confirmarEstacionamientoForm').hide();",
+                    "                Aeropuerto.app.getApplication().getController('Estacionamiento').resetForm();",
                     "    }",
                     "});"
                 ],
@@ -158,6 +161,32 @@
             },
             "name": "onEstacionamientoCancelar",
             "designerId": "c3b0ddfa-9e42-418b-9888-dc0be95d1033"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetForm",
+                "implHandler": [
+                    "Ext.getCmp('estacionamientoMatricula').setValue('');",
+                    "Ext.getCmp('estacionamientoDatePicker').setValue('');",
+                    "Ext.getCmp('estacionamientoMarca').setValue('');",
+                    "Ext.getCmp('estacionamientoModelo').setValue('');",
+                    "",
+                    "Ext.getCmp('lblTiempoReserva').setHtml('Hora comienzo 00:00 AM');",
+                    "Ext.getCmp('lblHoraComienzo').setHtml('Hora comienzo 00:00 AM');",
+                    "",
+                    "Ext.getCmp('estacionamientoTerminos').setValue(0);",
+                    "Ext.getCmp('estacionamientoPrecioServicio').setHtml('El costo del servicio es ');",
+                    ""
+                ]
+            },
+            "name": "resetForm",
+            "designerId": "27e1a8eb-2a24-4e13-9961-0ae412f81a6f"
         }
     ]
 }

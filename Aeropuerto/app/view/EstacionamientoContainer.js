@@ -63,9 +63,11 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                 items: [
                                     {
                                         xtype: 'datepickerfield',
+                                        id: 'estacionamientoDatePicker',
                                         margin: 20,
                                         padding: 8,
                                         label: 'Fecha',
+                                        name: 'estacionamientoDatePicker',
                                         placeHolder: 'mm/dd/yyyy',
                                         displayField: 'Fecha'
                                     },
@@ -117,19 +119,22 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                         xtype: 'textfield',
                                         id: 'estacionamientoMatricula',
                                         margin: 20,
-                                        label: 'Matricula'
+                                        label: 'Matricula',
+                                        name: 'estacionamientoMatricula'
                                     },
                                     {
                                         xtype: 'textfield',
                                         id: 'estacionamientoMarca',
                                         margin: 20,
-                                        label: 'Marca'
+                                        label: 'Marca',
+                                        name: 'estacionamientoMarca'
                                     },
                                     {
                                         xtype: 'textfield',
                                         id: 'estacionamientoModelo',
                                         margin: 20,
-                                        label: 'Modelo'
+                                        label: 'Modelo',
+                                        name: 'estacionamientoModelo'
                                     },
                                     {
                                         xtype: 'button',
@@ -149,10 +154,12 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                     {
                                         xtype: 'label',
                                         html: 'El precio del servicio es : ',
+                                        id: 'estacionamientoPrecioServicio',
                                         margin: 20
                                     },
                                     {
                                         xtype: 'checkboxfield',
+                                        id: 'estacionamientoTerminos',
                                         margin: 20,
                                         label: 'Aceptar terminos y condiciones'
                                     },
@@ -168,62 +175,6 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                         text: 'Cancelar'
                                     }
                                 ]
-                            },
-                            {
-                                xtype: 'picker',
-                                hidden: true,
-                                id: 'EstacionamientoHoraPicker',
-                                itemId: 'mypicker',
-                                slots: [
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'EstacionamientoHoras',
-                                        name: 'horas',
-                                        title: 'horas'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'EstacionamientoMinutos',
-                                        name: 'minutos',
-                                        title: 'minutos'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        data: [
-                                            {
-                                                text: 'AM',
-                                                value: 'AM'
-                                            },
-                                            {
-                                                text: 'PM',
-                                                value: 'PM'
-                                            }
-                                        ],
-                                        id: 'EstacionamientoAPM',
-                                        name: 'am',
-                                        title: 'am'
-                                    }
-                                ]
-                            },
-                            {
-                                xtype: 'picker',
-                                hidden: true,
-                                id: 'EstacionamientoHoraPicker1',
-                                itemId: 'mypicker1',
-                                slots: [
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'ReservaHoras',
-                                        name: 'horas',
-                                        title: 'horas'
-                                    },
-                                    {
-                                        xtype: 'pickerslot',
-                                        id: 'ReservaMinutos',
-                                        name: 'minutos',
-                                        title: 'minutos'
-                                    }
-                                ]
                             }
                         ]
                     },
@@ -231,6 +182,7 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                         xtype: 'container',
                         title: 'Informacion',
                         id: 'tabEstacionamientoInformacion',
+                        scrollable: 'vertical',
                         items: [
                             {
                                 xtype: 'label',
@@ -238,6 +190,62 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                 id: 'lblInfoEstacionamiento',
                                 margin: 20,
                                 padding: 8
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'picker',
+                        hidden: true,
+                        id: 'EstacionamientoHoraPicker',
+                        itemId: 'mypicker',
+                        slots: [
+                            {
+                                xtype: 'pickerslot',
+                                id: 'EstacionamientoHoras',
+                                name: 'horas',
+                                title: 'horas'
+                            },
+                            {
+                                xtype: 'pickerslot',
+                                id: 'EstacionamientoMinutos',
+                                name: 'minutos',
+                                title: 'minutos'
+                            },
+                            {
+                                xtype: 'pickerslot',
+                                data: [
+                                    {
+                                        text: 'AM',
+                                        value: 'AM'
+                                    },
+                                    {
+                                        text: 'PM',
+                                        value: 'PM'
+                                    }
+                                ],
+                                id: 'EstacionamientoAPM',
+                                name: 'am',
+                                title: 'am'
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'picker',
+                        hidden: true,
+                        id: 'EstacionamientoHoraPicker1',
+                        itemId: 'mypicker1',
+                        slots: [
+                            {
+                                xtype: 'pickerslot',
+                                id: 'ReservaHoras',
+                                name: 'horas',
+                                title: 'horas'
+                            },
+                            {
+                                xtype: 'pickerslot',
+                                id: 'ReservaMinutos',
+                                name: 'minutos',
+                                title: 'minutos'
                             }
                         ]
                     }
