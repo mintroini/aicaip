@@ -1,0 +1,303 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "HomeContainer",
+        "designer|userClassName": "HomeContainer",
+        "height": "100%",
+        "id": "HomeContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "MyContainer9",
+    "designerId": "3016e135-dfbf-4940-b5c5-465bed6c536f",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "HomeToolbar"
+            },
+            "name": "MyToolbar4",
+            "designerId": "956e09e4-20b7-4766-9000-42f254b8d801",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "homeContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "903c3575-79e1-424c-9e83-3577ed442c4d"
+                },
+                {
+                    "type": "Ext.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MySpacer2",
+                    "designerId": "cd68dc57-e798-4aae-af67-6b445ad2a4fe"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "organize",
+                        "id": "homeContainerSubs",
+                        "text": null
+                    },
+                    "name": "MyButton18",
+                    "designerId": "05252084-29ac-4532-97bd-24b038b8b987"
+                }
+            ]
+        },
+        {
+            "type": "Ext.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "lblHomeBuscarVuelos",
+                "label": null,
+                "margin": 20,
+                "padding": 8,
+                "placeHolder": "Vuelo, Aerolinea, Destino..."
+            },
+            "name": "MyTextField6",
+            "designerId": "585c2bf8-43c9-4157-a74f-0ae22da620ef"
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": null,
+                "id": "homeTabPanel",
+                "width": null
+            },
+            "name": "MyTabPanel2",
+            "designerId": "7807639a-14e3-4069-9a18-db9b49e129ef",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "id": "homePanelArribos",
+                        "title": "Arribos",
+                        "width": null
+                    },
+                    "name": "MyContainer11",
+                    "designerId": "1cd3acb2-2e59-40e9-a34f-4611754335e6",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "docked": "top",
+                                "height": "100%",
+                                "hideAnimation": null,
+                                "id": "lstArribosHome",
+                                "scrollToTopOnRefresh": false,
+                                "scrollable": null,
+                                "showAnimation": null,
+                                "store": "Arribos",
+                                "width": "100%"
+                            },
+                            "name": "MyList4",
+                            "configAlternates": {
+                                "scrollable": "object"
+                            },
+                            "designerId": "acd1e0af-6d12-4003-8928-14eecdf4bbac",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "scrollable",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<table style=\"width:100%\">",
+                                            "  <tr>",
+                                            "      <td><img src=\"'resources/Img/'+{aerolinea}+'.png'\" alt=\"Aerolinea Img\"></td>",
+                                            "    <td>{origen}</td>",
+                                            "    <td>{fprogram}</td>\t\t",
+                                            "    <td>{estadosp}</td>",
+                                            "  </tr>",
+                                            "</table>",
+                                            ""
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "965adee1-501a-4316-8da1-ca3a0afca8fb"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "id": "homePanelPartidas",
+                        "title": "Partidas",
+                        "width": null
+                    },
+                    "name": "MyContainer12",
+                    "designerId": "ee77d777-35f8-45c6-bd3c-afb6105e8d12",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "height": "100%",
+                                "hidden": null,
+                                "hideAnimation": null,
+                                "id": "lstPartidasHome",
+                                "scrollable": null,
+                                "showAnimation": null,
+                                "store": "Partidas",
+                                "width": "100%"
+                            },
+                            "name": "MyList5",
+                            "configAlternates": {
+                                "scrollable": "object"
+                            },
+                            "designerId": "278f712d-227f-47dc-850e-131fb9a3a388",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "scrollable",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "",
+                                            "<table style=\"width:100%\">",
+                                            "  <tr>",
+                                            "    <td style=\"width:20%\"><img src=\"resources/Img/{aerolinea}.png\" alt=\"Aerolinea Img\"></td>",
+                                            "    <td style=\"width:20%\">{destino}</td>",
+                                            "    <td style=\"width:20%\">{nVuelo}</td>\t",
+                                            "    <td style=\"width:20%\">{fprogram}</td>",
+                                            "    <td style=\"width:20%\">{estadosp}</td>",
+                                            "  </tr>",
+                                            "</table>",
+                                            ""
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "5c8af331-b9be-41bb-8f38-8abec4b3b2bc"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom",
+                "id": "homeButtonBuscar",
+                "margin": 20,
+                "padding": 8,
+                "text": "Buscar Vuelo"
+            },
+            "name": "MyButton17",
+            "designerId": "cd0bcf4b-e6a6-42a3-b6a4-a195fc31844d"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "",
+                    "if(Ext.getStore('UsuarioStore').getCount() > 0){",
+                    "    Ext.getCmp('homeContainerSubs').show();",
+                    "}else{",
+                    "    Ext.getCmp('homeContainerSubs').hide();",
+                    "}"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "6b58d40f-8fbe-4037-8b7e-a5b546b868af"
+        }
+    ]
+}
