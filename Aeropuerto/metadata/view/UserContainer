@@ -56,7 +56,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "hidden": false,
+                "hidden": true,
                 "id": "initial"
             },
             "name": "MyPanel2",
@@ -70,6 +70,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "hidden": true,
                         "id": "btnLoginInicial",
                         "margin": 20,
                         "padding": 8,
@@ -77,22 +78,6 @@
                     },
                     "name": "MyButton",
                     "designerId": "cbb4a7e7-a3fa-4761-9bab-3791c8fc2c24"
-                },
-                {
-                    "type": "Ext.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "btnRegisterInicial",
-                        "margin": 20,
-                        "padding": 8,
-                        "text": "Rergister"
-                    },
-                    "name": "MyButton3",
-                    "designerId": "1b2f7174-8b4c-4ec9-a35d-fcac53316fe3"
                 }
             ]
         },
@@ -104,7 +89,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "hidden": true,
+                "hidden": null,
                 "id": "loginForm",
                 "title": "Longin"
             },
@@ -158,6 +143,22 @@
                     },
                     "name": "MyButton1",
                     "designerId": "e9c5c537-31b7-4eab-b87f-c778d6a429b8"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "btnRegisterInicial",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "Rergister"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "1b2f7174-8b4c-4ec9-a35d-fcac53316fe3"
                 }
             ]
         },

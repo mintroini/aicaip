@@ -37,7 +37,7 @@ Ext.define('Aeropuerto.controller.Taxi', {
     },
 
     homeButtonTap: function(button, e, eOpts) {
-           this.getApplication().getController('LogicController').showHideMenu('');
+        this.getApplication().getController('LogicController').showHideMenu('');
     },
 
     onTaxiOrigenChange: function(selectfield, newValue, oldValue, eOpts) {

@@ -56,11 +56,14 @@
             "codeClass": null,
             "userConfig": {
                 "grouped": true,
-                "id": "serviciosLista",
+                "id": "lstServicios",
                 "store": "ServiciosStore"
             },
-            "name": "MyList3",
-            "designerId": "e6b458e3-0e15-4734-9365-ed8bb0a157cf",
+            "name": "MyList6",
+            "configAlternates": {
+                "onItemDisclosure": "function"
+            },
+            "designerId": "40d9fe66-381e-41d5-95ef-25b6ceb490c7",
             "cn": [
                 {
                     "type": "Ext.XTemplate",
@@ -72,13 +75,45 @@
                     "userConfig": {
                         "designer|displayName": "itemTpl",
                         "implHandler": [
-                            "<div>{nombre}{ubicacion}</div>"
+                            "<div>{nombre}</div>"
                         ]
                     },
                     "name": "itemTpl",
-                    "designerId": "d45ac8be-51a3-447e-bbaf-3c582e44df22"
+                    "designerId": "4e2cffbe-faf3-4f5d-bfb3-3c8a8009a06e"
+                },
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onItemDisclosure",
+                        "implHandler": [
+                            "//Aeropuerto.app.getController('Servicios').goToServiceDetails(record);"
+                        ]
+                    },
+                    "name": "onItemDisclosure",
+                    "designerId": "4dca94b2-d561-4311-bf48-b3cffdb75901"
                 }
             ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "c03a9385-68ea-40e4-8b29-bc08b403c6f3"
         }
     ]
 }

@@ -24,9 +24,6 @@ Ext.define('Aeropuerto.controller.LogicController', {
             "#btnVuelos": {
                 tap: 'btnVuelosTap'
             },
-            "#homeContainerSubs": {
-                tap: 'btnSubsHome'
-            },
             "#vuelosContainerHome": {
                 tap: 'onVuelosButtonTap'
             },
@@ -48,9 +45,6 @@ Ext.define('Aeropuerto.controller.LogicController', {
             "#txtFiltro": {
                 change: 'onTextfieldChange'
             },
-            "#homeContainerHome": {
-                tap: 'onMenuButtonTap'
-            },
             "#suscripcionesContainerHome": {
                 tap: 'onSuscripcionesHomeButtonTap'
             },
@@ -59,9 +53,6 @@ Ext.define('Aeropuerto.controller.LogicController', {
             },
             "#btnOffLine": {
                 tap: 'btnOffLine'
-            },
-            "#btnHome": {
-                tap: 'onHomeButtonTap'
             }
         }
     },
@@ -71,8 +62,10 @@ Ext.define('Aeropuerto.controller.LogicController', {
         Ext.Viewport.hideMenu('left');
         this.getApplication().getController('Global').checkConnection();
 
-        this.hideViewAll();
-        this.showView('SuscripcionesContainer');
+        //this.hideViewAll();
+        //this.showView('SuscripcionesContainer');
+
+        this.getApplication().getController('Global').checkLogged('SuscripcionesContainer');
 
         this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');
 
@@ -81,30 +74,21 @@ Ext.define('Aeropuerto.controller.LogicController', {
     },
 
     btnVuelosTap: function(button, e, eOpts) {
+        this.getApplication().getController('Global').checkConnection();
+        Ext.getCmp('vuelosTabPanel').mask({ xtype: 'loadmask' });
+
             Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
             Ext.Viewport.hideMenu('left');
             this.getApplication().getController('LogicController').hideViewAll();
             Ext.getCmp('VuelosContainer').show();
             Aeropuerto.app.referrer = 'VuelosContainer';
-
-        this.getApplication().getController('Global').checkConnection();
-
+        //setTimeout(function() {
 
         this.getApplication().getController('Global').getArrivals('','0');
+        this.getApplication().getController('Global').getDepartures('',1,'vuelosTabPanel');
 
-    },
+        //},500);
 
-    btnSubsHome: function(button, e, eOpts) {
-
-        if(Ext.Viewport.getMenus().right.isHidden()){
-            Ext.Viewport.showMenu('right');
-            this.getApplication().getController('Global').getSubscriptions('suscripcionesMenu');
-            console.log(Ext.getCmp('lstSubscriptions2').itemsCount);
-        }
-        else
-        {
-            Ext.Viewport.hideMenu('right');
-        }
 
 
     },
@@ -119,7 +103,6 @@ Ext.define('Aeropuerto.controller.LogicController', {
     },
 
     onDetailsBackButtonTap: function(button, e, eOpts) {
-                this.hideViewAll();
                 this.showView(Aeropuerto.app.referrer);
     },
 
@@ -135,35 +118,15 @@ Ext.define('Aeropuerto.controller.LogicController', {
         var c = Ext.getCmp('companyName').getData();
 
         var vuelos = Ext.getStore('MisVuelos');
-        var susc = Ext.getStore('Suscripciones');
-        var list = Ext.getCmp('lstSubscriptions');
+
         if (icon.getIconCls() === 'favorites') {
            this.getApplication().getController('Global').subscribe(uuid,c.nVuelo,c.fprogram);
             vuelos.add({'nVuelo' : c.nVuelo,'fprogram': c.fprogram});
-                 vuelos.sync();
+            vuelos.sync();
         }
         else
         {
-            this.getApplication().getController('Global').unSubscribe(uuid,c.nVuelo,c.fprogram);
-
-
-            for (i = 0; i < vuelos.getCount(); i++) {
-                 if(vuelos.getAt(i).data.nVuelo == c.nVuelo && vuelos.getAt(i).data.fprogram == c.fprogram){
-                        var index =  i;
-                 }
-            }
-                for (i = 0; i < susc.getCount(); i++) {
-                 if(susc.getAt(i).data.nVuelo == c.nVuelo && susc.getAt(i).data.fprogram == c.fprogram){
-                        var index2 =  i;
-                 }
-            }
-            vuelos.removeAt(index);
-            vuelos.sync();
-            susc.removeAt(index2);
-            susc.sync();
-
-            list.refresh();
-
+            this.deleteFlight(c.nVuelo,c.fprogram,uuid);
         }
 
 
@@ -174,18 +137,16 @@ Ext.define('Aeropuerto.controller.LogicController', {
     },
 
     onTextfieldChange: function(textfield, newValue, oldValue, eOpts) {
-        var lstArrivals = Ext.getCmp('lstArribos');
-        if(lstArrivals.isHidden()){
-
-            this.getApplication().getController('Global').getDepartures(newValue);
+        if(Ext.getCmp('vuelosTabPanel').getActiveItem().getId() === 'vuelosPanelArribos'){
+            console.log(newValue);
+            console.log('arrivals');
+                 this.getApplication().getController('Global').getArrivals(newValue);
         }
         else{
-            this.getApplication().getController('Global').getArrivals(newValue);
+                console.log(newValue);
+            console.log('departures');
+               this.getApplication().getController('Global').getDepartures(newValue);
         }
-    },
-
-    onMenuButtonTap: function(button, e, eOpts) {
-        this.showHideMenu("");
     },
 
     onSuscripcionesHomeButtonTap: function(button, e, eOpts) {
@@ -227,13 +188,6 @@ Ext.define('Aeropuerto.controller.LogicController', {
         }
     },
 
-    onHomeButtonTap: function(button, e, eOpts) {
-            Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
-            Ext.Viewport.hideMenu('left');
-            this.getApplication().getController('LogicController').hideViewAll();
-            Ext.getCmp('HomeContainer').show();
-    },
-
     createUuid: function() {
                  function s4() {
                     return Math.floor((1 + Math.random()) * 0x10000)
@@ -254,23 +208,26 @@ Ext.define('Aeropuerto.controller.LogicController', {
         if (record) {
 
             // set the info
-        Ext.getCmp('companyName').setData(record.data);
+            Ext.getCmp('companyName').setData(record.data);
 
             var esMyVuelo =  Ext.getStore('MisVuelos');
 
             var index = esMyVuelo.find('nVuelo', record.data.nVuelo);
 
-            if(index < 0){
-                Ext.getCmp('btnDetailsSubscribe').setIconCls('favorites');
-            }else{
-                Ext.getCmp('btnDetailsSubscribe').setIconCls('trash');
 
+            console.log('------ Lo que encuentra index');
+            console.log(record.data.nVuelo +'  --  '+record.data.fprogram);
+
+
+            Ext.getCmp('btnDetailsSubscribe').setIconCls('favorites');
+            if(index >= 0){
+                Ext.getCmp('btnDetailsSubscribe').setIconCls('trash');
             }
 
-           this.getApplication().getController('LogicController').hideViewAll();
-           Ext.getCmp('FlightDetailsContainer').show();
-           this.showHideMenu('left');
-           var tienda = Ext.getStore('WeatherStore');
+            this.getApplication().getController('LogicController').hideViewAll();
+            Ext.getCmp('FlightDetailsContainer').show();
+            this.showHideMenu('left');
+            var tienda = Ext.getStore('WeatherStore');
 
             if(record.data.esArribo)
             {
@@ -279,24 +236,24 @@ Ext.define('Aeropuerto.controller.LogicController', {
                 Ext.getCmp('origen').mask({ xtype: 'loadmask' });
                 Ext.getCmp('destino').mask({ xtype: 'loadmask' });
                 this.getApplication().getController('Global').getWeather(record.data.origen);
-                 Ext.getCmp('origen').setData(tienda.getAt(0).data);
-                 Ext.getCmp('origen').unmask();
+                Ext.getCmp('origen').setData(tienda.getAt(0).data);
+                Ext.getCmp('origen').unmask();
                 //Tiempo en el lugar de destino (Montevideo)
                 Ext.getCmp('detailsDestino').setHtml("Montevideo");
                 this.getApplication().getController('Global').getWeather('Montevideo');
-                 Ext.getCmp('destino').setData(tienda.getAt(0).data);
-               Ext.getCmp('destino').unmask();
+                Ext.getCmp('destino').setData(tienda.getAt(0).data);
+                Ext.getCmp('destino').unmask();
 
             }else
             {
                 //Tiempo en el lugar de origen (Montevideo)
                 Ext.getCmp('detailsOrigen').setHtml("Montevideo");
                 this.getApplication().getController('Global').getWeather('Montevideo');
-                 Ext.getCmp('origen').setData(tienda.getAt(0).data);
+                Ext.getCmp('origen').setData(tienda.getAt(0).data);
                 //Tiempo en el lugar de destino
                 Ext.getCmp('detailsDestino').setHtml(record.data.destino);
                 this.getApplication().getController('Global').getWeather(record.data.destino);
-                 Ext.getCmp('destino').setData(tienda.getAt(0).data);
+                Ext.getCmp('destino').setData(tienda.getAt(0).data);
             }
 
         }
@@ -356,14 +313,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
     },
 
     hideViewAll: function() {
-        /*
-        Ext.getCmp('lstArribos').hide();
-        Ext.getCmp('lstPartidas').hide();
-        Ext.getCmp('lstSubscriptions').hide();
-        Ext.getCmp('mainView').hide();
-        Ext.getCmp('details').hide();
 
-        */
         Ext.getCmp('userContainer').hide();
         Ext.getCmp('TaxiContainer').hide();
         Ext.getCmp('ServiciosContainer').hide();
@@ -377,6 +327,8 @@ Ext.define('Aeropuerto.controller.LogicController', {
         Ext.getCmp('VuelosContainer').hide();
         Ext.getCmp('SuscripcionesContainer').hide();
         Ext.getCmp('FlightDetailsContainer').hide();
+        Ext.getCmp('ServiciosDetailsContainer').hide();
+
     },
 
     showOffLine: function() {
@@ -390,6 +342,41 @@ Ext.define('Aeropuerto.controller.LogicController', {
         ///Ext.create('offLineContainer');
         this.hideViewAll();
         Ext.getCmp('offLineContainer').show();
+    },
+
+    deleteFlight: function(nVuelo, fprogram, uuid) {
+
+        var vuelos = Ext.getStore('MisVuelos');
+        var susc = Ext.getStore('Suscripciones');
+        var list = Ext.getCmp('lstSubscriptions');
+        var index, index2;
+
+        this.getApplication().getController('Global').unSubscribe(uuid,nVuelo,fprogram);
+
+            for (i = 0; i < vuelos.getCount(); i++) {
+                 if(vuelos.getAt(i).data.nVuelo == nVuelo && vuelos.getAt(i).data.fprogram == fprogram){
+                        index =  i;
+                 }
+            }
+                for (i = 0; i < susc.getCount(); i++) {
+                  if(susc.getAt(i).data.nVuelo == nVuelo && susc.getAt(i).data.fprogram == fprogram){
+                        index2 =  i;
+                 }
+            }
+
+            vuelos.removeAt(index);
+            vuelos.sync();
+            susc.removeAt(index2);
+            susc.sync();
+
+            list.refresh();
+
+    },
+
+    validateEmail: function(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+
     }
 
 });

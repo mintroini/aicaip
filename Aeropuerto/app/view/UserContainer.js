@@ -49,28 +49,21 @@ Ext.define('Aeropuerto.view.UserContainer', {
             },
             {
                 xtype: 'panel',
-                hidden: false,
+                hidden: true,
                 id: 'initial',
                 items: [
                     {
                         xtype: 'button',
+                        hidden: true,
                         id: 'btnLoginInicial',
                         margin: 20,
                         padding: 8,
                         text: 'Login'
-                    },
-                    {
-                        xtype: 'button',
-                        id: 'btnRegisterInicial',
-                        margin: 20,
-                        padding: 8,
-                        text: 'Rergister'
                     }
                 ]
             },
             {
                 xtype: 'fieldset',
-                hidden: true,
                 id: 'loginForm',
                 title: 'Longin',
                 items: [
@@ -93,6 +86,13 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         margin: 20,
                         padding: 8,
                         text: 'Login'
+                    },
+                    {
+                        xtype: 'button',
+                        id: 'btnRegisterInicial',
+                        margin: 20,
+                        padding: 8,
+                        text: 'Rergister'
                     }
                 ]
             },

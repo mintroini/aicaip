@@ -44,14 +44,21 @@ Ext.define('Aeropuerto.view.ServiciosContainer', {
             },
             {
                 xtype: 'list',
-                id: 'serviciosLista',
+                onItemDisclosure: function() {
+                    //Aeropuerto.app.getController('Servicios').goToServiceDetails(record);
+                },
+                id: 'lstServicios',
                 itemTpl: [
-                    '<div>{nombre}{ubicacion}</div>'
+                    '<div>{nombre}</div>'
                 ],
                 store: 'ServiciosStore',
                 grouped: true
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
     }
 
 });

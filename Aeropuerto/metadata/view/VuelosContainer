@@ -27,7 +27,8 @@
             "userConfig": {
                 "docked": "top",
                 "id": "topBar",
-                "itemId": "topBar"
+                "itemId": "topBar",
+                "width": "100%"
             },
             "name": "MyTitleBar",
             "designerId": "0ea95efe-cf0e-48fc-961b-1df293f17c46",
@@ -57,7 +58,9 @@
                     "userConfig": {
                         "docked": "right",
                         "id": "txtFiltro",
-                        "label": ""
+                        "label": null,
+                        "placeHolder": "Vuelo, Aerolinea...",
+                        "width": null
                     },
                     "name": "MyTextField",
                     "designerId": "628076d9-b4a3-47f1-88b6-e49bdbd0d4ab"
@@ -87,26 +90,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "height": null,
-                        "id": "vuelosArribos",
+                        "id": "vuelosPanelArribos",
                         "title": "Arribos",
                         "width": null
                     },
                     "name": "MyContainer9",
                     "designerId": "1b1482cd-13ef-4ce5-9db5-42c1ca71793c",
                     "cn": [
-                        {
-                            "type": "Ext.Label",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "html": "ghvkgh ytc ityci tciyrtxutrxfhrxydexujfrxuj"
-                            },
-                            "name": "MyLabel6",
-                            "designerId": "028545a8-6d93-4326-95a5-1168db1e6107"
-                        },
                         {
                             "type": "Ext.dataview.List",
                             "reference": {
@@ -175,14 +165,8 @@
                                         "type": "array"
                                     },
                                     "codeClass": null,
-                                    "userConfig": {
-                                        "scrollerAutoRefresh": null
-                                    },
                                     "name": "MyPullRefreshPlugin",
-                                    "configAlternates": {
-                                        "scrollable": "object"
-                                    },
-                                    "designerId": "9a03015e-15dc-4216-82bb-94e14d8009e6"
+                                    "designerId": "f388b573-9e49-4791-a92c-9b2635e4ee56"
                                 }
                             ]
                         }
@@ -239,7 +223,7 @@
                             "configAlternates": {
                                 "scrollable": "object"
                             },
-                            "designerId": "67f6d5af-f01f-4312-a811-caffb97d1ad1",
+                            "designerId": "4d78c0a6-b13e-43a1-9091-966b06e4460a",
                             "customConfigs": [
                                 {
                                     "group": "(Custom Properties)",
@@ -271,6 +255,9 @@
                                         "type": "array"
                                     },
                                     "codeClass": null,
+                                    "userConfig": {
+                                        "pluginId": null
+                                    },
                                     "name": "MyPullRefreshPlugin1",
                                     "designerId": "154e4635-4ece-48e5-8ab9-22dff31dfbbf"
                                 }
@@ -288,12 +275,14 @@
                     "userConfig": {
                         "fn": "onVuelosTabPanelActiveItemChange",
                         "implHandler": [
+                            "/*",
                             "Aeropuerto.app.getController('Global').checkConnection();",
                             "if(value.itemId === 'vuelosArribos'){",
                             "    Aeropuerto.app.getController('Global').getArrivals('','0');",
                             "}else{",
                             "    Aeropuerto.app.getController('Global').getDepartures('','0');",
-                            "}"
+                            "}",
+                            "*/"
                         ],
                         "name": "activeitemchange"
                     },

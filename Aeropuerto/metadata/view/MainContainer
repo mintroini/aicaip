@@ -23,7 +23,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "normascontainer",
+            "name": "normascontainer1",
             "designerId": "98f26906-6cc2-4493-a08c-818497335557",
             "masterInstanceId": "68b76737-587c-4705-9aeb-985076144b74"
         },
@@ -34,7 +34,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "estacionamientocontainer",
+            "name": "estacionamientocontainer1",
             "designerId": "3ea9a24a-2526-4b2e-8b57-95fbe5b133da",
             "masterInstanceId": "2dccae08-8a48-4f88-976e-3265e4464517"
         },
@@ -45,7 +45,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "usercontainer",
+            "name": "usercontainer1",
             "designerId": "58a7338a-c20b-43b9-99b2-1176bf66c172",
             "masterInstanceId": "f6a9c87d-8f36-466a-b967-6b79d7f09dec"
         },
@@ -56,7 +56,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "taxicontainer",
+            "name": "taxicontainer1",
             "designerId": "40a1c6d8-6b52-4e4e-bad1-cd766a05201e",
             "masterInstanceId": "fd50dd76-3bcc-448d-beab-fce5b970a75c"
         },
@@ -67,7 +67,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "contactocontainer",
+            "name": "contactocontainer1",
             "designerId": "b6653edf-9bd6-47cd-9e90-679e813b5d73",
             "masterInstanceId": "5865d153-1fc5-419a-bc8b-3136b0a7baa7"
         },
@@ -78,7 +78,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "offlinecontainer",
+            "name": "offlinecontainer1",
             "designerId": "e28e0163-8b46-4d6e-bcb9-2d0929f35054",
             "masterInstanceId": "aec2ea28-d9a4-4d63-962f-db95f0c2bb24"
         },
@@ -89,7 +89,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "lavadocontainer",
+            "name": "lavadocontainer1",
             "designerId": "c6e1c74c-95d1-4b08-a868-0446220dbd8b",
             "masterInstanceId": "8d9c7e91-e951-417c-a309-eff260eb36c1"
         },
@@ -100,7 +100,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "servicioscontainer",
+            "name": "servicioscontainer1",
             "designerId": "b1b5cf14-541d-4ee1-a2c9-798665a4f802",
             "masterInstanceId": "8fd85947-3517-423d-be4b-5174a9981b78"
         },
@@ -111,7 +111,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "homecontainer",
+            "name": "homecontainer1",
             "designerId": "3e600f20-bfef-4c78-a5e7-2e422d948175",
             "masterInstanceId": "3016e135-dfbf-4940-b5c5-465bed6c536f"
         },
@@ -122,7 +122,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "vueloscontainer",
+            "name": "vueloscontainer1",
             "designerId": "be481121-7460-4a9b-ac11-7465690e7fe9",
             "masterInstanceId": "f48d7aca-3636-4d93-be91-37077a7a9271"
         },
@@ -133,7 +133,7 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "suscripcionescontainer",
+            "name": "suscripcionescontainer1",
             "designerId": "77930927-fc09-42f8-a49d-b8d28e42fa2c",
             "masterInstanceId": "ee5e5975-c19c-428c-a297-86e539b9110c"
         },
@@ -144,9 +144,20 @@
                 "type": "array"
             },
             "codeClass": null,
-            "name": "flightdetailscontainer",
+            "name": "flightdetailscontainer1",
             "designerId": "b0c1ae6e-8e23-4b2c-8d5c-d1991eb650b5",
             "masterInstanceId": "dd4f618c-8a1f-4fa3-b66a-6e9febb5081a"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "serviciosdetailscontainer1",
+            "designerId": "93fd8871-cf74-463e-8126-046e8e7d70c9",
+            "masterInstanceId": "83610ee2-4a7b-4be4-89cf-6e5ba8c20a6c"
         },
         {
             "type": "fixedfunction",
@@ -163,7 +174,11 @@
                     "this.element.on({",
                     "    swipe: function(e, node, options) {",
                     "        if(e.direction == \"right\") {",
-                    "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
+                    "            if(Ext.Viewport.getMenus().right.isHidden()){",
+                    "               Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
+                    "            }else{",
+                    "                 Ext.Viewport.hideMenu('right');",
+                    "            }",
                     "        }",
                     "        if(e.direction == \"left\") {",
                     "            Aeropuerto.app.getController('LogicController').showHideMenu(\"left\");",
@@ -202,6 +217,13 @@
                     "        iconCls: 'user',",
                     "        cls: 'menu-button'",
                     "    },",
+                    "        {",
+                    "        xtype: 'button',",
+                    "        id: 'btnMapa',",
+                    "        text: \"Mapa\",",
+                    "        iconCls: 'user',",
+                    "        cls: 'menu-button'",
+                    "    },",
                     "    {",
                     "        xtype: 'button',",
                     "        id: 'btnNormas',",
@@ -209,10 +231,10 @@
                     "        iconCls: 'user',",
                     "        cls: 'menu-button'",
                     "    },",
-                    "    {",
+                    "        {",
                     "        xtype: 'button',",
-                    "        id: 'btnMapa',",
-                    "        text: \"Mapa\",",
+                    "        id: 'btnVip',",
+                    "        text: \"VIP\",",
                     "        iconCls: 'user',",
                     "        cls: 'menu-button'",
                     "    },",
@@ -277,7 +299,8 @@
                     "        ],",
                     "        store: 'Suscripciones'",
                     "    }]",
-                    "}),{side: 'right',reveal: true});"
+                    "}),{side: 'right',reveal: true});",
+                    ""
                 ]
             },
             "name": "initialize",

@@ -21,11 +21,17 @@ Ext.define('Aeropuerto.view.HomeContainer', {
         'Ext.Toolbar',
         'Ext.Button',
         'Ext.Spacer',
-        'Ext.field.Text'
+        'Ext.field.Text',
+        'Ext.tab.Panel',
+        'Ext.dataview.List',
+        'Ext.XTemplate'
     ],
 
     config: {
+        height: '100%',
         id: 'HomeContainer',
+        width: '100%',
+        layout: 'fit',
         items: [
             {
                 xtype: 'toolbar',
@@ -49,19 +55,92 @@ Ext.define('Aeropuerto.view.HomeContainer', {
             },
             {
                 xtype: 'textfield',
-                id: 'homeBuscarVuelos',
+                docked: 'top',
+                id: 'lblHomeBuscarVuelos',
                 margin: 20,
                 padding: 8,
-                label: 'Mi vuelo'
+                placeHolder: 'Vuelo, Aerolinea, Destino...'
+            },
+            {
+                xtype: 'tabpanel',
+                id: 'homeTabPanel',
+                items: [
+                    {
+                        xtype: 'container',
+                        title: 'Arribos',
+                        id: 'homePanelArribos',
+                        items: [
+                            {
+                                xtype: 'list',
+                                docked: 'top',
+                                height: '100%',
+                                id: 'lstArribosHome',
+                                width: '100%',
+                                itemTpl: [
+                                    '<table style="width:100%">',
+                                    '  <tr>',
+                                    '      <td><img src="\'resources/Img/\'+{aerolinea}+\'.png\'" alt="Aerolinea Img"></td>',
+                                    '    <td>{origen}</td>',
+                                    '    <td>{fprogram}</td>		',
+                                    '    <td>{estadosp}</td>',
+                                    '  </tr>',
+                                    '</table>',
+                                    ''
+                                ],
+                                scrollToTopOnRefresh: false,
+                                store: 'Arribos'
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'container',
+                        title: 'Partidas',
+                        id: 'homePanelPartidas',
+                        items: [
+                            {
+                                xtype: 'list',
+                                docked: 'top',
+                                height: '100%',
+                                id: 'lstPartidasHome',
+                                width: '100%',
+                                itemTpl: [
+                                    '',
+                                    '<table style="width:100%">',
+                                    '  <tr>',
+                                    '    <td style="width:20%"><img src="resources/Img/{aerolinea}.png" alt="Aerolinea Img"></td>',
+                                    '    <td style="width:20%">{destino}</td>',
+                                    '    <td style="width:20%">{nVuelo}</td>	',
+                                    '    <td style="width:20%">{fprogram}</td>',
+                                    '    <td style="width:20%">{estadosp}</td>',
+                                    '  </tr>',
+                                    '</table>',
+                                    ''
+                                ],
+                                store: 'Partidas'
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 xtype: 'button',
+                docked: 'bottom',
                 id: 'homeButtonBuscar',
                 margin: 20,
                 padding: 8,
                 text: 'Buscar Vuelo'
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
+
+        if(Ext.getStore('UsuarioStore').getCount() > 0){
+            Ext.getCmp('homeContainerSubs').show();
+        }else{
+            Ext.getCmp('homeContainerSubs').hide();
+        }
     }
 
 });

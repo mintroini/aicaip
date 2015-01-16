@@ -22,7 +22,6 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
         'Ext.Button',
         'Ext.field.Text',
         'Ext.tab.Panel',
-        'Ext.Label',
         'Ext.dataview.List',
         'Ext.XTemplate',
         'Ext.plugin.PullRefresh'
@@ -40,6 +39,7 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                 docked: 'top',
                 id: 'topBar',
                 itemId: 'topBar',
+                width: '100%',
                 items: [
                     {
                         xtype: 'button',
@@ -51,7 +51,7 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                         xtype: 'textfield',
                         docked: 'right',
                         id: 'txtFiltro',
-                        label: ''
+                        placeHolder: 'Vuelo, Aerolinea...'
                     }
                 ]
             },
@@ -62,12 +62,8 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                     {
                         xtype: 'container',
                         title: 'Arribos',
-                        id: 'vuelosArribos',
+                        id: 'vuelosPanelArribos',
                         items: [
-                            {
-                                xtype: 'label',
-                                html: 'ghvkgh ytc ityci tciyrtxutrxfhrxydexujfrxuj'
-                            },
                             {
                                 xtype: 'list',
                                 scrollable: {
@@ -151,12 +147,14 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
     },
 
     onVuelosTabPanelActiveItemChange: function(container, value, oldValue, eOpts) {
+        /*
         Aeropuerto.app.getController('Global').checkConnection();
         if(value.itemId === 'vuelosArribos'){
             Aeropuerto.app.getController('Global').getArrivals('','0');
         }else{
             Aeropuerto.app.getController('Global').getDepartures('','0');
         }
+        */
     }
 
 });

@@ -52,7 +52,8 @@ Ext.application({
         'HomeContainer',
         'VuelosContainer',
         'SuscripcionesContainer',
-        'FlightDetailsContainer'
+        'FlightDetailsContainer',
+        'ServiciosDetailsContainer'
     ],
     controllers: [
         'Global',
@@ -63,7 +64,8 @@ Ext.application({
         'Estacionamiento',
         'Lavado',
         'Servicios',
-        'Normas'
+        'Normas',
+        'Home'
     ],
     name: 'Aeropuerto',
     statusBarStyle: 'black-translucent',
@@ -76,16 +78,17 @@ Ext.application({
 
             var uuid = guid();
             store.add({key : uuid});
-            var servicios = Ext.getStore('ServiciosStore');
+
+              var servicios = Ext.getStore('ServiciosStore');
 
             servicios.add({categoria : 'GASTRONOMÍA',nombre:'Mc. Café ',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Mc. Donald ́s',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Restaurant Patria',ubicacion:'(www.restaurantpatria.com.uy)'},{categoria : 'TRANSPORTE',nombre:'COT',ubicacion:'(www.cot.com.uy)'},{categoria : 'TRANSPORTE',nombre:'Taxis Aeropuerto',ubicacion:'(www.taxisaeropuerto.com)'},{categoria : 'COMUNICACIÓN',nombre:'ANTEL',ubicacion:'(www.antel.com.uy)'});
 
         }
 
+
         if(window.navigator.onLine){
             var cultura = navigator.language;
             this.getApplication().getController('Global').getVersion(cultura);
-            this.getApplication().getController('Global').getArrivals('','0');
         }else{
             // this.getApplication().getController('LogicController').hideViewAll();
             // this.getApplication().getController('LogicController').showOffLine();

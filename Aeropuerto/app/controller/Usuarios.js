@@ -52,6 +52,7 @@ Ext.define('Aeropuerto.controller.Usuarios', {
         this.getApplication().getController('Global').checkConnection();
         this.getApplication().getController('LogicController').hideViewAll();
         Aeropuerto.app.referrer = '';
+        this.resetForms();
         this.getApplication().getController('Usuarios').goToLogin();
     },
 
@@ -67,10 +68,10 @@ Ext.define('Aeropuerto.controller.Usuarios', {
 
     onRegisterInicialButtonTap: function(button, e, eOpts) {
         var a = Ext.getCmp('registerForm');
-        var b = Ext.getCmp('initial');
+        var b = Ext.getCmp('loginForm');
 
         Ext.getCmp('userContainerHome').setIconCls('arrow_left');
-
+        this.resetForms();
         a.show();
         a.setTitle('Register');
         b.hide();
@@ -81,7 +82,7 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                this.getApplication().getController('LogicController').showHideMenu('');
             }else{
 
-            if(Ext.getCmp('initial').isHidden()){
+            if(Ext.getCmp('loginForm').isHidden()){
                 if(Ext.getCmp('registerForm').getTitle() === 'Edit'){
                       Ext.getCmp('registerForm').hide();
                       Ext.getCmp('Logged').show();
@@ -89,11 +90,10 @@ Ext.define('Aeropuerto.controller.Usuarios', {
                 }else{
                     var a = Ext.getCmp('loginForm');
                     var b = Ext.getCmp('registerForm');
-                    var c = Ext.getCmp('initial');
                     Ext.getCmp('userContainerHome').setIconCls('list');
-                    a.hide();
+                    a.show();
                     b.hide();
-                    c.show();
+                    this.resetForms();
                     }
             }else{
 
@@ -104,6 +104,46 @@ Ext.define('Aeropuerto.controller.Usuarios', {
 
     onRegisterButtonTap: function(button, e, eOpts) {
         this.getApplication().getController('Global').checkConnection();
+
+
+        if(this.getApplication().getController('LogicController').validateEmail(Ext.getCmp('registerEmail').getValue())){
+
+            if(Ext.getCmp('registerName').getValue().length > 2){
+                    if(Ext.getCmp('registerLastName').getValue().length > 2){
+                        if(Ext.getCmp('registerPassword').getValue().length > 5){
+                                if(Ext.getCmp('registerDate').getValue() !== null){
+
+                                    if(Ext.getCmp('registerForm').getTitle() === 'Edit'){
+                                        if(Ext.getCmp('registerPassword2').getValue() == Ext.getCmp('registerPassword').getValue()){
+                                                                            alert('todo bien');
+
+                                        }else{
+                                        alert('clave no iguales');
+                                        }
+                                    }else{
+                                         this.createUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'),Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerEmail').getValue(),'');
+                                    }
+                                }else{
+                                alert('ingrese fecha');
+                                }
+
+                        }else{
+                        alert('clave minimo 6 caracteres');
+                        }
+                    }else{
+                    alert('Apellido minimo 3 caracteres');
+                    }
+            }else{
+            alert('Nombre minimo 3 caracteres');
+            }
+        }else{
+            alert('formato de email incorrecto');
+        }
+
+
+
+        /*
+
         if(Ext.getCmp('registerForm').getTitle() === 'Edit'){
 
             var user = Ext.getStore('UsuarioStore').getAt(0);
@@ -113,11 +153,24 @@ Ext.define('Aeropuerto.controller.Usuarios', {
          this.createUser(Ext.getCmp('registerName').getValue(),Ext.getCmp('registerLastName').getValue(),Ext.getCmp('registerDate').getValue('d/m/Y'),Ext.getCmp('registerPassword').getValue(),Ext.getCmp('registerEmail').getValue(),'');
         }
 
+        */
     },
 
     onTrueLoginTap: function(button, e, eOpts) {
         this.getApplication().getController('Global').checkConnection();
-        this.userLogin(Ext.getCmp('loginUsername').getValue(),Ext.getCmp('loginPassword').getValue());
+
+        if(this.getApplication().getController('LogicController').validateEmail(Ext.getCmp('loginUsername').getValue())){
+
+            if(Ext.getCmp('loginPassword').getValue().length < 6){
+                alert('clave minimo 6 caracteres');
+                //this.userLogin(Ext.getCmp('loginUsername').getValue(),Ext.getCmp('loginPassword').getValue());
+            }else{
+                alert('se puede completar el login');
+            }
+
+        }else{
+            alert('formato de email incorrecto');
+        }
     },
 
     onButtonLogOutTap: function(button, e, eOpts) {
@@ -142,11 +195,15 @@ Ext.define('Aeropuerto.controller.Usuarios', {
 
         var user = Ext.getStore('UsuarioStore').getAt(0);
         var separado = user.data.fnac.split("-");
-        var dia = separado[2].split("T");
+
+        //var dia = separado[2].split("T");
+        var dia = separado[0].split("/");
+
+        console.log( dia[0] +' = ' + dia[1] +' '+ dia[2]);
 
         Ext.getCmp('registerName').setValue(user.data.nombre);
         Ext.getCmp('registerLastName').setValue(user.data.apellido);
-        Ext.getCmp('registerDate').setValue({day: dia[0], month: separado[1], year: separado[0]});
+        Ext.getCmp('registerDate').setValue({day: dia[0], month: dia[1], year: dia[2]});
         Ext.getCmp('registerPassword').setValue(user.data.password);
         Ext.getCmp('registerPassword2').show();
         Ext.getCmp('registerPassword2').setValue(user.data.password);
@@ -269,7 +326,8 @@ Ext.define('Aeropuerto.controller.Usuarios', {
             var userContainer = Ext.getCmp('userContainer');
             userContainer.show();
             this.hideRegisterForms();
-            var initial = Ext.getCmp('initial');
+            //var initial = Ext.getCmp('initial');
+            var initial = Ext.getCmp('loginForm');
             var logged = Ext.getCmp('Logged');
 
             var tienda = Ext.getStore('UsuarioStore');
@@ -281,6 +339,7 @@ Ext.define('Aeropuerto.controller.Usuarios', {
             }else{
                 logged.hide();
                 initial.show();
+                this.resetForms();
             }
 
     },
@@ -288,6 +347,19 @@ Ext.define('Aeropuerto.controller.Usuarios', {
     hideRegisterForms: function() {
          Ext.getCmp('registerForm').hide();
          Ext.getCmp('loginForm').hide();
+    },
+
+    resetForms: function() {
+                Ext.getCmp('registerName').setValue('');
+                Ext.getCmp('registerLastName').setValue('');
+                Ext.getCmp('registerDate').setValue('');
+                Ext.getCmp('registerPassword').setValue('');
+                Ext.getCmp('registerPassword2').setValue('');
+                Ext.getCmp('registerPassword2').setValue('');
+                Ext.getCmp('registerEmail').setValue('');
+
+                Ext.getCmp('loginPassword').setValue('');
+                Ext.getCmp('loginUsername').setValue('');
     }
 
 });

@@ -44,7 +44,7 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "homeButtonTap",
                 "implHandler": [
-                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                    "this.getApplication().getController('LogicController').showHideMenu('');"
                 ],
                 "name": "tap"
             },

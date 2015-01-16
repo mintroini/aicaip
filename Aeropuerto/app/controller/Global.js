@@ -22,14 +22,16 @@ Ext.define('Aeropuerto.controller.Global', {
         weatherKey: '453edf069e02397083c3dcc4fe281'
     },
 
-    getFlights: function(tipo, laTienda, parametros, mascara) {
-        /*
+    getFlights: function(tipo, laTienda, parametros, mascara, panel) {
+        console.log(mascara +' -- '+panel);
+
         Ext.Ajax.on('beforerequest', function(){
-        if(mascara == '0'){
-                    Ext.Viewport.mask({ xtype: 'loadmask' });
-        }
+            if(mascara === '1'){
+                // Ext.Viewport.mask({ xtype: 'loadmask' });
+                //  Ext.getCmp(panel).mask({ xtype: 'loadmask' });
+            }
         });
-        */
+
 
         Ext.Ajax.request({
             url: this.getUrlServer(),
@@ -57,24 +59,25 @@ Ext.define('Aeropuerto.controller.Global', {
                 console.log(response.responseText);
             }
         });
-        /*
+
         Ext.Ajax.on('requestcomplete', function(){
-            if(mascara == '0'){
-                Ext.Viewport.unmask();
+            if(mascara == '1'){
+                // Ext.Viewport.unmask();
+                Ext.getCmp(panel).unmask();
             }
         });
-        */
+
     },
 
-    getDepartures: function(filtro, mascara) {
+    getDepartures: function(filtro, mascara, panel) {
         var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetDepartures xmlns="http://tempuri.org/"><filter>'+filtro+'</filter></GetDepartures></soap:Body></soap:Envelope>';
-        this.getFlights('GetDepartures', 'Partidas', xmlParams,mascara);
+        this.getFlights('GetDepartures', 'Partidas', xmlParams,mascara,panel);
     },
 
-    getArrivals: function(filtro, mascara) {
+    getArrivals: function(filtro, mascara, panel) {
 
         var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><GetArrivals xmlns="http://tempuri.org/"><filter>'+filtro+'</filter></GetArrivals></soap:Body></soap:Envelope>';
-        this.getFlights('GetArrivals', 'Arribos', xmlParams,mascara);
+        this.getFlights('GetArrivals', 'Arribos', xmlParams,mascara,panel);
     },
 
     subscribe: function(uuid, flightNumber, timeStamp) {
@@ -91,14 +94,14 @@ Ext.define('Aeropuerto.controller.Global', {
             method: 'POST',
             params: xmlParams,
             success: function(response) {
-                //algo??
+                Aeropuerto.app.getController('LogicController').changeSubscribeIcon();
             },
             failure: function(response) {
                 alert('todo mal'+response.responseText);
                 console.log(response.responseText);
             }
         });
-        this.getApplication().getController('LogicController').changeSubscribeIcon();
+        //this.getApplication().getController('LogicController').changeSubscribeIcon();
 
     },
 
@@ -115,15 +118,13 @@ Ext.define('Aeropuerto.controller.Global', {
                                             method: 'POST',
                                             params: xmlParams,
                                             success: function(response) {
+                                                        Aeropuerto.app.getController('LogicController').changeSubscribeIcon();
                                             },
                                             failure: function(response) {
                                                 alert('todo mal'+response.responseText);
                                                 console.log(response.responseText);
                                             }
                                         });
-
-                                                 this.getApplication().getController('LogicController').changeSubscribeIcon("subscribe");
-
 
     },
 
@@ -159,6 +160,10 @@ Ext.define('Aeropuerto.controller.Global', {
             success: function(response) {
                 var vuelos = response.responseXML.getElementsByTagName('GetFlightResult');
                 var tienda = Ext.getStore('Suscripciones');
+
+                if(vuelos[0] === undefined){
+                    Aeropuerto.app.getController('LogicController').deleteFlight(nVuelo,fprogram,Ext.getStore('Uuid').getAt(0).get('key'));
+                }
                 Ext.each(vuelos, function(vuelo) {
                     tienda.addData(vuelo);
                 }, this);
@@ -276,7 +281,6 @@ Ext.define('Aeropuerto.controller.Global', {
         }, this);
         tienda.sync();
         tienda.load();
-
     },
 
     checkConnection: function() {

@@ -30,6 +30,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
         'Aeropuerto.view.VuelosContainer',
         'Aeropuerto.view.SuscripcionesContainer',
         'Aeropuerto.view.FlightDetailsContainer',
+        'Aeropuerto.view.ServiciosDetailsContainer',
         'Ext.Container'
     ],
 
@@ -73,6 +74,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
             },
             {
                 xtype: 'FlightDetailsContainer'
+            },
+            {
+                xtype: 'serviciosdetailscontainer'
             }
         ]
     },
@@ -83,7 +87,11 @@ Ext.define('Aeropuerto.view.MainContainer', {
         this.element.on({
             swipe: function(e, node, options) {
                 if(e.direction == "right") {
-                    Aeropuerto.app.getController('LogicController').showHideMenu("right");
+                    if(Ext.Viewport.getMenus().right.isHidden()){
+                       Aeropuerto.app.getController('LogicController').showHideMenu("right");
+                    }else{
+                         Ext.Viewport.hideMenu('right');
+                    }
                 }
                 if(e.direction == "left") {
                     Aeropuerto.app.getController('LogicController').showHideMenu("left");
@@ -122,6 +130,13 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 iconCls: 'user',
                 cls: 'menu-button'
             },
+                {
+                xtype: 'button',
+                id: 'btnMapa',
+                text: "Mapa",
+                iconCls: 'user',
+                cls: 'menu-button'
+            },
             {
                 xtype: 'button',
                 id: 'btnNormas',
@@ -129,10 +144,10 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 iconCls: 'user',
                 cls: 'menu-button'
             },
-            {
+                {
                 xtype: 'button',
-                id: 'btnMapa',
-                text: "Mapa",
+                id: 'btnVip',
+                text: "VIP",
                 iconCls: 'user',
                 cls: 'menu-button'
             },
@@ -198,6 +213,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 store: 'Suscripciones'
             }]
         }),{side: 'right',reveal: true});
+
     }
 
 });

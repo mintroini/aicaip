@@ -23,6 +23,12 @@ Ext.define('Aeropuerto.controller.Servicios', {
             },
             "#btnServicios": {
                 tap: 'btnServiciosTap'
+            },
+            "#lstServicios": {
+                itemtap: 'onServiciosListItemTap'
+            },
+            "#btnDetailsBackServicios": {
+                tap: 'onBackButtonTap'
             }
         }
     },
@@ -32,10 +38,40 @@ Ext.define('Aeropuerto.controller.Servicios', {
     },
 
     btnServiciosTap: function(button, e, eOpts) {
-            Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
-            Ext.Viewport.hideMenu('left');
+        Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
+        Ext.Viewport.hideMenu('left');
+        this.getApplication().getController('LogicController').hideViewAll();
+        Ext.getCmp('ServiciosContainer').show();
+
+
+        var servicios = Ext.getStore('ServiciosStore');
+
+        console.log(servicios.getCount());
+    },
+
+    onServiciosListItemTap: function(dataview, index, target, record, e, eOpts) {
+        this.goToServiceDetails(record);
+    },
+
+    onBackButtonTap: function(button, e, eOpts) {
+        this.getApplication().getController('LogicController').hideViewAll();
+        Ext.getCmp('ServiciosContainer').show();
+        Ext.getCmp('lstServicios').deselectAll();
+    },
+
+    goToServiceDetails: function(record) {
+
+
+        if (record) {
+
+            // set the info
+            Ext.getCmp('ServiciosDetalles').setData(record.data);
+
+
             this.getApplication().getController('LogicController').hideViewAll();
-            Ext.getCmp('ServiciosContainer').show();
+            Ext.getCmp('ServiciosDetailsContainer').show();
+
+        }
     }
 
 });
