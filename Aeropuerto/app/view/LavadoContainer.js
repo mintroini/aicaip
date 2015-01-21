@@ -26,7 +26,9 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
         'Ext.picker.Date',
         'Ext.Label',
         'Ext.field.Checkbox',
-        'Ext.picker.Slot'
+        'Ext.XTemplate',
+        'Ext.picker.Slot',
+        'Ext.field.Number'
     ],
 
     config: {
@@ -67,8 +69,18 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                         margin: 20,
                                         padding: 8,
                                         label: 'Fecha',
-                                        placeHolder: 'mm/dd/yyyy',
-                                        displayField: 'Fecha'
+                                        placeHolder: 'dd/mm/yyyy',
+                                        displayField: 'Fecha',
+                                        dateFormat: 'd/m/Y',
+                                        picker: {
+                                            id: 'LavadoYearPicker',
+                                            useTitles: true,
+                                            slotOrder: [
+                                                'day',
+                                                'month',
+                                                'year'
+                                            ]
+                                        }
                                     },
                                     {
                                         xtype: 'container',
@@ -96,7 +108,6 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                         xtype: 'textfield',
                                         id: 'lavadoMatricula',
                                         margin: 20,
-                                        inputCls: 'red',
                                         label: 'Matricula',
                                         required: true
                                     },
@@ -125,7 +136,6 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                 xtype: 'fieldset',
                                 hidden: true,
                                 id: 'confirmarLavadoForm',
-                                title: 'MyFieldSet4',
                                 items: [
                                     {
                                         xtype: 'label',
@@ -148,6 +158,36 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                     {
                                         xtype: 'button',
                                         id: 'lavadoCancelar',
+                                        text: 'Cancelar'
+                                    }
+                                ]
+                            },
+                            {
+                                xtype: 'container',
+                                hidden: true,
+                                id: 'lavadoSolicitado',
+                                items: [
+                                    {
+                                        xtype: 'container',
+                                        id: 'lavadoSolicitadoInfo',
+                                        margin: 20,
+                                        padding: 8,
+                                        style: '  text-align: center;',
+                                        tpl: [
+                                            '<h2>Lavado ya solicitado:</h2>',
+                                            '<h2>Marca: {marca}</h2>  ',
+                                            '<h2>Modelo: {modelo}</h2>  ',
+                                            '<h2>Matricula: {matricula}</h2>',
+                                            '<h2>Costo: {costo}</h2>',
+                                            '<h2>Dia y Hora: {horaLavado}</h2>',
+                                            '<h2>Estado: {estado}</h2>'
+                                        ]
+                                    },
+                                    {
+                                        xtype: 'button',
+                                        id: 'lavadoSolicitadoCancelar',
+                                        margin: 20,
+                                        padding: 8,
                                         text: 'Cancelar'
                                     }
                                 ]
@@ -174,16 +214,21 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                         hidden: true,
                         id: 'LavadoHoraPicker',
                         itemId: 'mypicker',
+                        useTitles: true,
                         slots: [
                             {
                                 xtype: 'pickerslot',
                                 id: 'LavadoHoras',
+                                style: '  text-align: center;',
+                                deselectOnContainerClick: false,
                                 name: 'horas',
                                 title: 'horas'
                             },
                             {
                                 xtype: 'pickerslot',
                                 id: 'LavadoMinutos',
+                                style: '  text-align: center;',
+                                align: 'center',
                                 name: 'minutos',
                                 title: 'minutos'
                             },
@@ -200,30 +245,57 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                     }
                                 ],
                                 id: 'LavadoAPM',
+                                style: '  text-align: center;',
+                                align: 'right',
                                 name: 'am',
                                 title: 'am'
                             }
                         ]
                     }
                 ]
+            },
+            {
+                xtype: 'numberfield',
+                hidden: true,
+                id: 'lavadoMinutosOculto',
+                label: 'Field'
+            },
+            {
+                xtype: 'label',
+                hidden: true,
+                id: 'lavadoAmOculto'
+            },
+            {
+                xtype: 'numberfield',
+                hidden: true,
+                id: 'lavadoHorasOculto',
+                label: 'Field'
             }
         ],
         listeners: [
             {
-                fn: 'onEstacionamientoHoraPickerChange',
+                fn: 'onLavadoHoraPickerChange',
                 event: 'change',
                 delegate: '#LavadoHoraPicker'
             }
         ]
     },
 
-    onEstacionamientoHoraPickerChange: function(picker, value, eOpts) {
+    onLavadoHoraPickerChange: function(picker, value, eOpts) {
         var minutos = value.minutos;
         if(minutos < 10){
             minutos = "0"+minutos;
         }
 
         Ext.getCmp('lblLavadoHoraComienzo').setHtml("Hora comienzo: "+value.horas+":"+minutos+"     " +value.am);
+
+        Ext.getCmp('lavadoMinutosOculto').setValue(value.minutos);
+        Ext.getCmp('lavadoHorasOculto').setValue(value.horas);
+        console.log(value.am);
+        if(value.am === 'PM') Ext.getCmp('lavadoHorasOculto').setValue(value.horas + 12);
+         console.log('valor antes -- '+Ext.getCmp('lavadoHorasOculto').getValue());
+
+        //Ext.getCmp('lavadoAmOculto').setHtml(value.am);
     },
 
     initialize: function() {
@@ -247,17 +319,34 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
         }
 
         Ext.getCmp('LavadoHoras').setData(horas);
+        Ext.getCmp('LavadoHoras').setValue(7);
         Ext.getCmp('LavadoMinutos').setData(minutos);
-        /*
-        Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);
-        Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);
-        Ext.getCmp('btnSolicitarTaxi').setText(strings.getAt(0).data.taxi_Solicitar);
-        Ext.getCmp('lblInfoTaxi').setHtml(strings.getAt(0).data.taxi_info);
 
-        //Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);
-        //Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);
+        Ext.getCmp('lavadoMinutosOculto').setValue(0);
+        Ext.getCmp('lavadoHorasOculto').setValue(7);
 
-        */
+        var fecha = new Date();
+        Ext.getCmp('lavadoFechaInicio').getPicker().setYearFrom(fecha.getFullYear());
+        Ext.getCmp('lavadoFechaInicio').getPicker().setYearTo(fecha.getFullYear() + 5);
+
+
+
+        //Ext.getCmp('tabLavadoSolicitar').setTitle(Ext.getStore('StringsStore').getAt(0).data.lavados_solicitar);
+        //Ext.getCmp('tabLavadoInformacion').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_informacion);
+        Ext.getCmp('lblInfoLavado').setHtml(Ext.getStore('StringsStore').getAt(0).data.lavados_info);
+
+        Ext.getCmp('lavadoMatricula').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_matricula);
+        Ext.getCmp('lavadoMarca').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_marca);
+        Ext.getCmp('lavadoModelo').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_modelo);
+        Ext.getCmp('lavadoFechaInicio').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_fecha);
+        Ext.getCmp('btnLavadoContinuar').setText(Ext.getStore('StringsStore').getAt(0).data.lavados_continuar);
+
+        Ext.getCmp('lavadoPrecioServicio').setHtml(Ext.getStore('StringsStore').getAt(0).data.lavados_costo);
+        Ext.getCmp('lavadoTerminos').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_terminos);
+
+        Ext.getCmp('lavadoConfirmar').setText(Ext.getStore('StringsStore').getAt(0).data.global_aceptar);
+        Ext.getCmp('lavadoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);
+        Ext.getCmp('lavadoSolicitadoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);
 
     }
 

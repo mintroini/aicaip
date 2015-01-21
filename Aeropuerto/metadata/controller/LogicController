@@ -355,6 +355,30 @@
             "designerId": "be7a92cb-116f-4653-8b0a-967849bc7c73"
         },
         {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "beforeSubscriptions",
+                "implHandler": [
+                    "if(Ext.getStore('MisVuelos').getCount()<1){",
+                    "    Ext.getCmp('suscriptionNoSubs').show();",
+                    "    Ext.getCmp('lstSubscriptions').hide();",
+                    "",
+                    "}else{",
+                    "    this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');",
+                    "    Ext.getCmp('suscriptionNoSubs').hide();",
+                    "    Ext.getCmp('lstSubscriptions').show();",
+                    "}"
+                ]
+            },
+            "name": "beforeSubscriptions",
+            "designerId": "8be6d6ec-1f62-485c-a2c6-e2421f539988"
+        },
+        {
             "type": "controlleraction",
             "reference": {
                 "name": "listeners",
@@ -375,10 +399,9 @@
                     "",
                     "this.getApplication().getController('Global').checkLogged('SuscripcionesContainer');",
                     "",
-                    "this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');",
-                    "",
                     "Aeropuerto.app.referrer = 'SuscripcionesContainer';",
-                    ""
+                    "",
+                    "this.beforeSubscriptions();"
                 ],
                 "name": "tap"
             },
@@ -471,7 +494,8 @@
                 "designer|targetType": "Ext.Button",
                 "fn": "onDetailsBackButtonTap",
                 "implHandler": [
-                    "        this.showView(Aeropuerto.app.referrer);"
+                    "        this.showView(Aeropuerto.app.referrer);",
+                    "if(Aeropuerto.app.referrer === 'SuscripcionesContainer') this.beforeSubscriptions();"
                 ],
                 "name": "tap"
             },

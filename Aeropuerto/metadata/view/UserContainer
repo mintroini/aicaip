@@ -91,7 +91,7 @@
             "userConfig": {
                 "hidden": null,
                 "id": "loginForm",
-                "title": "Longin"
+                "title": null
             },
             "name": "MyFieldSet",
             "designerId": "0b5c1429-9938-4c0b-87b3-fbb1c98549cd",
@@ -281,7 +281,8 @@
                         "id": "registerDate",
                         "label": null,
                         "labelWidth": "40%",
-                        "placeHolder": "dd/mm/yyyy"
+                        "placeHolder": "dd/mm/yyyy",
+                        "style": null
                     },
                     "name": "MyDatePicker",
                     "designerId": "eca759b6-b70d-40c9-90e1-7f8ae736bcb2",
@@ -294,6 +295,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "slotOrder": [
+                                    "day",
+                                    "month",
+                                    "year"
+                                ],
+                                "style": "  text-align: center;",
                                 "yearFrom": 1940
                             },
                             "name": "MyDatePicker1",
@@ -344,54 +351,6 @@
                     },
                     "name": "MyButton1",
                     "designerId": "0fa9e974-bcf5-4264-bcc6-5a5efa087dc6"
-                }
-            ]
-        },
-        {
-            "type": "Ext.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "centered": true,
-                "height": "100%",
-                "hidden": true,
-                "id": "Logged",
-                "width": "100%"
-            },
-            "name": "MyPanel",
-            "designerId": "4e47ad20-74bc-4240-a120-a6bfd610d8d9",
-            "cn": [
-                {
-                    "type": "Ext.Label",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "centered": false,
-                        "id": "loggedLabel"
-                    },
-                    "name": "MyLabel",
-                    "designerId": "44e6b399-a7c2-41fe-bdd8-4867e42ca93b"
-                },
-                {
-                    "type": "Ext.Spacer",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "height": "10%",
-                        "margin": 20,
-                        "padding": 10
-                    },
-                    "name": "MySpacer",
-                    "designerId": "37296e48-43c9-439b-9896-921b590bdd0a"
                 },
                 {
                     "type": "Ext.Button",
@@ -409,22 +368,6 @@
                     },
                     "name": "MyButton6",
                     "designerId": "0394c853-55eb-44d1-a20b-af9d7f89017c"
-                },
-                {
-                    "type": "Ext.Button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "btnModificarDatos",
-                        "margin": 20,
-                        "padding": 8,
-                        "text": "Modificar datos"
-                    },
-                    "name": "MyButton7",
-                    "designerId": "15a477bf-44c1-42a2-a9c1-b5647ad7052e"
                 }
             ]
         },
@@ -451,21 +394,22 @@
                     "});",
                     "",
                     "//Set labels with language",
-                    "Ext.getCmp('registerName').setLabel(Ext.getStore('StringsStore').getAt(0).data.nombre);",
-                    "Ext.getCmp('registerLastName').setLabel(Ext.getStore('StringsStore').getAt(0).data.apellido);",
-                    "Ext.getCmp('registerEmail').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);",
-                    "Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);",
-                    "Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);",
-                    "Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.fecha_nacimiento);",
-                    "Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);",
-                    "Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);",
+                    "Ext.getCmp('registerName').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_nombre);",
+                    "Ext.getCmp('registerLastName').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_apellido);",
+                    "Ext.getCmp('registerEmail').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_email);",
+                    "Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);",
+                    "Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);",
+                    "Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_fecha_nacimiento);",
+                    "Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_iniciarSesion);",
+                    "Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_iniciarSesion);",
                     "",
-                    "Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);",
-                    "Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);",
+                    "Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_email);",
+                    "Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);",
                     "",
-                    "Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.cerrarSesion);",
-                    "Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);",
-                    "Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);",
+                    "Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_cerrarSesion);",
+                    "",
+                    "Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);",
+                    "Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);",
                     ""
                 ]
             },

@@ -1,0 +1,55 @@
+{
+    "type": "xmlstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LavadosStore",
+        "model": "Lavado",
+        "requires": [
+            "Ext.data.proxy.LocalStorage"
+        ],
+        "storeId": "LavadosStore"
+    },
+    "name": "Partidas1",
+    "designerId": "2508e7b6-b05b-487e-8d68-4055045039e1",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "type": "localstorage"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "030b442e-8f5a-478d-89fb-056f865fb00f",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "type",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Xml",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": "GetLavadoActualResult"
+                    },
+                    "name": "MyXmlReader1",
+                    "designerId": "b5aad3aa-7724-4534-bdf1-7963a301b4b5"
+                }
+            ]
+        }
+    ]
+}

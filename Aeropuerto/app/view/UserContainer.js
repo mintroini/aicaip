@@ -24,9 +24,7 @@ Ext.define('Aeropuerto.view.UserContainer', {
         'Ext.field.Password',
         'Ext.field.Email',
         'Ext.field.DatePicker',
-        'Ext.picker.Date',
-        'Ext.Label',
-        'Ext.Spacer'
+        'Ext.picker.Date'
     ],
 
     config: {
@@ -65,7 +63,6 @@ Ext.define('Aeropuerto.view.UserContainer', {
             {
                 xtype: 'fieldset',
                 id: 'loginForm',
-                title: 'Longin',
                 items: [
                     {
                         xtype: 'textfield',
@@ -151,6 +148,12 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         displayField: 'Fecha Nacimiento',
                         dateFormat: 'd/m/Y',
                         picker: {
+                            style: '  text-align: center;',
+                            slotOrder: [
+                                'day',
+                                'month',
+                                'year'
+                            ],
                             yearFrom: 1940
                         }
                     },
@@ -160,27 +163,6 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         margin: 20,
                         padding: 8,
                         text: 'Login'
-                    }
-                ]
-            },
-            {
-                xtype: 'panel',
-                centered: true,
-                height: '100%',
-                hidden: true,
-                id: 'Logged',
-                width: '100%',
-                items: [
-                    {
-                        xtype: 'label',
-                        centered: false,
-                        id: 'loggedLabel'
-                    },
-                    {
-                        xtype: 'spacer',
-                        height: '10%',
-                        margin: 20,
-                        padding: 10
                     },
                     {
                         xtype: 'button',
@@ -188,13 +170,6 @@ Ext.define('Aeropuerto.view.UserContainer', {
                         margin: 20,
                         padding: 8,
                         text: 'logout'
-                    },
-                    {
-                        xtype: 'button',
-                        id: 'btnModificarDatos',
-                        margin: 20,
-                        padding: 8,
-                        text: 'Modificar datos'
                     }
                 ]
             }
@@ -215,21 +190,22 @@ Ext.define('Aeropuerto.view.UserContainer', {
         });
 
         //Set labels with language
-        Ext.getCmp('registerName').setLabel(Ext.getStore('StringsStore').getAt(0).data.nombre);
-        Ext.getCmp('registerLastName').setLabel(Ext.getStore('StringsStore').getAt(0).data.apellido);
-        Ext.getCmp('registerEmail').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);
-        Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
-        Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
-        Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.fecha_nacimiento);
-        Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);
-        Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.iniciar_sesion);
+        Ext.getCmp('registerName').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_nombre);
+        Ext.getCmp('registerLastName').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_apellido);
+        Ext.getCmp('registerEmail').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_email);
+        Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);
+        Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);
+        Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_fecha_nacimiento);
+        Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_iniciarSesion);
+        Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_iniciarSesion);
 
-        Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.email);
-        Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.password);
+        Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_email);
+        Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);
 
-        Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.cerrarSesion);
-        Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);
-        Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.registrarse);
+        Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_cerrarSesion);
+
+        Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);
+        Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);
 
     }
 

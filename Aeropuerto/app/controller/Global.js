@@ -50,6 +50,7 @@ Ext.define('Aeropuerto.controller.Global', {
                 tienda.sync();
                 Ext.each(vuelos, function(vuelo) {
                     tienda.addData(vuelo);
+                    console.log(vuelo);
                 }, this);
                 tienda.sync();
                 tienda.load();
@@ -296,18 +297,19 @@ Ext.define('Aeropuerto.controller.Global', {
     checkLogged: function(referrer) {
         this.getApplication().getController('Global').checkConnection();
 
-                    Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
-                    Ext.Viewport.hideMenu('left');
+        //Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');
+        Ext.Viewport.hideMenu('left');
+
         if(Ext.getStore('UsuarioStore').getCount() > 0){
             this.getApplication().getController('LogicController').hideViewAll();
             Ext.getCmp(referrer).show();
         }else{
             Ext.Msg.confirm("Iniciar sesion", "Necesita iniciar sesion", function(btn){
-                if (btn == 'yes'){
+            if (btn == 'yes'){
                     Aeropuerto.app.getApplication().getController('LogicController').hideViewAll();
                     Aeropuerto.app.referrer = referrer;
                     Aeropuerto.app.getController('Usuarios').goToLogin();
-                }
+            }
             });
         }
     }

@@ -21,7 +21,8 @@ Ext.define('Aeropuerto.view.SuscripcionesContainer', {
         'Ext.TitleBar',
         'Ext.Button',
         'Ext.dataview.List',
-        'Ext.XTemplate'
+        'Ext.XTemplate',
+        'Ext.Label'
     ],
 
     config: {
@@ -54,8 +55,19 @@ Ext.define('Aeropuerto.view.SuscripcionesContainer', {
                     '<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>'
                 ],
                 store: 'Suscripciones'
+            },
+            {
+                xtype: 'label',
+                centered: true,
+                hidden: true,
+                html: 'No subscriptions',
+                id: 'suscriptionNoSubs'
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
     }
 
 });

@@ -84,8 +84,17 @@ Ext.define('Aeropuerto.controller.Home', {
 
         if(Ext.Viewport.getMenus().right.isHidden()){
             Ext.Viewport.showMenu('right');
+
+            if(Ext.getStore('MisVuelos').getCount()<1){
+            Ext.getCmp('suscriptionNoSubs2').show();
+            Ext.getCmp('lstSubscriptions2').hide();
+
+        }else{
             this.getApplication().getController('Global').getSubscriptions('suscripcionesMenu');
-            console.log(Ext.getCmp('lstSubscriptions2').itemsCount);
+            Ext.getCmp('suscriptionNoSubs2').hide();
+            Ext.getCmp('lstSubscriptions2').show();
+        }
+
         }
         else
         {

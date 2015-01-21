@@ -27,7 +27,8 @@
             "Weather",
             "Strings",
             "Usuario",
-            "Servicios"
+            "Servicios",
+            "Lavado"
         ],
         "name": "Aeropuerto",
         "startupImage": null,
@@ -41,7 +42,8 @@
             "WeatherStore",
             "StringsStore",
             "UsuarioStore",
-            "ServiciosStore"
+            "ServiciosStore",
+            "LavadosStore"
         ],
         "views": [
             "MainContainer",

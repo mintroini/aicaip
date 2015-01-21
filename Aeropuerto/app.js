@@ -28,7 +28,8 @@ Ext.application({
         'Weather',
         'Strings',
         'Usuario',
-        'Servicios'
+        'Servicios',
+        'Lavado'
     ],
     stores: [
         'Arribos',
@@ -39,7 +40,8 @@ Ext.application({
         'WeatherStore',
         'StringsStore',
         'UsuarioStore',
-        'ServiciosStore'
+        'ServiciosStore',
+        'LavadosStore'
     ],
     views: [
         'MainContainer',

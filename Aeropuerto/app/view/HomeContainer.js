@@ -58,8 +58,7 @@ Ext.define('Aeropuerto.view.HomeContainer', {
                 docked: 'top',
                 id: 'lblHomeBuscarVuelos',
                 margin: 20,
-                padding: 8,
-                placeHolder: 'Vuelo, Aerolinea, Destino...'
+                padding: 8
             },
             {
                 xtype: 'tabpanel',
@@ -135,6 +134,13 @@ Ext.define('Aeropuerto.view.HomeContainer', {
 
     initialize: function() {
         this.callParent();
+
+        Ext.getCmp('lblHomeBuscarVuelos').setPlaceHolder(Ext.getStore('StringsStore').getAt(0).data.vuelos_filtro);
+        Ext.getCmp('homeButtonBuscar').setText(Ext.getStore('StringsStore').getAt(0).data.vuelos_buscar);
+
+        //ver como setear el title porque asi no me deja...
+        //Ext.getCmp('homePanelArribos').setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);
+        //Ext.getCmp('homePanelPartidas').setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);
 
         if(Ext.getStore('UsuarioStore').getCount() > 0){
             Ext.getCmp('homeContainerSubs').show();

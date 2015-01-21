@@ -67,10 +67,9 @@ Ext.define('Aeropuerto.controller.LogicController', {
 
         this.getApplication().getController('Global').checkLogged('SuscripcionesContainer');
 
-        this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');
-
         Aeropuerto.app.referrer = 'SuscripcionesContainer';
 
+        this.beforeSubscriptions();
     },
 
     btnVuelosTap: function(button, e, eOpts) {
@@ -104,6 +103,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
 
     onDetailsBackButtonTap: function(button, e, eOpts) {
                 this.showView(Aeropuerto.app.referrer);
+        if(Aeropuerto.app.referrer === 'SuscripcionesContainer') this.beforeSubscriptions();
     },
 
     onPartidasListItemTap: function(dataview, index, target, record, e, eOpts) {
@@ -377,6 +377,18 @@ Ext.define('Aeropuerto.controller.LogicController', {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
 
+    },
+
+    beforeSubscriptions: function() {
+        if(Ext.getStore('MisVuelos').getCount()<1){
+            Ext.getCmp('suscriptionNoSubs').show();
+            Ext.getCmp('lstSubscriptions').hide();
+
+        }else{
+            this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');
+            Ext.getCmp('suscriptionNoSubs').hide();
+            Ext.getCmp('lstSubscriptions').show();
+        }
     }
 
 });
