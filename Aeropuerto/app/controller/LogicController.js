@@ -83,7 +83,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
             Aeropuerto.app.referrer = 'VuelosContainer';
         //setTimeout(function() {
 
-        this.getApplication().getController('Global').getArrivals('','0');
+        this.getApplication().getController('Global').getArrivals('',1,'vuelosTabPanel');
         this.getApplication().getController('Global').getDepartures('',1,'vuelosTabPanel');
 
         //},500);

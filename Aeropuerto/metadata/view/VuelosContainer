@@ -59,7 +59,7 @@
                         "docked": "right",
                         "id": "txtFiltro",
                         "label": null,
-                        "placeHolder": "Vuelo, Aerolinea...",
+                        "placeHolder": null,
                         "width": null
                     },
                     "name": "MyTextField",
@@ -290,6 +290,26 @@
                     "designerId": "e3b8a843-33ed-4ca7-ab4c-94939d94c160"
                 }
             ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "Ext.getCmp('txtFiltro').setPlaceHolder(Ext.getStore('StringsStore').getAt(0).data.vuelos_filtro);",
+                    "",
+                    "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);",
+                    "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "da7413be-1fcd-47aa-823e-36c7289b33b1"
         }
     ]
 }

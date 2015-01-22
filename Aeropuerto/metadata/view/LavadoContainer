@@ -72,7 +72,7 @@
                         "id": "tabLavadoSolicitar",
                         "layout": null,
                         "scrollable": "vertical",
-                        "title": "Solicitar Lavado",
+                        "title": "45",
                         "width": null
                     },
                     "name": "MyContainer5",
@@ -443,7 +443,7 @@
                     "userConfig": {
                         "id": "tabLavadoInformacion",
                         "scrollable": "vertical",
-                        "title": "Informacion"
+                        "title": "4"
                     },
                     "name": "MyContainer6",
                     "designerId": "d3dc63c6-f607-4d8d-897d-8bd1e7bebb0e",
@@ -457,7 +457,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "centered": null,
-                                "html": "orem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta gravida nunc, a auctor nibh congue ut. Sed vel nulla in sem iaculis lacinia eget in ipsum. Ut hendrerit sollicitudin mollis. Integer egestas, eros at cursus tincidunt, ex felis auctor risus, eu malesuada elit elit eget turpis. Ut dictum hendrerit interdum. Ut urna nulla, placerat pellentesque nibh eget, dignissim condimentum ex. Suspendisse at gravida nibh. Morbi tempor urna non rhoncus feugiat. Quisque a lorem lorem. Vivamus pellentesque metus et dui aliquet eleifend. Phasellus blandit mauris non interdum commodo.  Etiam condimentum pharetra mi, in aliquet neque placerat laoreet. Duis condimentum vehicula mauris et vestibulum. Nam lobortis est vitae sem accumsan, nec maximus velit malesuada. Integer luctus in quam vitae porta. Cras mattis, eros ut porta interdum, arcu quam sagittis odio, non pharetra sapien justo at nibh. Aenean ornare sem augue, quis varius magna aliquet in. Aliquam ac ex pulvinar, aliquam nulla quis, elementum sem. Fusce ac mi arcu. Nullam erat nulla, consequat at lorem et, hendrerit posuere nulla. Sed at ligula id nibh consectetur eleifend. Donec ultrices, dui eget elementum posuere, neque enim sagittis ante, a bibendum risus ex quis lectus. Donec cursus faucibus dui, sed finibus tellus sollicitudin in.  Suspendisse potenti. Nulla sed laoreet quam. Maecenas felis felis, semper a felis eu, ornare convallis quam. Aliquam vitae finibus felis. Nulla ut ipsum tincidunt, bibendum eros elementum, aliquet nisi. Aliquam eu odio a elit fringilla sagittis. Vestibulum porttitor, mi sit amet laoreet tristique, arcu elit dictum ante, quis facilisis dolor massa ut libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis in nunc nisi. In tristique mi et turpis luctus malesuada.  Maecenas maximus mattis risus, et blandit libero consequat et. Proin ornare sapien eget ligula luctus, at consequat ex pharetra. Donec porta, ex ac cursus facilisis, nibh metus imperdiet enim, ac dignissim arcu nunc quis dolor. Fusce nec lorem ex. Praesent metus dui, vestibulum vel erat et, egestas consequat ante. Quisque sit amet blandit nisl. Vestibulum sagittis leo sed dignissim tincidunt. Nulla facilisi. Curabitur ut purus id sem commodo tincidunt. Aenean non elit et nunc egestas laoreet nec ut erat.  Phasellus in nulla egestas, malesuada magna et, scelerisque est. Mauris elementum euismod lacus in mollis. Etiam vel semper quam. Vestibulum ut odio finibus ante interdum aliquet. Nulla a neque laoreet, commodo lacus nec, pharetra massa. Praesent molestie tincidunt nunc, in interdum quam eleifend et. Pellentesque scelerisque sed odio a lobortis. In vitae dictum lorem. Nullam aliquam vitae libero quis rhoncus. Nam nec mauris vel nunc fringilla placerat vitae quis quam.",
+                                "html": null,
                                 "id": "lblInfoLavado",
                                 "margin": 20,
                                 "padding": 8
@@ -585,9 +585,7 @@
                                     "",
                                     "Ext.getCmp('lavadoMinutosOculto').setValue(value.minutos);",
                                     "Ext.getCmp('lavadoHorasOculto').setValue(value.horas);",
-                                    "console.log(value.am);",
                                     "if(value.am === 'PM') Ext.getCmp('lavadoHorasOculto').setValue(value.horas + 12);",
-                                    " console.log('valor antes -- '+Ext.getCmp('lavadoHorasOculto').getValue());",
                                     "",
                                     "//Ext.getCmp('lavadoAmOculto').setHtml(value.am);"
                                 ],
@@ -640,12 +638,10 @@
                     "Ext.getCmp('lavadoFechaInicio').getPicker().setYearFrom(fecha.getFullYear());",
                     "Ext.getCmp('lavadoFechaInicio').getPicker().setYearTo(fecha.getFullYear() + 5);",
                     "",
+                    "Ext.getCmp('lavadoTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.lavados_solicitar);",
+                    "Ext.getCmp('lavadoTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.global_informacion);",
                     "",
-                    "",
-                    "//Ext.getCmp('tabLavadoSolicitar').setTitle(Ext.getStore('StringsStore').getAt(0).data.lavados_solicitar);",
-                    "//Ext.getCmp('tabLavadoInformacion').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_informacion);",
                     "Ext.getCmp('lblInfoLavado').setHtml(Ext.getStore('StringsStore').getAt(0).data.lavados_info);",
-                    "",
                     "Ext.getCmp('lavadoMatricula').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_matricula);",
                     "Ext.getCmp('lavadoMarca').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_marca);",
                     "Ext.getCmp('lavadoModelo').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_modelo);",

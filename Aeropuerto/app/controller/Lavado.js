@@ -59,15 +59,15 @@ Ext.define('Aeropuerto.controller.Lavado', {
         Ext.getCmp('lavadoSolicitado').hide();
         //Buscar si tiene lavado
         if(Ext.getStore('UsuarioStore').getCount() > 0){
-           this.getLavadoActual(Ext.getStore('UsuarioStore').getAt(0).data.email);
+            this.getLavadoActual(Ext.getStore('UsuarioStore').getAt(0).data.email);
 
             if(Ext.getStore('LavadosStore').getCount() > 0){
 
                 if(Ext.getStore('LavadosStore').getAt(0).data.estado !== 'Cancelado' && Ext.getStore('LavadosStore').getAt(0).data.estado !== 'Facturado' ){
-                        //mostrar cartel de ya pedido
-                        Ext.getCmp('lavadoForm').hide();
-                        Ext.getCmp('lavadoSolicitadoInfo').setData(Ext.getStore('LavadosStore').getAt(0).data);
-                        Ext.getCmp('lavadoSolicitado').show();
+                    //mostrar cartel de ya pedido
+                    Ext.getCmp('lavadoForm').hide();
+                    Ext.getCmp('lavadoSolicitadoInfo').setData(Ext.getStore('LavadosStore').getAt(0).data);
+                    Ext.getCmp('lavadoSolicitado').show();
                 }
             }
         }
@@ -179,7 +179,6 @@ Ext.define('Aeropuerto.controller.Lavado', {
               Ext.getCmp('lavadoForm').show();
               Ext.getCmp('confirmarLavadoForm').hide();
               Aeropuerto.app.getApplication().getController('Lavado').resetForm();
-
           }
         });
 
@@ -192,6 +191,7 @@ Ext.define('Aeropuerto.controller.Lavado', {
               Ext.getCmp('confirmarLavadoForm').hide();
               Ext.getCmp('lavadoSolicitado').hide();
               Aeropuerto.app.getApplication().getController('Lavado').resetForm();
+              Aeropuerto.app.getApplication().getController('Lavado').cancelarLavadoActual(Ext.getStore('UsuarioStore').getAt(0).data.email);
 
           }
         });
@@ -244,7 +244,6 @@ Ext.define('Aeropuerto.controller.Lavado', {
                                                                             Ext.Msg.alert( '', Ext.getStore('StringsStore').getAt(0).data.lavados_mensajeError);
                                                                         }
 
-                                                                        console.log(response);
 
                                                                     },
                                                                     failure: function(response) {
@@ -269,30 +268,51 @@ Ext.define('Aeropuerto.controller.Lavado', {
                                                                             params: xmlParams,
                                                                             success: function(response) {
 
-
                                                                                 var lavados = response.responseXML.getElementsByTagName('GetLavadoActualResponse');
-
 
                                                                                 var tienda = Ext.getStore('LavadosStore');
                                                                                 tienda.getProxy().clear();
                                                                                 tienda.data.clear();
                                                                                 tienda.sync();
-                                                                                console.log(tienda.getCount());
 
                                                                                 Ext.each(lavados, function(lavado) {
                                                                                     tienda.addData(lavado);
-                                                                                    console.log(lavado);
                                                                                 }, this);
                                                                                 tienda.sync();
                                                                                 tienda.load();
-                                                                                console.log(tienda.getCount());
-
 
                                                                             },
                                                                             failure: function(response) {
                                                                                 console.log(response.responseText);
                                                                             }
                                                                         });
+    },
+
+    cancelarLavadoActual: function(email) {
+            var xmlParams = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><CancelarLavadoActual xmlns="http://tempuri.org/"><email>'+email+'</email></CancelarLavadoActual></soap:Body></soap:Envelope>';
+
+
+            Ext.Ajax.request({
+                url: Aeropuerto.app.getApplication().getController('Global').getUrlServer(),
+                useDefaultXhrHeader: false,
+                headers: {
+                    'Content-Type': 'text/xml; charset=utf-8',
+                    'SOAPAction': 'http://tempuri.org/CancelarLavadoActual'
+                },
+                method: 'POST',
+                params: xmlParams,
+                success: function(response) {
+                    //Alertar al cliente??
+                    var tienda = Ext.getStore('LavadosStore');
+                    tienda.getProxy().clear();
+                    tienda.data.clear();
+                    tienda.sync();
+
+                },
+                    failure: function(response) {
+                    console.log(response.responseText);
+                }
+            });
     }
 
 });

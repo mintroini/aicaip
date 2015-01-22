@@ -50,8 +50,7 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                     {
                         xtype: 'textfield',
                         docked: 'right',
-                        id: 'txtFiltro',
-                        placeHolder: 'Vuelo, Aerolinea...'
+                        id: 'txtFiltro'
                     }
                 ]
             },
@@ -155,6 +154,14 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
             Aeropuerto.app.getController('Global').getDepartures('','0');
         }
         */
+    },
+
+    initialize: function() {
+        this.callParent();
+        Ext.getCmp('txtFiltro').setPlaceHolder(Ext.getStore('StringsStore').getAt(0).data.vuelos_filtro);
+
+        Ext.getCmp('vuelosTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);
+        Ext.getCmp('vuelosTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);
     }
 
 });

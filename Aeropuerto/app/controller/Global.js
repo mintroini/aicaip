@@ -23,8 +23,6 @@ Ext.define('Aeropuerto.controller.Global', {
     },
 
     getFlights: function(tipo, laTienda, parametros, mascara, panel) {
-        console.log(mascara +' -- '+panel);
-
         Ext.Ajax.on('beforerequest', function(){
             if(mascara === '1'){
                 // Ext.Viewport.mask({ xtype: 'loadmask' });
@@ -50,7 +48,6 @@ Ext.define('Aeropuerto.controller.Global', {
                 tienda.sync();
                 Ext.each(vuelos, function(vuelo) {
                     tienda.addData(vuelo);
-                    console.log(vuelo);
                 }, this);
                 tienda.sync();
                 tienda.load();

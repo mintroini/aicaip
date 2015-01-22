@@ -48,8 +48,6 @@
                 ],
                 "fn": "getFlights",
                 "implHandler": [
-                    "console.log(mascara +' -- '+panel);",
-                    "",
                     "Ext.Ajax.on('beforerequest', function(){",
                     "    if(mascara === '1'){",
                     "        // Ext.Viewport.mask({ xtype: 'loadmask' });",
@@ -75,7 +73,6 @@
                     "        tienda.sync();",
                     "        Ext.each(vuelos, function(vuelo) {",
                     "            tienda.addData(vuelo);",
-                    "            console.log(vuelo);",
                     "        }, this);",
                     "        tienda.sync();",
                     "        tienda.load();",
