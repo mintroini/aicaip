@@ -26,7 +26,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "top"
+                "docked": "top",
+                "id": "userToolbar"
             },
             "name": "MyToolbar",
             "designerId": "23241e7e-94fd-4dae-bf82-bbb0ea2c3883",
@@ -410,6 +411,8 @@
                     "",
                     "Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);",
                     "Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);",
+                    "",
+                    "Ext.getCmp('userToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_usuario);",
                     ""
                 ]
             },

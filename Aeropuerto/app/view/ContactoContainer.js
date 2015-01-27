@@ -36,6 +36,7 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'contactoToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -50,7 +51,7 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
                 items: [
                     {
                         xtype: 'emailfield',
-                        disabled: true,
+                        disabled: false,
                         id: 'contactoEmail',
                         margin: 20,
                         padding: 8,
@@ -109,6 +110,8 @@ Ext.define('Aeropuerto.view.ContactoContainer', {
         this.callParent();
 
         //Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);
+        Ext.getCmp('contactoEmail').disable();
+        Ext.getCmp('contactoToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_contacto);
     }
 
 });

@@ -25,7 +25,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "top"
+                "docked": "top",
+                "id": "taxiToolbar"
             },
             "name": "MyToolbar1",
             "designerId": "9da558a3-0afa-4600-8d9c-187d84a1aff1",
@@ -233,7 +234,7 @@
                     "",
                     "//Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);",
                     "//Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);",
-                    ""
+                    "Ext.getCmp('taxiToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_taxi);"
                 ]
             },
             "name": "initialize",

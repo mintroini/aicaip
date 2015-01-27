@@ -87,40 +87,36 @@ Ext.define('Aeropuerto.controller.Lavado', {
         var horas = fecha.getTime() - (fecha.getHours()*3600000 + fecha.getMinutes()*60000 +fecha.getSeconds()*1000+ fecha.getMilliseconds());
 
         var siguiente = true;
-        var mensaje = '';
+        var mensaje = Ext.getStore('StringsStore').getAt(0).data.global_fallo;
+        mensaje += '<br>';
 
         //console.log(Ext.getCmp('lavadoFechaInicio').getValue().getTime() );
         if(Ext.getCmp('lavadoFechaInicio').getValue() === null){
-          //  Ext.Msg.alert( '', 'Ingrese un fecha');
-            mensaje += 'Ingrese un fecha';
-                mensaje += '<br>';
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_fecha;
+            mensaje += '<br>';
             siguiente = false;
 
         }else{
             if(Ext.getCmp('lavadoFechaInicio').getValue().getTime() < horas){
-                //Ext.Msg.alert( '', 'No se puede lavar autos en el pasado (aun)');
-                mensaje += 'No se puede lavar autos en el pasado (aun) ';
+                mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_fecha;
                 mensaje += '<br>';
                 siguiente = false;
             }
         }
 
         if( Ext.getCmp('lavadoMatricula').getValue() < 1){
-            //Ext.Msg.alert( '', 'Ingrese matricula');
-            mensaje += 'Ingrese matricula';
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_matricula;
             mensaje += '<br>';
             siguiente = false;
         }
         if( Ext.getCmp('lavadoMarca').getValue() < 1){
-            //Ext.Msg.alert( '', 'Ingrese marca');
-            mensaje += 'Ingrese un fecha';
-                mensaje += '<br>';
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_marca;
+            mensaje += '<br>';
             siguiente = false;
         }
         if( Ext.getCmp('lavadoModelo').getValue() < 1){
-            //Ext.Msg.alert( '', 'Ingrese modelo');
-            mensaje += 'Ingrese modelo  ';
-                mensaje += '<br>';
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_modelo;
+            mensaje += '<br>';
             siguiente = false;
         }
 
@@ -134,8 +130,6 @@ Ext.define('Aeropuerto.controller.Lavado', {
     },
 
     onLavadoConfirmar: function(button, e, eOpts) {
-        console.log();
-
         if(Ext.getCmp('lavadoTerminos').getChecked()){
 
             var mes = Ext.getCmp('lavadoFechaInicio').getValue().getMonth()+1;
@@ -174,7 +168,7 @@ Ext.define('Aeropuerto.controller.Lavado', {
     },
 
     onLavadoCancelar: function(button, e, eOpts) {
-        Ext.Msg.confirm("Cancelar", "Are you sure u want to cancel :( ?", function(btn){
+        Ext.Msg.confirm(Ext.getStore('StringsStore').getAt(0).data.global_cancel, Ext.getStore('StringsStore').getAt(0).data.global_cancelarConfirmado, function(btn){
           if (btn == 'yes'){
               Ext.getCmp('lavadoForm').show();
               Ext.getCmp('confirmarLavadoForm').hide();
@@ -185,7 +179,7 @@ Ext.define('Aeropuerto.controller.Lavado', {
     },
 
     onLavadoSolicitadoCancelar: function(button, e, eOpts) {
-        Ext.Msg.confirm("Cancelar", "Are you sure u want to cancel :( ?", function(btn){
+        Ext.Msg.confirm(Ext.getStore('StringsStore').getAt(0).data.global_cancel, Ext.getStore('StringsStore').getAt(0).data.global_cancelarConfirmado, function(btn){
           if (btn == 'yes'){
               Ext.getCmp('lavadoForm').show();
               Ext.getCmp('confirmarLavadoForm').hide();

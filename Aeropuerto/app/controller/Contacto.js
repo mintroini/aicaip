@@ -30,7 +30,7 @@ Ext.define('Aeropuerto.controller.Contacto', {
     onContactoTap: function(button, e, eOpts) {
         this.getApplication().getController('Global').checkLogged('ContactoContainer');
 
-
+        if(Ext.getStore('UsuarioStore').getCount() > 0) Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);
     },
 
     contactioHomeButtonTap: function(button, e, eOpts) {

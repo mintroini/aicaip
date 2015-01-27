@@ -1,0 +1,192 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Estacionamiento"
+    },
+    "name": "MyController",
+    "designerId": "1908b749-e312-4630-8184-f715a37dccb1",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#estacionamientoContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "5a5dc530-e12d-4ac7-a733-dc1b46cf1a16"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnEstacionamiento",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnEstacionamiento",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkLogged('EstacionamientoContainer');",
+                    "this.resetForm();"
+                ],
+                "name": "tap"
+            },
+            "name": "btnEstacionamiento",
+            "designerId": "0237bfa0-6b74-436f-b23e-dc0e9983a8a2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#seleccionarHoraComienzo",
+                "designer|targetType": "Ext.Button",
+                "fn": "selectHoraTap",
+                "implHandler": [
+                    "Ext.getCmp('EstacionamientoHoraPicker').show();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "selectHoraTap",
+            "designerId": "997f7614-b4aa-4917-92ee-feea52c0087f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#seleccionarTiempoReserva",
+                "designer|targetType": "Ext.Button",
+                "fn": "selectHoraTap1",
+                "implHandler": [
+                    "Ext.getCmp('EstacionamientoHoraPicker1').show();",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "selectHoraTap1",
+            "designerId": "91885e49-61bc-4f0d-af30-8d998603fa0e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnEstacionamientoContinuar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onEstacionamientoContinuar",
+                "implHandler": [
+                    "Ext.getCmp('estacionamientoForm').hide();",
+                    "Ext.getCmp('confirmarEstacionamientoForm').show();",
+                    "",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onEstacionamientoContinuar",
+            "designerId": "fa8a13fd-632d-498b-bc60-bc09ee7e05db"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#estacionamientoConfirmar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onEstacionamientoConfirmar",
+                "implHandler": [
+                    "   Ext.Msg.alert( '', 'Se esta procesando su solicitud ');//Ext.getCmp('estacionamientoForm').",
+                    "Ext.getCmp('estacionamientoForm').show();",
+                    "         Ext.getCmp('confirmarEstacionamientoForm').hide();",
+                    "this.resetForm();"
+                ],
+                "name": "tap"
+            },
+            "name": "onEstacionamientoConfirmar",
+            "designerId": "75ac8103-9675-4fb4-a804-d1aec9a3d229"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#estacionamientoCancelar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onEstacionamientoCancelar",
+                "implHandler": [
+                    "Ext.Msg.confirm(\"Cancelar\", \"Are you sure u want to cancel ?\", function(btn){",
+                    "    if (btn == 'yes'){",
+                    "        Ext.getCmp('estacionamientoForm').show();",
+                    "        Ext.getCmp('confirmarEstacionamientoForm').hide();",
+                    "                Aeropuerto.app.getApplication().getController('Estacionamiento').resetForm();",
+                    "    }",
+                    "});"
+                ],
+                "name": "tap"
+            },
+            "name": "onEstacionamientoCancelar",
+            "designerId": "c3b0ddfa-9e42-418b-9888-dc0be95d1033"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetForm",
+                "implHandler": [
+                    "Ext.getCmp('estacionamientoMatricula').setValue('');",
+                    "Ext.getCmp('estacionamientoDatePicker').setValue('');",
+                    "Ext.getCmp('estacionamientoMarca').setValue('');",
+                    "Ext.getCmp('estacionamientoModelo').setValue('');",
+                    "",
+                    "Ext.getCmp('lblTiempoReserva').setHtml('Hora comienzo 00:00 AM');",
+                    "Ext.getCmp('lblHoraComienzo').setHtml('Hora comienzo 00:00 AM');",
+                    "",
+                    "Ext.getCmp('estacionamientoTerminos').setValue(0);",
+                    "Ext.getCmp('estacionamientoPrecioServicio').setHtml('El costo del servicio es ');",
+                    ""
+                ]
+            },
+            "name": "resetForm",
+            "designerId": "27e1a8eb-2a24-4e13-9961-0ae412f81a6f"
+        }
+    ]
+}

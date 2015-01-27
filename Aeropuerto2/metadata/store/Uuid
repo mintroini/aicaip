@@ -1,0 +1,45 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "autoSync": true,
+        "designer|userClassName": "Uuid",
+        "storeId": "Uuid"
+    },
+    "name": "MyArrayStore",
+    "designerId": "a4cc9bf5-dafd-441f-9225-51733a229d3a",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.LocalStorage",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": null
+            },
+            "name": "MyLocalStorageProxy",
+            "designerId": "66be5e26-01d1-4994-9fda-3d24ea38652e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "key",
+                "type": "string"
+            },
+            "name": "field18",
+            "designerId": "7d131637-53f3-4b12-808c-8f2fafb724e3"
+        }
+    ]
+}

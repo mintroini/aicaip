@@ -25,7 +25,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "top"
+                "docked": "top",
+                "id": "lavadosToolbar"
             },
             "name": "MyToolbar1",
             "designerId": "3603d17b-a392-410a-a1d7-5109ff3c31e5",
@@ -352,6 +353,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "id": "lavadoCancelar",
+                                        "margin": 20,
                                         "text": "Cancelar"
                                     },
                                     "name": "MyButton16",
@@ -522,7 +524,7 @@
                                 "id": "LavadoHoras",
                                 "name": "horas",
                                 "style": "  text-align: center;",
-                                "title": "horas"
+                                "title": null
                             },
                             "name": "MyPickerSlot",
                             "designerId": "908ebb06-59f6-46dc-9fbc-5e3ee03dba63"
@@ -612,19 +614,22 @@
                     "var strings = Ext.getStore('StringsStore');",
                     "",
                     "var horas = new Array(13);",
-                    "var minutos = new Array(60);",
+                    "var minutos = new Array(10);",
                     "",
                     "",
                     "for (i = 0; i < 13; i++) {",
                     "    horas[i] = { text: i,value: i};",
                     "",
                     "}",
+                    "var cont=0;",
                     "for (i = 0; i < 60; i++) {",
-                    "    minutos[i] =    {",
-                    "        text: i,",
-                    "        value: i",
-                    "    };",
-                    "",
+                    "    if(cont<60){",
+                    "        minutos[i] =    {",
+                    "            text: cont,",
+                    "            value: cont",
+                    "        };",
+                    "    }",
+                    "    cont+=5;",
                     "}",
                     "",
                     "Ext.getCmp('LavadoHoras').setData(horas);",
@@ -654,6 +659,16 @@
                     "Ext.getCmp('lavadoConfirmar').setText(Ext.getStore('StringsStore').getAt(0).data.global_aceptar);",
                     "Ext.getCmp('lavadoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);",
                     "Ext.getCmp('lavadoSolicitadoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);",
+                    "",
+                    "Ext.getCmp('lavadosToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_lavados);",
+                    "",
+                    "Ext.getCmp('selecLavadoHoraComienzo').setText(Ext.getStore('StringsStore').getAt(0).data.lavado_seleccionarHora);",
+                    "",
+                    "Ext.getCmp('LavadoHoras').setTitle('Horas');",
+                    "Ext.getCmp('LavadoMinutos').setTitle('Horas');",
+                    "Ext.getCmp('LavadoAPM').setTitle('AM/PM');",
+                    "",
+                    "",
                     ""
                 ]
             },

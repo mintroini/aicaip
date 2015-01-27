@@ -1,0 +1,129 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "serviciosdetailscontainer",
+        "designer|userClassName": "ServiciosDetailsContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "ServiciosDetailsContainer",
+        "layout": null,
+        "width": "100%"
+    },
+    "name": "FlightDetailsContainer1",
+    "designerId": "83610ee2-4a7b-4be4-89cf-6e5ba8c20a6c",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "tbDetails1",
+                "title": null
+            },
+            "name": "MyToolbar",
+            "designerId": "bd4f66c3-c71f-43f3-b7f2-765d17d78e11",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": null,
+                        "iconCls": "arrow_left",
+                        "id": "btnDetailsBackServicios",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "d30ba960-46b3-4b30-a964-bbc1e1072d9e"
+                },
+                {
+                    "type": "Ext.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MySpacer1",
+                    "designerId": "a36be89a-19ad-4ef1-bd88-1f5216f2e761"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "designer|displayName": "ServiciosDetalles",
+                "height": "100%",
+                "id": "ServiciosDetalles",
+                "width": "100%",
+                "zIndex": null
+            },
+            "name": "MyContainer13",
+            "designerId": "62a456a0-761c-4dc3-99f4-af812b87f350",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "tpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "tpl",
+                        "implHandler": [
+                            "<h2>{categoria}</h2>",
+                            "<h2>{nombre}</h2>",
+                            "<h2>{ubicacion}</h2>"
+                        ]
+                    },
+                    "name": "tpl",
+                    "designerId": "e01f09ca-8ec8-4bf0-9053-a5a5b733fa4e"
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "",
+                    "/* Tiene que volver a servicios",
+                    "",
+                    "        this.element.on({",
+                    "            swipe: function(e, node, options) {",
+                    "                if(e.direction == \"right\") {",
+                    "                    Aeropuerto.app.getController('LogicController').onDetailsBackButtonTap();",
+                    "                }",
+                    "            }",
+                    "        });",
+                    "*/"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "be3b52a6-7bac-478a-8473-64bfdc5a0d75"
+        }
+    ]
+}

@@ -174,6 +174,78 @@ Ext.define('Aeropuerto.model.Strings', {
             },
             {
                 name: 'lavados_mensajeError'
+            },
+            {
+                name: 'usuario_modificarDatos'
+            },
+            {
+                name: 'usuario_modificado'
+            },
+            {
+                name: 'usuario_modificadoFallo'
+            },
+            {
+                name: 'usuario_creadoFallo'
+            },
+            {
+                name: 'global_fallo'
+            },
+            {
+                name: 'usuario_passwordError'
+            },
+            {
+                name: 'usuario_loginIncorrecto'
+            },
+            {
+                name: 'global_logToContinue'
+            },
+            {
+                name: 'lavado_seleccionarHora'
+            },
+            {
+                name: 'lavado_horaComienzo'
+            },
+            {
+                name: 'lavado_solicitadoConExito'
+            },
+            {
+                name: 'global_cancelarConfirmado'
+            },
+            {
+                name: 'vuelo_noHaySuscripciones'
+            },
+            {
+                name: 'parking_solicitar'
+            },
+            {
+                name: 'parking_informacion'
+            },
+            {
+                name: 'parking_tiempoReserva'
+            },
+            {
+                name: 'parking_terminos'
+            },
+            {
+                name: 'parking_seleccionarHora'
+            },
+            {
+                name: 'parking_fecha'
+            },
+            {
+                name: 'global_horas'
+            },
+            {
+                name: 'global_minutos'
+            },
+            {
+                name: 'global_dia'
+            },
+            {
+                name: 'global_mes'
+            },
+            {
+                name: 'global_ano'
             }
         ]
     }

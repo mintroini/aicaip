@@ -1,0 +1,131 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Servicios"
+    },
+    "name": "MyController",
+    "designerId": "37f1e326-3940-4b0e-a8bb-961ee6176635",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#serviciosContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "a80a243f-4f84-4975-9fce-ad5e7790383b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnServicios",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnServiciosTap",
+                "implHandler": [
+                    "Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "Ext.Viewport.hideMenu('left');",
+                    "this.getApplication().getController('LogicController').hideViewAll();",
+                    "Ext.getCmp('ServiciosContainer').show();",
+                    "",
+                    "",
+                    "var servicios = Ext.getStore('ServiciosStore');",
+                    "",
+                    "console.log(servicios.getCount());"
+                ],
+                "name": "tap"
+            },
+            "name": "btnServiciosTap",
+            "designerId": "57834530-79b8-47ef-a40d-cbf712ae5fd5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstServicios",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onServiciosListItemTap",
+                "implHandler": [
+                    "this.goToServiceDetails(record);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onServiciosListItemTap",
+            "designerId": "24bf9a24-d412-46d9-bbea-a401a3d97935"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsBackServicios",
+                "designer|targetType": "Ext.Button",
+                "fn": "onBackButtonTap",
+                "implHandler": [
+                    "this.getApplication().getController('LogicController').hideViewAll();",
+                    "Ext.getCmp('ServiciosContainer').show();",
+                    "Ext.getCmp('lstServicios').deselectAll();"
+                ],
+                "name": "tap"
+            },
+            "name": "onBackButtonTap",
+            "designerId": "308625f8-018c-4253-998a-c3032a69ff18"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "goToServiceDetails",
+                "implHandler": [
+                    "",
+                    "",
+                    "if (record) {",
+                    "",
+                    "    // set the info",
+                    "    Ext.getCmp('ServiciosDetalles').setData(record.data);",
+                    "",
+                    "",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp('ServiciosDetailsContainer').show();",
+                    "",
+                    "}"
+                ]
+            },
+            "name": "goToServiceDetails",
+            "designerId": "97dd71b2-bd63-4729-a288-c0e5999146ac"
+        }
+    ]
+}

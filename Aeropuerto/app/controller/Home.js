@@ -46,9 +46,11 @@ Ext.define('Aeropuerto.controller.Home', {
         Ext.getCmp('homeTabPanel').mask({ xtype: 'loadmask' });
 
         if(Ext.getCmp('homeTabPanel').getActiveItem().getId() === 'homePanelArribos'){
+            Ext.getCmp('lstArribosHome').setScrollable(true);
             this.getApplication().getController('Global').getArrivals(Ext.getCmp('lblHomeBuscarVuelos').getValue(),1,'homeTabPanel');
         }
         else{
+            Ext.getCmp('lstPartidasHome').setScrollable(true);
             this.getApplication().getController('Global').getDepartures(Ext.getCmp('lblHomeBuscarVuelos').getValue(),1,'homeTabPanel');
         }
     },
@@ -66,6 +68,8 @@ Ext.define('Aeropuerto.controller.Home', {
                 tienda.getProxy().clear();
                 tienda.data.clear();
                 tienda.sync();
+                Ext.getCmp('lstArribosHome').setScrollable(false);
+                Ext.getCmp('lstPartidasHome').setScrollable(false);
 
                 Ext.getCmp('lstArribosHome').refresh();
                 Ext.getCmp('lstPartidasHome').refresh();
@@ -84,17 +88,7 @@ Ext.define('Aeropuerto.controller.Home', {
 
         if(Ext.Viewport.getMenus().right.isHidden()){
             Ext.Viewport.showMenu('right');
-
-            if(Ext.getStore('MisVuelos').getCount()<1){
-                Ext.getCmp('suscriptionNoSubs2').show();
-                Ext.getCmp('lstSubscriptions2').hide();
-
-            }else{
-                this.getApplication().getController('Global').getSubscriptions('suscripcionesMenu');
-                Ext.getCmp('suscriptionNoSubs2').hide();
-                Ext.getCmp('lstSubscriptions2').show();
-            }
-
+            this.getApplication().getController('LogicController').beforeSubscriptions();
         }
         else
         {

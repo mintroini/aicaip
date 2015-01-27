@@ -1,0 +1,420 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "usercontainer",
+        "designer|userClassName": "UserContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "userContainer",
+        "layout": "fit",
+        "width": "100%",
+        "zIndex": null
+    },
+    "name": "MyContainer5",
+    "designerId": "f6a9c87d-8f36-466a-b967-6b79d7f09dec",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar",
+            "designerId": "23241e7e-94fd-4dae-bf82-bbb0ea2c3883",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "userContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "096c8da4-f71c-4c9b-8429-8398ed32aa1c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "id": "initial"
+            },
+            "name": "MyPanel2",
+            "designerId": "3a313a4f-f531-47cc-9d08-b7c352846201",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "id": "btnLoginInicial",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "Login"
+                    },
+                    "name": "MyButton",
+                    "designerId": "cbb4a7e7-a3fa-4761-9bab-3791c8fc2c24"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": null,
+                "id": "loginForm",
+                "title": null
+            },
+            "name": "MyFieldSet",
+            "designerId": "0b5c1429-9938-4c0b-87b3-fbb1c98549cd",
+            "cn": [
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "loginUsername",
+                        "label": "",
+                        "labelWidth": "40%",
+                        "name": "username"
+                    },
+                    "name": "MyTextField",
+                    "designerId": "ee35f2a0-1e70-4f1d-b311-cb0f3643e411"
+                },
+                {
+                    "type": "Ext.field.Password",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "loginPassword",
+                        "label": null,
+                        "labelWidth": "40%",
+                        "name": "password"
+                    },
+                    "name": "MyPasswordField1",
+                    "designerId": "8200206a-3ea0-4fbc-afd9-57731fd66b30"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "trueLogin",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "Login"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "e9c5c537-31b7-4eab-b87f-c778d6a429b8"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "btnRegisterInicial",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "Rergister"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "1b2f7174-8b4c-4ec9-a35d-fcac53316fe3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "id": "registerForm",
+                "title": null
+            },
+            "name": "MyFieldSet1",
+            "designerId": "020c5733-5efe-450a-84bb-bfa64ff82426",
+            "cn": [
+                {
+                    "type": "Ext.field.Email",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "registerEmail",
+                        "label": null,
+                        "labelWidth": "40%",
+                        "name": "email",
+                        "placeHolder": "email@example.com",
+                        "required": true,
+                        "requiredCls": "x-form-required-field",
+                        "width": null
+                    },
+                    "name": "MyEmailField",
+                    "designerId": "1effa718-330f-4f13-a983-47304b2fa523"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "registerName",
+                        "label": null,
+                        "labelWidth": "40%",
+                        "name": "nombre",
+                        "required": true
+                    },
+                    "name": "MyTextField",
+                    "designerId": "dc6dcf61-5fcb-4d53-84cb-fa997d1925ab"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "registerLastName",
+                        "label": null,
+                        "labelWidth": "40%",
+                        "name": "apellido"
+                    },
+                    "name": "MyTextField2",
+                    "designerId": "c486a61f-8d99-4f62-9a15-67ba80bc60f6"
+                },
+                {
+                    "type": "Ext.field.Password",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "registerPassword",
+                        "label": "",
+                        "labelWidth": "40%",
+                        "name": "contrasena",
+                        "required": true,
+                        "requiredCls": "x-field-required-field",
+                        "width": ""
+                    },
+                    "name": "MyPasswordField",
+                    "designerId": "968e89aa-297a-4a6e-92c0-9da2efd91cf7"
+                },
+                {
+                    "type": "Ext.field.Password",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "id": "registerPassword2",
+                        "label": "",
+                        "labelWidth": "40%",
+                        "name": "contrasena",
+                        "width": ""
+                    },
+                    "name": "MyPasswordField2",
+                    "designerId": "fa4f64dc-4ce5-4b19-adc6-07b66e875398"
+                },
+                {
+                    "type": "Ext.field.DatePicker",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateFormat": "d/m/Y",
+                        "displayField": "Fecha Nacimiento",
+                        "html": "",
+                        "id": "registerDate",
+                        "label": null,
+                        "labelWidth": "40%",
+                        "placeHolder": "dd/mm/yyyy",
+                        "style": null
+                    },
+                    "name": "MyDatePicker",
+                    "designerId": "eca759b6-b70d-40c9-90e1-7f8ae736bcb2",
+                    "cn": [
+                        {
+                            "type": "Ext.picker.Date",
+                            "reference": {
+                                "name": "picker",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "slotOrder": [
+                                    "day",
+                                    "month",
+                                    "year"
+                                ],
+                                "style": "  text-align: center;",
+                                "yearFrom": 1940
+                            },
+                            "name": "MyDatePicker1",
+                            "designerId": "b0b0b108-4b88-4154-9a51-e99efa6fa78d",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "doneButton",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Done"
+                                    },
+                                    "name": "MyButton4",
+                                    "designerId": "890f6b62-3f29-4201-b576-4f5fcdffb7c9"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "cancelButton",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Cancel"
+                                    },
+                                    "name": "MyButton5",
+                                    "designerId": "8f4958d0-214b-491e-a97e-2cd9a5e0c983"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "btnRegister",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "Login"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "0fa9e974-bcf5-4264-bcc6-5a5efa087dc6"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": null,
+                        "id": "btnLogOut",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "logout"
+                    },
+                    "name": "MyButton6",
+                    "designerId": "0394c853-55eb-44d1-a20b-af9d7f89017c"
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "this.element.on({",
+                    "    swipe: function(e, node, options) {",
+                    "        if(e.direction == \"right\") {",
+                    "            Aeropuerto.app.getController('LogicController').showHideMenu(\"right\");",
+                    "        }",
+                    "        if(e.direction == \"left\") {",
+                    "            Aeropuerto.app.getController('LogicController').showHideMenu(\"left\");",
+                    "        }",
+                    "    }",
+                    "});",
+                    "",
+                    "//Set labels with language",
+                    "Ext.getCmp('registerName').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_nombre);",
+                    "Ext.getCmp('registerLastName').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_apellido);",
+                    "Ext.getCmp('registerEmail').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_email);",
+                    "Ext.getCmp('registerPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);",
+                    "Ext.getCmp('registerPassword2').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);",
+                    "Ext.getCmp('registerDate').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_fecha_nacimiento);",
+                    "Ext.getCmp('trueLogin').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_iniciarSesion);",
+                    "Ext.getCmp('btnLoginInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_iniciarSesion);",
+                    "",
+                    "Ext.getCmp('loginUsername').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_email);",
+                    "Ext.getCmp('loginPassword').setLabel(Ext.getStore('StringsStore').getAt(0).data.usuario_password);",
+                    "",
+                    "Ext.getCmp('btnLogOut').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_cerrarSesion);",
+                    "",
+                    "Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);",
+                    "Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);",
+                    ""
+                ]
+            },
+            "name": "initialize",
+            "designerId": "a18a5ce9-df12-495d-bf5d-0011c5de2c2e"
+        }
+    ]
+}

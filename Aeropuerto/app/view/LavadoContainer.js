@@ -41,6 +41,7 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'lavadosToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -158,6 +159,7 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                     {
                                         xtype: 'button',
                                         id: 'lavadoCancelar',
+                                        margin: 20,
                                         text: 'Cancelar'
                                     }
                                 ]
@@ -220,8 +222,7 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
                                 id: 'LavadoHoras',
                                 style: '  text-align: center;',
                                 deselectOnContainerClick: false,
-                                name: 'horas',
-                                title: 'horas'
+                                name: 'horas'
                             },
                             {
                                 xtype: 'pickerslot',
@@ -300,19 +301,22 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
         var strings = Ext.getStore('StringsStore');
 
         var horas = new Array(13);
-        var minutos = new Array(60);
+        var minutos = new Array(10);
 
 
         for (i = 0; i < 13; i++) {
             horas[i] = { text: i,value: i};
 
         }
+        var cont=0;
         for (i = 0; i < 60; i++) {
-            minutos[i] =    {
-                text: i,
-                value: i
-            };
-
+            if(cont<60){
+                minutos[i] =    {
+                    text: cont,
+                    value: cont
+                };
+            }
+            cont+=5;
         }
 
         Ext.getCmp('LavadoHoras').setData(horas);
@@ -342,6 +346,16 @@ Ext.define('Aeropuerto.view.LavadoContainer', {
         Ext.getCmp('lavadoConfirmar').setText(Ext.getStore('StringsStore').getAt(0).data.global_aceptar);
         Ext.getCmp('lavadoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);
         Ext.getCmp('lavadoSolicitadoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);
+
+        Ext.getCmp('lavadosToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_lavados);
+
+        Ext.getCmp('selecLavadoHoraComienzo').setText(Ext.getStore('StringsStore').getAt(0).data.lavado_seleccionarHora);
+
+        Ext.getCmp('LavadoHoras').setTitle('Horas');
+        Ext.getCmp('LavadoMinutos').setTitle('Horas');
+        Ext.getCmp('LavadoAPM').setTitle('AM/PM');
+
+
 
     }
 

@@ -1,0 +1,315 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "VuelosContainer",
+        "designer|userClassName": "VuelosContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "VuelosContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "MyContainer9",
+    "designerId": "f48d7aca-3636-4d93-be91-37077a7a9271",
+    "cn": [
+        {
+            "type": "Ext.TitleBar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "topBar",
+                "itemId": "topBar",
+                "width": "100%"
+            },
+            "name": "MyTitleBar",
+            "designerId": "0ea95efe-cf0e-48fc-961b-1df293f17c46",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "vuelosContainerHome",
+                        "text": ""
+                    },
+                    "name": "MyButton",
+                    "designerId": "4f0e84bf-efac-4224-8286-7d7a9ddc666c"
+                },
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "id": "txtFiltro",
+                        "label": null,
+                        "placeHolder": null,
+                        "width": null
+                    },
+                    "name": "MyTextField",
+                    "designerId": "628076d9-b4a3-47f1-88b6-e49bdbd0d4ab"
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "vuelosTabPanel",
+                "itemId": null
+            },
+            "name": "MyTabPanel1",
+            "designerId": "46668c6c-f20a-4dca-a87c-ccbe199fd427",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "id": "vuelosPanelArribos",
+                        "title": "Arribos",
+                        "width": null
+                    },
+                    "name": "MyContainer9",
+                    "designerId": "1b1482cd-13ef-4ce5-9db5-42c1ca71793c",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "docked": "top",
+                                "height": "100%",
+                                "hideAnimation": null,
+                                "id": "lstArribos",
+                                "scrollToTopOnRefresh": false,
+                                "scrollable": [
+                                    "{  direction: \"vertical\",",
+                                    "scroller: {",
+                                    "listeners: {",
+                                    "scrollend: function(scroller, x, y) {",
+                                    "if(y < 0){",
+                                    "// y < 0 eso significa que el scroll fue vertical, hacia abajo.",
+                                    "Aeropuerto.app.getController('Global').getArrivals(\"\",1);",
+                                    "}  ",
+                                    "}",
+                                    "}",
+                                    "}",
+                                    "}"
+                                ],
+                                "showAnimation": null,
+                                "store": "Arribos",
+                                "width": "100%"
+                            },
+                            "name": "MyList",
+                            "configAlternates": {
+                                "scrollable": "object"
+                            },
+                            "designerId": "5b7e1a34-07d0-41a8-892d-9aa2a4538381",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "scrollable",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div style='text-align: center;'>{origen}<br>{fprogram} - {estadosp}</div>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "dae44a0b-9604-45e6-8845-cae96430eb22"
+                                },
+                                {
+                                    "type": "Ext.plugin.PullRefresh",
+                                    "reference": {
+                                        "name": "plugins",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "name": "MyPullRefreshPlugin",
+                                    "designerId": "f388b573-9e49-4791-a92c-9b2635e4ee56"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "100%",
+                        "id": "vuelosPartidas",
+                        "title": "Partidas",
+                        "width": "100%"
+                    },
+                    "name": "MyContainer10",
+                    "designerId": "8596b6eb-61dd-4687-bd87-0f1fe8897b0f",
+                    "cn": [
+                        {
+                            "type": "Ext.dataview.List",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": "top",
+                                "height": "100%",
+                                "hidden": null,
+                                "hideAnimation": null,
+                                "id": "lstPartidas",
+                                "scrollable": [
+                                    " {  direction: \"vertical\",",
+                                    "    scroller: {",
+                                    "        listeners: {",
+                                    "            scrollend: function(scroller, x, y) {",
+                                    "                        if(y < 0){",
+                                    "                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.",
+                                    "                        Aeropuerto.app.getController('Global').getDepartures(\"\",1);",
+                                    "                        }  ",
+                                    "            }",
+                                    "        }",
+                                    "    }",
+                                    "}"
+                                ],
+                                "showAnimation": null,
+                                "store": "Partidas",
+                                "width": "100%"
+                            },
+                            "name": "MyList1",
+                            "configAlternates": {
+                                "scrollable": "object"
+                            },
+                            "designerId": "4d78c0a6-b13e-43a1-9091-966b06e4460a",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "scrollable",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "Ext.XTemplate",
+                                    "reference": {
+                                        "name": "itemTpl",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "itemTpl",
+                                        "implHandler": [
+                                            "<div>{destino}<br>{fprogram} - {estadosp}</div>"
+                                        ]
+                                    },
+                                    "name": "itemTpl",
+                                    "designerId": "10d0a6dc-deb3-43ad-bb58-a9c505e1b88f"
+                                },
+                                {
+                                    "type": "Ext.plugin.PullRefresh",
+                                    "reference": {
+                                        "name": "plugins",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "pluginId": null
+                                    },
+                                    "name": "MyPullRefreshPlugin1",
+                                    "designerId": "154e4635-4ece-48e5-8ab9-22dff31dfbbf"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onVuelosTabPanelActiveItemChange",
+                        "implHandler": [
+                            "/*",
+                            "Aeropuerto.app.getController('Global').checkConnection();",
+                            "if(value.itemId === 'vuelosArribos'){",
+                            "    Aeropuerto.app.getController('Global').getArrivals('','0');",
+                            "}else{",
+                            "    Aeropuerto.app.getController('Global').getDepartures('','0');",
+                            "}",
+                            "*/"
+                        ],
+                        "name": "activeitemchange"
+                    },
+                    "name": "onVuelosTabPanelActiveItemChange",
+                    "designerId": "e3b8a843-33ed-4ca7-ab4c-94939d94c160"
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "Ext.getCmp('txtFiltro').setPlaceHolder(Ext.getStore('StringsStore').getAt(0).data.vuelos_filtro);",
+                    "",
+                    "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);",
+                    "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "da7413be-1fcd-47aa-823e-36c7289b33b1"
+        }
+    ]
+}

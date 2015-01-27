@@ -134,6 +134,7 @@
                                 "height": "100%",
                                 "hideAnimation": null,
                                 "id": "lstArribosHome",
+                                "itemId": "mylist4",
                                 "scrollToTopOnRefresh": false,
                                 "scrollable": null,
                                 "showAnimation": null,
@@ -142,7 +143,9 @@
                             },
                             "name": "MyList4",
                             "configAlternates": {
-                                "scrollable": "object"
+                                "scrollable": "object",
+                                "listeners": "object",
+                                "toggleScrolling": "object"
                             },
                             "designerId": "acd1e0af-6d12-4003-8928-14eecdf4bbac",
                             "customConfigs": [
@@ -164,12 +167,12 @@
                                         "designer|displayName": "itemTpl",
                                         "implHandler": [
                                             "<table style=\"width:100%\">",
-                                            "  <tr>",
-                                            "      <td><img src=\"'resources/Img/'+{aerolinea}+'.png'\" alt=\"Aerolinea Img\"></td>",
-                                            "    <td>{origen}</td>",
-                                            "    <td>{fprogram}</td>\t\t",
-                                            "    <td>{estadosp}</td>",
-                                            "  </tr>",
+                                            "    <tr>",
+                                            "        <!-- <td><img src=\"'resources/Img/'+{aerolinea}+'.png'\" alt=\"Aerolinea Img\"></td> -->",
+                                            "        <td>{origen}</td>",
+                                            "        <td>{fprogram}</td>\t\t",
+                                            "        <td>{estadosp}</td>",
+                                            "    </tr>",
                                             "</table>",
                                             ""
                                         ]
@@ -241,7 +244,7 @@
                                             "",
                                             "<table style=\"width:100%\">",
                                             "  <tr>",
-                                            "    <td style=\"width:20%\"><img src=\"resources/Img/{aerolinea}.png\" alt=\"Aerolinea Img\"></td>",
+                                            "   <!-- <td style=\"width:20%\"><img src=\"resources/Img/{aerolinea}.png\" alt=\"Aerolinea Img\"></td> -->",
                                             "    <td style=\"width:20%\">{destino}</td>",
                                             "    <td style=\"width:20%\">{nVuelo}</td>\t",
                                             "    <td style=\"width:20%\">{fprogram}</td>",
@@ -299,7 +302,10 @@
                     "    Ext.getCmp('homeContainerSubs').show();",
                     "}else{",
                     "    Ext.getCmp('homeContainerSubs').hide();",
-                    "}"
+                    "}",
+                    "Ext.getCmp('HomeToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_inicio);",
+                    "Ext.getCmp('lstArribosHome').setScrollable(false);",
+                    "Ext.getCmp('lstPartidasHome').setScrollable(false);"
                 ]
             },
             "name": "initialize",

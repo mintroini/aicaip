@@ -1,0 +1,57 @@
+{
+    "type": "xmlstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "autoSync": true,
+        "designer|userClassName": "StringsStore",
+        "model": "Strings",
+        "requires": [
+            "Ext.data.proxy.LocalStorage"
+        ],
+        "storeId": "StringsStore"
+    },
+    "name": "Suscripciones1",
+    "designerId": "5d80fabe-7bbc-4129-9773-66466b7eb3fe",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "type": "localstorage"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "ceb427aa-5439-409e-80a8-a829cf42515e",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "type",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Xml",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": "GetTextsResult"
+                    },
+                    "name": "MyXmlReader1",
+                    "designerId": "b182b212-ced7-44e1-8770-01578da0f614"
+                }
+            ]
+        }
+    ]
+}

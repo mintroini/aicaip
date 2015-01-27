@@ -88,9 +88,9 @@ Ext.define('Aeropuerto.view.MainContainer', {
             swipe: function(e, node, options) {
                 if(e.direction == "right") {
                     if(Ext.Viewport.getMenus().right.isHidden()){
-                       Aeropuerto.app.getController('LogicController').showHideMenu("right");
+                        Aeropuerto.app.getController('LogicController').showHideMenu("right");
                     }else{
-                         Ext.Viewport.hideMenu('right');
+                        Ext.Viewport.hideMenu('right');
                     }
                 }
                 if(e.direction == "left") {
@@ -130,7 +130,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 iconCls: 'user',
                 cls: 'menu-button'
             },
-                {
+            {
                 xtype: 'button',
                 id: 'btnMapa',
                 text: Ext.getStore('StringsStore').getAt(0).data.global_mapa,
@@ -144,7 +144,7 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 iconCls: 'user',
                 cls: 'menu-button'
             },
-                {
+            {
                 xtype: 'button',
                 id: 'btnVip',
                 text: Ext.getStore('StringsStore').getAt(0).data.global_vip,
@@ -212,14 +212,16 @@ Ext.define('Aeropuerto.view.MainContainer', {
                 ],
                 store: 'Suscripciones'
             },
-            {
-            xtype: 'label',
-            centered: true,
-            hidden: true,
-            html: 'No subscriptions',
-            id: 'suscriptionNoSubs2'
-                    }]
+                         {
+                             xtype: 'label',
+                             centered: true,
+                             hidden: true,
+                             html: Ext.getStore('StringsStore').getAt(0).data.vuelo_noHaySuscripciones,
+                             id: 'suscriptionNoSubs2'
+                         }]
         }),{side: 'right',reveal: true});
+
+
 
     }
 

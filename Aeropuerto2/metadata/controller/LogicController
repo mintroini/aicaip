@@ -1,0 +1,693 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LogicController"
+    },
+    "name": "MyController1",
+    "designerId": "60eee5ec-7468-40b0-9591-dd2da4cf8eff",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createUuid",
+                "implHandler": [
+                    "         function s4() {",
+                    "            return Math.floor((1 + Math.random()) * 0x10000)",
+                    "                       .toString(16)",
+                    "                       .substring(1);",
+                    "          }",
+                    "          return function() {",
+                    "            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +",
+                    "                   s4() + '-' + s4() + s4() + s4();",
+                    "          };"
+                ]
+            },
+            "name": "createUuid",
+            "designerId": "977ed427-e7cf-46f2-a560-03811eda11e5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dataview, index, target, record, e, eOpts"
+                ],
+                "fn": "goToDetails",
+                "implHandler": [
+                    "",
+                    "this.globalRecord = record;",
+                    "",
+                    "",
+                    "if (record) {",
+                    "",
+                    "    // set the info",
+                    "    Ext.getCmp('companyName').setData(record.data);",
+                    "",
+                    "    var esMyVuelo =  Ext.getStore('MisVuelos');",
+                    "",
+                    "    var index = esMyVuelo.find('nVuelo', record.data.nVuelo);",
+                    "",
+                    "",
+                    "    console.log('------ Lo que encuentra index');",
+                    "    console.log(record.data.nVuelo +'  --  '+record.data.fprogram);",
+                    "",
+                    "",
+                    "    Ext.getCmp('btnDetailsSubscribe').setIconCls('favorites');",
+                    "    if(index >= 0){",
+                    "        Ext.getCmp('btnDetailsSubscribe').setIconCls('trash');",
+                    "    }",
+                    "",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp('FlightDetailsContainer').show();",
+                    "    this.showHideMenu('left');",
+                    "    var tienda = Ext.getStore('WeatherStore');",
+                    "",
+                    "    if(record.data.esArribo)",
+                    "    {",
+                    "        //Tiempo en el lugar de origen  Ext.Viewport.mask({ xtype: 'loadmask' });",
+                    "        Ext.getCmp('detailsOrigen').setHtml(record.data.origen);",
+                    "        Ext.getCmp('origen').mask({ xtype: 'loadmask' });",
+                    "        Ext.getCmp('destino').mask({ xtype: 'loadmask' });",
+                    "        this.getApplication().getController('Global').getWeather(record.data.origen);",
+                    "        Ext.getCmp('origen').setData(tienda.getAt(0).data);",
+                    "        Ext.getCmp('origen').unmask();",
+                    "        //Tiempo en el lugar de destino (Montevideo)",
+                    "        Ext.getCmp('detailsDestino').setHtml(\"Montevideo\");",
+                    "        this.getApplication().getController('Global').getWeather('Montevideo');",
+                    "        Ext.getCmp('destino').setData(tienda.getAt(0).data);",
+                    "        Ext.getCmp('destino').unmask();",
+                    "",
+                    "    }else",
+                    "    {",
+                    "        //Tiempo en el lugar de origen (Montevideo)",
+                    "        Ext.getCmp('detailsOrigen').setHtml(\"Montevideo\");",
+                    "        this.getApplication().getController('Global').getWeather('Montevideo');",
+                    "        Ext.getCmp('origen').setData(tienda.getAt(0).data);",
+                    "        //Tiempo en el lugar de destino",
+                    "        Ext.getCmp('detailsDestino').setHtml(record.data.destino);",
+                    "        this.getApplication().getController('Global').getWeather(record.data.destino);",
+                    "        Ext.getCmp('destino').setData(tienda.getAt(0).data);",
+                    "    }",
+                    "",
+                    "}",
+                    ""
+                ]
+            },
+            "name": "goToDetails",
+            "designerId": "1647e30c-0b86-46c6-8479-f777e217e22a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dataview, index, target, record, e, eOpts"
+                ],
+                "fn": "detailsRefresh",
+                "implHandler": [
+                    "console.log(this.globalRecord);",
+                    ""
+                ]
+            },
+            "name": "detailsRefresh",
+            "designerId": "47b4db6b-2c89-4712-89be-54c99accf104"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getTimeStamp",
+                "implHandler": [
+                    "//Return a timestamp with the format \"yy-m-d h:MM:ss\" ex. 2014-11-17 14:47:1",
+                    "                                   ",
+                    "",
+                    "// Create a date object with the current time",
+                    "  var now = new Date();",
+                    "",
+                    "// Create an array with the current month, day and time",
+                    "  var date = [ now.getFullYear(), now.getMonth() + 1, now.getDate() ];",
+                    "",
+                    "// Create an array with the current hour, minute and second",
+                    "  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];",
+                    "",
+                    "",
+                    "// Return the formatted string",
+                    "  return date.join(\"-\") + \" \" + time.join(\":\") ;"
+                ]
+            },
+            "name": "getTimeStamp",
+            "designerId": "8dedbcf8-7941-442f-8e25-8b1c1994417f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "changeSubscribeIcon",
+                "implHandler": [
+                    "var c = Ext.getCmp('btnDetailsSubscribe');",
+                    "",
+                    "if (c.getIconCls() === 'favorites') {",
+                    "c.setIconCls('trash');",
+                    "}",
+                    "else",
+                    "{",
+                    "c.setIconCls('favorites');",
+                    "}"
+                ]
+            },
+            "name": "changeSubscribeIcon",
+            "designerId": "bda0d7f5-ffa6-4b26-a9c3-8fb19c16bea7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "referrer"
+                ],
+                "fn": "showHideMenu",
+                "implHandler": [
+                    "if(Ext.Viewport.getMenus().left.isHidden()){",
+                    "    if(referrer === \"\" || referrer == \"right\")",
+                    "        Ext.Viewport.showMenu('left');",
+                    "}",
+                    "else",
+                    "{",
+                    "    if(referrer === \"\" || referrer == \"left\")",
+                    "        Ext.Viewport.hideMenu('left');",
+                    "}"
+                ]
+            },
+            "name": "showHideMenu",
+            "designerId": "ccc689b4-71bd-4b88-ae6a-923e3d353022"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "view"
+                ],
+                "fn": "showView",
+                "implHandler": [
+                    "this.hideViewAll();",
+                    "Ext.getCmp(view).show();"
+                ]
+            },
+            "name": "showView",
+            "designerId": "03ddfffd-04ff-485b-b97c-72c4284a5eaf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "hideViewAll",
+                "implHandler": [
+                    "",
+                    "Ext.getCmp('userContainer').hide();",
+                    "Ext.getCmp('TaxiContainer').hide();",
+                    "Ext.getCmp('ServiciosContainer').hide();",
+                    "Ext.getCmp('NormasContainer').hide();",
+                    "",
+                    "Ext.getCmp('EstacionamientoContainer').hide();",
+                    "Ext.getCmp('LavadoContainer').hide();",
+                    "Ext.getCmp('ContactoContainer').hide();",
+                    "",
+                    "Ext.getCmp('HomeContainer').hide();",
+                    "Ext.getCmp('VuelosContainer').hide();",
+                    "Ext.getCmp('SuscripcionesContainer').hide();",
+                    "Ext.getCmp('FlightDetailsContainer').hide();",
+                    "Ext.getCmp('ServiciosDetailsContainer').hide();",
+                    ""
+                ]
+            },
+            "name": "hideViewAll",
+            "designerId": "55b8cf68-63ed-4043-be9d-300b88feba3e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "showOffLine",
+                "implHandler": [
+                    " /*",
+                    "",
+                    "var panel = Ext.create('Aeropuerto.view.offLineContainer');",
+                    "Ext.Viewport.add(panel);",
+                    "panel.show();",
+                    "*/",
+                    "",
+                    "///Ext.create('offLineContainer');",
+                    "this.hideViewAll();",
+                    "Ext.getCmp('offLineContainer').show();"
+                ]
+            },
+            "name": "showOffLine",
+            "designerId": "45d86242-01df-42ae-9bae-fc1b2d88fb83"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "nVuelo",
+                    "fprogram",
+                    "uuid"
+                ],
+                "fn": "deleteFlight",
+                "implHandler": [
+                    "",
+                    "var vuelos = Ext.getStore('MisVuelos');",
+                    "var susc = Ext.getStore('Suscripciones');",
+                    "var list = Ext.getCmp('lstSubscriptions');",
+                    "var index, index2;",
+                    "",
+                    "this.getApplication().getController('Global').unSubscribe(uuid,nVuelo,fprogram);",
+                    "",
+                    "    for (i = 0; i < vuelos.getCount(); i++) {",
+                    "         if(vuelos.getAt(i).data.nVuelo == nVuelo && vuelos.getAt(i).data.fprogram == fprogram){",
+                    "                index =  i;",
+                    "         }",
+                    "    }",
+                    "        for (i = 0; i < susc.getCount(); i++) {",
+                    "          if(susc.getAt(i).data.nVuelo == nVuelo && susc.getAt(i).data.fprogram == fprogram){",
+                    "                index2 =  i;",
+                    "         }",
+                    "    }",
+                    "",
+                    "    vuelos.removeAt(index);",
+                    "    vuelos.sync();",
+                    "    susc.removeAt(index2);",
+                    "    susc.sync();",
+                    "",
+                    "    list.refresh();",
+                    ""
+                ]
+            },
+            "name": "deleteFlight",
+            "designerId": "7dfe6dd2-ef32-4a79-bd1e-940341bf9c7c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "email"
+                ],
+                "fn": "validateEmail",
+                "implHandler": [
+                    "    var re = /^(([^<>()[\\]\\\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/;",
+                    "    return re.test(email);",
+                    ""
+                ]
+            },
+            "name": "validateEmail",
+            "designerId": "be7a92cb-116f-4653-8b0a-967849bc7c73"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "beforeSubscriptions",
+                "implHandler": [
+                    "if(Ext.getStore('MisVuelos').getCount()<1){",
+                    "    Ext.getCmp('suscriptionNoSubs').show();",
+                    "    Ext.getCmp('lstSubscriptions').hide();",
+                    "",
+                    "}else{",
+                    "    this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');",
+                    "    Ext.getCmp('suscriptionNoSubs').hide();",
+                    "    Ext.getCmp('lstSubscriptions').show();",
+                    "}"
+                ]
+            },
+            "name": "beforeSubscriptions",
+            "designerId": "8be6d6ec-1f62-485c-a2c6-e2421f539988"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnSubscriptions",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnSubscriptionsTap",
+                "implHandler": [
+                    "",
+                    "Ext.Viewport.hideMenu('left');",
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "",
+                    "//this.hideViewAll();",
+                    "//this.showView('SuscripcionesContainer');",
+                    "",
+                    "this.getApplication().getController('Global').checkLogged('SuscripcionesContainer');",
+                    "",
+                    "Aeropuerto.app.referrer = 'SuscripcionesContainer';",
+                    "",
+                    "this.beforeSubscriptions();"
+                ],
+                "name": "tap"
+            },
+            "name": "btnSubscriptionsTap",
+            "designerId": "3c8c405f-5665-4202-890b-98db69c5ee54"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnVuelos",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnVuelosTap",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "Ext.getCmp('vuelosTabPanel').mask({ xtype: 'loadmask' });",
+                    "",
+                    "    Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "    Ext.Viewport.hideMenu('left');",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp('VuelosContainer').show();",
+                    "    Aeropuerto.app.referrer = 'VuelosContainer';",
+                    "//setTimeout(function() {",
+                    "",
+                    "this.getApplication().getController('Global').getArrivals('',1,'vuelosTabPanel');",
+                    "this.getApplication().getController('Global').getDepartures('',1,'vuelosTabPanel');",
+                    "",
+                    "//},500);",
+                    "",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnVuelosTap",
+            "designerId": "5e05eacd-8a1c-4ad4-bd52-57dabaeb88e4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#vuelosContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onVuelosButtonTap",
+                "implHandler": [
+                    "this.showHideMenu(\"\");"
+                ],
+                "name": "tap"
+            },
+            "name": "onVuelosButtonTap",
+            "designerId": "a0745e72-aa33-4ffb-995a-4d685c1dd92d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstArribos",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onArribosListTap",
+                "implHandler": [
+                    "",
+                    "this.goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onArribosListTap",
+            "designerId": "c37b1163-9208-4b67-8a60-ef39871f6f3d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsBack",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDetailsBackButtonTap",
+                "implHandler": [
+                    "        this.showView(Aeropuerto.app.referrer);",
+                    "if(Aeropuerto.app.referrer === 'SuscripcionesContainer') this.beforeSubscriptions();"
+                ],
+                "name": "tap"
+            },
+            "name": "onDetailsBackButtonTap",
+            "designerId": "a6344b87-b80f-4608-a1bb-2748f917bfd4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstPartidas",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onPartidasListItemTap",
+                "implHandler": [
+                    "  this.goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onPartidasListItemTap",
+            "designerId": "6ce05f01-4e96-4871-8f32-f7b3da2552b3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsSubscribe",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDetailsSubscribeButtonTap",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "var icon = Ext.getCmp('btnDetailsSubscribe');",
+                    "var store= Ext.getStore('Uuid');",
+                    "var uuid = store.getAt(0).get('key');",
+                    "var c = Ext.getCmp('companyName').getData();",
+                    "",
+                    "var vuelos = Ext.getStore('MisVuelos');",
+                    "",
+                    "if (icon.getIconCls() === 'favorites') {",
+                    "   this.getApplication().getController('Global').subscribe(uuid,c.nVuelo,c.fprogram);",
+                    "    vuelos.add({'nVuelo' : c.nVuelo,'fprogram': c.fprogram});",
+                    "    vuelos.sync();",
+                    "}",
+                    "else",
+                    "{",
+                    "    this.deleteFlight(c.nVuelo,c.fprogram,uuid);",
+                    "}",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onDetailsSubscribeButtonTap",
+            "designerId": "7c4f7dd6-13ec-4788-8961-9fcfb2976727"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstSubscriptions",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onSuscripcionesListItemTap",
+                "implHandler": [
+                    "  this.goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onSuscripcionesListItemTap",
+            "designerId": "60b0a761-5825-4892-9635-d9b97028fd16"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#txtFiltro",
+                "designer|targetType": "Ext.field.Text",
+                "fn": "onTextfieldChange",
+                "implHandler": [
+                    "if(Ext.getCmp('vuelosTabPanel').getActiveItem().getId() === 'vuelosPanelArribos'){",
+                    "    console.log(newValue);",
+                    "    console.log('arrivals');",
+                    "         this.getApplication().getController('Global').getArrivals(newValue);",
+                    "}",
+                    "else{",
+                    "        console.log(newValue);",
+                    "    console.log('departures');",
+                    "       this.getApplication().getController('Global').getDepartures(newValue);",
+                    "}"
+                ],
+                "name": "change"
+            },
+            "name": "onTextfieldChange",
+            "designerId": "3be662fb-0d73-40e9-8feb-f4bd1c9321ad"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#suscripcionesContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onSuscripcionesHomeButtonTap",
+                "implHandler": [
+                    "this.showHideMenu(\"\");"
+                ],
+                "name": "tap"
+            },
+            "name": "onSuscripcionesHomeButtonTap",
+            "designerId": "42881790-e6b4-40b2-926f-f3d40fe5c11c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnDetailsRefresh",
+                "designer|targetType": "Ext.Button",
+                "fn": "onDetailsRefresh",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "    //se actualiza la lista de arribos o partidas dependiendo de lo que sea el vuelo seleccionado",
+                    "    if(this.globalRecord.data.esArribo){",
+                    "        this.getApplication().getController('Global').getArrivals('','0');",
+                    "        var tienda =  Ext.getStore('Arribos');",
+                    "        Ext.getCmp('lstArribos').refresh();",
+                    "    }else{",
+                    "        this.getApplication().getController('Global').getDepartures('','0');",
+                    "        var tienda =  Ext.getStore('Partidas');",
+                    "        Ext.getCmp('lstPartidas').refresh();",
+                    "",
+                    "    }",
+                    "    //se obtiene el vuelo de la lista actualizada",
+                    "    for (i = 0; i < tienda.getCount(); i++) {",
+                    "         if(tienda.getAt(i).data.nVuelo == this.globalRecord.data.nVuelo){",
+                    "             var index =  i;",
+                    "         }",
+                    "    }",
+                    "    //se actualizan los datos",
+                    "     Ext.getCmp('companyName').setData(tienda.getAt(index).data);",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onDetailsRefresh",
+            "designerId": "3c36d386-b724-45f2-b7e4-683ed2f6172c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnOffLine",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnOffLine",
+                "implHandler": [
+                    "if(window.navigator.onLine){",
+                    "    Ext.getCmp('offLineContainer').hide();",
+                    "    this.showView('mainView');",
+                    "    this.btnArribos();",
+                    "    var cultura = navigator.language;",
+                    "    this.getApplication().getController('Global').getVersion(cultura);",
+                    "    this.getApplication().getController('Global').getArrivals('','0');",
+                    "}"
+                ],
+                "name": "tap"
+            },
+            "name": "btnOffLine",
+            "designerId": "8bed2050-99dd-407b-a6f3-81812716784f"
+        }
+    ]
+}

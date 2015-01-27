@@ -1,0 +1,55 @@
+{
+    "type": "xmlstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Suscripciones",
+        "model": "Vuelo",
+        "requires": [
+            "Ext.data.proxy.LocalStorage"
+        ],
+        "storeId": "Suscripciones"
+    },
+    "name": "Partidas1",
+    "designerId": "c5baab0e-2ce1-4f7b-b790-b7facb8cc9f5",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "type": "localstorage"
+            },
+            "name": "MyAjaxProxy1",
+            "designerId": "00218463-81fe-4389-b1b1-83a911d78896",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "type",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Xml",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": "GetFlightResult"
+                    },
+                    "name": "MyXmlReader1",
+                    "designerId": "823aebc0-cb24-41fd-9c72-f391433dbb89"
+                }
+            ]
+        }
+    ]
+}

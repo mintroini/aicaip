@@ -51,6 +51,7 @@ Ext.define('Aeropuerto.controller.Servicios', {
 
     onServiciosListItemTap: function(dataview, index, target, record, e, eOpts) {
         this.goToServiceDetails(record);
+        Ext.getCmp('serviciosDetalleToolbar').setTitle(record.data.nombre);
     },
 
     onBackButtonTap: function(button, e, eOpts) {

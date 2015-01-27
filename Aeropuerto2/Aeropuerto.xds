@@ -1,0 +1,98 @@
+{
+    "name": "Aeropuerto",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "5.0.2.270",
+            "frameworkVersion": "2.4.0.482"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "iPhone 5",
+                "builtIn": true,
+                "height": 568,
+                "width": 320
+            },
+            "viewportOrientation": "portrait"
+        },
+        "urlPrefix": "http://localhost:1841",
+        "exportPath": "",
+        "spacesToIndent": 4,
+        "sdkPath": "",
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": false,
+        "generateArchitectVersion": true,
+        "projectHasEnabledWebServer": true,
+        "lastBuildSelection": {
+            "value": "nativeBuild",
+            "display": "Native Build"
+        },
+        "lockUrlPrefix": true,
+        "installStatus": "Not Installed"
+    },
+    "xdsVersion": "3.1.0",
+    "xdsBuild": 1943,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000007,
+    "framework": "touch24",
+    "viewOrderMap": {
+        "view": [
+            "d6960af2-e51e-4b00-9831-1a8c019bca68",
+            "f6a9c87d-8f36-466a-b967-6b79d7f09dec",
+            "fd50dd76-3bcc-448d-beab-fce5b970a75c",
+            "2dccae08-8a48-4f88-976e-3265e4464517",
+            "8d9c7e91-e951-417c-a309-eff260eb36c1",
+            "5865d153-1fc5-419a-bc8b-3136b0a7baa7",
+            "aec2ea28-d9a4-4d63-962f-db95f0c2bb24",
+            "8fd85947-3517-423d-be4b-5174a9981b78",
+            "68b76737-587c-4705-9aeb-985076144b74",
+            "3016e135-dfbf-4940-b5c5-465bed6c536f",
+            "f48d7aca-3636-4d93-be91-37077a7a9271",
+            "ee5e5975-c19c-428c-a297-86e539b9110c",
+            "dd4f618c-8a1f-4fa3-b66a-6e9febb5081a",
+            "83610ee2-4a7b-4be4-89cf-6e5ba8c20a6c"
+        ],
+        "store": [
+            "22c5973e-e137-424b-84bd-d968f624f1cb",
+            "67aa5064-be78-4e38-8ddf-43df17eeaf43",
+            "d68697d4-bec4-4e61-be6a-399c98520756",
+            "27298e0d-e199-4588-b1ff-dee0421bd5db",
+            "2508e7b6-b05b-487e-8d68-4055045039e1",
+            "c5baab0e-2ce1-4f7b-b790-b7facb8cc9f5",
+            "5d80fabe-7bbc-4129-9773-66466b7eb3fe",
+            "b387d439-4e5e-4dd7-bb8d-8b8cef14a123",
+            "a4cc9bf5-dafd-441f-9225-51733a229d3a",
+            "d03d0089-4af3-4741-9304-665f5507a499"
+        ],
+        "controller": [
+            "0cd84b2f-99fc-40f5-bdef-de2f0fba53b3",
+            "60eee5ec-7468-40b0-9591-dd2da4cf8eff",
+            "76ee166e-4dbe-457d-ae40-2d8aa8468623",
+            "228818ad-41f4-4b5d-8c84-99c7d5a889f0",
+            "6fb94fa9-0bf2-4b17-8e67-01fe14f27e66",
+            "1908b749-e312-4630-8184-f715a37dccb1",
+            "3a59fa9b-6666-4344-bf2c-328575eee2d0",
+            "37f1e326-3940-4b0e-a8bb-961ee6176635",
+            "6bebe5d5-db4b-45f8-bb4d-1f3780e9d349",
+            "3a430922-e850-47ac-9bac-f7f40c45cde3"
+        ],
+        "model": [
+            "8c9361b0-d3a2-4b38-b9f3-22aa8b9c645b",
+            "8b6e05b7-2ead-4dc4-88d5-b844899c4121",
+            "6a9a4fee-a67b-4a1d-9c30-b5349ea40a3e",
+            "b1498b41-f793-404c-bfee-2c4d661aaf63",
+            "d411905a-70bf-4d73-a03d-7f47786467dc",
+            "75c64a7f-c86c-41ed-ac4c-54d3b24a0716"
+        ],
+        "resource": [
+            "25456b3e-1809-4cde-a04c-a7a57e28d2b9",
+            "880c51ba-b38f-421e-a171-cfbc76271875",
+            "e13e7b92-283f-4269-937c-707bd7f48de8"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

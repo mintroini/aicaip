@@ -37,6 +37,7 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'taxiToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -137,7 +138,7 @@ Ext.define('Aeropuerto.view.TaxiContainer', {
 
         //Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);
         //Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);
-
+        Ext.getCmp('taxiToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_taxi);
     }
 
 });

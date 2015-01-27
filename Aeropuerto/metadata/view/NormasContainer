@@ -25,7 +25,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "top"
+                "docked": "top",
+                "id": "normasToolbar"
             },
             "name": "MyToolbar3",
             "designerId": "ee78d5c0-9458-46c4-a54f-e6e011d9e22e",
@@ -79,6 +80,24 @@
                     "designerId": "323104b0-79b9-423b-83f9-2cc9bab0d998"
                 }
             ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "",
+                    "Ext.getCmp('normasToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_normativas);"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "12d30ab7-616d-4077-919c-ed60f71ea158"
         }
     ]
 }

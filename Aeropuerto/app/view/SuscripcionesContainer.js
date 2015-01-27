@@ -22,6 +22,7 @@ Ext.define('Aeropuerto.view.SuscripcionesContainer', {
         'Ext.Button',
         'Ext.dataview.List',
         'Ext.XTemplate',
+        'Ext.plugin.PullRefresh',
         'Ext.Label'
     ],
 
@@ -35,8 +36,7 @@ Ext.define('Aeropuerto.view.SuscripcionesContainer', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
-                id: 'topBar1',
-                itemId: 'topBar1',
+                id: 'suscripcionesToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -54,7 +54,12 @@ Ext.define('Aeropuerto.view.SuscripcionesContainer', {
                 itemTpl: [
                     '<div>{aerolinea}<br>{nVuelo} - {estadosp}</div>'
                 ],
-                store: 'Suscripciones'
+                store: 'Suscripciones',
+                plugins: [
+                    {
+                        type: 'pullrefresh'
+                    }
+                ]
             },
             {
                 xtype: 'label',
@@ -68,6 +73,8 @@ Ext.define('Aeropuerto.view.SuscripcionesContainer', {
 
     initialize: function() {
         this.callParent();
+        Ext.getCmp('suscriptionNoSubs').setHtml(Ext.getStore('StringsStore').getAt(0).data.vuelo_noHaySuscripciones);
+        Ext.getCmp('suscripcionesToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_suscripciones);
     }
 
 });

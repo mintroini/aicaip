@@ -1,0 +1,194 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "contactoContainer",
+        "designer|userClassName": "ContactoContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "ContactoContainer",
+        "scrollable": "vertical",
+        "width": "100%"
+    },
+    "name": "MyContainer7",
+    "designerId": "5865d153-1fc5-419a-bc8b-3136b0a7baa7",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar2",
+            "designerId": "3d67bc1b-c750-44f5-aa8d-e7ca8b3319ae",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "containerContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "e992bcc6-0ba0-4313-9d50-dac4772b16f6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": null,
+                "id": "contactoForm",
+                "title": null
+            },
+            "name": "MyFieldSet2",
+            "designerId": "12d8d267-6951-4e88-9757-de2ca8536337",
+            "cn": [
+                {
+                    "type": "Ext.field.Email",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "id": "contactoEmail",
+                        "label": "Email",
+                        "labelWidth": "40%",
+                        "margin": 20,
+                        "padding": 8,
+                        "placeHolder": "email@example.com"
+                    },
+                    "name": "MyEmailField1",
+                    "designerId": "485000bf-d708-4779-b81b-1ce4e61ed444"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "ContactoConsulta",
+                        "label": "Consulta",
+                        "labelWidth": "90%",
+                        "margin": 20,
+                        "name": "field",
+                        "padding": null,
+                        "width": "50%"
+                    },
+                    "name": "MyRadioButton",
+                    "designerId": "27578999-2f3e-4750-b217-f820d07ca3cb"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "ContactoReclamo",
+                        "label": "Reclamo",
+                        "labelWidth": "90%",
+                        "margin": 20,
+                        "name": "field",
+                        "padding": null,
+                        "width": "50%"
+                    },
+                    "name": "MyRadioButton1",
+                    "designerId": "02efdf6e-fbc6-4d0d-8d63-c9e803519105"
+                },
+                {
+                    "type": "Ext.field.Radio",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "ContactoSugerencia",
+                        "label": "Sugerencia",
+                        "labelWidth": "90%",
+                        "margin": 20,
+                        "name": "field",
+                        "padding": 8,
+                        "width": "50%"
+                    },
+                    "name": "MyRadioButton2",
+                    "designerId": "0095d142-62f1-472a-8ac1-f9c9123ef502"
+                },
+                {
+                    "type": "Ext.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "ContactoContenido",
+                        "label": "Field",
+                        "margin": 20,
+                        "padding": 8
+                    },
+                    "name": "MyTextArea",
+                    "designerId": "03cabde0-e060-4974-b2c6-b17446b18aa9"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "btnSolicitarTaxi1",
+                        "margin": 20,
+                        "padding": 8,
+                        "text": "Enviar"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "9c3f42d4-0c78-4a71-ac59-8aa797f66cd8"
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "",
+                    "//Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "af075ee0-758d-42d8-af30-397e4453a048"
+        }
+    ]
+}

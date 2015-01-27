@@ -26,8 +26,8 @@
             "codeClass": null,
             "userConfig": {
                 "docked": "top",
-                "id": "topBar1",
-                "itemId": "topBar1"
+                "id": "suscripcionesToolbar",
+                "itemId": null
             },
             "name": "MyTitleBar1",
             "designerId": "06617c28-5776-48da-b897-823647f4b8a8",
@@ -83,6 +83,16 @@
                     },
                     "name": "itemTpl",
                     "designerId": "eb5ad6b1-095c-44bb-b8ec-ebdb5e68d0c4"
+                },
+                {
+                    "type": "Ext.plugin.PullRefresh",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MyPullRefreshPlugin2",
+                    "designerId": "982e0d00-4728-40ca-872c-a0f051c0f563"
                 }
             ]
         },
@@ -112,7 +122,9 @@
             "userConfig": {
                 "fn": "initialize",
                 "implHandler": [
-                    "this.callParent();"
+                    "this.callParent();",
+                    "Ext.getCmp('suscriptionNoSubs').setHtml(Ext.getStore('StringsStore').getAt(0).data.vuelo_noHaySuscripciones);",
+                    "Ext.getCmp('suscripcionesToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_suscripciones);"
                 ]
             },
             "name": "initialize",

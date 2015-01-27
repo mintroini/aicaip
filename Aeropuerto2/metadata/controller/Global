@@ -1,0 +1,539 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Global",
+        "urlServer": "http://audiodes.ddns.net/aicmobileservice/mobilews.asmx",
+        "urlWeather": "http://api.worldweatheronline.com/free/v2/weather.ashx",
+        "weatherKey": "453edf069e02397083c3dcc4fe281"
+    },
+    "name": "MyController",
+    "designerId": "0cd84b2f-99fc-40f5-bdef-de2f0fba53b3",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "urlServer",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "urlWeather",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "weatherKey",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tipo",
+                    "laTienda",
+                    "parametros",
+                    "mascara",
+                    "panel"
+                ],
+                "fn": "getFlights",
+                "implHandler": [
+                    "Ext.Ajax.on('beforerequest', function(){",
+                    "    if(mascara === '1'){",
+                    "        // Ext.Viewport.mask({ xtype: 'loadmask' });",
+                    "        //  Ext.getCmp(panel).mask({ xtype: 'loadmask' });",
+                    "    }",
+                    "});",
+                    "",
+                    "",
+                    "Ext.Ajax.request({",
+                    "    url: this.getUrlServer(),",
+                    "    useDefaultXhrHeader: false,",
+                    "    headers: {",
+                    "        'Content-Type': 'text/xml; charset=utf-8',",
+                    "        'SOAPAction': 'http://tempuri.org/' + tipo",
+                    "    },",
+                    "    method: 'POST',",
+                    "    params: parametros,",
+                    "    success: function(response) {",
+                    "        var vuelos = response.responseXML.getElementsByTagName('Vuelo');",
+                    "        var tienda = Ext.getStore(laTienda);",
+                    "        tienda.getProxy().clear();",
+                    "        tienda.data.clear();",
+                    "        tienda.sync();",
+                    "        Ext.each(vuelos, function(vuelo) {",
+                    "            tienda.addData(vuelo);",
+                    "        }, this);",
+                    "        tienda.sync();",
+                    "        tienda.load();",
+                    "    },",
+                    "    failure: function(response) {",
+                    "        alert('failure'+response.responseText);",
+                    "        console.log(response.responseText);",
+                    "    }",
+                    "});",
+                    "",
+                    "Ext.Ajax.on('requestcomplete', function(){",
+                    "    if(mascara == '1'){",
+                    "        // Ext.Viewport.unmask();",
+                    "        Ext.getCmp(panel).unmask();",
+                    "    }",
+                    "});",
+                    ""
+                ]
+            },
+            "name": "getFlights",
+            "designerId": "662083a5-9273-4476-8057-451b9b28a914"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filtro",
+                    "mascara",
+                    "panel"
+                ],
+                "fn": "getDepartures",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetDepartures xmlns=\"http://tempuri.org/\"><filter>'+filtro+'</filter></GetDepartures></soap:Body></soap:Envelope>';",
+                    "this.getFlights('GetDepartures', 'Partidas', xmlParams,mascara,panel);"
+                ]
+            },
+            "name": "getDepartures",
+            "designerId": "213ee1e4-975b-4aea-8891-48e98ff9594f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "filtro",
+                    "mascara",
+                    "panel"
+                ],
+                "fn": "getArrivals",
+                "implHandler": [
+                    "",
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetArrivals xmlns=\"http://tempuri.org/\"><filter>'+filtro+'</filter></GetArrivals></soap:Body></soap:Envelope>';",
+                    "this.getFlights('GetArrivals', 'Arribos', xmlParams,mascara,panel);"
+                ]
+            },
+            "name": "getArrivals",
+            "designerId": "392f8952-4ac0-49da-8ff6-1a4d5943e8c1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "uuid",
+                    "flightNumber",
+                    "timeStamp"
+                ],
+                "fn": "subscribe",
+                "implHandler": [
+                    "var plataforma = Ext.os.name;",
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><Subscribe xmlns=\"http://tempuri.org/\"><id>'+uuid+'</id><flightNumber>'+flightNumber+'</flightNumber><datetime>'+timeStamp+'</datetime><plataforma>'+plataforma+'</plataforma></Subscribe></soap:Body></soap:Envelope>';",
+                    "",
+                    "Ext.Ajax.request({",
+                    "    url: this.getUrlServer(),",
+                    "    useDefaultXhrHeader: false,",
+                    "    headers: {",
+                    "        'Content-Type': 'text/xml; charset=utf-8',",
+                    "        'SOAPAction': 'http://tempuri.org/Subscribe'",
+                    "    },",
+                    "    method: 'POST',",
+                    "    params: xmlParams,",
+                    "    success: function(response) {",
+                    "        Aeropuerto.app.getController('LogicController').changeSubscribeIcon();",
+                    "    },",
+                    "    failure: function(response) {",
+                    "        alert('todo mal'+response.responseText);",
+                    "        console.log(response.responseText);",
+                    "    }",
+                    "});",
+                    "//this.getApplication().getController('LogicController').changeSubscribeIcon();",
+                    ""
+                ]
+            },
+            "name": "subscribe",
+            "designerId": "4c90cad9-4dab-4e94-93e1-ca24a3e43113"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "uuid, flightNumber, timeStamp"
+                ],
+                "fn": "unSubscribe",
+                "implHandler": [
+                    "   var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><UnSubscribe xmlns=\"http://tempuri.org/\"><id>'+uuid+'</id><flightNumber>'+flightNumber+'</flightNumber><datetime>'+timeStamp+'</datetime></UnSubscribe></soap:Body></soap:Envelope>';",
+                    "",
+                    "Ext.Ajax.request({",
+                    "                                    url: this.getUrlServer(),",
+                    "                                    useDefaultXhrHeader: false,",
+                    "                                    headers: {",
+                    "                                        'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                        'SOAPAction': 'http://tempuri.org/UnSubscribe'",
+                    "                                    },",
+                    "                                    method: 'POST',",
+                    "                                    params: xmlParams,",
+                    "                                    success: function(response) {",
+                    "                                                Aeropuerto.app.getController('LogicController').changeSubscribeIcon();",
+                    "                                    },",
+                    "                                    failure: function(response) {",
+                    "                                        alert('todo mal'+response.responseText);",
+                    "                                        console.log(response.responseText);",
+                    "                                    }",
+                    "                                });",
+                    ""
+                ]
+            },
+            "name": "unSubscribe",
+            "designerId": "16539db1-b1b9-4c1c-a104-ab4eb9b4866f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "container"
+                ],
+                "fn": "getSubscriptions",
+                "implHandler": [
+                    "//Get and clear Susbscriptions",
+                    "",
+                    "var tienda = Ext.getStore('Suscripciones');",
+                    "tienda.getProxy().clear();",
+                    "tienda.data.clear();",
+                    "tienda.sync();",
+                    "var subs = Ext.getStore('MisVuelos');",
+                    "Ext.getCmp(container).mask({ xtype: 'loadmask' });",
+                    "",
+                    "for (i = 0; i < subs.getCount(); i++) {",
+                    "    this.getFlight(subs.getAt(i).data.nVuelo,subs.getAt(i).data.fprogram);",
+                    "}",
+                    "Ext.getCmp(container).unmask();",
+                    ""
+                ]
+            },
+            "name": "getSubscriptions",
+            "designerId": "ec78c6f0-2fc4-4e36-bfd6-f7a7ca64079c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "nVuelo",
+                    "fprogram"
+                ],
+                "fn": "getFlight",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetFlight xmlns=\"http://tempuri.org/\"><flight>'+nVuelo+'</flight><datetime>'+fprogram+'</datetime></GetFlight></soap:Body></soap:Envelope>';",
+                    "Ext.Ajax.request({",
+                    "    url: this.getUrlServer(),",
+                    "    useDefaultXhrHeader: false,",
+                    "    headers: {",
+                    "        'Content-Type': 'text/xml; charset=utf-8',",
+                    "        'SOAPAction': 'http://tempuri.org/GetFlight'",
+                    "    },",
+                    "    method: 'POST',",
+                    "    //async : false,",
+                    "    params: xmlParams,",
+                    "    success: function(response) {",
+                    "        var vuelos = response.responseXML.getElementsByTagName('GetFlightResult');",
+                    "        var tienda = Ext.getStore('Suscripciones');",
+                    "",
+                    "        if(vuelos[0] === undefined){",
+                    "            Aeropuerto.app.getController('LogicController').deleteFlight(nVuelo,fprogram,Ext.getStore('Uuid').getAt(0).get('key'));",
+                    "        }",
+                    "        Ext.each(vuelos, function(vuelo) {",
+                    "            tienda.addData(vuelo);",
+                    "        }, this);",
+                    "        tienda.sync();",
+                    "        tienda.load();",
+                    "    },",
+                    "    failure: function(response) {",
+                    "        alert('todo mal'+response.responseText);",
+                    "        console.log(response.responseText);",
+                    "    }",
+                    "});"
+                ]
+            },
+            "name": "getFlight",
+            "designerId": "84d6fc19-5377-4597-8927-6734370a17c1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "cultura"
+                ],
+                "fn": "getVersion",
+                "implHandler": [
+                    "var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetCultureVersion xmlns=\"http://tempuri.org/\"><pCultura>'+cultura+'</pCultura></GetCultureVersion></soap:Body></soap:Envelope>';",
+                    "",
+                    "Ext.Ajax.request({",
+                    "    url: this.getUrlServer(),",
+                    "    useDefaultXhrHeader: false,",
+                    "    headers: {",
+                    "        'Content-Type': 'text/xml; charset=utf-8',",
+                    "        'SOAPAction': 'http://tempuri.org/GetCultureVersion'",
+                    "    },",
+                    "    method: 'POST',",
+                    "    params: xmlParams,",
+                    "    async : false,",
+                    "    success: function(response) {",
+                    "        var respuesta = response.responseXML.getElementsByTagName('GetCultureVersionResponse');",
+                    "",
+                    "        Ext.each(respuesta, function(vuelo) {",
+                    "            version = vuelo.getElementsByTagName('GetCultureVersionResult')[0].firstChild.nodeValue;",
+                    "",
+                    "        }, this);",
+                    "",
+                    "        var tienda = Ext.getStore('StringsStore');",
+                    "        if(tienda.getCount() > 0){",
+                    "            if(tienda.getAt(0).data.version !== version){",
+                    "                console.log('cambio version');",
+                    "                Aeropuerto.app.getController('Global').getTexts(cultura);",
+                    "            }else{",
+                    "                console.log('misma version');",
+                    "            }",
+                    "        }else{",
+                    "            console.log('no tengo nadaaaa');",
+                    "            Aeropuerto.app.getController('Global').getTexts(cultura);",
+                    "        }",
+                    "",
+                    "    },",
+                    "    failure: function(response) {",
+                    "        alert('todo mal en get version'+response.responseText);",
+                    "        console.log(response.responseText);",
+                    "    }",
+                    "});"
+                ]
+            },
+            "name": "getVersion",
+            "designerId": "49b10d9e-4a80-4079-80dc-51d900c74318"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "cultura"
+                ],
+                "fn": "getTexts",
+                "implHandler": [
+                    "                var xmlParams = '<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><GetTexts xmlns=\"http://tempuri.org/\"><pCultura>'+cultura+'</pCultura></GetTexts></soap:Body></soap:Envelope>';",
+                    "",
+                    "",
+                    "                       Ext.Ajax.request({",
+                    "                                                            url: this.getUrlServer(),",
+                    "                                                            useDefaultXhrHeader: false,",
+                    "                                                            headers: {",
+                    "                                                                'Content-Type': 'text/xml; charset=utf-8',",
+                    "                                                                'SOAPAction': 'http://tempuri.org/GetTexts'",
+                    "                                                            },",
+                    "                                                            method: 'POST',",
+                    "                                                            params: xmlParams,",
+                    "                                                            async : false,",
+                    "                                                            success: function(response) {",
+                    "                                                            var vuelos = response.responseXML.getElementsByTagName('GetTextsResult');",
+                    "                                                            var tienda = Ext.getStore('StringsStore');",
+                    "                                                            tienda.getProxy().clear();",
+                    "                                                            tienda.data.clear();",
+                    "                                                            tienda.sync();",
+                    "                                                            Ext.each(vuelos, function(vuelo) {",
+                    "                                                                tienda.addData(vuelo);",
+                    "                                                                console.log(vuelo);",
+                    "                                                                console.log(tienda.getCount());",
+                    "",
+                    "                                                            }, this);",
+                    "                                                                console.log(tienda.getCount());",
+                    "                                                            },",
+                    "                                                            failure: function(response) {",
+                    "                                                                alert('todo mal'+response.responseText);",
+                    "                                                                console.log(response.responseText);",
+                    "                                                            }",
+                    "                                                        });"
+                ]
+            },
+            "name": "getTexts",
+            "designerId": "f9ae0f4e-f069-4a4c-8a39-d7402a75ebea"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "city"
+                ],
+                "fn": "getWeather",
+                "implHandler": [
+                    "var urlWeather = this.getUrlWeather();",
+                    "var weatherKey = this.getWeatherKey();",
+                    "var city = 'q='+city;",
+                    "",
+                    "var fill = '&format=xml&num_of_days=1&key=';",
+                    "",
+                    "var fullUrl = urlWeather +'?'+city+fill+weatherKey;",
+                    "",
+                    "var xmlHttp = null;",
+                    "xmlHttp = new XMLHttpRequest();",
+                    "xmlHttp.open( \"GET\", fullUrl, false );",
+                    "xmlHttp.send();",
+                    "/* console.log(fullUrl);",
+                    "console.log(xmlHttp.responseXML);",
+                    "console.log(xmlHttp.responseText); */",
+                    "var vuelos = xmlHttp.responseXML.getElementsByTagName('current_condition');",
+                    "",
+                    "var tienda = Ext.getStore('WeatherStore');",
+                    "tienda.getProxy().clear();",
+                    "tienda.data.clear();",
+                    "tienda.sync();",
+                    "Ext.each(vuelos, function(vuelo) {",
+                    "    tienda.addData(vuelo);",
+                    "}, this);",
+                    "tienda.sync();",
+                    "tienda.load();"
+                ]
+            },
+            "name": "getWeather",
+            "designerId": "29fcada4-ae5b-4099-b668-4eb1da45352f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "checkConnection",
+                "implHandler": [
+                    "",
+                    "if(!window.navigator.onLine){",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    this.getApplication().getController('LogicController').showOffLine();",
+                    "    throw new Error('No internet connection');",
+                    "",
+                    "}"
+                ]
+            },
+            "name": "checkConnection",
+            "designerId": "7fded480-44fc-4934-9854-7c988565ed68"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "referrer"
+                ],
+                "fn": "checkLogged",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkConnection();",
+                    "",
+                    "//Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "Ext.Viewport.hideMenu('left');",
+                    "",
+                    "if(Ext.getStore('UsuarioStore').getCount() > 0){",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp(referrer).show();",
+                    "}else{",
+                    "    Ext.Msg.confirm(Ext.getStore('StringsStore').getAt(0).data.global_usuario, Ext.getStore('StringsStore').getAt(0).data.global_logToContinue, function(btn){",
+                    "    if (btn == 'yes'){",
+                    "            Aeropuerto.app.getApplication().getController('LogicController').hideViewAll();",
+                    "            Aeropuerto.app.referrer = referrer;",
+                    "            Aeropuerto.app.getController('Usuarios').goToLogin();",
+                    "    }",
+                    "    });",
+                    "}"
+                ]
+            },
+            "name": "checkLogged",
+            "designerId": "dfc1ffb8-b3d6-43f8-9beb-836734fef4f1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "listId"
+                ],
+                "fn": "pullRefresh",
+                "implHandler": [
+                    "        if(listId === 'lstArribos'){",
+                    "            this.getController('Global').getArrivals(\"\",0,'vuelosTabPanel');",
+                    "        }",
+                    "        if(listId === 'lstDepartures'){",
+                    "            this.getController('Global').getDepartures(\"\",0,'vuelosTabPanel');",
+                    "        }",
+                    "        if(listId === 'lstSubscriptions'){",
+                    "                this.getSubscriptions('',0);",
+                    "        }"
+                ]
+            },
+            "name": "pullRefresh",
+            "designerId": "8016b0af-b77b-4218-acdc-8f19bbc96ac7"
+        }
+    ]
+}

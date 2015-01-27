@@ -1,0 +1,301 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "FlightDetailsContainer",
+        "designer|userClassName": "FlightDetailsContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "FlightDetailsContainer",
+        "layout": null,
+        "width": "100%"
+    },
+    "name": "MyContainer11",
+    "designerId": "dd4f618c-8a1f-4fa3-b66a-6e9febb5081a",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "tbDetails",
+                "title": null
+            },
+            "name": "MyToolbar",
+            "designerId": "8fd3b2a4-efe3-471c-b3aa-4f027f8bc4d6",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "arrow_left",
+                        "id": "btnDetailsBack",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "b44eecbf-a0a7-495e-aa31-29dc65cf039d"
+                },
+                {
+                    "type": "Ext.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "MySpacer1",
+                    "designerId": "58ce3f20-bf61-4bc7-ab74-13e026433e52"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "favorites",
+                        "id": "btnDetailsSubscribe",
+                        "text": null
+                    },
+                    "name": "MyButton1",
+                    "designerId": "f35a6618-1fc5-47be-a3e1-50d2de4d7caf"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "refresh",
+                        "id": "btnDetailsRefresh",
+                        "text": null
+                    },
+                    "name": "MyButton8",
+                    "designerId": "13fb2ce0-7bb5-4797-8c0a-1a51a6aecee7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "height": "100%",
+                "id": "flightDetails",
+                "width": "50%"
+            },
+            "name": "MyContainer",
+            "designerId": "041d3728-508d-4642-87f0-962fd02212a9",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "100%",
+                        "id": "companyName",
+                        "width": "100%",
+                        "zIndex": null
+                    },
+                    "name": "MyContainer1",
+                    "designerId": "1fc1b4e5-bbb8-4840-8101-7023aee2be15",
+                    "cn": [
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "tpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "tpl",
+                                "implHandler": [
+                                    "<h2>{nVuelo}</h2>",
+                                    "<h2>{aerolinea}</h2>",
+                                    "<h2>{origen}</h2>"
+                                ]
+                            },
+                            "name": "tpl",
+                            "designerId": "d8a24dad-1c07-40fe-9e73-51653d897ece"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": "100%",
+                "id": "detailWeather",
+                "width": "50%"
+            },
+            "name": "MyContainer2",
+            "designerId": "7334fd37-3367-4492-a998-c5dc1bc68f73",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": false,
+                        "docked": "top",
+                        "height": "50%",
+                        "id": "origen",
+                        "margin": 20,
+                        "padding": 5
+                    },
+                    "name": "MyContainer3",
+                    "designerId": "22f8e781-aae1-4d2d-819e-bf9d722de83c",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "",
+                                "id": "detailsOrigen"
+                            },
+                            "name": "MyLabel",
+                            "designerId": "54ae69c4-20e3-4d8c-a05d-1af7fa457964"
+                        },
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "tpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "tpl",
+                                "implHandler": [
+                                    "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
+                                ]
+                            },
+                            "name": "tpl",
+                            "designerId": "67b38144-c17d-431b-a36a-106e93bf6524"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": "40%"
+                    },
+                    "name": "MySpacer",
+                    "designerId": "12a4e091-66ca-4666-8abb-77268bc8b761"
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "centered": false,
+                        "docked": null,
+                        "height": "50%",
+                        "id": "destino",
+                        "margin": 20,
+                        "padding": 5
+                    },
+                    "name": "MyContainer4",
+                    "designerId": "112f3b63-db29-423f-a9e8-c673e0e63a98",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "html": "",
+                                "id": "detailsDestino"
+                            },
+                            "name": "MyLabel2",
+                            "designerId": "5f9f5e2f-b8ee-4742-8fd5-400bf7d4db3a"
+                        },
+                        {
+                            "type": "Ext.XTemplate",
+                            "reference": {
+                                "name": "tpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "tpl",
+                                "implHandler": [
+                                    "<h2>{temp_C}</h2>       <img style=\"height: 100px; width: 100px;\" src={weatherIconUrl} />"
+                                ]
+                            },
+                            "name": "tpl1",
+                            "designerId": "24680f5c-a422-4914-badc-6d3be5cb03ed"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "",
+                    "        this.element.on({",
+                    "            swipe: function(e, node, options) {",
+                    "                if(e.direction == \"right\") {",
+                    "                    Aeropuerto.app.getController('LogicController').onDetailsBackButtonTap();",
+                    "                }",
+                    "            }",
+                    "        });"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "6af94db9-230e-439a-a913-d154a1d60764"
+        }
+    ]
+}

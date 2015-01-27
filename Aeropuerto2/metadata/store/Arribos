@@ -1,0 +1,55 @@
+{
+    "type": "xmlstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Arribos",
+        "model": "Vuelo",
+        "requires": [
+            "Ext.data.proxy.LocalStorage"
+        ],
+        "storeId": "Arribos"
+    },
+    "name": "MyXmlStore",
+    "designerId": "22c5973e-e137-424b-84bd-d968f624f1cb",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "type": "localstorage"
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "b59d0c06-b763-4d2d-965a-34bb23df2033",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "type",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Xml",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "record": "Vuelo"
+                    },
+                    "name": "MyXmlReader",
+                    "designerId": "d20a12bb-e71b-4224-8d49-fec43773b8a3"
+                }
+            ]
+        }
+    ]
+}

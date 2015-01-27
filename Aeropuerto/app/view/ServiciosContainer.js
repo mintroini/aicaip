@@ -34,6 +34,7 @@ Ext.define('Aeropuerto.view.ServiciosContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'serviciosToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -59,6 +60,7 @@ Ext.define('Aeropuerto.view.ServiciosContainer', {
 
     initialize: function() {
         this.callParent();
+        Ext.getCmp('serviciosToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_servicios);
     }
 
 });

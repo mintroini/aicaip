@@ -30,7 +30,6 @@ Ext.define('Aeropuerto.controller.Global', {
             }
         });
 
-
         Ext.Ajax.request({
             url: this.getUrlServer(),
             useDefaultXhrHeader: false,
@@ -126,7 +125,7 @@ Ext.define('Aeropuerto.controller.Global', {
 
     },
 
-    getSubscriptions: function(container) {
+    getSubscriptions: function(container, mask) {
         //Get and clear Susbscriptions
 
         var tienda = Ext.getStore('Suscripciones');
@@ -134,12 +133,12 @@ Ext.define('Aeropuerto.controller.Global', {
         tienda.data.clear();
         tienda.sync();
         var subs = Ext.getStore('MisVuelos');
-        Ext.getCmp(container).mask({ xtype: 'loadmask' });
+        if(mask === '1') Ext.getCmp(container).mask({ xtype: 'loadmask' });
 
         for (i = 0; i < subs.getCount(); i++) {
             this.getFlight(subs.getAt(i).data.nVuelo,subs.getAt(i).data.fprogram);
         }
-        Ext.getCmp(container).unmask();
+        if(mask === '1') Ext.getCmp(container).unmask();
 
     },
 
@@ -301,13 +300,26 @@ Ext.define('Aeropuerto.controller.Global', {
             this.getApplication().getController('LogicController').hideViewAll();
             Ext.getCmp(referrer).show();
         }else{
-            Ext.Msg.confirm("Iniciar sesion", "Necesita iniciar sesion", function(btn){
+            Ext.Msg.confirm(Ext.getStore('StringsStore').getAt(0).data.global_usuario, Ext.getStore('StringsStore').getAt(0).data.global_logToContinue, function(btn){
             if (btn == 'yes'){
                     Aeropuerto.app.getApplication().getController('LogicController').hideViewAll();
                     Aeropuerto.app.referrer = referrer;
                     Aeropuerto.app.getController('Usuarios').goToLogin();
             }
             });
+        }
+    },
+
+    pullRefresh: function(listId) {
+        if(listId === 'lstArribos'){
+            this.getApplication().getController('Global').getArrivals("",0,'vuelosTabPanel');
+        }
+
+        if(listId === 'lstPartidas'){
+            this.getApplication().getController('Global').getDepartures("",0,'vuelosTabPanel');
+        }
+        if(listId === 'lstSubscriptions'){
+            this.getSubscriptions('',0);
         }
     }
 

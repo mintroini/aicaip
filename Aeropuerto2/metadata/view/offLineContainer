@@ -1,0 +1,75 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "offLineContainer",
+        "designer|userClassName": "offLineContainer",
+        "hidden": null,
+        "id": "offLineContainer",
+        "zIndex": null
+    },
+    "name": "MyContainer7",
+    "designerId": "aec2ea28-d9a4-4d63-962f-db95f0c2bb24",
+    "cn": [
+        {
+            "type": "Ext.Label",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "html": "Your device is not connected to the internet please try again",
+                "margin": 20,
+                "padding": 8
+            },
+            "name": "MyLabel3",
+            "designerId": "c7480ce2-7a1a-424b-8488-f45067c52dbc"
+        },
+        {
+            "type": "Ext.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "iconCls": null,
+                "id": "btnOffLine",
+                "margin": 20,
+                "padding": 8,
+                "text": "try again"
+            },
+            "name": "MyButton9",
+            "designerId": "17b35873-42d2-415c-8324-eedab4edcfc1"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "if(window.navigator.onLine){",
+                    "      Ext.getCmp('offLineContainer').hide();",
+                    "}else{",
+                    "console.log(\"offline\");",
+                    "//Ext.getCmp('offLineContainer').show();",
+                    "    Ext.getCmp('mainView').hide();",
+                    "}"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "ac08cebe-df6b-40cf-8319-21c9c883bcc0"
+        }
+    ]
+}

@@ -1,0 +1,119 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "servicioscontainer",
+        "designer|userClassName": "ServiciosContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "ServiciosContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "MyContainer9",
+    "designerId": "8fd85947-3517-423d-be4b-5174a9981b78",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar3",
+            "designerId": "26a661fa-c287-4f33-aea3-3d1b039563dc",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "serviciosContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "dfea22df-9e90-4fa2-98fe-1cd7eb479856"
+                }
+            ]
+        },
+        {
+            "type": "Ext.dataview.List",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "grouped": true,
+                "id": "lstServicios",
+                "store": "ServiciosStore"
+            },
+            "name": "MyList6",
+            "configAlternates": {
+                "onItemDisclosure": "function"
+            },
+            "designerId": "40d9fe66-381e-41d5-95ef-25b6ceb490c7",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "<div>{nombre}</div>"
+                        ]
+                    },
+                    "name": "itemTpl",
+                    "designerId": "4e2cffbe-faf3-4f5d-bfb3-3c8a8009a06e"
+                },
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onItemDisclosure",
+                        "implHandler": [
+                            "//Aeropuerto.app.getController('Servicios').goToServiceDetails(record);"
+                        ]
+                    },
+                    "name": "onItemDisclosure",
+                    "designerId": "4dca94b2-d561-4311-bf48-b3cffdb75901"
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();"
+                ]
+            },
+            "name": "initialize",
+            "designerId": "c03a9385-68ea-40e4-8b29-bc08b403c6f3"
+        }
+    ]
+}

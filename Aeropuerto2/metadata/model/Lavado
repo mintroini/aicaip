@@ -1,0 +1,99 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Lavado"
+    },
+    "name": "Servicios1",
+    "designerId": "d411905a-70bf-4d73-a03d-7f47786467dc",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "horaLavado",
+                "type": "string"
+            },
+            "name": "field41",
+            "designerId": "845edc44-5ecb-4f96-b4bb-4da2cf77bc80"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "matricula",
+                "type": "string"
+            },
+            "name": "field42",
+            "designerId": "b75302a7-34fe-4159-bbd6-ea665d253a76"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "modelo",
+                "type": "string"
+            },
+            "name": "field43",
+            "designerId": "75f3ba11-7f04-4ad0-8d88-6fb3881e9941"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "marca",
+                "type": "string"
+            },
+            "name": "field44",
+            "designerId": "9e6cd74e-56e0-4564-8631-42c13ebf603b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "costo",
+                "type": "string"
+            },
+            "name": "field19",
+            "designerId": "2f277cb0-6998-43fc-ac2d-446ce95baf26"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "estado",
+                "type": "string"
+            },
+            "name": "field20",
+            "designerId": "35f20253-a396-44ce-8d8f-c33675dda201"
+        }
+    ]
+}

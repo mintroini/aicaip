@@ -1,0 +1,56 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Normas"
+    },
+    "name": "MyController",
+    "designerId": "6bebe5d5-db4b-45f8-bb4d-1f3780e9d349",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#normasContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "6cdc4ca9-d6b1-4197-b273-566c00ff4194"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnNormas",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnNormasTap",
+                "implHandler": [
+                    "    Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "    Ext.Viewport.hideMenu('left');",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "    Ext.getCmp('NormasContainer').show();"
+                ],
+                "name": "tap"
+            },
+            "name": "btnNormasTap",
+            "designerId": "b1070177-99dc-49d2-8ad0-3bf878a1aae1"
+        }
+    ]
+}

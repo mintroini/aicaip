@@ -26,7 +26,7 @@
             "codeClass": null,
             "userConfig": {
                 "docked": "top",
-                "id": "tbDetails1",
+                "id": "serviciosDetalleToolbar",
                 "title": null
             },
             "name": "MyToolbar",
@@ -109,17 +109,7 @@
                 "fn": "initialize",
                 "implHandler": [
                     "this.callParent();",
-                    "",
-                    "/* Tiene que volver a servicios",
-                    "",
-                    "        this.element.on({",
-                    "            swipe: function(e, node, options) {",
-                    "                if(e.direction == \"right\") {",
-                    "                    Aeropuerto.app.getController('LogicController').onDetailsBackButtonTap();",
-                    "                }",
-                    "            }",
-                    "        });",
-                    "*/"
+                    ""
                 ]
             },
             "name": "initialize",

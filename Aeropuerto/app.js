@@ -55,7 +55,8 @@ Ext.application({
         'VuelosContainer',
         'SuscripcionesContainer',
         'FlightDetailsContainer',
-        'ServiciosDetailsContainer'
+        'ServiciosDetailsContainer',
+        null
     ],
     controllers: [
         'Global',
@@ -73,20 +74,25 @@ Ext.application({
     statusBarStyle: 'black-translucent',
 
     launch: function() {
+        /*
+                var tienda = Ext.getStore('StringsStore');
+                tienda.getProxy().clear();
+                tienda.data.clear();
+                tienda.sync();
+               */
         var store= Ext.getStore('Uuid');
-        var logeado= Ext.getStore('UsuarioStore');
+
         if(store.getCount() === 0){
             var guid =  this.getApplication().getController('LogicController').createUuid();
 
             var uuid = guid();
             store.add({key : uuid});
 
-              var servicios = Ext.getStore('ServiciosStore');
+            var servicios = Ext.getStore('ServiciosStore');
 
             servicios.add({categoria : 'GASTRONOMÍA',nombre:'Mc. Café ',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Mc. Donald ́s',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Restaurant Patria',ubicacion:'(www.restaurantpatria.com.uy)'},{categoria : 'TRANSPORTE',nombre:'COT',ubicacion:'(www.cot.com.uy)'},{categoria : 'TRANSPORTE',nombre:'Taxis Aeropuerto',ubicacion:'(www.taxisaeropuerto.com)'},{categoria : 'COMUNICACIÓN',nombre:'ANTEL',ubicacion:'(www.antel.com.uy)'});
 
         }
-
 
         if(window.navigator.onLine){
             var cultura = navigator.language;

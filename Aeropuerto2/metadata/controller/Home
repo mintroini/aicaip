@@ -1,0 +1,203 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Home"
+    },
+    "name": "MyController",
+    "designerId": "3a430922-e850-47ac-9bac-f7f40c45cde3",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#homeButtonBuscar",
+                "designer|targetType": "Ext.Button",
+                "fn": "onhomeButtonBuscar",
+                "implHandler": [
+                    "Ext.getCmp('homeTabPanel').mask({ xtype: 'loadmask' });",
+                    "",
+                    "if(Ext.getCmp('homeTabPanel').getActiveItem().getId() === 'homePanelArribos'){",
+                    "    this.getApplication().getController('Global').getArrivals(Ext.getCmp('lblHomeBuscarVuelos').getValue(),1,'homeTabPanel');",
+                    "}",
+                    "else{",
+                    "    this.getApplication().getController('Global').getDepartures(Ext.getCmp('lblHomeBuscarVuelos').getValue(),1,'homeTabPanel');",
+                    "}"
+                ],
+                "name": "tap"
+            },
+            "name": "onhomeButtonBuscar",
+            "designerId": "d6ea6e7a-b666-4aa6-8d45-a6fb86f90231"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onHomeButtonTap",
+                "implHandler": [
+                    "    Aeropuerto.app.getApplication().getController('LogicController').showHideMenu('');",
+                    "    Ext.Viewport.hideMenu('left');",
+                    "    this.getApplication().getController('LogicController').hideViewAll();",
+                    "",
+                    "        var tienda = Ext.getStore('Arribos');",
+                    "        tienda.getProxy().clear();",
+                    "        tienda.data.clear();",
+                    "        tienda.sync();",
+                    "        tienda = Ext.getStore('Partidas');",
+                    "        tienda.getProxy().clear();",
+                    "        tienda.data.clear();",
+                    "        tienda.sync();",
+                    "",
+                    "        Ext.getCmp('lstArribosHome').refresh();",
+                    "        Ext.getCmp('lstPartidasHome').refresh();",
+                    "",
+                    "    if(Ext.getStore('UsuarioStore').getCount() > 0){",
+                    "        Ext.getCmp('homeContainerSubs').show();",
+                    "    }else{",
+                    "        Ext.getCmp('homeContainerSubs').hide();",
+                    "    }",
+                    "",
+                    "    Ext.getCmp('HomeContainer').show();",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onHomeButtonTap",
+            "designerId": "66343593-aa7c-4157-ac2b-08dfa845708c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#homeContainerSubs",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnSubsHome",
+                "implHandler": [
+                    "",
+                    "if(Ext.Viewport.getMenus().right.isHidden()){",
+                    "    Ext.Viewport.showMenu('right');",
+                    "",
+                    "    if(Ext.getStore('MisVuelos').getCount()<1){",
+                    "        Ext.getCmp('suscriptionNoSubs2').show();",
+                    "        Ext.getCmp('lstSubscriptions2').hide();",
+                    "",
+                    "    }else{",
+                    "        this.getApplication().getController('Global').getSubscriptions('suscripcionesMenu');",
+                    "        Ext.getCmp('suscriptionNoSubs2').hide();",
+                    "        Ext.getCmp('lstSubscriptions2').show();",
+                    "    }",
+                    "",
+                    "}",
+                    "else",
+                    "{",
+                    "    Ext.Viewport.hideMenu('right');",
+                    "}",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnSubsHome",
+            "designerId": "b587b140-099f-4770-8ba0-4ea8e0543821"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#homeContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "onMenuButtonTap",
+                "implHandler": [
+                    "this.getApplication().getController('LogicController').showHideMenu(\"\");"
+                ],
+                "name": "tap"
+            },
+            "name": "onMenuButtonTap",
+            "designerId": "1fbcb95c-2920-4431-b7a4-fcb45efdde72"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstArribosHome",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onArribosListTap",
+                "implHandler": [
+                    "",
+                    "Aeropuerto.app.referrer = 'HomeContainer';",
+                    "this.getApplication().getController('LogicController').goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onArribosListTap",
+            "designerId": "7e5949f0-39d6-47bd-b3f4-feb85844c0c0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstPartidasHome",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onPartidasListTap",
+                "implHandler": [
+                    "Aeropuerto.app.referrer = 'HomeContainer';",
+                    "this.getApplication().getController('LogicController').goToDetails(dataview, index, target, record, e, eOpts);"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onPartidasListTap",
+            "designerId": "74c4b20b-c173-4eb2-a9d9-6697d532caf8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#lstSubscriptions2",
+                "designer|targetType": "Ext.dataview.List",
+                "fn": "onSubsList",
+                "implHandler": [
+                    "        Aeropuerto.app.referrer = 'HomeContainer';",
+                    "        this.getApplication().getController('LogicController').goToDetails(dataview, index, target, record, e, eOpts);",
+                    "        Ext.Viewport.hideMenu('right');"
+                ],
+                "name": "itemtap"
+            },
+            "name": "onSubsList",
+            "designerId": "c7d39f93-0966-405e-ac98-8fa5b9c7c27f"
+        }
+    ]
+}

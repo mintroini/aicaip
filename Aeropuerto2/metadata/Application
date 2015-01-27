@@ -1,0 +1,119 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "Global",
+            "LogicController",
+            "Usuarios",
+            "Taxi",
+            "Contacto",
+            "Estacionamiento",
+            "Lavado",
+            "Servicios",
+            "Normas",
+            "Home"
+        ],
+        "icon": null,
+        "js": [
+            "{\"path\": \"app/utils/GALocalStorage.js\"}"
+        ],
+        "models": [
+            "Vuelo",
+            "Weather",
+            "Strings",
+            "Usuario",
+            "Servicios",
+            "Lavado"
+        ],
+        "name": "Aeropuerto",
+        "startupImage": null,
+        "statusBarStyle": "black-translucent",
+        "stores": [
+            "Arribos",
+            "Partidas",
+            "Uuid",
+            "Suscripciones",
+            "MisVuelos",
+            "WeatherStore",
+            "StringsStore",
+            "UsuarioStore",
+            "ServiciosStore",
+            "LavadosStore"
+        ],
+        "views": [
+            "MainContainer",
+            "UserContainer",
+            "TaxiContainer",
+            "ContactoContainer",
+            "EstacionamientoContainer",
+            "ServiciosContainer",
+            "NormasContainer",
+            "HomeContainer",
+            "VuelosContainer",
+            "SuscripcionesContainer",
+            "FlightDetailsContainer",
+            "ServiciosDetailsContainer"
+        ]
+    },
+    "name": "Application",
+    "configAlternates": {
+        "icon": "string",
+        "js": "object"
+    },
+    "designerId": "application",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "js",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "var store= Ext.getStore('Uuid');",
+                    "var logeado= Ext.getStore('UsuarioStore');",
+                    "if(store.getCount() === 0){",
+                    "    var guid =  this.getApplication().getController('LogicController').createUuid();",
+                    "",
+                    "    var uuid = guid();",
+                    "    store.add({key : uuid});",
+                    "",
+                    "      var servicios = Ext.getStore('ServiciosStore');",
+                    "",
+                    "    servicios.add({categoria : 'GASTRONOMÍA',nombre:'Mc. Café ',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Mc. Donald ́s',ubicacion:'(www.mcdonalds.com.uy)'},{categoria : 'GASTRONOMÍA',nombre:'Restaurant Patria',ubicacion:'(www.restaurantpatria.com.uy)'},{categoria : 'TRANSPORTE',nombre:'COT',ubicacion:'(www.cot.com.uy)'},{categoria : 'TRANSPORTE',nombre:'Taxis Aeropuerto',ubicacion:'(www.taxisaeropuerto.com)'},{categoria : 'COMUNICACIÓN',nombre:'ANTEL',ubicacion:'(www.antel.com.uy)'});",
+                    "",
+                    "}",
+                    "",
+                    "",
+                    "if(window.navigator.onLine){",
+                    "    var cultura = navigator.language;",
+                    "    this.getApplication().getController('Global').getVersion(cultura);",
+                    "}else{",
+                    "    // this.getApplication().getController('LogicController').hideViewAll();",
+                    "    // this.getApplication().getController('LogicController').showOffLine();",
+                    "}",
+                    "",
+                    "",
+                    "//alert('You are using ' + Ext.os.name);",
+                    ""
+                ]
+            },
+            "name": "launch",
+            "designerId": "b42eb33c-678d-475b-934a-fbd3899b39fa"
+        }
+    ]
+}

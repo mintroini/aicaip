@@ -74,15 +74,16 @@ Ext.define('Aeropuerto.view.HomeContainer', {
                                 docked: 'top',
                                 height: '100%',
                                 id: 'lstArribosHome',
+                                itemId: 'mylist4',
                                 width: '100%',
                                 itemTpl: [
                                     '<table style="width:100%">',
-                                    '  <tr>',
-                                    '      <td><img src="\'resources/Img/\'+{aerolinea}+\'.png\'" alt="Aerolinea Img"></td>',
-                                    '    <td>{origen}</td>',
-                                    '    <td>{fprogram}</td>		',
-                                    '    <td>{estadosp}</td>',
-                                    '  </tr>',
+                                    '    <tr>',
+                                    '        <!-- <td><img src="\'resources/Img/\'+{aerolinea}+\'.png\'" alt="Aerolinea Img"></td> -->',
+                                    '        <td>{origen}</td>',
+                                    '        <td>{fprogram}</td>		',
+                                    '        <td>{estadosp}</td>',
+                                    '    </tr>',
                                     '</table>',
                                     ''
                                 ],
@@ -106,7 +107,7 @@ Ext.define('Aeropuerto.view.HomeContainer', {
                                     '',
                                     '<table style="width:100%">',
                                     '  <tr>',
-                                    '    <td style="width:20%"><img src="resources/Img/{aerolinea}.png" alt="Aerolinea Img"></td>',
+                                    '   <!-- <td style="width:20%"><img src="resources/Img/{aerolinea}.png" alt="Aerolinea Img"></td> -->',
                                     '    <td style="width:20%">{destino}</td>',
                                     '    <td style="width:20%">{nVuelo}</td>	',
                                     '    <td style="width:20%">{fprogram}</td>',
@@ -146,6 +147,9 @@ Ext.define('Aeropuerto.view.HomeContainer', {
         }else{
             Ext.getCmp('homeContainerSubs').hide();
         }
+        Ext.getCmp('HomeToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_inicio);
+        Ext.getCmp('lstArribosHome').setScrollable(false);
+        Ext.getCmp('lstPartidasHome').setScrollable(false);
     }
 
 });

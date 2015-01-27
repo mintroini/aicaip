@@ -25,7 +25,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "top"
+                "docked": "top",
+                "id": "contactoToolbar"
             },
             "name": "MyToolbar2",
             "designerId": "3d67bc1b-c750-44f5-aa8d-e7ca8b3319ae",
@@ -70,7 +71,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "disabled": true,
+                        "disabled": false,
                         "id": "contactoEmail",
                         "label": "Email",
                         "labelWidth": "40%",
@@ -184,7 +185,9 @@
                 "implHandler": [
                     "this.callParent();",
                     "",
-                    "//Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);"
+                    "//Ext.getCmp('contactoEmail').setValue(Ext.getStore('UsuarioStore').getAt(0).data.email);",
+                    "Ext.getCmp('contactoEmail').disable();",
+                    "Ext.getCmp('contactoToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_contacto);"
                 ]
             },
             "name": "initialize",

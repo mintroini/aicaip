@@ -25,7 +25,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "docked": "top"
+                "docked": "top",
+                "id": "serviciosToolbar"
             },
             "name": "MyToolbar3",
             "designerId": "26a661fa-c287-4f33-aea3-3d1b039563dc",
@@ -109,7 +110,8 @@
             "userConfig": {
                 "fn": "initialize",
                 "implHandler": [
-                    "this.callParent();"
+                    "this.callParent();",
+                    "Ext.getCmp('serviciosToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_servicios);"
                 ]
             },
             "name": "initialize",

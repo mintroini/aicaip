@@ -26,7 +26,7 @@
             "codeClass": null,
             "userConfig": {
                 "docked": "top",
-                "id": "tbDetails",
+                "id": "flightDetalleToolbar",
                 "title": null
             },
             "name": "MyToolbar",

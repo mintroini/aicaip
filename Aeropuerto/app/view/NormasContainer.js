@@ -34,6 +34,7 @@ Ext.define('Aeropuerto.view.NormasContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'normasToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -51,6 +52,12 @@ Ext.define('Aeropuerto.view.NormasContainer', {
                 grouped: true
             }
         ]
+    },
+
+    initialize: function() {
+        this.callParent();
+
+        Ext.getCmp('normasToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_normativas);
     }
 
 });

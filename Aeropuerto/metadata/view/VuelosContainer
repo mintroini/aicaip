@@ -15,6 +15,9 @@
         "width": "100%"
     },
     "name": "MyContainer9",
+    "configAlternates": {
+        "scrollend": "object"
+    },
     "designerId": "f48d7aca-3636-4d93-be91-37077a7a9271",
     "cn": [
         {
@@ -110,21 +113,7 @@
                                 "height": "100%",
                                 "hideAnimation": null,
                                 "id": "lstArribos",
-                                "scrollToTopOnRefresh": false,
-                                "scrollable": [
-                                    "{  direction: \"vertical\",",
-                                    "scroller: {",
-                                    "listeners: {",
-                                    "scrollend: function(scroller, x, y) {",
-                                    "if(y < 0){",
-                                    "// y < 0 eso significa que el scroll fue vertical, hacia abajo.",
-                                    "Aeropuerto.app.getController('Global').getArrivals(\"\",1);",
-                                    "}  ",
-                                    "}",
-                                    "}",
-                                    "}",
-                                    "}"
-                                ],
+                                "scrollable": null,
                                 "showAnimation": null,
                                 "store": "Arribos",
                                 "width": "100%"
@@ -166,7 +155,7 @@
                                     },
                                     "codeClass": null,
                                     "name": "MyPullRefreshPlugin",
-                                    "designerId": "f388b573-9e49-4791-a92c-9b2635e4ee56"
+                                    "designerId": "e5c7b789-d5a5-4cd2-bb6b-f57aa81f9658"
                                 }
                             ]
                         }
@@ -201,20 +190,7 @@
                                 "hidden": null,
                                 "hideAnimation": null,
                                 "id": "lstPartidas",
-                                "scrollable": [
-                                    " {  direction: \"vertical\",",
-                                    "    scroller: {",
-                                    "        listeners: {",
-                                    "            scrollend: function(scroller, x, y) {",
-                                    "                        if(y < 0){",
-                                    "                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.",
-                                    "                        Aeropuerto.app.getController('Global').getDepartures(\"\",1);",
-                                    "                        }  ",
-                                    "            }",
-                                    "        }",
-                                    "    }",
-                                    "}"
-                                ],
+                                "scrollable": null,
                                 "showAnimation": null,
                                 "store": "Partidas",
                                 "width": "100%"
@@ -255,11 +231,8 @@
                                         "type": "array"
                                     },
                                     "codeClass": null,
-                                    "userConfig": {
-                                        "pluginId": null
-                                    },
                                     "name": "MyPullRefreshPlugin1",
-                                    "designerId": "154e4635-4ece-48e5-8ab9-22dff31dfbbf"
+                                    "designerId": "051d3f0d-d1c7-4a81-a6e3-aad401bef7e5"
                                 }
                             ]
                         }
@@ -305,7 +278,8 @@
                     "Ext.getCmp('txtFiltro').setPlaceHolder(Ext.getStore('StringsStore').getAt(0).data.vuelos_filtro);",
                     "",
                     "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);",
-                    "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);"
+                    "Ext.getCmp('vuelosTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);",
+                    "Ext.getCmp('topBar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_vuelos);"
                 ]
             },
             "name": "initialize",

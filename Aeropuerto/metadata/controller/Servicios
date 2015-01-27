@@ -69,7 +69,8 @@
                 "designer|targetType": "Ext.dataview.List",
                 "fn": "onServiciosListItemTap",
                 "implHandler": [
-                    "this.goToServiceDetails(record);"
+                    "this.goToServiceDetails(record);",
+                    "Ext.getCmp('serviciosDetalleToolbar').setTitle(record.data.nombre);"
                 ],
                 "name": "itemtap"
             },

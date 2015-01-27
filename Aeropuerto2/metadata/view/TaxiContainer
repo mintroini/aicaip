@@ -1,0 +1,243 @@
+{
+    "type": "Ext.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "taxicontainer",
+        "designer|userClassName": "TaxiContainer",
+        "height": "100%",
+        "hidden": true,
+        "id": "TaxiContainer",
+        "layout": "fit",
+        "width": "100%"
+    },
+    "name": "MyContainer",
+    "designerId": "fd50dd76-3bcc-448d-beab-fce5b970a75c",
+    "cn": [
+        {
+            "type": "Ext.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top"
+            },
+            "name": "MyToolbar1",
+            "designerId": "9da558a3-0afa-4600-8d9c-187d84a1aff1",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "iconCls": "list",
+                        "id": "taxiContainerHome",
+                        "text": null
+                    },
+                    "name": "MyButton2",
+                    "designerId": "93256fe4-75d5-44d2-99d2-786166c12de0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "taxiTabPanel"
+            },
+            "name": "MyTabPanel",
+            "designerId": "5732dfe8-8672-4857-ba79-bc3188a8a5e6",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "id": "tabTaxiSolicitar",
+                        "layout": null,
+                        "scrollable": "vertical",
+                        "title": "Solicitar Taxi",
+                        "width": null
+                    },
+                    "name": "MyContainer5",
+                    "designerId": "b352aa0d-ec3b-4f09-a937-1adb82874712",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "hidden": null,
+                                "id": "taxiForm",
+                                "title": null
+                            },
+                            "name": "MyFieldSet3",
+                            "designerId": "b6d23ab0-8acf-4b2e-a11c-496639e7b5b9",
+                            "cn": [
+                                {
+                                    "type": "Ext.field.Spinner",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "taxiCantPersonas",
+                                        "label": "Cantidad",
+                                        "labelWidth": "40%",
+                                        "margin": 20,
+                                        "maxValue": 99,
+                                        "minValue": 0,
+                                        "padding": 8,
+                                        "stepValue": 1
+                                    },
+                                    "name": "MySpinnerField",
+                                    "designerId": "494cbf7c-1cf0-4370-b008-4c3d0aae7826"
+                                },
+                                {
+                                    "type": "Ext.field.Select",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "taxiEsOrigen",
+                                        "label": "El aeropuerto es ",
+                                        "labelWidth": "40%",
+                                        "margin": 20,
+                                        "padding": 8
+                                    },
+                                    "name": "MySelectField",
+                                    "designerId": "98e76d5c-dbe7-43f8-85e6-9aa713a42402"
+                                },
+                                {
+                                    "type": "Ext.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "taxiLocation",
+                                        "label": "Destino",
+                                        "labelWidth": "40%",
+                                        "margin": 20,
+                                        "padding": 8
+                                    },
+                                    "name": "MyTextField1",
+                                    "designerId": "96433cee-deb5-4e05-8568-f961aaca5e68"
+                                },
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "btnSolicitarTaxi",
+                                        "margin": 20,
+                                        "padding": 8,
+                                        "text": "Solicitar Taxi"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "9530c6cc-1c21-40f4-9fb4-2cb4b4ba4b94"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "tabTaxiInformacion",
+                        "title": "Informacion"
+                    },
+                    "name": "MyContainer6",
+                    "designerId": "e3485784-eee3-42b4-b6e1-0579361a9aed",
+                    "cn": [
+                        {
+                            "type": "Ext.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "centered": null,
+                                "html": null,
+                                "id": "lblInfoTaxi",
+                                "margin": 20,
+                                "padding": 8
+                            },
+                            "name": "MyLabel1",
+                            "designerId": "6f0a4d5d-8996-46aa-9abc-55156eb3514a"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "this.callParent();",
+                    "var strings = Ext.getStore('StringsStore');",
+                    "",
+                    "  // Ext.getCmp('taxiCantPersonas').add();",
+                    "var origen = [{",
+                    "            text: strings.getAt(0).data.taxi_Origen,",
+                    "            value: 1",
+                    "        }, {",
+                    "            text: strings.getAt(0).data.taxi_Destino,",
+                    "            value: 6",
+                    "        }];",
+                    "",
+                    "Ext.getCmp('taxiEsOrigen').setOptions(origen);",
+                    "",
+                    "Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);",
+                    "Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);",
+                    "Ext.getCmp('btnSolicitarTaxi').setText(strings.getAt(0).data.taxi_Solicitar);",
+                    "Ext.getCmp('lblInfoTaxi').setHtml(strings.getAt(0).data.taxi_info);",
+                    "",
+                    "//Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);",
+                    "//Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);",
+                    ""
+                ]
+            },
+            "name": "initialize",
+            "designerId": "3becf5d9-caf3-4a45-9a31-29dbf6eb6e6f"
+        }
+    ]
+}

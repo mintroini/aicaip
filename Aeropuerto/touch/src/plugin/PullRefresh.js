@@ -118,11 +118,11 @@ Ext.define('Ext.plugin.PullRefresh', {
                 '<span class="x-loading-right"></span>',
                 '<span class="x-loading-bottom"></span>',
                 '<span class="x-loading-left"></span>',
-            '</div>',
+            '</div>' /*,
             '<div class="x-list-pullrefresh-wrap">',
                 '<h3 class="x-list-pullrefresh-message">{message}</h3>',
                 '<div class="x-list-pullrefresh-updated">{updated}</div>',
-            '</div>'
+            '</div>'  */
         ].join(''),
 
         translatable: true
@@ -235,10 +235,16 @@ Ext.define('Ext.plugin.PullRefresh', {
      * Attempts to load the newest posts via the attached List's Store's Proxy
      */
     fetchLatest: function() {
+        //Martin
+        Aeropuerto.app.getController('Global').pullRefresh(this.getList().getItemId());
+        //Martin
+
+        this.snapBack(true);
+        /*
         var store = this.getList().getStore(),
             proxy = store.getProxy(),
             operation;
-
+        
         operation = Ext.create('Ext.data.Operation', {
             page: 1,
             start: 0,
@@ -250,6 +256,7 @@ Ext.define('Ext.plugin.PullRefresh', {
         });
 
         proxy.read(operation, this.onLatestFetched, this);
+        */
     },
 
     /**
@@ -260,6 +267,7 @@ Ext.define('Ext.plugin.PullRefresh', {
      * timeline between the new and the old records.
      */
     onLatestFetched: function(operation) {
+                console.log('5');
         var store = this.getList().getStore(),
             oldRecords = store.getData(),
             newRecords = operation.getRecords(),
@@ -270,7 +278,7 @@ Ext.define('Ext.plugin.PullRefresh', {
         for (i = 0; i < length; i++) {
             newRecord = newRecords[i];
             oldRecord = oldRecords.getByKey(newRecord.getId());
-
+            console.log('5.'+i);
             if (oldRecord) {
                 oldRecord.set(newRecord.getData());
             } else {
@@ -282,9 +290,11 @@ Ext.define('Ext.plugin.PullRefresh', {
 
         store.insert(0, toInsert);
         this.setState("loaded");
+                console.log('5');
         this.fireEvent('latestfetched', this, toInsert);
         if (this.getAutoSnapBack()) {
             this.snapBack();
+                    console.log('7');
         }
     },
 
@@ -306,7 +316,6 @@ Ext.define('Ext.plugin.PullRefresh', {
             single: true,
             scope: this
         });
-
         this.setIsSnappingBack(true);
         scroller.scrollTo(null, 0, {duration: this.getSnappingAnimationDuration()});
     },

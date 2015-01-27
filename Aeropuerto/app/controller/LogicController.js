@@ -155,25 +155,25 @@ Ext.define('Aeropuerto.controller.LogicController', {
 
     onDetailsRefresh: function(button, e, eOpts) {
         this.getApplication().getController('Global').checkConnection();
-            //se actualiza la lista de arribos o partidas dependiendo de lo que sea el vuelo seleccionado
-            if(this.globalRecord.data.esArribo){
-                this.getApplication().getController('Global').getArrivals('','0');
-                var tienda =  Ext.getStore('Arribos');
-                Ext.getCmp('lstArribos').refresh();
-            }else{
-                this.getApplication().getController('Global').getDepartures('','0');
-                var tienda =  Ext.getStore('Partidas');
-                Ext.getCmp('lstPartidas').refresh();
+        //se actualiza la lista de arribos o partidas dependiendo de lo que sea el vuelo seleccionado
+        if(this.globalRecord.data.esArribo){
+            this.getApplication().getController('Global').getArrivals('','0');
+            var tienda =  Ext.getStore('Arribos');
+            Ext.getCmp('lstArribos').refresh();
+        }else{
+            this.getApplication().getController('Global').getDepartures('','0');
+            var tienda =  Ext.getStore('Partidas');
+            Ext.getCmp('lstPartidas').refresh();
 
+        }
+        //se obtiene el vuelo de la lista actualizada
+        for (i = 0; i < tienda.getCount(); i++) {
+            if(tienda.getAt(i).data.nVuelo == this.globalRecord.data.nVuelo){
+                var index =  i;
             }
-            //se obtiene el vuelo de la lista actualizada
-            for (i = 0; i < tienda.getCount(); i++) {
-                 if(tienda.getAt(i).data.nVuelo == this.globalRecord.data.nVuelo){
-                     var index =  i;
-                 }
-            }
-            //se actualizan los datos
-             Ext.getCmp('companyName').setData(tienda.getAt(index).data);
+        }
+        //se actualizan los datos
+        Ext.getCmp('companyName').setData(tienda.getAt(index).data);
 
     },
 
@@ -229,6 +229,7 @@ Ext.define('Aeropuerto.controller.LogicController', {
             this.showHideMenu('left');
             var tienda = Ext.getStore('WeatherStore');
 
+            Ext.getCmp('flightDetalleToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_vuelos +' '+ record.data.nVuelo);
             if(record.data.esArribo)
             {
                 //Tiempo en el lugar de origen  Ext.Viewport.mask({ xtype: 'loadmask' });
@@ -297,8 +298,14 @@ Ext.define('Aeropuerto.controller.LogicController', {
 
     showHideMenu: function(referrer) {
         if(Ext.Viewport.getMenus().left.isHidden()){
-            if(referrer === "" || referrer == "right")
+            if(referrer === "" || referrer == "right"){
                 Ext.Viewport.showMenu('left');
+            }else{
+                if(!Ext.getCmp('HomeContainer').isHidden() && Ext.getStore('UsuarioStore').getCount() > 0){
+                    this.beforeSubscriptions();
+                    Ext.Viewport.showMenu('right');
+                }
+            }
         }
         else
         {
@@ -383,11 +390,14 @@ Ext.define('Aeropuerto.controller.LogicController', {
         if(Ext.getStore('MisVuelos').getCount()<1){
             Ext.getCmp('suscriptionNoSubs').show();
             Ext.getCmp('lstSubscriptions').hide();
-
+            Ext.getCmp('suscriptionNoSubs2').show();
+            Ext.getCmp('lstSubscriptions2').hide();
         }else{
-            this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer');
+            this.getApplication().getController('Global').getSubscriptions('SuscripcionesContainer',1);
             Ext.getCmp('suscriptionNoSubs').hide();
             Ext.getCmp('lstSubscriptions').show();
+            Ext.getCmp('suscriptionNoSubs2').hide();
+            Ext.getCmp('lstSubscriptions2').show();
         }
     }
 

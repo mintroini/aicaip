@@ -33,7 +33,7 @@ Ext.define('Aeropuerto.view.ServiciosDetailsContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
-                id: 'tbDetails1',
+                id: 'serviciosDetalleToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -63,16 +63,6 @@ Ext.define('Aeropuerto.view.ServiciosDetailsContainer', {
     initialize: function() {
         this.callParent();
 
-        /* Tiene que volver a servicios
-
-                this.element.on({
-                    swipe: function(e, node, options) {
-                        if(e.direction == "right") {
-                            Aeropuerto.app.getController('LogicController').onDetailsBackButtonTap();
-                        }
-                    }
-                });
-        */
     }
 
 });

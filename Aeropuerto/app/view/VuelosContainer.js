@@ -65,19 +65,6 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                         items: [
                             {
                                 xtype: 'list',
-                                scrollable: {
-                                    direction: 'vertical',
-                                    scroller: {
-                                        listeners: {
-                                            scrollend: function(scroller, x, y) {
-                                        if(y < 0){
-                                        // y < 0 eso significa que el scroll fue vertical, hacia abajo.
-                                        Aeropuerto.app.getController('Global').getArrivals("",1);
-                                        }  
-                                        }
-                                        }
-                                    }
-                                },
                                 docked: 'top',
                                 height: '100%',
                                 id: 'lstArribos',
@@ -85,7 +72,6 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                                 itemTpl: [
                                     '<div style=\'text-align: center;\'>{origen}<br>{fprogram} - {estadosp}</div>'
                                 ],
-                                scrollToTopOnRefresh: false,
                                 store: 'Arribos',
                                 plugins: [
                                     {
@@ -104,19 +90,6 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
                         items: [
                             {
                                 xtype: 'list',
-                                scrollable: {
-                                    direction: 'vertical',
-                                    scroller: {
-                                        listeners: {
-                                            scrollend: function(scroller, x, y) {
-                                                                if(y < 0){
-                                                                // y < 0 eso significa que el scroll fue vertical, hacia abajo.
-                                                                Aeropuerto.app.getController('Global').getDepartures("",1);
-                                                                }  
-                                                    }
-                                        }
-                                    }
-                                },
                                 docked: 'top',
                                 height: '100%',
                                 id: 'lstPartidas',
@@ -162,6 +135,7 @@ Ext.define('Aeropuerto.view.VuelosContainer', {
 
         Ext.getCmp('vuelosTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);
         Ext.getCmp('vuelosTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_partidas);
+        Ext.getCmp('topBar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_vuelos);
     }
 
 });

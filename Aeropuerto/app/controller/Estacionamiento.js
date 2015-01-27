@@ -58,34 +58,86 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
     },
 
     selectHoraTap1: function(button, e, eOpts) {
-        Ext.getCmp('EstacionamientoHoraPicker1').show();
+        Ext.getCmp('EstacionamientoReservarHora').show();
 
 
     },
 
     onEstacionamientoContinuar: function(button, e, eOpts) {
-        Ext.getCmp('estacionamientoForm').hide();
-        Ext.getCmp('confirmarEstacionamientoForm').show();
+        var fecha = new Date();
+
+        var horas = fecha.getTime() - (fecha.getHours()*3600000 + fecha.getMinutes()*60000 +fecha.getSeconds()*1000+ fecha.getMilliseconds());
+
+        var siguiente = true;
+        var mensaje = Ext.getStore('StringsStore').getAt(0).data.global_fallo;
+        mensaje += '<br>';
+
+        if(Ext.getCmp('estacionamientoDatePicker').getValue() === null){
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_fecha;
+            mensaje += '<br>';
+            siguiente = false;
+
+        }else{
+            if(Ext.getCmp('estacionamientoDatePicker').getValue().getTime() < horas){
+                mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_fecha;
+                mensaje += '<br>';
+                siguiente = false;
+            }
+        }
+
+        if( Ext.getCmp('estacionamientoMatricula').getValue() < 1){
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_matricula;
+            mensaje += '<br>';
+            siguiente = false;
+        }
+        if( Ext.getCmp('estacionamientoMarca').getValue() < 1){
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_marca;
+            mensaje += '<br>';
+            siguiente = false;
+        }
+        if( Ext.getCmp('estacionamientoModelo').getValue() < 1){
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_modelo;
+            mensaje += '<br>';
+            siguiente = false;
+        }
+        if( Ext.getCmp('estacionamientoModelo').getValue() < 1){
+            mensaje += Ext.getStore('StringsStore').getAt(0).data.lavados_modelo;
+            mensaje += '<br>';
+            siguiente = false;
+        }
 
 
+        if(siguiente){
+            Ext.getCmp('estacionamientoForm').hide();
+            Ext.getCmp('confirmarEstacionamientoForm').show();
+        }else{
+            Ext.Msg.alert( '', mensaje);
+        }
 
     },
 
     onEstacionamientoConfirmar: function(button, e, eOpts) {
-           Ext.Msg.alert( '', 'Se esta procesando su solicitud ');//Ext.getCmp('estacionamientoForm').
-        Ext.getCmp('estacionamientoForm').show();
-                 Ext.getCmp('confirmarEstacionamientoForm').hide();
-        this.resetForm();
+        if(Ext.getCmp('estacionamientoTerminos').getChecked()){
+
+            Ext.Msg.alert( '', 'Se esta procesando su solicitud ');//Ext.getCmp('estacionamientoForm').
+            Ext.getCmp('estacionamientoForm').show();
+            Ext.getCmp('confirmarEstacionamientoForm').hide();
+            this.resetForm();
+
+        }else{
+            Ext.Msg.alert( '', Ext.getStore('StringsStore').getAt(0).data.lavados_aceptarTerminos);
+        }
     },
 
     onEstacionamientoCancelar: function(button, e, eOpts) {
-        Ext.Msg.confirm("Cancelar", "Are you sure u want to cancel ?", function(btn){
+        Ext.Msg.confirm(Ext.getStore('StringsStore').getAt(0).data.global_cancel, Ext.getStore('StringsStore').getAt(0).data.global_cancelarConfirmado, function(btn){
             if (btn == 'yes'){
                 Ext.getCmp('estacionamientoForm').show();
                 Ext.getCmp('confirmarEstacionamientoForm').hide();
                         Aeropuerto.app.getApplication().getController('Estacionamiento').resetForm();
             }
         });
+
     },
 
     resetForm: function() {
@@ -94,11 +146,11 @@ Ext.define('Aeropuerto.controller.Estacionamiento', {
         Ext.getCmp('estacionamientoMarca').setValue('');
         Ext.getCmp('estacionamientoModelo').setValue('');
 
-        Ext.getCmp('lblTiempoReserva').setHtml('Hora comienzo 00:00 AM');
-        Ext.getCmp('lblHoraComienzo').setHtml('Hora comienzo 00:00 AM');
+        Ext.getCmp('lblTiempoReserva').setHtml('Tiempo de reserva 00:00 minutos');
+        Ext.getCmp('lblHoraComienzo').setHtml(Ext.getStore('StringsStore').getAt(0).data.lavado_horaComienzo +' 00:00 AM');
 
         Ext.getCmp('estacionamientoTerminos').setValue(0);
-        Ext.getCmp('estacionamientoPrecioServicio').setHtml('El costo del servicio es ');
+        Ext.getCmp('estacionamientoPrecioServicio').setHtml(Ext.getStore('StringsStore').getAt(0).data.lavados_costo);
 
     }
 

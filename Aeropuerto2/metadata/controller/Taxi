@@ -1,0 +1,78 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Taxi"
+    },
+    "name": "MyController",
+    "designerId": "228818ad-41f4-4b5d-8c84-99c7d5a889f0",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnTaxi",
+                "designer|targetType": "Ext.Button",
+                "fn": "btnTaxi",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkLogged('TaxiContainer');",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "btnTaxi",
+            "designerId": "a012b7d5-0463-471b-93c8-33310802da5e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#taxiContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "homeButtonTap",
+                "implHandler": [
+                    "this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "homeButtonTap",
+            "designerId": "7f5542d6-5412-4392-97a2-c5757cc1e94c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#taxiEsOrigen",
+                "designer|targetType": "Ext.field.Select",
+                "fn": "onTaxiOrigenChange",
+                "implHandler": [
+                    "if(Ext.getCmp('taxiEsOrigen').getValue() == '1'){",
+                    "    Ext.getCmp('taxiLocation').setLabel('Destino');",
+                    "}else{",
+                    "    Ext.getCmp('taxiLocation').setLabel('Origen');",
+                    "}"
+                ],
+                "name": "change"
+            },
+            "name": "onTaxiOrigenChange",
+            "designerId": "dd439620-360a-4dd6-a9a3-9876d3b2acd4"
+        }
+    ]
+}

@@ -34,7 +34,7 @@ Ext.define('Aeropuerto.view.FlightDetailsContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
-                id: 'tbDetails',
+                id: 'flightDetalleToolbar',
                 items: [
                     {
                         xtype: 'button',

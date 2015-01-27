@@ -1,0 +1,847 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Strings"
+    },
+    "name": "MyModel",
+    "designerId": "75c64a7f-c86c-41ed-ac4c-54d3b24a0716",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "version"
+            },
+            "name": "field24",
+            "designerId": "01c4ba7c-d5ff-4d10-ada9-b302a56f2999"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "cultura"
+            },
+            "name": "field25",
+            "designerId": "36617cce-e1e6-4846-992c-10095263d9c3"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_inicio"
+            },
+            "name": "field26",
+            "designerId": "0d64f0be-44c4-4a35-966d-b8f382b64117"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_suscripciones"
+            },
+            "name": "field27",
+            "designerId": "c6162585-1c52-4aa4-a860-c6ed30a6eb2a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_vuelos"
+            },
+            "name": "field28",
+            "designerId": "5a0a14cc-b4b7-4582-98c1-3be242a69630"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_servicios"
+            },
+            "name": "field30",
+            "designerId": "def2961b-5ff5-4619-b5d3-62903e7e77a5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_mapa"
+            },
+            "name": "field31",
+            "designerId": "5c77fb05-a199-4120-91ff-6775bfa25056"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_normativas"
+            },
+            "name": "field32",
+            "designerId": "7a4d70b2-3f83-4dc8-bae9-4ddfc67b9d50"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_vip"
+            },
+            "name": "field33",
+            "designerId": "773fbf40-4350-40b8-9fcf-786e99a7ed0b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "gobal_taxi"
+            },
+            "name": "field34",
+            "designerId": "ef886e7c-b347-4ffa-9cd0-3839859ec875"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_estacionamiento"
+            },
+            "name": "field35",
+            "designerId": "00ebc4c1-5c64-40dc-bfa3-47726a58f3f5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_lavados"
+            },
+            "name": "field36",
+            "designerId": "96d7c0a7-e633-42e8-946a-704c13c61e85"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_usuario"
+            },
+            "name": "field37",
+            "designerId": "1ea23085-e0ec-4cac-9dfa-c34335495514"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_contacto"
+            },
+            "name": "field38",
+            "designerId": "d8a24a0b-3775-476d-ae8b-16a39cf4b710"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_cargando"
+            },
+            "name": "field39",
+            "designerId": "ca46c83a-eb3a-44d2-a5fd-f04bfdc6e3df"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_informacion"
+            },
+            "name": "field40",
+            "designerId": "22e14381-f34b-4ee0-8d2b-ba83b0382173"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_cancelar"
+            },
+            "name": "field45",
+            "designerId": "02b12d03-5f4a-4a15-a0d0-c8dc853af584"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_aceptar"
+            },
+            "name": "field46",
+            "designerId": "bba1745e-8fe2-4bc7-9185-fe9107e57688"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vuelos_filtro"
+            },
+            "name": "field47",
+            "designerId": "7aec2bb3-cc94-4257-9881-d918ac32af2c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vuelos_buscar"
+            },
+            "name": "field48",
+            "designerId": "1753459e-c598-4a66-9b94-dddd3f373615"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vuelo_partidas"
+            },
+            "name": "field49",
+            "designerId": "ff55cba8-4259-415b-bc31-434e0e83a0ae"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vuelo_arribos"
+            },
+            "name": "field50",
+            "designerId": "32310a3d-5efa-419e-8d68-ec59f4665dbd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vuelo_detalles"
+            },
+            "name": "field51",
+            "designerId": "aeb51af6-189d-4fa1-80b2-7d46f588a402"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_registrarse"
+            },
+            "name": "field52",
+            "designerId": "e742bab6-4c53-473d-ae22-263b7e3fc13a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_iniciarSesion"
+            },
+            "name": "field53",
+            "designerId": "f6333748-7093-4fa1-9449-356d0b34c007"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_cerrarSesion"
+            },
+            "name": "field54",
+            "designerId": "7a97348e-8002-4f87-b17e-f7ba98341eaf"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_nombre"
+            },
+            "name": "field55",
+            "designerId": "d650504f-2c2b-4533-a92a-2a66571cc2d2"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_apellido"
+            },
+            "name": "field56",
+            "designerId": "af5a5638-a5a5-4d5d-889c-8712a735e5c7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_email"
+            },
+            "name": "field57",
+            "designerId": "b1dbb3db-01c4-4cf5-a398-6f13a4e762e2"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_password"
+            },
+            "name": "field58",
+            "designerId": "687aadc2-edf4-4c74-aef6-093b8721e9b5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_fecha_nacimiento"
+            },
+            "name": "field59",
+            "designerId": "dedbfd1d-5f4a-4678-acf0-44e3daaa34ed"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_creado"
+            },
+            "name": "field60",
+            "designerId": "136f1043-27fd-4913-aef5-54cd591bfdc9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_fallo"
+            },
+            "name": "field61",
+            "designerId": "d1de1d34-c8c9-45f1-971e-89feb36c9d66"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_info"
+            },
+            "name": "field62",
+            "designerId": "20b9c473-cf2d-4667-91f1-7dfb44422a64"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_cantidadPersonas"
+            },
+            "name": "field63",
+            "designerId": "43dd702b-7e38-4175-b0b6-73c6b47babe1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Origen"
+            },
+            "name": "field64",
+            "designerId": "52f4d4b3-f09f-4a00-ae0b-ebcd4bc076e9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Destino"
+            },
+            "name": "field65",
+            "designerId": "e6ea4f8e-db9e-46c1-82ff-3af2ef33eb0b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Desde"
+            },
+            "name": "field66",
+            "designerId": "5f5e82e5-ea13-480c-bb02-c19e05a65005"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taxi_Solicitar"
+            },
+            "name": "field67",
+            "designerId": "ae758e2f-0324-49b8-854c-d6556a858873"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_info"
+            },
+            "name": "field68",
+            "designerId": "407ce9b7-c778-447d-9ead-055e5308ece5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_solicitar"
+            },
+            "name": "field69",
+            "designerId": "b29e55f9-69df-45cf-8407-b80a914ef09c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_fecha"
+            },
+            "name": "field70",
+            "designerId": "d44d811f-10e8-4983-ab4a-b8cee51ddd88"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_hora"
+            },
+            "name": "field71",
+            "designerId": "631051ad-fe40-4d4a-8c56-f887c704ef30"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_matricula"
+            },
+            "name": "field72",
+            "designerId": "6bcaa9df-d9a7-4bc9-9613-7de17b197a2f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_modelo"
+            },
+            "name": "field73",
+            "designerId": "d0723969-57d2-4ab6-aeba-653b293d86b5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_marca"
+            },
+            "name": "field74",
+            "designerId": "5fcc51ad-cad8-4c43-92a9-579598aac1e7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_continuar"
+            },
+            "name": "field75",
+            "designerId": "ffbc7fc8-478a-4ad7-a7cb-34dc2c4315e8"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_costo"
+            },
+            "name": "field76",
+            "designerId": "352095ec-143e-494b-a1e7-b017d3683cc5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_aceptarTerminos"
+            },
+            "name": "field77",
+            "designerId": "44976dfa-6288-40f7-b0d3-698e2c7e0958"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_terminos"
+            },
+            "name": "field78",
+            "designerId": "43b77ccd-01d1-483d-9154-2f39f0bb5484"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavados_mensajeError"
+            },
+            "name": "field79",
+            "designerId": "849e9091-927c-4d5f-924e-81b3cdc19ff0"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_modificarDatos"
+            },
+            "name": "field",
+            "designerId": "ffedf456-8268-49d0-8474-c007426387c5"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_modificado"
+            },
+            "name": "field1",
+            "designerId": "185c67ac-6b12-4bed-8741-15775a062447"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_modificadoFallo"
+            },
+            "name": "field2",
+            "designerId": "2f59ffe5-fbea-4eb4-8ae2-b2d3f61637a7"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_creadoFallo"
+            },
+            "name": "field3",
+            "designerId": "4290dbf6-7645-4df6-a06b-2c412a92d1a6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_fallo"
+            },
+            "name": "field4",
+            "designerId": "c4438bca-e63d-4df1-bae8-a517e87f1c7e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "usuario_passwordError"
+            },
+            "name": "field5",
+            "designerId": "df6f0720-2fcd-4f13-9230-4acf329276cd"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "suario_loginIncorrecto"
+            },
+            "name": "field6",
+            "designerId": "d4993159-719a-412b-ad24-0b43c1eea788"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_logToContinue"
+            },
+            "name": "field7",
+            "designerId": "1586413c-ddf7-415c-a345-5d5ed839b6ce"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavado_seleccionarHora"
+            },
+            "name": "field8",
+            "designerId": "0995b071-f432-40d6-8ef9-49a21e91c0b9"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavado_horaComienzo"
+            },
+            "name": "field9",
+            "designerId": "954ca0e1-25fd-4d14-b9c5-482f6fc0371c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lavado_solicitadoConExito"
+            },
+            "name": "field10",
+            "designerId": "5bad9419-f40b-470a-8596-c897439f7987"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "global_cancelarConfirmado"
+            },
+            "name": "field11",
+            "designerId": "29c592d1-999a-4052-b26c-b0124e17a92a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "vuelo_noHaySuscripciones"
+            },
+            "name": "field12",
+            "designerId": "aa20a2ac-2049-49e3-8973-e7e8f0185507"
+        }
+    ]
+}

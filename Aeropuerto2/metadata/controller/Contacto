@@ -1,0 +1,55 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Contacto"
+    },
+    "name": "MyController",
+    "designerId": "6fb94fa9-0bf2-4b17-8e67-01fe14f27e66",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#btnContacto",
+                "designer|targetType": "Ext.Button",
+                "fn": "onContactoTap",
+                "implHandler": [
+                    "this.getApplication().getController('Global').checkLogged('ContactoContainer');",
+                    "",
+                    ""
+                ],
+                "name": "tap"
+            },
+            "name": "onContactoTap",
+            "designerId": "20a3c34f-cfdb-4ba1-89d5-752f1d1e87d1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#containerContainerHome",
+                "designer|targetType": "Ext.Button",
+                "fn": "contactioHomeButtonTap",
+                "implHandler": [
+                    "   this.getApplication().getController('LogicController').showHideMenu('');"
+                ],
+                "name": "tap"
+            },
+            "name": "contactioHomeButtonTap",
+            "designerId": "93caec7c-e9a5-4e9a-97c0-d24b5d1eb252"
+        }
+    ]
+}

@@ -37,6 +37,7 @@ Ext.define('Aeropuerto.view.UserContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'userToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -206,6 +207,8 @@ Ext.define('Aeropuerto.view.UserContainer', {
 
         Ext.getCmp('btnRegister').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);
         Ext.getCmp('btnRegisterInicial').setText(Ext.getStore('StringsStore').getAt(0).data.usuario_registrarse);
+
+        Ext.getCmp('userToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_usuario);
 
     }
 

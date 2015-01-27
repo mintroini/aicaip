@@ -39,6 +39,7 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'estacionamientoToolbar',
                 items: [
                     {
                         xtype: 'button',
@@ -69,7 +70,16 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                         label: 'Fecha',
                                         name: 'estacionamientoDatePicker',
                                         placeHolder: 'mm/dd/yyyy',
-                                        displayField: 'Fecha'
+                                        displayField: 'Fecha',
+                                        dateFormat: 'd/m/Y',
+                                        picker: {
+                                            useTitles: true,
+                                            slotOrder: [
+                                                'day',
+                                                'month',
+                                                'year'
+                                            ]
+                                        }
                                     },
                                     {
                                         xtype: 'container',
@@ -149,7 +159,6 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                 xtype: 'fieldset',
                                 hidden: true,
                                 id: 'confirmarEstacionamientoForm',
-                                title: 'MyFieldSet4',
                                 items: [
                                     {
                                         xtype: 'label',
@@ -186,7 +195,6 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                         items: [
                             {
                                 xtype: 'label',
-                                html: 'orem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta gravida nunc, a auctor nibh congue ut. Sed vel nulla in sem iaculis lacinia eget in ipsum. Ut hendrerit sollicitudin mollis. Integer egestas, eros at cursus tincidunt, ex felis auctor risus, eu malesuada elit elit eget turpis. Ut dictum hendrerit interdum. Ut urna nulla, placerat pellentesque nibh eget, dignissim condimentum ex. Suspendisse at gravida nibh. Morbi tempor urna non rhoncus feugiat. Quisque a lorem lorem. Vivamus pellentesque metus et dui aliquet eleifend. Phasellus blandit mauris non interdum commodo.  Etiam condimentum pharetra mi, in aliquet neque placerat laoreet. Duis condimentum vehicula mauris et vestibulum. Nam lobortis est vitae sem accumsan, nec maximus velit malesuada. Integer luctus in quam vitae porta. Cras mattis, eros ut porta interdum, arcu quam sagittis odio, non pharetra sapien justo at nibh. Aenean ornare sem augue, quis varius magna aliquet in. Aliquam ac ex pulvinar, aliquam nulla quis, elementum sem. Fusce ac mi arcu. Nullam erat nulla, consequat at lorem et, hendrerit posuere nulla. Sed at ligula id nibh consectetur eleifend. Donec ultrices, dui eget elementum posuere, neque enim sagittis ante, a bibendum risus ex quis lectus. Donec cursus faucibus dui, sed finibus tellus sollicitudin in.  Suspendisse potenti. Nulla sed laoreet quam. Maecenas felis felis, semper a felis eu, ornare convallis quam. Aliquam vitae finibus felis. Nulla ut ipsum tincidunt, bibendum eros elementum, aliquet nisi. Aliquam eu odio a elit fringilla sagittis. Vestibulum porttitor, mi sit amet laoreet tristique, arcu elit dictum ante, quis facilisis dolor massa ut libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis in nunc nisi. In tristique mi et turpis luctus malesuada.  Maecenas maximus mattis risus, et blandit libero consequat et. Proin ornare sapien eget ligula luctus, at consequat ex pharetra. Donec porta, ex ac cursus facilisis, nibh metus imperdiet enim, ac dignissim arcu nunc quis dolor. Fusce nec lorem ex. Praesent metus dui, vestibulum vel erat et, egestas consequat ante. Quisque sit amet blandit nisl. Vestibulum sagittis leo sed dignissim tincidunt. Nulla facilisi. Curabitur ut purus id sem commodo tincidunt. Aenean non elit et nunc egestas laoreet nec ut erat.  Phasellus in nulla egestas, malesuada magna et, scelerisque est. Mauris elementum euismod lacus in mollis. Etiam vel semper quam. Vestibulum ut odio finibus ante interdum aliquet. Nulla a neque laoreet, commodo lacus nec, pharetra massa. Praesent molestie tincidunt nunc, in interdum quam eleifend et. Pellentesque scelerisque sed odio a lobortis. In vitae dictum lorem. Nullam aliquam vitae libero quis rhoncus. Nam nec mauris vel nunc fringilla placerat vitae quis quam.',
                                 id: 'lblInfoEstacionamiento',
                                 margin: 20,
                                 padding: 8
@@ -197,17 +205,21 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                         xtype: 'picker',
                         hidden: true,
                         id: 'EstacionamientoHoraPicker',
-                        itemId: 'mypicker',
+                        itemId: 'mypicker2',
+                        useTitles: true,
                         slots: [
                             {
                                 xtype: 'pickerslot',
                                 id: 'EstacionamientoHoras',
-                                name: 'horas',
-                                title: 'horas'
+                                style: '  text-align: center;',
+                                deselectOnContainerClick: false,
+                                name: 'horas'
                             },
                             {
                                 xtype: 'pickerslot',
                                 id: 'EstacionamientoMinutos',
+                                style: '  text-align: center;',
+                                align: 'center',
                                 name: 'minutos',
                                 title: 'minutos'
                             },
@@ -224,6 +236,8 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                                     }
                                 ],
                                 id: 'EstacionamientoAPM',
+                                style: '  text-align: center;',
+                                align: 'right',
                                 name: 'am',
                                 title: 'am'
                             }
@@ -232,18 +246,22 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                     {
                         xtype: 'picker',
                         hidden: true,
-                        id: 'EstacionamientoHoraPicker1',
-                        itemId: 'mypicker1',
+                        id: 'EstacionamientoReservarHora',
+                        itemId: 'mypicker3',
+                        useTitles: true,
                         slots: [
                             {
                                 xtype: 'pickerslot',
-                                id: 'ReservaHoras',
-                                name: 'horas',
-                                title: 'horas'
+                                id: 'estacionamientoReservarHoras',
+                                style: '  text-align: center;',
+                                deselectOnContainerClick: false,
+                                name: 'horas'
                             },
                             {
                                 xtype: 'pickerslot',
-                                id: 'ReservaMinutos',
+                                id: 'estacionamientoReservarMinutos',
+                                style: '  text-align: center;',
+                                align: 'center',
                                 name: 'minutos',
                                 title: 'minutos'
                             }
@@ -259,9 +277,9 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
                 delegate: '#EstacionamientoHoraPicker'
             },
             {
-                fn: 'onEstacionamientoHoraPicker1Change',
+                fn: 'onEstacionamientoReservarHora',
                 event: 'change',
-                delegate: '#EstacionamientoHoraPicker1'
+                delegate: '#EstacionamientoReservarHora'
             }
         ]
     },
@@ -275,17 +293,13 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
         Ext.getCmp('lblHoraComienzo').setHtml("Hora comienzo: "+value.horas+":"+minutos+"     " +value.am);
     },
 
-    onEstacionamientoHoraPicker1Change: function(picker, value, eOpts) {
+    onEstacionamientoReservarHora: function(picker, value, eOpts) {
         var minutos = value.minutos;
         if(minutos < 10){
             minutos = "0"+minutos;
         }
-        var horas = value.horas;
-        if(minutos < 10){
-            horas = "0"+horas;
-        }
 
-        Ext.getCmp('lblTiempoReserva').setHtml("Tiempo de reserva: "+horas+":"+minutos+" Horas");
+        Ext.getCmp('lblTiempoReserva').setHtml("Tiempo de reserva: "+value.horas+":"+minutos);
     },
 
     initialize: function() {
@@ -294,35 +308,62 @@ Ext.define('Aeropuerto.view.EstacionamientoContainer', {
 
         // Ext.getCmp('taxiCantPersonas').add();
         var horas = new Array(13);
-        var minutos = new Array(60);
+        var minutos = new Array(10);
 
 
         for (i = 0; i < 13; i++) {
             horas[i] = { text: i,value: i};
 
         }
+        var cont=0;
         for (i = 0; i < 60; i++) {
-            minutos[i] =    {
-                text: i,
-                value: i
-            };
-
+            if(cont<60){
+                minutos[i] =    {
+                    text: cont,
+                    value: cont
+                };
+            }
+            cont+=5;
         }
+
+        var fecha = new Date();
+        Ext.getCmp('estacionamientoDatePicker').getPicker().setYearFrom(fecha.getFullYear());
+        Ext.getCmp('estacionamientoDatePicker').getPicker().setYearTo(fecha.getFullYear() + 5);
+
+        Ext.getCmp('EstacionamientoHoras').setValue(7);
 
         Ext.getCmp('EstacionamientoHoras').setData(horas);
         Ext.getCmp('EstacionamientoMinutos').setData(minutos);
-        Ext.getCmp('ReservaHoras').setData(horas);
-        Ext.getCmp('ReservaMinutos').setData(minutos);
-        /*
-        Ext.getCmp('taxiCantPersonas').setLabel(strings.getAt(0).data.taxi_cantidadPersonas);
-        Ext.getCmp('taxiEsOrigen').setLabel(strings.getAt(0).data.taxi_Desde);
-        Ext.getCmp('btnSolicitarTaxi').setText(strings.getAt(0).data.taxi_Solicitar);
-        Ext.getCmp('lblInfoTaxi').setHtml(strings.getAt(0).data.taxi_info);
+        Ext.getCmp('estacionamientoReservarHoras').setData(horas);
+        Ext.getCmp('estacionamientoReservarMinutos').setData(minutos);
 
-        //Ext.getCmp('tabTaxiSolicitar').setTitle(strings.getAt(0).data.taxi_Solicitar);
-        //Ext.getCmp('tabTaxiInformacion').setTitle(strings.getAt(0).data.informacion);
+        Ext.getCmp('estacionamientoDatePicker').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_fecha);
+        Ext.getCmp('estacionamientoMatricula').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_matricula);
+        Ext.getCmp('estacionamientoMarca').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_marca);
+        Ext.getCmp('estacionamientoModelo').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_modelo);
+        Ext.getCmp('btnEstacionamientoContinuar').setText(Ext.getStore('StringsStore').getAt(0).data.lavados_continuar);
 
-        */
+        Ext.getCmp('seleccionarHoraComienzo').setText(Ext.getStore('StringsStore').getAt(0).data.lavado_seleccionarHora);
+
+        //seleccionarTiempoReserva
+        Ext.getCmp('estacionamientoTerminos').setLabel(Ext.getStore('StringsStore').getAt(0).data.lavados_terminos);
+
+        Ext.getCmp('estacionamientoConfirmar').setText(Ext.getStore('StringsStore').getAt(0).data.global_aceptar);
+        Ext.getCmp('estacionamientoCancelar').setText(Ext.getStore('StringsStore').getAt(0).data.global_cancelar);
+        //Ext.getCmp('lblInfoEstacionamiento').setHtml(Ext.getStore('StringsStore').getAt(0).data.estacionamiento_informacion);
+
+
+        //Ext.getCmp('estacionamientoTabPanel').getTabBar().getAt(0).setTitle(Ext.getStore('StringsStore').getAt(0).data.vuelo_arribos);
+        Ext.getCmp('estacionamientoTabPanel').getTabBar().getAt(1).setTitle(Ext.getStore('StringsStore').getAt(0).data.global_informacion);
+
+        Ext.getCmp('estacionamientoToolbar').setTitle(Ext.getStore('StringsStore').getAt(0).data.global_estacionamiento);
+
+        Ext.getCmp('EstacionamientoHoras').setTitle('Horas');
+        Ext.getCmp('EstacionamientoMinutos').setTitle('Minutos');
+        Ext.getCmp('EstacionamientoAPM').setTitle('AM/PM');
+        Ext.getCmp('estacionamientoReservarHoras').setTitle('Horas');
+        Ext.getCmp('estacionamientoReservarMinutos').setTitle('Minutos');
+
 
     }
 
